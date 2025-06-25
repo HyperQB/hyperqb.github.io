@@ -35,3 +35,7 @@ html_theme_options = {
     },
 }
 html_static_path = ['_static']
+
+extensions = [
+    'sphinx.ext.mathjax',
+]

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Introduction" href="introduction.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="HyperLTL" href="hyperltl.html" /><link rel="prev" title="Introduction" href="introduction.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>HyperQB</title>
+        <title>Background Theory - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -172,7 +172,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">HyperQB</div></a>
+      <a href="index.html"><div class="brand">HyperQB</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -184,7 +184,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -193,7 +193,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
   <span class="sidebar-brand-text">HyperQB</span>
@@ -205,9 +205,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="theory.html">Background Theory</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Background Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hyperltl.html">HyperLTL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="playground.html">Playground</a></li>
@@ -233,7 +233,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/index.rst.txt" title="View this page">
+  <a class="muted-link" href="_sources/theory.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -247,45 +247,88 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="welcome-to-hyperqb">
-<h1>Welcome to HyperQB!<a class="headerlink" href="#welcome-to-hyperqb" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+          <section id="background-theory">
+<h1>Background Theory<a class="headerlink" href="#background-theory" title="Link to this heading">¶</a></h1>
+<p>Given a HyperLTL formula <span class="math notranslate nohighlight">\(\varphi\)</span>, a bound <span class="math notranslate nohighlight">\(k\)</span>, and a set of Kripke structures <span class="math notranslate nohighlight">\(\mathcal{K}\)</span>, the goal is to construct a <span class="math notranslate nohighlight">\(\text{QBF}\)</span> formula <span class="math notranslate nohighlight">\(⟦ \mathcal{K}, \varphi ⟧_k\)</span> whose satisfiability reflects whether <span class="math notranslate nohighlight">\(\mathcal{K} \models \varphi\)</span> holds within bound <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<section id="encoding-the-kripke-structures">
+<h2>Encoding the Kripke Structures<a class="headerlink" href="#encoding-the-kripke-structures" title="Link to this heading">¶</a></h2>
+<p>To reduce model checking to QBF, each Kripke structure is encoded as a Boolean formula representing all its valid traces up to a fixed bound <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#publication">Publication</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="theory.html">Background Theory</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="theory.html#encoding-the-kripke-structures">Encoding the Kripke Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory.html#encoding-the-inner-ltl-formula">Encoding the Inner LTL Formula</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory.html#combining-the-encodings">Combining the Encodings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory.html#references">References</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="hyperltl.html">HyperLTL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hyperltl.html#references">References</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="benchmarks.html#description-of-case-studies">Description of Case Studies</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="playground.html">Playground</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download.html">Download</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="download.html#license">License</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
-</ul>
+<li><p>States are encoded using fresh Boolean variables <span class="math notranslate nohighlight">\(n_0, n_1, \dots\)</span>, added to the set of atomic propositions:
+<span class="math notranslate nohighlight">\(\mathit{AP}^* = \mathit{AP} \cup \{n_0, n_1, \dots\}\)</span>.</p></li>
+<li><p>The initial condition is a formula <span class="math notranslate nohighlight">\(I_A\)</span> over <span class="math notranslate nohighlight">\(\mathit{AP}^*\)</span></p></li>
+<li><p>The transition relation is encoded as <span class="math notranslate nohighlight">\(R_A(x, x')\)</span>, where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x'\)</span> represent states at consecutive time steps.</p></li>
+<li><p>For each position <span class="math notranslate nohighlight">\(i = 0\)</span> to <span class="math notranslate nohighlight">\(k\)</span>, a copy <span class="math notranslate nohighlight">\(x_A^i\)</span> of the variables is introduced. For a structure <span class="math notranslate nohighlight">\(K_A\)</span> and bound <span class="math notranslate nohighlight">\(k\)</span>, the unrolled encoding is:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[⟦K_A⟧_k = I_A(x_A^0) \land R_A(x_A^0, x_A^1) \land \dots \land R_A(x^{k-1}_A,x^k_A)\]</div>
 </div>
+</li>
+</ul>
+<p>This formula represents all traces of length <span class="math notranslate nohighlight">\(k\)</span> from the Kripke structure, and provides the basis for checking temporal properties using QBF.</p>
+</section>
+<section id="encoding-the-inner-ltl-formula">
+<h2>Encoding the Inner LTL Formula<a class="headerlink" href="#encoding-the-inner-ltl-formula" title="Link to this heading">¶</a></h2>
+<p>The inner LTL formula is translated into a Boolean formula over the unrolled trace, using standard bounded model checking (BMC) techniques with semantic variations.</p>
+<ul class="simple">
+<li><p>The formula is encoded inductively as <span class="math notranslate nohighlight">\(⟦ \psi ⟧_i^k\)</span>, where <span class="math notranslate nohighlight">\(i\)</span> is the current time step and <span class="math notranslate nohighlight">\(k\)</span> is the bound.</p></li>
+<li><p>There are four variants depending on semantics: pessimistic, optimistic, halting pessimistic, and halting optimistic.</p></li>
+</ul>
+<p><strong>Inductive rules (common to all semantics)</strong>:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+&amp;⟦p_\pi⟧^{*}_{i,k} &amp;:=\ &amp;p_\pi^i \\
+&amp;⟦\neg p_\pi⟧^{*}_{i,k} &amp;:=\ &amp;\neg p_\pi^i \\
+&amp;⟦\psi_1 \lor \psi_2⟧^{*}_{i,k} &amp;:=\ &amp;⟦\psi_1⟧^{*}_{i,k} \lor ⟦\psi_2⟧^{*}_{i,k} \\
+&amp;⟦\psi_1 \land \psi_2⟧^{*}_{i,k} &amp;:=\ &amp;⟦\psi_1⟧^{*}_{i,k} \land ⟦\psi_2⟧^{*}_{i,k} \\
+&amp;⟦\psi_1 \mathcal{U} \psi_2⟧^{*}_{i,k} &amp;:=\ &amp;⟦\psi_2⟧^{*}_{i,k} \lor (⟦\psi_1⟧^{*}_{i,k} \land ⟦\psi_1 \mathcal{U} \psi_2⟧^{*}_{i+1,k}) \\
+&amp;⟦\psi_1 \mathcal{R} \psi_2⟧^{*}_{i,k} &amp;:=\ &amp;⟦\psi_2⟧^{*}_{i,k} \land (⟦\psi_1⟧^{*}_{i,k} \lor ⟦\psi_1 \mathcal{R} \psi_2⟧^{*}_{i+1,k}) \\
+&amp;⟦\bigcirc \psi⟧^{*}_{i,k} &amp;:=\ &amp;⟦\psi⟧^{*}_{i+1,k}
+\end{align}\end{split}\]</div>
+</div>
+<p><strong>Base cases</strong> depend on the semantic variant and define the value beyond bound <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+&amp;⟦\psi⟧^{\text{pes}}_{k+1,k} := \text{false} &amp;&amp;⟦\psi⟧^{\text{opt}}_{k+1,k} := \text{true} \\
+&amp;⟦\psi⟧^{\text{hpes}}_{k+1,k} := ⟦\text{halted}⟧^{\text{hpes}}_{k,k} \land ⟦\psi⟧^{\text{hpes}}_{k,k}
+&amp;&amp;⟦\psi⟧^{\text{hopt}}_{k+1,k} := ⟦\text{halted}⟧^{\text{hopt}}_{k,k} \rightarrow ⟦\psi⟧^{\text{hopt}}_{k,k}
+\end{align}\end{split}\]</div>
+</div>
+<p>These base cases affect how temporal operators are evaluated at the final unrolling step.</p>
+</section>
+<section id="combining-the-encodings">
+<h2>Combining the Encodings<a class="headerlink" href="#combining-the-encodings" title="Link to this heading">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\varphi = \mathbb{Q}_A \pi_A. \mathbb{Q}_B \pi_B. \dots \mathbb{Q}_Z \pi_Z. \psi\)</span> be a HyperLTL formula, and let each <span class="math notranslate nohighlight">\(\pi_j\)</span> be associated with a Kripke structure <span class="math notranslate nohighlight">\(K_j\)</span>.</p>
+<p>The full QBF encoding is:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[⟦\mathcal{K}, \varphi⟧^{*}_k =
+\mathbb{Q}_A \overline{x_A} \cdot \mathbb{Q}_B \overline{x_B} \cdots \mathbb{Q}_Z \overline{x_Z} \left(
+⟦K_A⟧_k \circ_A ⟦K_B⟧_k \circ_B \cdots ⟦K_Z⟧_k \circ_Z ⟦\psi⟧^{*}_{0,k}
+\right)\]</div>
+</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(⟦ K_j ⟧_k\)</span> is the unrolling of Kripke structure <span class="math notranslate nohighlight">\(K_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\circ_j = \wedge\)</span> if <span class="math notranslate nohighlight">\(\mathbb{Q}_j = \exists\)</span>, and <span class="math notranslate nohighlight">\(\rightarrow\)</span> if <span class="math notranslate nohighlight">\(\mathbb{Q}_j = \forall\)</span> for <span class="math notranslate nohighlight">\(\in \mathit{Vars}(\varphi)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(⟦ \psi ⟧_0^k\)</span> is the encoding of the LTL subformula under the chosen semantics</p></li>
+</ul>
+</dd>
+</dl>
+<p>This combined formula allows a QBF solver to decide whether the HyperLTL formula holds for all (or some) traces up to bound <span class="math notranslate nohighlight">\(k\)</span>.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<p>A more detailed explanation can be found in the paper <a class="reference external" href="https://www.cse.msu.edu/tart/sites/default/files/publications/files/2021-07/tacas21.pdf">Bounded Model Checking for Hyperproperties</a> <em>Tzu-Han Hsu, César Sánchez, and Borzoo Bonakdarpour</em></p>
+</section>
 </section>
 
         </article>
@@ -293,16 +336,26 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="introduction.html">
+          <a class="next-page" href="hyperltl.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Introduction</div>
+                <div class="title">HyperLTL</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="introduction.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Introduction</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -321,8 +374,30 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Background Theory</a><ul>
+<li><a class="reference internal" href="#encoding-the-kripke-structures">Encoding the Kripke Structures</a></li>
+<li><a class="reference internal" href="#encoding-the-inner-ltl-formula">Encoding the Inner LTL Formula</a></li>
+<li><a class="reference internal" href="#combining-the-encodings">Combining the Encodings</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -331,5 +406,6 @@
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

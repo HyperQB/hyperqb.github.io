@@ -213,6 +213,7 @@
 <li class="toctree-l1"><a class="reference internal" href="playground.html">Playground</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
 </ul>
 
 </div>
@@ -342,8 +343,8 @@ the property</p>
 </section>
 <section id="linearizability">
 <span id="id1"></span><h3>Linearizability<a class="headerlink" href="#linearizability" title="Link to this heading">¶</a></h3>
-<p>The second study consists on verifying linearizability of the SNARK concurrent datatype [15]. SNARK implements a
-concurrent double-ended queue using double-compare-and-swap (DCAS) and a doubly linked-list. <em>Linearizability</em> [23] is a
+<p>The second study consists on verifying linearizability of the SNARK concurrent datatype <a class="reference internal" href="publications.html#ddg-04"><span class="std std-ref">[DDG+04]</span></a>. SNARK implements a
+concurrent double-ended queue using double-compare-and-swap (DCAS) and a doubly linked-list. <em>Linearizability</em> <a class="reference internal" href="publications.html#hw90"><span class="std std-ref">[HW90]</span></a> is a
 hyperproperty that requires that any <em>history</em> of execution of a concurrent data structure—where history is sequence of
 <em>invocations</em> and <em>responses</em> by different threads—matches some sequential order of invocations and responses.</p>
 <div class="math-wrapper docutils container">
@@ -353,15 +354,15 @@ hyperproperty that requires that any <em>history</em> of execution of a concurre
 <p>SNARK is known to have two linearizability bugs. With the use of <em>pessimistic semantics</em>, a witness of linearizability
 violation of length <span class="math notranslate nohighlight">\(k\)</span> is enough to infer that the given system does not satisfy the linearizability property.
 <em>HyperQB</em> returns SAT identifying both bugs and producing two counterexamples. The bugs returned are consistent with the
-ones reported in [15].</p>
+ones reported in <a class="reference internal" href="publications.html#ddg-04"><span class="std std-ref">[DDG+04]</span></a>.</p>
 </section>
 <section id="non-interference-in-multi-threaded-programs">
 <span id="non-interference"></span><h3>Non-interference in multi-threaded programs<a class="headerlink" href="#non-interference-in-multi-threaded-programs" title="Link to this heading">¶</a></h3>
-<p>The hyperproperty of <em>non-interference</em> [21] states that low-security variables are independent from the high-security
-variables, thus preserving secure information flow. We consider the concurrent program example in [31], where <cite>PIN</cite> is
+<p>The hyperproperty of <em>non-interference</em> <a class="reference internal" href="publications.html#gm82"><span class="std std-ref">[GM82]</span></a> states that low-security variables are independent from the high-security
+variables, thus preserving secure information flow. We consider the concurrent program example in <a class="reference internal" href="publications.html#sv98"><span class="std std-ref">[SV98]</span></a>, where <cite>PIN</cite> is
 high security input and <cite>Result</cite> is low security output. <em>HyperQB</em> returns SAT in the <em>halting pessimistic</em> semantics,
 indicating that there is a trace that we can spot the difference of high-variables by observing low variables, that is,
-violating non-interference. With <em>HyperQB</em> we also verified the correctness of a fix to this algorithm, proposed in [31]
+violating non-interference. With <em>HyperQB</em> we also verified the correctness of a fix to this algorithm, proposed in <a class="reference internal" href="publications.html#sv98"><span class="std std-ref">[SV98]</span></a>
 as well. In this case, <em>HyperQB</em> uses the UNSAT results from the solver (with <em>halting optimistic</em> semantics) to infer
 the absence of a violation.</p>
 <div class="math-wrapper docutils container">
@@ -396,7 +397,7 @@ received by the parties.</p>
   ((\lozenge NRR_{\pi_B}) \leftrightarrow (\lozenge NRO_{\pi_B}))
 \big)\end{split}\]</div>
 </div>
-<p>We studied two different protocols from [28], namely, <span class="math notranslate nohighlight">\(T_{\text{incorrect}}\)</span> that chooses not to send out <em>NRR</em>
+<p>We studied two different protocols from <a class="reference internal" href="publications.html#jmm11"><span class="std std-ref">[JMM11]</span></a>, namely, <span class="math notranslate nohighlight">\(T_{\text{incorrect}}\)</span> that chooses not to send out <em>NRR</em>
 after receiving <em>NRO</em>, and a correct implementation <span class="math notranslate nohighlight">\(T_{\text{correct}}\)</span> which is fair. For
 <span class="math notranslate nohighlight">\(T_{\text{correct}}\)</span>, <em>HyperQB</em> returns UNSAT in the <em>halting optimistic</em> semantics which indicates that the
 protocol satisfies fairness. For <span class="math notranslate nohighlight">\(T_{\text{incorrect}}\)</span>, <em>HyperQB</em> returns SAT in the <em>halting pessimistic</em>
@@ -404,7 +405,7 @@ semantics which implies that fairness is violated.</p>
 </section>
 <section id="path-planning-for-robots">
 <span id="path-planning"></span><h3>Path planning for robots<a class="headerlink" href="#path-planning-for-robots" title="Link to this heading">¶</a></h3>
-<p>In this case study we use <em>HyperQB</em> beyond verification, to synthesize strategies for robotic planning [38]. Here, we
+<p>In this case study we use <em>HyperQB</em> beyond verification, to synthesize strategies for robotic planning <a class="reference internal" href="publications.html#nwp19"><span class="std std-ref">[NWP19]</span></a>. Here, we
 focus on producing a strategy that satisfies control requirements for a robot to reach a goal in a grid. First, the
 robot should take the <em>shortest path</em>, expressed as:</p>
 <div class="math-wrapper docutils container">
@@ -424,7 +425,7 @@ robot reaches the goal by following a single strategy, expressed as:</p>
 <p>Another application of hyperproperties with quantifier
 alternation is the efficient generation of test suites for mutation testing. We
 22
-borrow a model from [17] and apply the original formula that describes a good
+borrow a model from <a class="reference internal" href="publications.html#fbw19"><span class="std std-ref">[FBW19]</span></a> and apply the original formula that describes a good
 test mutant together with the model, expressed as:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -445,15 +446,15 @@ mut_{\pi_A} \land \neg mut_{\pi_B} \right) \land
 <div class="math notranslate nohighlight">
 \[\forall \pi_A.\forall \pi_B.\ \Diamond(\mathrm{term}_{\pi_A}) \leftrightarrow \Diamond(\mathrm{term}_{\pi_B}).\]</div>
 </div>
-<p>We consider two simple programs from [34]. In this case, depends on their initial conditions, the programs might either
+<p>We consider two simple programs from <a class="reference internal" href="publications.html#utk21"><span class="std std-ref">[UTK21]</span></a>. In this case, depends on their initial conditions, the programs might either
 diverge or agree on termination. Co-termination is a non-safety formula; however, our bounded semantics (in particular,
 opt), is able to give a meaningful verdict even though this is not a finitely-refutable property.</p>
 </section>
 <section id="deniability">
 <span id="id3"></span><h3>Deniability<a class="headerlink" href="#deniability" title="Link to this heading">¶</a></h3>
-<p>[30]. In a program, for every possible run <span class="math notranslate nohighlight">\(\pi_{A}\)</span> (e.g., potentially being observed by an adversary), there must
+<p><a class="reference internal" href="publications.html#sss20"><span class="std std-ref">[SSS20]</span></a>. In a program, for every possible run <span class="math notranslate nohighlight">\(\pi_{A}\)</span> (e.g., potentially being observed by an adversary), there must
 exist <span class="math notranslate nohighlight">\(2^N\)</span> different runs, such that each agrees on <span class="math notranslate nohighlight">\(\pi_{A}\)</span> on the observable parts, but differ on secret values.
-While deniability is usually an example of <em>quantitative hyperproperties</em> [20], here we demonstrate the case when the
+While deniability is usually an example of <em>quantitative hyperproperties</em> <a class="reference internal" href="publications.html#fht18"><span class="std std-ref">[FHT18]</span></a>, here we demonstrate the case when the
 parameter is <span class="math notranslate nohighlight">\(N = 1\)</span>, that is, an <span class="math notranslate nohighlight">\(∀∃∃\)</span> formula:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -465,16 +466,16 @@ parameter is <span class="math notranslate nohighlight">\(N = 1\)</span>, that i
   \left( \mathit{sec}_{\pi_B} \not\leftrightarrow \mathit{sec}_{\pi_C} \right)
 \right).\]</div>
 </div>
-<p>We evaluate this formula with an Wallet1 and Wallet2 models [1] with a possible attack, where the attacker can speculate
+<p>We evaluate this formula with an Wallet1 and Wallet2 models <a class="reference internal" href="publications.html#bkr09"><span class="std std-ref">[BKR09]</span></a> with a possible attack, where the attacker can speculate
 the total amount of an account (<span class="math notranslate nohighlight">\(sec\)</span>) by repeatedly withdrawing a fix amount (<span class="math notranslate nohighlight">\(obs\)</span>). The UNSAT outcome for
 bug-hunting by HyperQB gives a positive verdict (i.e., <span class="math notranslate nohighlight">\(\mathcal{K} |=\varphi_{\text{den}}\)</span>)</p>
 </section>
 <section id="intransitive-non-interference">
 <span id="i-non-interference"></span><h3>Intransitive Non-interference<a class="headerlink" href="#intransitive-non-interference" title="Link to this heading">¶</a></h3>
-<p>[29]. Intransitivity <em>down-grades</em> non-interference (NI) in the cases that the systems secure correct information flow
+<p><a class="reference internal" href="publications.html#rg99"><span class="std std-ref">[RG99]</span></a>. Intransitivity <em>down-grades</em> non-interference (NI) in the cases that the systems secure correct information flow
 with a thirdparty. Formally, given three parties <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(C\)</span>, while the flow <span class="math notranslate nohighlight">\(A\)</span> to
 <span class="math notranslate nohighlight">\(C\)</span> is uncertain, intransitive NI permitted such flow if <span class="math notranslate nohighlight">\(A \rightsquigarrow B \land B \rightsquigarrow C\)</span>,
-then <span class="math notranslate nohighlight">\(A \rightsquigarrow C\)</span>. In this case we investigate <em>a shared buffer model</em> [37], which contains a <em>secret</em>
+then <span class="math notranslate nohighlight">\(A \rightsquigarrow C\)</span>. In this case we investigate <em>a shared buffer model</em> <a class="reference internal" href="publications.html#wgw10"><span class="std std-ref">[WGW10]</span></a>, which contains a <em>secret</em>
 (S) process, an <em>unclassified</em> (U) process, and a <em>scheduler</em> (sched). The main idea is to prevent U from gaining secret
 information about S by speculating sched, but imposing that this potential flow is allowable via identical sched. That
 is, if the two executions agree on sched, the flow from S to U is considered safe. We apply this concept together with
@@ -494,7 +495,7 @@ consider intransitivity:</p>
 </section>
 <section id="termination-sensitive-insensitive-non-interference">
 <span id="t-non-interference"></span><h3>Termination-sensitive/-insensitive Non-interference<a class="headerlink" href="#termination-sensitive-insensitive-non-interference" title="Link to this heading">¶</a></h3>
-<p>It is a classic definition [13] of whether leaking the information via termination channels is allowed, which derives
+<p>It is a classic definition <a class="reference internal" href="publications.html#cs10"><span class="std std-ref">[CS10]</span></a> of whether leaking the information via termination channels is allowed, which derives
 two notions of non-interference (NI). For <em>termination-insensitive</em>, if one trace terminates, then there must exists
 another trace that either (1) terminates and obeys NI, or (2) not terminate. That is,</p>
 <div class="math-wrapper docutils container">
@@ -505,7 +506,7 @@ another trace that either (1) terminates and obeys NI, or (2) not terminate. Tha
 \left( \mathit{low}_{\pi_A} = \mathit{low}_{\pi_B} \right) \right) \right)\]</div>
 </div>
 <p><em>Termination-sensitive</em> strengthens the property by asking there must exists another trace that terminates <em>and</em> obeys
-NI. We verify a program from [34] with respect to termination sensitivity. By using <em>optimistic</em> semantics, both return
+NI. We verify a program from <a class="reference internal" href="publications.html#utk21"><span class="std std-ref">[UTK21]</span></a> with respect to termination sensitivity. By using <em>optimistic</em> semantics, both return
 UNSAT, meaning no bugs can be found in the finite exploration. Hence, the program satisfies the properties</p>
 </section>
 <section id="secrecy-preserving-refinement">
@@ -531,8 +532,8 @@ hierarchy compared to the original non-interference formula.</p>
 </section>
 <section id="ltl-with-team-semantics">
 <span id="teamltl"></span><h3>LTL with Team Semantics<a class="headerlink" href="#ltl-with-team-semantics" title="Link to this heading">¶</a></h3>
-<p>TeamLTL [35] can be presented as HyperLTL formulas by avoiding explicit references to traces (details in [35]). Since our focus
-is on HyperLTL, we only borrow the example with team scenarios from [35].</p>
+<p>TeamLTL <a class="reference internal" href="publications.html#vhf-20"><span class="std std-ref">[VHF+20]</span></a> can be presented as HyperLTL formulas by avoiding explicit references to traces (details in <a class="reference internal" href="publications.html#vhf-20"><span class="std std-ref">[VHF+20]</span></a>). Since our focus
+is on HyperLTL, we only borrow the example with team scenarios from <a class="reference internal" href="publications.html#vhf-20"><span class="std std-ref">[VHF+20]</span></a>.</p>
 <p>Consider an unknown input that affects the system behavior. To specify that
 executions either agree on <span class="math notranslate nohighlight">\(a\)</span> or <span class="math notranslate nohighlight">\(b\)</span> depending on the input, one can write the
 following HyperLTL formula:</p>
@@ -556,21 +557,21 @@ have high initially as <span class="math notranslate nohighlight">\(0\)</span>, 
 <h3>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/2109.12989">HyperQB: A QBF-Based Bounded Model Checker for Hyperproperties</a> <em>Tzu-Han Hsu, Borzoo Bonakdarpour, and César Sánchez</em></p></li>
-<li><p>[15] S. Doherty, D. Detlefs, L. Groves, C. H. Flood, V. Luchangco, P. A. Martin, M. Moir, N. Shavit, and G. L. Steele Jr. DCAS is not a silver bullet for nonblocking algorithm design. In <em>Proceedings of the 16th Annual ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)</em>, pages 216–224, 2004.</p></li>
-<li><p>[23] M. Herlihy and J. M. Wing. Linearizability: A correctness condition for concurrent objects. ACM Transactions on Programming Languages and Systems, 12(3):463–492, 1990.</p></li>
-<li><p>[21] J. A. Goguen and J. Meseguer. Security policies and security models. In IEEE Symp. on Security and Privacy, pages 11–20, 1982.</p></li>
-<li><p>[31] G. Smith and D. M. Volpano. Secure information flow in a multi-threaded imperative language. In Proceedings of the 25th ACM Symposium on Principles of Programming Languages (POPL), pages 355–364, 1998.</p></li>
-<li><p>[28] W. Jamroga, S. Mauw, and M. Melissen. Fairness in non-repudiation protocols. In Proceedings of the 7th International Workshop on Security and Trust Management (STM), volume 7170, pages 122–139. Springer, 2011.</p></li>
-<li><p>[38] S. Nalluri Y. Wang and M. Pajic. Hyperproperties for robotics: Planning via HyperLTL. In International Conference on Robotics and Automation (ICRA), pages 8011–8017, 2019.</p></li>
-<li><p>[17] A. Fellner, M. Tabaei Befrouei, and G. Weissenbacher. Mutation testing with hyperproperties. In Proceedings of the 17th International Conference on Software Engineering and Formal Methods (SEFM), pages 203–221. Springer, 2019.</p></li>
-<li><p>[34] Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021, Virtual Event, July 20–23, 2021, Proceedings, Part I, pages 742–766. Springer, 2021.</p></li>
-<li><p>[30] Shubham Sahai, Pramod Subramanyan, and Rohit Sinha. Verification of quantitative hyperproperties using trace enumeration relations. In Computer Aided Verification: 32nd International Conference, CAV 2020, Los Angeles, CA, USA, July 21–24, 2020, Proceedings, Part I 32, pages 201–224. Springer, 2020.</p></li>
-<li><p>[20] Bernd Finkbeiner, Christopher Hahn, and Hazem Torfah. Model checking quantitative hyperproperties. In Computer Aided Verification: 30th International Conference, CAV 2018, Held as Part of the Federated Logic Conference, FloC 2018, Oxford, UK, July 14-17, 2018, Proceedings, Part I, pages 144–163. Springer, 2018.</p></li>
-<li><p>[1] Michael Backes, Boris Köpf, and Andrey Rybalchenko. Automatic discovery and quantification of information leaks. In 2009 30th IEEE Symposium on Security and Privacy, pages 141–153. IEEE, 2009.</p></li>
-<li><p>[29] Andrew W Roscoe and Michael H Goldsmith. What is intransitive noninterference? In Proceedings of the 12th IEEE computer security foundations workshop, pages 228–238. IEEE, 1999.</p></li>
-<li><p>[37] Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications, pages 381–428. Springer, 2010.</p></li>
-<li><p>[13] M. R. Clarkson and F. B. Schneider. Hyperproperties. Journal of Computer Security, 18(6):1157–1210, 2010.</p></li>
-<li><p>[35] Jonni Virtema, Jana Hofmann, Bernd Finkbeiner, Juha Kontinen, and Fan Yang. Linear-time temporal logic with team semantics: Expressivity and complexity. arXiv preprint arXiv:2010.03311, 2020.</p></li>
+<li><p><a class="reference internal" href="publications.html#ddg-04"><span class="std std-ref">[DDG+04]</span></a> S. Doherty, D. Detlefs, L. Groves, C. H. Flood, V. Luchangco, P. A. Martin, M. Moir, N. Shavit, and G. L. Steele Jr. DCAS is not a silver bullet for nonblocking algorithm design. In <em>Proceedings of the 16th Annual ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)</em>, pages 216–224, 2004.</p></li>
+<li><p><a class="reference internal" href="publications.html#hw90"><span class="std std-ref">[HW90]</span></a> M. Herlihy and J. M. Wing. Linearizability: A correctness condition for concurrent objects. ACM Transactions on Programming Languages and Systems, 12(3):463–492, 1990.</p></li>
+<li><p><a class="reference internal" href="publications.html#gm82"><span class="std std-ref">[GM82]</span></a> J. A. Goguen and J. Meseguer. Security policies and security models. In IEEE Symp. on Security and Privacy, pages 11–20, 1982.</p></li>
+<li><p><a class="reference internal" href="publications.html#sv98"><span class="std std-ref">[SV98]</span></a> G. Smith and D. M. Volpano. Secure information flow in a multi-threaded imperative language. In Proceedings of the 25th ACM Symposium on Principles of Programming Languages (POPL), pages 355–364, 1998.</p></li>
+<li><p><a class="reference internal" href="publications.html#jmm11"><span class="std std-ref">[JMM11]</span></a> W. Jamroga, S. Mauw, and M. Melissen. Fairness in non-repudiation protocols. In Proceedings of the 7th International Workshop on Security and Trust Management (STM), volume 7170, pages 122–139. Springer, 2011.</p></li>
+<li><p><a class="reference internal" href="publications.html#nwp19"><span class="std std-ref">[NWP19]</span></a> S. Nalluri Y. Wang and M. Pajic. Hyperproperties for robotics: Planning via HyperLTL. In International Conference on Robotics and Automation (ICRA), pages 8011–8017, 2019.</p></li>
+<li><p><a class="reference internal" href="publications.html#fbw19"><span class="std std-ref">[FBW19]</span></a> A. Fellner, M. Tabaei Befrouei, and G. Weissenbacher. Mutation testing with hyperproperties. In Proceedings of the 17th International Conference on Software Engineering and Formal Methods (SEFM), pages 203–221. Springer, 2019.</p></li>
+<li><p><a class="reference internal" href="publications.html#utk21"><span class="std std-ref">[UTK21]</span></a> Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021, Virtual Event, July 20–23, 2021, Proceedings, Part I, pages 742–766. Springer, 2021.</p></li>
+<li><p><a class="reference internal" href="publications.html#sss20"><span class="std std-ref">[SSS20]</span></a> Shubham Sahai, Pramod Subramanyan, and Rohit Sinha. Verification of quantitative hyperproperties using trace enumeration relations. In Computer Aided Verification: 32nd International Conference, CAV 2020, Los Angeles, CA, USA, July 21–24, 2020, Proceedings, Part I 32, pages 201–224. Springer, 2020.</p></li>
+<li><p><a class="reference internal" href="publications.html#fht18"><span class="std std-ref">[FHT18]</span></a> Bernd Finkbeiner, Christopher Hahn, and Hazem Torfah. Model checking quantitative hyperproperties. In Computer Aided Verification: 30th International Conference, CAV 2018, Held as Part of the Federated Logic Conference, FloC 2018, Oxford, UK, July 14-17, 2018, Proceedings, Part I, pages 144–163. Springer, 2018.</p></li>
+<li><p><a class="reference internal" href="publications.html#bkr09"><span class="std std-ref">[BKR09]</span></a> Michael Backes, Boris Köpf, and Andrey Rybalchenko. Automatic discovery and quantification of information leaks. In 2009 30th IEEE Symposium on Security and Privacy, pages 141–153. IEEE, 2009.</p></li>
+<li><p><a class="reference internal" href="publications.html#rg99"><span class="std std-ref">[RG99]</span></a> Andrew W Roscoe and Michael H Goldsmith. What is intransitive noninterference? In Proceedings of the 12th IEEE computer security foundations workshop, pages 228–238. IEEE, 1999.</p></li>
+<li><p><a class="reference internal" href="publications.html#wgw10"><span class="std std-ref">[WGW10]</span></a> Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications, pages 381–428. Springer, 2010.</p></li>
+<li><p><a class="reference internal" href="publications.html#cs10"><span class="std std-ref">[CS10]</span></a> M. R. Clarkson and F. B. Schneider. Hyperproperties. Journal of Computer Security, 18(6):1157–1210, 2010.</p></li>
+<li><p><a class="reference internal" href="publications.html#vhf-20"><span class="std std-ref">[VHF+20]</span></a> Jonni Virtema, Jana Hofmann, Bernd Finkbeiner, Juha Kontinen, and Fan Yang. Linear-time temporal logic with team semantics: Expressivity and complexity. arXiv preprint arXiv:2010.03311, 2020.</p></li>
 </ol>
 </section>
 </section>

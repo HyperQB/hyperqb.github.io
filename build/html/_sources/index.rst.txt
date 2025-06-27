@@ -17,3 +17,4 @@ Welcome to HyperQB!
    playground
    download
    people
+   publications

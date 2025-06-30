@@ -19,7 +19,7 @@ Team scenarios as HyperQB is able to correctly verify and synthesize the two tra
 and :math:`\pi_{B}`), correctly
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

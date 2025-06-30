@@ -25,7 +25,7 @@ formula with *multiple quantifier alternations* bumps up the complexity of model
 hierarchy compared to the original non-interference formula.
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

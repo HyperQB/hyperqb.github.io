@@ -33,7 +33,7 @@ protocol satisfies fairness. For :math:`T_{\text{incorrect}}`, *HyperQB* returns
 semantics which implies that fairness is violated.
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

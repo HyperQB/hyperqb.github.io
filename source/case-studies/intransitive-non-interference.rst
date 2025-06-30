@@ -23,7 +23,7 @@ consider intransitivity:
     \Box \left( sched_{\pi_A} \leftrightarrow sched_{\pi_B} \right)
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

@@ -21,7 +21,7 @@ the absence of a violation.
    \end{aligned}
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

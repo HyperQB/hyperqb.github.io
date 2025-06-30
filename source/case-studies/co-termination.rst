@@ -15,7 +15,7 @@ diverge or agree on termination. Co-termination is a non-safety formula; however
 opt), is able to give a meaningful verdict even though this is not a finitely-refutable property.
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

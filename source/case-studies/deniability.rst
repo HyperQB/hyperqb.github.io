@@ -25,7 +25,7 @@ the total amount of an account (:math:`sec`) by repeatedly withdrawing a fix amo
 bug-hunting by HyperQB gives a positive verdict (i.e., :math:`\mathcal{K} |=\varphi_{\text{den}}`)
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

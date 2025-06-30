@@ -13,7 +13,7 @@ have high initially as :math:`0`, but on the next transition, have high set to a
 The HyperLTL formula used is the classic :math:`\forall\exists` non-interference, but with arithmetic comparison instead of simply Boolean matching.
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

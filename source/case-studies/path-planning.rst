@@ -22,7 +22,7 @@ robot reaches the goal by following a single strategy, expressed as:
 *HyperQB* returns SAT for the grids of sizes up to :math:`60 \times 60`.
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

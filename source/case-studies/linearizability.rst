@@ -21,7 +21,7 @@ ones reported in :ref:`[DDG+04] <DDG+04>`.
 
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

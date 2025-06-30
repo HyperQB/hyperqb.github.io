@@ -19,7 +19,7 @@ NI. We verify a program from :ref:`[UTK21] <UTK21>` with respect to termination 
 UNSAT, meaning no bugs can be found in the finite exploration. Hence, the program satisfies the properties
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

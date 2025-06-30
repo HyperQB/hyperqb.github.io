@@ -23,7 +23,7 @@ test mutant together with the model, expressed as:
 HyperQB returns SAT which implies the successful finding of a qualified mutant.
 
 Benchmarks
----------
+----------
 
 .. tabs::
 

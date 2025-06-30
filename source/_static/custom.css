@@ -1,0 +1,21 @@
+.sphinx-tabs-tab{
+    color: #4caf50;
+    border: none;
+}
+.sphinx-tabs-tab[aria-selected="true"]{
+    /*border: 1px solid #4caf50;*/
+    /*border-bottom: none;*/
+    border: none;
+    border-bottom: 4px solid #4caf50;
+}
+.sphinx-tabs-panel{
+    /*border: 1px solid #4caf50;*/
+    /*border-top: none;*/
+    border: none;
+    border-bottom: 1px solid #4caf50;
+    border-radius: 0;
+}
+.closeable{
+    border-bottom: 1px solid #4caf50;
+}
+

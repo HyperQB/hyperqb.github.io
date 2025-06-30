@@ -13,7 +13,7 @@ Welcome to HyperQB!
    introduction
    theory
    hyperltl
-   benchmarks
+   case-studies
    playground
    download
    people

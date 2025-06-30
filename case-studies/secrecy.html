@@ -1,0 +1,657 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+        <title>Secrecy-preserving Refinement - HyperQB</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bcc72795" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #4CAF50;
+  --color-brand-content: #388E3C;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #81C784;
+  --color-brand-content: #C8E6C9;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #81C784;
+  --color-brand-content: #C8E6C9;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">HyperQB</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">HyperQB</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory.html">Background Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hyperltl.html">HyperLTL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../case-studies.html">Case Studies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground.html">Playground</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../download.html">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/case-studies/secrecy.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="secrecy-preserving-refinement">
+<h1>Secrecy-preserving Refinement<a class="headerlink" href="#secrecy-preserving-refinement" title="Permalink to this heading">¶</a></h1>
+<section id="description-of-the-case-study">
+<h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
+<p>Relating programs at different levels (e.g., high vs. low, abstract vs. concrete) is often involved in system design.
+For example, <em>secure compilation</em> specifies that when the compiler transforms the code (e.g., for optimization
+purposes), the compiled code should still satisfy the intended security property. For instance, to preserve the classic
+<span class="math notranslate nohighlight">\(\forall \exists\)</span> non-interference property during compilation, an <span class="math notranslate nohighlight">\(\exists \forall \forall \exists \exists\)</span>
+formula must be verified. That is, there exists a mapping <span class="math notranslate nohighlight">\(M\)</span> that preserves NI from code <span class="math notranslate nohighlight">\(A\)</span> to code
+<span class="math notranslate nohighlight">\(B\)</span>, as follows:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\Phi_{\text{NI--ABM}} =
+\exists \pi_M .
+\forall \pi_{A_1} . \forall \pi_{B_1} .
+\exists \pi_{A_2} . \exists \pi_{B_2} .
+\left( \varphi_{\mathit{map}_1} \rightarrow
+\left( \varphi_{\mathit{map}_2} \land \psi_{\text{NI}} \right) \right)\]</div>
+</div>
+<p>HyperQB is able to correctly synthesize a correct mapping (i.e., the leading <span class="math notranslate nohighlight">\(\exists\)</span>) if one exists. Such a
+formula with <em>multiple quantifier alternations</em> bumps up the complexity of model checking by one step in the polynomial
+hierarchy compared to the original non-interference formula.</p>
+</section>
+<section id="benchmarks">
+<h2>Benchmarks<a class="headerlink" href="#benchmarks" title="Permalink to this heading">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #12.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #12.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Mapping Synthesis MA</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Mapping Synthesis MB</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Mapping Synthesis MM</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
+--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
+MODULE main
+
+VAR
+  atom_p: boolean;
+  atom_q: boolean;
+  PC: 0..3;
+
+ASSIGN
+  -- Initial Conditions
+  init(atom_p):= FALSE;
+  init(atom_q):= FALSE;
+  init(PC) := 0;
+
+  -- Transition Relations
+  next(atom_p) :=
+    case
+      (PC=0): {TRUE,  FALSE};
+      (PC=1): {TRUE,  FALSE};
+      (PC=2): FALSE;
+      TRUE: atom_p;
+    esac;
+
+  next(atom_q) :=
+    case
+      (PC=0): {TRUE,  FALSE};
+      (PC=1): {TRUE,  FALSE};
+      (PC=2): FALSE;
+      TRUE: atom_q;
+    esac;
+
+  next(PC) :=
+    case
+      (PC=3): 3;
+      TRUE: PC+1;
+    esac;
+
+DEFINE
+  FAIL := (atom_p &amp; atom_q);
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
+--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
+MODULE main
+
+VAR
+  atom_r: boolean;
+  atom_s: boolean;
+  PC: 0..3;
+
+ASSIGN
+  -- Initial Conditions
+  init(atom_r):= FALSE;
+  init(atom_s):= FALSE;
+  init(PC) := 0;
+
+  -- Transition Relations
+  next(atom_r) :=
+    case
+      (PC=0): {TRUE,  FALSE};
+      (PC=1): FALSE;
+      (PC=2): FALSE;
+      TRUE: atom_r;
+    esac;
+
+  next(atom_s) :=
+    case
+      (PC=0): {TRUE,  FALSE};
+      (PC=1): TRUE;
+      (PC=2): FALSE;
+      TRUE: atom_s;
+    esac;
+
+  next(PC) :=
+    case
+      (PC=3): 3;
+      TRUE: PC+1;
+    esac;
+    
+DEFINE
+  FAIL := (atom_r &amp; atom_s);
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
+--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
+MODULE main
+
+VAR
+  pr: boolean;
+  ps: boolean;
+  qr: boolean;
+  qs: boolean;
+
+ASSIGN
+  -- Initial Conditions is arbitrary in mapping synth
+  init(pr) := {TRUE, FALSE};
+  init(ps) := {TRUE, FALSE};
+  init(qr) := {TRUE, FALSE};
+  init(qs) := {TRUE, FALSE};
+
+  -- Transition Relations
+  next(pr) := pr;
+  next(ps) := ps;
+  next(qr) := qr;
+  next(qs) := qs;
+
+DEFINE
+</pre></div>
+</div>
+</div></div>
+<p><strong>Formula</strong></p>
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>exists A. forall B. forall C. exists D. exists E.
+G 
+(
+  (pr[A]/\~ps[A] /\ ~qr[A]/\qs[A]) 
+  \/ 
+  (~pr[A]/\ps[A] /\ qr[A]/\~qs[A])
+)
+/\
+(
+  G (
+      ((pr[A]) -&gt; ((atom_p[B]) -&gt; (atom_r[C]))) /\
+      ((ps[A]) -&gt; ((atom_p[B]) -&gt; (atom_s[C]))) /\
+      ((qr[A]) -&gt; ((atom_q[B]) -&gt; (atom_r[C]))) /\
+      ((qs[A]) -&gt; ((atom_q[B]) -&gt; (atom_s[C]))) /\
+      (~FAIL[B] /\ ~FAIL[C])
+  )
+  -&gt;
+  (
+  G ( 
+      ((pr[A]) -&gt; ((atom_p[D]) -&gt; (atom_r[E]))) /\
+      ((ps[A]) -&gt; ((atom_p[D]) -&gt; (atom_s[E]))) /\
+      ((qr[A]) -&gt; ((atom_q[D]) -&gt; (atom_r[E]))) /\
+      ((qs[A]) -&gt; ((atom_q[D]) -&gt; (atom_s[E]))) /\
+      (~FAIL[D] /\ ~FAIL[E])
+  )
+  /\
+  G (
+      (atom_p[B]) -&gt; (~atom_p[D])
+    )
+  )
+)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Mapping Synthesis MA</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Mapping Synthesis MB</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Mapping Synthesis MM</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
+--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
+MODULE main
+
+VAR
+  secret: 0..1;
+  Alice_Bob_sec: boolean;
+  Bob_Eve_pub: boolean;
+  Bob_sec: boolean;
+  Eve_secisnotempty: boolean;
+  STATE: 0..6;
+
+ASSIGN
+  -- Initial Conditions
+  init(secret) := {0,1};
+  init(Alice_Bob_sec):= FALSE;
+  init(Bob_Eve_pub):= FALSE;
+  init(Bob_sec):= FALSE;
+  init(Eve_secisnotempty):= FALSE;
+  init(STATE):= 0;
+
+  -- Transition Relations
+  next(secret) := secret;
+
+  next(Alice_Bob_sec) := {TRUE, FALSE};
+  next(Bob_Eve_pub) := {TRUE, FALSE};
+  next(Bob_sec):= {TRUE, FALSE};
+  next(Eve_secisnotempty) := {TRUE, FALSE};
+
+  next(STATE) :=
+    case
+      (STATE=0) : {1, 2};
+      (STATE=1) : {3, 4};
+      (STATE=2) : {2, 1};
+      (STATE=3) : {3, 4};
+      (STATE=4) : {5, 6};
+      TRUE: STATE;
+    esac;
+
+DEFINE
+    VALID :=    ((STATE=0) -&gt; (!Alice_Bob_sec&amp; !Bob_Eve_pub &amp; !Bob_sec &amp; !Eve_secisnotempty))
+              &amp; ((STATE=1) -&gt; (Alice_Bob_sec &amp; !Bob_Eve_pub &amp; !Bob_sec &amp; !Eve_secisnotempty))
+              &amp; ((STATE=2) -&gt; (!Alice_Bob_sec &amp; Bob_Eve_pub &amp; !Bob_sec &amp; !Eve_secisnotempty))
+              &amp; ((STATE=3) -&gt; (Alice_Bob_sec &amp; !Bob_Eve_pub &amp; Bob_sec &amp; !Eve_secisnotempty))
+              &amp; ((STATE=4) -&gt; (!Alice_Bob_sec &amp; Bob_Eve_pub &amp; Bob_sec &amp; !Eve_secisnotempty))
+              &amp; ((STATE=5) -&gt; (!Alice_Bob_sec &amp; Bob_Eve_pub &amp; Bob_sec &amp; !Eve_secisnotempty &amp; (secret=0)))
+              &amp; ((STATE=6) -&gt; (!Alice_Bob_sec &amp; Bob_Eve_pub &amp; Bob_sec &amp;  Eve_secisnotempty &amp; (secret=1)));
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
+--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
+MODULE main
+
+VAR
+  S_R_sec: boolean;
+  S_R_pub: boolean;
+  R_pub: boolean;
+  R_sec: boolean;
+  STATE: 0..3;
+
+ASSIGN
+  -- Initial Conditions
+  init(S_R_sec):= FALSE;
+  init(S_R_pub):= FALSE;
+  init(R_pub):= FALSE;
+  init(R_sec):= FALSE;
+  init(STATE):= 0;
+
+  -- Transition Relations
+  next(S_R_sec) := {TRUE, FALSE};
+  next(S_R_pub) := {TRUE, FALSE};
+  next(R_pub) := {TRUE, FALSE};
+  next(R_sec) := {TRUE, FALSE};
+
+
+  next(STATE) :=
+    case
+      (STATE=0) : {1, 2};
+      (STATE=1) : {1, 3};
+      (STATE=2) : {2};
+      (STATE=3) : {3};
+      TRUE: STATE;
+    esac;
+
+DEFINE
+    VALID :=    ((STATE=0) -&gt; (!S_R_sec &amp; !S_R_pub &amp; !R_pub &amp; !R_sec ))
+              &amp; ((STATE=1) -&gt; (!S_R_sec &amp;  S_R_pub &amp;  R_pub &amp; !R_sec ))
+              &amp; ((STATE=2) -&gt; ( S_R_sec &amp; !S_R_pub &amp; !R_pub &amp;  R_sec ))
+              &amp; ((STATE=3) -&gt; ( S_R_sec &amp; !S_R_pub &amp;  R_pub &amp;  R_sec ));
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
+--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
+MODULE main
+
+VAR
+  ABs_SRs: boolean;
+  ABs_SRp: boolean;
+  BEp_SRs: boolean;
+  BEp_SRp: boolean;
+  Bs_Rp: boolean;
+  Bs_Rs: boolean;
+  Es_Rp: boolean;
+  Es_Rs: boolean;
+
+
+ASSIGN
+  -- Initial Conditions is arbitrary in mapping synth
+  init(ABs_SRs) := {TRUE, FALSE};
+  init(ABs_SRp) := {TRUE, FALSE};
+  init(BEp_SRs) := {TRUE, FALSE};
+  init(BEp_SRp) := {TRUE, FALSE};
+  init(Bs_Rp) := {TRUE, FALSE};
+  init(Bs_Rs) := {TRUE, FALSE};
+  init(Es_Rp) := {TRUE, FALSE};
+  init(Es_Rs) := {TRUE, FALSE};
+
+  -- Transition Relations
+  next(ABs_SRs) := ABs_SRs;
+  next(ABs_SRp) := ABs_SRp;
+  next(BEp_SRs) := BEp_SRs;
+  next(BEp_SRp) := BEp_SRp;
+  next(Bs_Rp) := Bs_Rp;
+  next(Bs_Rs) := Bs_Rs;
+  next(Es_Rp) := Es_Rp;
+  next(Es_Rs) := Es_Rs;
+
+DEFINE
+</pre></div>
+</div>
+</div></div>
+<p><strong>Formula</strong></p>
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>exists A. forall B. forall C. exists D. exists E.
+(G (
+      ((ABs_SRs[A]) -&gt; ((Alice_Bob_sec[B]) -&gt; (S_R_sec[C]))) /\
+      ((ABs_SRp[A]) -&gt; ((Alice_Bob_sec[B]) -&gt; (S_R_pub[C]))) /\
+      ((BEp_SRs[A]) -&gt; ((Bob_Eve_pub[B]) -&gt; (S_R_sec[C]))) /\
+      ((BEp_SRp[A]) -&gt; ((Bob_Eve_pub[B]) -&gt; (S_R_pub[C]))) /\
+      ((Bs_Rp[A]) -&gt; ((Bob_sec[B]) -&gt; (R_pub[C]))) /\
+      ((Bs_Rs[A]) -&gt; ((Bob_sec[B]) -&gt; (R_sec[C]))) /\
+      ((Es_Rp[A]) -&gt; ((Eve_secisnotempty[B]) -&gt; (R_pub[C]))) /\
+      ((Es_Rs[A]) -&gt; ((Eve_secisnotempty[B]) -&gt; (R_sec[C])))
+)
+-&gt;
+(
+  G (
+      ((ABs_SRs[A]) -&gt; ((Alice_Bob_sec[D]) -&gt; (S_R_sec[E]))) /\
+      ((ABs_SRp[A]) -&gt; ((Alice_Bob_sec[D]) -&gt; (S_R_pub[E]))) /\
+      ((BEp_SRs[A]) -&gt; ((Bob_Eve_pub[D]) -&gt; (S_R_sec[E]))) /\
+      ((BEp_SRp[A]) -&gt; ((Bob_Eve_pub[D]) -&gt; (S_R_pub[E]))) /\
+      ((Bs_Rp[A]) -&gt; ((Bob_sec[D]) -&gt; (R_pub[E]))) /\
+      ((Bs_Rs[A]) -&gt; ((Bob_sec[D]) -&gt; (R_sec[E]))) /\
+      ((Es_Rp[A]) -&gt; ((Eve_secisnotempty[D]) -&gt; (R_pub[E]))) /\
+      ((Es_Rs[A]) -&gt; ((Eve_secisnotempty[D]) -&gt; (R_sec[E])))
+  )
+  /\
+  G ( ~(*secret[B] = secret[D]*) /\ (Eve_secisnotempty[B] &lt;-&gt; Eve_secisnotempty[D]))
+)
+)
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, TART @ MSU
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Secrecy-preserving Refinement</a><ul>
+<li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
+<li><a class="reference internal" href="#benchmarks">Benchmarks</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=a7e3f902"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/tabs.js?v=3030b3cb"></script>
+    </body>
+</html>

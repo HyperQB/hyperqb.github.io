@@ -7,18 +7,18 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Deniability - HyperQB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bcc72795" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=563648f0" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
+    --color-code-background: #ffffff;
   --color-code-foreground: black;
   --color-brand-primary: #4CAF50;
   --color-brand-content: #388E3C;
@@ -283,143 +283,143 @@ bug-hunting by HyperQB gives a positive verdict (i.e., <span class="math notrans
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #8.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #8.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Deniability Small</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--DENIABILITY
---(adopted from: Michael Backes, Boris Köpf, and Andrey Rybalchenko. Automatic discovery and quantification of information leaks. In 2009 30th IEEE Symposium on Security and Privacy)
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Deniability Small</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--DENIABILITY</span>
+<span class="c">--(adopted from: Michael Backes, Boris Köpf, and Andrey Rybalchenko. Automatic discovery and quantification of information leaks. In 2009 30th IEEE Symposium on Security and Privacy)</span>
 
-MODULE main
- VAR
-    init_balance: 0..10;
-    debits_amount: 1..5;
-    PC: 1..6;
-    num_itr: 0..11;
-    halt: boolean;
- ASSIGN
-    -- Initial Conditions
-    init(init_balance):= {0,1,2,3,4,5,6,7,8,9,10};
-    init(debits_amount) := {1,2,3,4,5};
-    init(num_itr):= 0;
-    init(PC):= 1; -- but program counter starts at 1.
-    init(halt) := FALSE;
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="w"> </span><span class="kd">VAR</span>
+<span class="w">    </span><span class="nv">init_balance</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">debits_amount</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">6</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">num_itr</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">11</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">halt</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w"> </span><span class="kd">ASSIGN</span>
+<span class="w">    </span><span class="c">-- Initial Conditions</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">init_balance</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">};</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">debits_amount</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">num_itr</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- but program counter starts at 1.</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">halt</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
 
-    -- Transition Relations
-    next(init_balance) :=
-      case
-        ((PC=3) &amp; (init_balance - debits_amount &gt; 0)): (init_balance - debits_amount);
-        TRUE: init_balance;
-      esac;
+<span class="w">    </span><span class="c">-- Transition Relations</span>
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">init_balance</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">init_balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">debits_amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="p">(</span><span class="nv">init_balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">debits_amount</span><span class="p">);</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">init_balance</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-    next(debits_amount) :=
-      case
-        TRUE: debits_amount;
-      esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">debits_amount</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">debits_amount</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-    next(num_itr) :=
-      case
-        (PC=4): num_itr;
-        TRUE: num_itr;
-      esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">num_itr</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span><span class="w"> </span><span class="nv">num_itr</span><span class="p">;</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">num_itr</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-    next(PC) :=
-      case
-        (PC=1): 2; -- num_itr = 0
-        ((PC=2) &amp; (init_balance&gt;debits_amount)): 3; -- while (init_balance &gt;= debits amount)
-        ((PC=2) &amp; (init_balance&lt;=debits_amount)): 5;
-        (PC=3): 4; -- init_balance -= debits_amount
-        (PC=4): 2; -- num_itr += 1
-        (PC=5): 6; -- Return num_itr += 1
-        (PC=6): 6; -- (END)
-        TRUE: PC;
-      esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c">-- num_itr = 0</span>
+<span class="w">        </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">init_balance</span><span class="o">&gt;</span><span class="nv">debits_amount</span><span class="p">)):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- while (init_balance &gt;= debits amount)</span>
+<span class="w">        </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">init_balance</span><span class="o">&lt;=</span><span class="nv">debits_amount</span><span class="p">)):</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c">-- init_balance -= debits_amount</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c">-- num_itr += 1</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="c">-- Return num_itr += 1</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="c">-- (END)</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">PC</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-    next(halt) :=
-      case
-        (PC=6): TRUE;
-        TRUE: halt;
-      esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">halt</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">halt</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
+<span class="kd">DEFINE</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. exists B. exists C.
-G(
-  (*debits_amount[A]=debits_amount[B]*)
-  /\
-  (*debits_amount[A]=debits_amount[C]*)
-  /\
-  ~(*init_balance[B]=init_balance[C]*)
-)
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">C</span><span class="p">.</span>
+<span class="ow">G</span><span class="p">(</span>
+<span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="nv">debits_amount</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+<span class="w">  </span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="nv">debits_amount</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">C</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+<span class="w">  </span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="err">~</span><span class="p">(</span><span class="o">*</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">C</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Deniability</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--DENIABILITY
---(adopted from: Michael Backes, Boris Köpf, and Andrey Rybalchenko. Automatic discovery and quantification of information leaks. In 2009 30th IEEE Symposium on Security and Privacy)
-MODULE main
- VAR
-    init_balance: 0..20;
-    debits_amount: 1..10;
-    PC: 1..6;
-    num_itr: 0..11;
-    halt: boolean;
- ASSIGN
-    -- Initial Conditions
-    init(init_balance):= {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-    init(debits_amount) := {1,2,3,4,5,6,7,8,9,10};
-    init(num_itr):= 0;
-    init(PC):= 1; -- but program counter starts at 1.
-    init(halt) := FALSE;
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Deniability</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--DENIABILITY</span>
+<span class="c">--(adopted from: Michael Backes, Boris Köpf, and Andrey Rybalchenko. Automatic discovery and quantification of information leaks. In 2009 30th IEEE Symposium on Security and Privacy)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="w"> </span><span class="kd">VAR</span>
+<span class="w">    </span><span class="nv">init_balance</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">debits_amount</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">6</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">num_itr</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">11</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">halt</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w"> </span><span class="kd">ASSIGN</span>
+<span class="w">    </span><span class="c">-- Initial Conditions</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">init_balance</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">};</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">debits_amount</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">};</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">num_itr</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- but program counter starts at 1.</span>
+<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">halt</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
 
-    -- Transition Relations
-    next(init_balance) :=
-      case
-        ((PC=3) &amp; (init_balance - debits_amount &gt; 0)): (init_balance - debits_amount);
-        TRUE: init_balance;
-      esac;
+<span class="w">    </span><span class="c">-- Transition Relations</span>
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">init_balance</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">init_balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">debits_amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="p">(</span><span class="nv">init_balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">debits_amount</span><span class="p">);</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">init_balance</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-    next(debits_amount) :=
-      case
-        TRUE: debits_amount;
-      esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">debits_amount</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">debits_amount</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-    next(num_itr) :=
-      case
-        (PC=4): num_itr;
-        TRUE: num_itr;
-      esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">num_itr</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span><span class="w"> </span><span class="nv">num_itr</span><span class="p">;</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">num_itr</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-    next(PC) :=
-      case
-        (PC=1): 2; -- num_itr = 0
-        ((PC=2) &amp; (init_balance&gt;debits_amount)): 3; -- while (init_balance &gt;= debits amount)
-        ((PC=2) &amp; (init_balance&lt;=debits_amount)): 5;
-        (PC=3): 4; -- init_balance -= debits_amount
-        (PC=4): 2; -- num_itr += 1
-        (PC=5): 6; -- Return num_itr += 1
-        (PC=6): 6; -- (END)
-        TRUE: PC;
-      esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c">-- num_itr = 0</span>
+<span class="w">        </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">init_balance</span><span class="o">&gt;</span><span class="nv">debits_amount</span><span class="p">)):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- while (init_balance &gt;= debits amount)</span>
+<span class="w">        </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">init_balance</span><span class="o">&lt;=</span><span class="nv">debits_amount</span><span class="p">)):</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c">-- init_balance -= debits_amount</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c">-- num_itr += 1</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="c">-- Return num_itr += 1</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="c">-- (END)</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">PC</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-    next(halt) :=
-      case
-        (PC=6): TRUE;
-        TRUE: halt;
-      esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">halt</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="k">case</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">        </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">halt</span><span class="p">;</span>
+<span class="w">      </span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
+<span class="kd">DEFINE</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. exists B. exists C.
-G(
-  (*debits_amount[A]=debits_amount[B]*)
-  /\
-  (*debits_amount[A]=debits_amount[C]*)
-  /\
-  ~(*init_balance[B]=init_balance[C]*)
-)
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">C</span><span class="p">.</span>
+<span class="ow">G</span><span class="p">(</span>
+<span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="nv">debits_amount</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+<span class="w">  </span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="nv">debits_amount</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">C</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+<span class="w">  </span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="err">~</span><span class="p">(</span><span class="o">*</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">C</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div></div>

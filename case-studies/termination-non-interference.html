@@ -7,18 +7,18 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Termination-sensitive/-insensitive Non-interference - HyperQB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bcc72795" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=563648f0" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
+    --color-code-background: #ffffff;
   --color-code-foreground: black;
   --color-brand-primary: #4CAF50;
   --color-brand-content: #388E3C;
@@ -279,148 +279,148 @@ UNSAT, meaning no bugs can be found in the finite exploration. Hence, the progra
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #10.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #10.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI Example</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--NI
---(adpted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)
-MODULE main
--- gniEx(bool high, int low) {
---   1 if (high)
---      { int x = ndet_int ; // here we assign at the beginning
---   2    if (x &gt;= low)
---   3      { return x; }
---   4    else { while (true) {} } }
---     else {
---   5   int x = low;
---       while ( ndet_bool ) {
---   6        x++; }
---       return x;
--- }
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI Example</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--NI</span>
+<span class="c">--(adpted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="c">-- gniEx(bool high, int low) {</span>
+<span class="c">--   1 if (high)</span>
+<span class="c">--      { int x = ndet_int ; // here we assign at the beginning</span>
+<span class="c">--   2    if (x &gt;= low)</span>
+<span class="c">--   3      { return x; }</span>
+<span class="c">--   4    else { while (true) {} } }</span>
+<span class="c">--     else {</span>
+<span class="c">--   5   int x = low;</span>
+<span class="c">--       while ( ndet_bool ) {</span>
+<span class="c">--   6        x++; }</span>
+<span class="c">--       return x;</span>
+<span class="c">-- }</span>
 
- VAR
-	location: 1..7;
-	x: 0..10;
-	nondet: boolean;
-	high: boolean;
-	low: 0..5;
+<span class="w"> </span><span class="kd">VAR</span>
+<span class="w">	</span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">7</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">10</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">nondet</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">high</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">low</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">5</span><span class="p">;</span>
 
---  FROZENVAR
-	-- high: boolean;
-	-- low: 0..5;
+<span class="c">--  FROZENVAR</span>
+<span class="w">	</span><span class="c">-- high: boolean;</span>
+<span class="w">	</span><span class="c">-- low: 0..5;</span>
 
- ASSIGN
-	init(location) := 1 ;
-	init(nondet) := {TRUE, FALSE};
-	init(x) := {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	init(low) := {0, 1, 2, 3, 4, 5};
-	next(low) := low;
-	init(high) := {TRUE, FALSE};
-	next(high) := high;
+<span class="w"> </span><span class="kd">ASSIGN</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">low</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">low</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">low</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">high</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">high</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">high</span><span class="p">;</span>
 
-	next(location) := case
-		(location = 1 &amp; high): 2;
-		(location = 1 &amp; !high): 5;
-		(location = 2 &amp; x &gt;= low) : 3;
-		(location = 2 &amp; x &lt; low) : 4;
-		(location = 5 &amp; !nondet) : 3;
-		(location = 5 &amp; nondet) : 6;
-		(location = 6 &amp; !nondet) : 3;
-		(location = 6 &amp; nondet &amp; x &lt; 10) : 6;
-		(location = 6 &amp; nondet &amp; x = 10) : 7;
-		TRUE: location ;
-	esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">high</span><span class="p">):</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">high</span><span class="p">):</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">low</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nv">low</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">nondet</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">nondet</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="w">		</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="p">;</span>
+<span class="w">	</span><span class="k">esac</span><span class="p">;</span>
 
-	next(x) := case
-		(location = 5): low;
-		(location = 6 &amp; x &lt; 10): x + 1;
-		TRUE: x;
-	esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">):</span><span class="w"> </span><span class="nv">low</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">):</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">		</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">	</span><span class="k">esac</span><span class="p">;</span>
 
-	next(nondet) := case
-		(location = 5 | location = 6): {TRUE, FALSE};
-		TRUE: nondet;
-	esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">):</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">		</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">nondet</span><span class="p">;</span>
+<span class="w">	</span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-	halt := location = 3 ;
+<span class="kd">DEFINE</span>
+<span class="w">	</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. exists B.
-F(halt[A]) -&gt;
-G(~halt[B] \/ ((halt[B])-&gt;((~(high[A]&lt;-&gt;high[B])) /\ (*x[A]=x[B]*))))
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span>
+<span class="ow">F</span><span class="p">(</span><span class="nv">halt</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="ow">G</span><span class="p">(</span><span class="err">~</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="w"> </span><span class="err">\</span><span class="o">/</span><span class="w"> </span><span class="p">((</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="o">-&gt;</span><span class="p">((</span><span class="err">~</span><span class="p">(</span><span class="nv">high</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">high</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">x</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">x</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))))</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NI Example</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--NI
---(adpted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)
-MODULE main
--- gniEx(bool high, int low) {
---   1 if (high)
---      { int x = ndet_int ; // here we assign at the beginning
---   2    if (x &gt;= low)
---   3      { return x; }
---   4    else { while (true) {} } }
---     else {
---   5   int x = low;
---       while ( ndet_bool ) {
---   6        x++; }
---       return x;
--- }
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NI Example</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--NI</span>
+<span class="c">--(adpted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="c">-- gniEx(bool high, int low) {</span>
+<span class="c">--   1 if (high)</span>
+<span class="c">--      { int x = ndet_int ; // here we assign at the beginning</span>
+<span class="c">--   2    if (x &gt;= low)</span>
+<span class="c">--   3      { return x; }</span>
+<span class="c">--   4    else { while (true) {} } }</span>
+<span class="c">--     else {</span>
+<span class="c">--   5   int x = low;</span>
+<span class="c">--       while ( ndet_bool ) {</span>
+<span class="c">--   6        x++; }</span>
+<span class="c">--       return x;</span>
+<span class="c">-- }</span>
 
- VAR
-	location: 1..7;
-	x: 0..10;
-	nondet: boolean;
-	high: boolean;
-	low: 0..5;
+<span class="w"> </span><span class="kd">VAR</span>
+<span class="w">	</span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">7</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">10</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">nondet</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">high</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">low</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">5</span><span class="p">;</span>
 
---  FROZENVAR
-	-- high: boolean;
-	-- low: 0..5;
+<span class="c">--  FROZENVAR</span>
+<span class="w">	</span><span class="c">-- high: boolean;</span>
+<span class="w">	</span><span class="c">-- low: 0..5;</span>
 
- ASSIGN
-	init(location) := 1 ;
-	init(nondet) := {TRUE, FALSE};
-	init(x) := {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	init(low) := {0, 1, 2, 3, 4, 5};
-	next(low) := low;
-	init(high) := {TRUE, FALSE};
-	next(high) := high;
+<span class="w"> </span><span class="kd">ASSIGN</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">low</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">low</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">low</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">high</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">high</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">high</span><span class="p">;</span>
 
-	next(location) := case
-		(location = 1 &amp; high): 2;
-		(location = 1 &amp; !high): 5;
-		(location = 2 &amp; x &gt;= low) : 3;
-		(location = 2 &amp; x &lt; low) : 4;
-		(location = 5 &amp; !nondet) : 3;
-		(location = 5 &amp; nondet) : 6;
-		(location = 6 &amp; !nondet) : 3;
-		(location = 6 &amp; nondet &amp; x &lt; 10) : 6;
-		(location = 6 &amp; nondet &amp; x = 10) : 7;
-		TRUE: location ;
-	esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">high</span><span class="p">):</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">high</span><span class="p">):</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nv">low</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nv">low</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">nondet</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">nondet</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="w">		</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="p">;</span>
+<span class="w">	</span><span class="k">esac</span><span class="p">;</span>
 
-	next(x) := case
-		(location = 5): low;
-		(location = 6 &amp; x &lt; 10): x + 1;
-		TRUE: x;
-	esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">):</span><span class="w"> </span><span class="nv">low</span><span class="p">;</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">):</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">		</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">	</span><span class="k">esac</span><span class="p">;</span>
 
-	next(nondet) := case
-		(location = 5 | location = 6): {TRUE, FALSE};
-		TRUE: nondet;
-	esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">nondet</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<span class="w">		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">):</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">		</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">nondet</span><span class="p">;</span>
+<span class="w">	</span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-	halt := location = 3 ;
+<span class="kd">DEFINE</span>
+<span class="w">	</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. exists B.
-F(halt[A]) -&gt;
-G(((halt[B])-&gt;((~(high[A]&lt;-&gt;high[B])) /\ (*x[A]=x[B]*))))
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span>
+<span class="ow">F</span><span class="p">(</span><span class="nv">halt</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="ow">G</span><span class="p">(((</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="o">-&gt;</span><span class="p">((</span><span class="err">~</span><span class="p">(</span><span class="nv">high</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">high</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">x</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">x</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))))</span>
 </pre></div>
 </div>
 </div></div>

@@ -7,18 +7,18 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Co-termination - HyperQB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bcc72795" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=563648f0" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
+    --color-code-background: #ffffff;
   --color-code-foreground: black;
   --color-brand-primary: #4CAF50;
   --color-brand-content: #388E3C;
@@ -274,108 +274,108 @@ opt), is able to give a meaningful verdict even though this is not a finitely-re
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #7.1</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Co-termination 1</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Co-termination 2</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>-- CO-TERMINATION
--- (adopted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Co-termination 1</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Co-termination 2</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- CO-TERMINATION</span>
+<span class="c">-- (adopted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
 
-MODULE main
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 
--- 0	while (x&gt;0){
--- 1		x = x - y
--- 2	}
-	VAR
-		x:-5..100;
-		t: 0..1;
-		location: 0..2;
-		y: 0..5;
+<span class="c">-- 0	while (x&gt;0){</span>
+<span class="c">-- 1		x = x - y</span>
+<span class="c">-- 2	}</span>
+<span class="w">	</span><span class="kd">VAR</span>
+<span class="w">		</span><span class="nv">x</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">..</span><span class="mi">100</span><span class="p">;</span>
+<span class="w">		</span><span class="nv">t</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">		</span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
+<span class="w">		</span><span class="nv">y</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">5</span><span class="p">;</span>
 
-	-- FROZENVAR
-		-- y: 0..5;
+<span class="w">	</span><span class="c">-- FROZENVAR</span>
+<span class="w">		</span><span class="c">-- y: 0..5;</span>
 
-	ASSIGN
-		init(location) := 1;
-		init(x) := 100;
-		init(t) := 0;
-  		init(y) := 2;
-		next(y) := y;
+<span class="w">	</span><span class="kd">ASSIGN</span>
+<span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  		</span><span class="nb">init</span><span class="p">(</span><span class="nv">y</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">y</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">y</span><span class="p">;</span>
 
-		next(location) :=
-		case
-			((location = 1) &amp; (x &gt; 0)): 1;
-      ((location = 1) &amp; (x &lt;= 0)) : 2;
-      TRUE: location ;
-    esac;
+<span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-    next(x) :=
-		case
-			((location = 1) &amp; (x &gt; 0)): x - y;
-      ((location = 1) &amp; (x &lt;= 0)) : x;
-      TRUE : x;
-    esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">y</span><span class="p">;</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-    next(t) :=
-		case
-      (location = 1): 0;
-			(location = 2): 1;
-      TRUE : t;
-    esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">t</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-    DEFINE
-			halt := location = 2 ;
+<span class="w">    </span><span class="kd">DEFINE</span>
+<span class="w">			</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>-- CO-TERMINATION
--- (adopted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)
-MODULE main
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- CO-TERMINATION</span>
+<span class="c">-- (adopted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 
--- 0	while (x&gt;0){
--- 1		x = x - (2 x y)
--- 2	}
+<span class="c">-- 0	while (x&gt;0){</span>
+<span class="c">-- 1		x = x - (2 x y)</span>
+<span class="c">-- 2	}</span>
 
-	VAR
-		x:-10..100;
-		t: 0..1;
-		location: 0..2;
-		y: 0..5;
+<span class="w">	</span><span class="kd">VAR</span>
+<span class="w">		</span><span class="nv">x</span><span class="p">:</span><span class="o">-</span><span class="mi">10</span><span class="p">..</span><span class="mi">100</span><span class="p">;</span>
+<span class="w">		</span><span class="nv">t</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">		</span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
+<span class="w">		</span><span class="nv">y</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">5</span><span class="p">;</span>
 
-	-- FROZENVAR
-		-- y: 0..5;
+<span class="w">	</span><span class="c">-- FROZENVAR</span>
+<span class="w">		</span><span class="c">-- y: 0..5;</span>
 
-	ASSIGN
-		init(location) := 1;
-		init(x) := 100;
-		init(t) := 0;
-    	init(y) := 2;
-		next(y) := y;
+<span class="w">	</span><span class="kd">ASSIGN</span>
+<span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    	</span><span class="nb">init</span><span class="p">(</span><span class="nv">y</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">y</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">y</span><span class="p">;</span>
 
-		next(location) :=
-		case
-			((location = 1) &amp; (x &gt; 0)): 1;
-      ((location = 1) &amp; (x &lt;= 0)) : 2;
-      TRUE: location ;
-    esac;
+<span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-    next(x) :=
-		case
-			((location = 1) &amp; (x &gt; 0)): (x - (2 * y));
-      ((location = 1) &amp; (x &lt;= 0)) : x;
-      TRUE : x;
-    esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">y</span><span class="p">));</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-    next(t) :=
-		case
-      (location = 1): 0;
-			(location = 2): 1;
-      TRUE : t;
-    esac;
+<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">t</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-    DEFINE
-			halt := location = 2 ;
+<span class="w">    </span><span class="kd">DEFINE</span>
+<span class="w">			</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. forall B.
-(F(halt[A]))&lt;-&gt;(F(halt[B]))
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span>
+<span class="p">(</span><span class="ow">F</span><span class="p">(</span><span class="nv">halt</span><span class="p">[</span><span class="ow">A</span><span class="p">]))</span><span class="o">&lt;-&gt;</span><span class="p">(</span><span class="ow">F</span><span class="p">(</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div></div>

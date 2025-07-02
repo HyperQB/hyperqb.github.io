@@ -7,18 +7,18 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Intransitive Non-interference - HyperQB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bcc72795" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=563648f0" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
+    --color-code-background: #ffffff;
   --color-code-foreground: black;
   --color-brand-primary: #4CAF50;
   --color-brand-content: #388E3C;
@@ -286,279 +286,279 @@ consider intransitivity:</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #9.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #9.2</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Case #9.3</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Unscheduled Buffer</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--BUFFER
---(adopted from: Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications)
-MODULE main
-VAR
-  -- P1_Mode: 0..1; -- 0: secure, 1: unclassified
-  -- P2_Mode: 0..1; -- 0: secure, 1: unclassified
-  P1_sec_in: 0..3;
-  P2_unclass_in: 0..3;
-  P1_sec_out: 0..3;
-  P2_unclass_out: 0..3;
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Unscheduled Buffer</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--BUFFER</span>
+<span class="c">--(adopted from: Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="c">-- P1_Mode: 0..1; -- 0: secure, 1: unclassified</span>
+<span class="w">  </span><span class="c">-- P2_Mode: 0..1; -- 0: secure, 1: unclassified</span>
+<span class="w">  </span><span class="nv">P1_sec_in</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">P2_unclass_in</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">P1_sec_out</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">P2_unclass_out</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
-  shared_buffer: 0..3;
+<span class="w">  </span><span class="nv">shared_buffer</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
-  sec_write: boolean;
-  sec_read: boolean;
+<span class="w">  </span><span class="nv">sec_write</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">sec_read</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
-  unclass_write: boolean;
-  unclass_read: boolean;
+<span class="w">  </span><span class="nv">unclass_write</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">unclass_read</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
-  PC: 1..3;
-ASSIGN
-  -- Initial Conditions
-  init(P1_sec_in):= {0,1,2,3};
-  init(P1_sec_out):= 0;
-  init(P2_unclass_in):= {0,1,2,3};
-  init(P2_unclass_out):= 0;
-  init(shared_buffer) := 0;
-  init(sec_write):= {TRUE, FALSE};
-  init(sec_read):= {TRUE, FALSE};
-  init(unclass_write):= {TRUE, FALSE};
-  init(unclass_read):= {TRUE, FALSE};
-  init(PC) := 1;
+<span class="w">  </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P1_sec_in</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P1_sec_out</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P2_unclass_in</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P2_unclass_out</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">shared_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">sec_write</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">sec_read</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
-  -- Transition Relations
-  next(P1_sec_in) := P1_sec_in;
-  next(P2_unclass_in) := P2_unclass_in;
-  next(sec_write) := sec_write;
-  next(sec_read) := sec_read;
-  next(unclass_write) := unclass_write;
-  next(unclass_read) := unclass_read;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P1_sec_in</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">P1_sec_in</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P2_unclass_in</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">P2_unclass_in</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">sec_write</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">sec_write</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">sec_read</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">sec_read</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">unclass_write</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">unclass_read</span><span class="p">;</span>
 
-  next(shared_buffer) :=
-    case
-      ((PC=2) &amp; (sec_write)): P1_sec_in;
-      ((PC=2) &amp; (unclass_write)): P2_unclass_in;
-      TRUE: shared_buffer;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">shared_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">sec_write</span><span class="p">)):</span><span class="w"> </span><span class="nv">P1_sec_in</span><span class="p">;</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">)):</span><span class="w"> </span><span class="nv">P2_unclass_in</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">shared_buffer</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(P1_sec_out) :=
-    case
-      ((PC=3) &amp; (sec_read)) : shared_buffer;
-      TRUE: P1_sec_out;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P1_sec_out</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">sec_read</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">shared_buffer</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">P1_sec_out</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(P2_unclass_out) :=
-    case
-      ((PC=3) &amp; (unclass_read)) : shared_buffer;
-      TRUE: P2_unclass_out;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P2_unclass_out</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">shared_buffer</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">P2_unclass_out</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(PC) :=
-    case
-      (PC=1): 2;
-      (PC=2): 3;
-      (PC=3): 3;
-      TRUE: PC;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">PC</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-  halt := PC = 3 ;
+<span class="kd">DEFINE</span>
+<span class="w">  </span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">PC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. forall B.
-G((*P2_unclass_in[A]=P2_unclass_in[B]*)
--&gt;
-(*P2_unclass_out[A]=P2_unclass_out[B]*))
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span>
+<span class="ow">G</span><span class="p">((</span><span class="o">*</span><span class="nv">P2_unclass_in</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">P2_unclass_in</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+<span class="o">-&gt;</span>
+<span class="p">(</span><span class="o">*</span><span class="nv">P2_unclass_out</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">P2_unclass_out</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Scheduled Buffer</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--BUFFER
---(adopted from: Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications)
-MODULE main
-VAR
-  P1_sec_in: 0..3;
-  P2_unclass_in: 0..3;
-  P1_sec_out: 0..3;
-  P2_unclass_out: 0..3;
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Scheduled Buffer</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--BUFFER</span>
+<span class="c">--(adopted from: Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">P1_sec_in</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">P2_unclass_in</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">P1_sec_out</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">P2_unclass_out</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
-  shared_buffer: 0..3;
+<span class="w">  </span><span class="nv">shared_buffer</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
-  sec_write: boolean;
-  sec_read: boolean;
+<span class="w">  </span><span class="nv">sec_write</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">sec_read</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
-  unclass_write: boolean;
-  unclass_read: boolean;
+<span class="w">  </span><span class="nv">unclass_write</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">unclass_read</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
-  PC: 1..3;
-ASSIGN
-  -- Initial Conditions
-  init(P1_sec_in):= {0,1,2,3};
-  init(P1_sec_out):= 0;
-  init(P2_unclass_in):= {0,1,2,3};
-  init(P2_unclass_out):= 0;
-  init(shared_buffer) := 0;
-  init(sec_write):= {TRUE, FALSE};
-  init(sec_read):= {FALSE};
-  init(unclass_write):= {TRUE, FALSE};
-  init(unclass_read):= {FALSE};
-  init(PC) := 1;
+<span class="w">  </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P1_sec_in</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P1_sec_out</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P2_unclass_in</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P2_unclass_out</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">shared_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">sec_write</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">sec_read</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
-  -- Transition Relations
-  next(P1_sec_in) := P1_sec_in;
-  next(P2_unclass_in) := P2_unclass_in;
-  next(sec_write) := sec_write;
-  next(unclass_write) := unclass_write;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P1_sec_in</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">P1_sec_in</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P2_unclass_in</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">P2_unclass_in</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">sec_write</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">sec_write</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">unclass_write</span><span class="p">;</span>
 
-  --scheduled
-  next(sec_read) :=
-    case
-      (sec_write): TRUE;
-      (unclass_write): FALSE;
-      TRUE: sec_read;
-    esac;
-  next(unclass_read) :=
-    case
-      (unclass_write): TRUE;
-      (sec_write): FALSE;
-      TRUE: unclass_read;
-    esac;
+<span class="w">  </span><span class="c">--scheduled</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">sec_read</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">sec_write</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">):</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">sec_read</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">sec_write</span><span class="p">):</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">unclass_read</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(shared_buffer) :=
-    case
-      ((PC=2) &amp; (sec_write)): P1_sec_in;
-      ((PC=2) &amp; (unclass_write)): P2_unclass_in;
-      TRUE: shared_buffer;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">shared_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">sec_write</span><span class="p">)):</span><span class="w"> </span><span class="nv">P1_sec_in</span><span class="p">;</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">)):</span><span class="w"> </span><span class="nv">P2_unclass_in</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">shared_buffer</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(P1_sec_out) :=
-    case
-      ((PC=3) &amp; (sec_read)) : shared_buffer;
-      TRUE: P1_sec_out;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P1_sec_out</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">sec_read</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">shared_buffer</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">P1_sec_out</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(P2_unclass_out) :=
-    case
-      ((PC=3) &amp; (unclass_read)) : shared_buffer;
-      TRUE: P2_unclass_out;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P2_unclass_out</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">shared_buffer</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">P2_unclass_out</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(PC) :=
-    case
-      (PC=1): 2;
-      (PC=2): 3;
-      (PC=3): 3;
-      TRUE: PC;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">PC</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-  halt := PC = 3 ;
-  no_conflict := !(sec_read &amp; unclass_read);
+<span class="kd">DEFINE</span>
+<span class="w">  </span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">PC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="nv">no_conflict</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">sec_read</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">unclass_read</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. forall B.
-G(((*P2_unclass_in[A]=P2_unclass_in[B]*))
--&gt;
-((no_conflict[A]/\no_conflict[B])-&gt;
-(((sec_read[A]&lt;-&gt;sec_read[B]) /\
-  (sec_write[A]&lt;-&gt;sec_write[B])/\
-  (unclass_read[A]&lt;-&gt;unclass_read[B])/\
-  (unclass_write[A]&lt;-&gt;unclass_write[B]))-&gt;
-(*P2_unclass_out[A]=P2_unclass_out[B]*))))
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span>
+<span class="ow">G</span><span class="p">(((</span><span class="o">*</span><span class="nv">P2_unclass_in</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">P2_unclass_in</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))</span>
+<span class="o">-&gt;</span>
+<span class="p">((</span><span class="nv">no_conflict</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">/</span><span class="err">\</span><span class="nv">no_conflict</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="o">-&gt;</span>
+<span class="p">(((</span><span class="nv">sec_read</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">sec_read</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">sec_write</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">sec_write</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">unclass_read</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">unclass_write</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span><span class="o">-&gt;</span>
+<span class="p">(</span><span class="o">*</span><span class="nv">P2_unclass_out</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">P2_unclass_out</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))))</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">Scheduled Buffer</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--BUFFER
---(adopted from: Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications)
-MODULE main
-VAR
-  P1_sec_in: 0..3;
-  P2_unclass_in: 0..3;
-  P1_sec_out: 0..3;
-  P2_unclass_out: 0..3;
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">Scheduled Buffer</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--BUFFER</span>
+<span class="c">--(adopted from: Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">P1_sec_in</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">P2_unclass_in</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">P1_sec_out</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">P2_unclass_out</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
-  shared_buffer: 0..3;
+<span class="w">  </span><span class="nv">shared_buffer</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
-  sec_write: boolean;
-  sec_read: boolean;
+<span class="w">  </span><span class="nv">sec_write</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">sec_read</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
-  unclass_write: boolean;
-  unclass_read: boolean;
+<span class="w">  </span><span class="nv">unclass_write</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">unclass_read</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
-  PC: 1..3;
-ASSIGN
-  -- Initial Conditions
-  init(P1_sec_in):= {0,1,2,3};
-  init(P1_sec_out):= 0;
-  init(P2_unclass_in):= {0,1,2,3};
-  init(P2_unclass_out):= 0;
-  init(shared_buffer) := 0;
-  init(sec_write):= {TRUE, FALSE};
-  init(sec_read):= {FALSE};
-  init(unclass_write):= {TRUE, FALSE};
-  init(unclass_read):= {FALSE};
-  init(PC) := 1;
+<span class="w">  </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P1_sec_in</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P1_sec_out</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P2_unclass_in</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">P2_unclass_out</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">shared_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">sec_write</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">sec_read</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
-  -- Transition Relations
-  next(P1_sec_in) := P1_sec_in;
-  next(P2_unclass_in) := P2_unclass_in;
-  next(sec_write) := sec_write;
-  next(unclass_write) := unclass_write;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P1_sec_in</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">P1_sec_in</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P2_unclass_in</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">P2_unclass_in</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">sec_write</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">sec_write</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">unclass_write</span><span class="p">;</span>
 
-  --scheduled
-  next(sec_read) :=
-    case
-      (sec_write): TRUE;
-      (unclass_write): FALSE;
-      TRUE: sec_read;
-    esac;
-  next(unclass_read) :=
-    case
-      (unclass_write): TRUE;
-      (sec_write): FALSE;
-      TRUE: unclass_read;
-    esac;
+<span class="w">  </span><span class="c">--scheduled</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">sec_read</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">sec_write</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">):</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">sec_read</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">sec_write</span><span class="p">):</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">unclass_read</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(shared_buffer) :=
-    case
-      ((PC=2) &amp; (sec_write)): P1_sec_in;
-      ((PC=2) &amp; (unclass_write)): P2_unclass_in;
-      TRUE: shared_buffer;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">shared_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">sec_write</span><span class="p">)):</span><span class="w"> </span><span class="nv">P1_sec_in</span><span class="p">;</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">)):</span><span class="w"> </span><span class="nv">P2_unclass_in</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">shared_buffer</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(P1_sec_out) :=
-    case
-      ((PC=3) &amp; (sec_read)) : shared_buffer;
-      TRUE: P1_sec_out;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P1_sec_out</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">sec_read</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">shared_buffer</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">P1_sec_out</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(P2_unclass_out) :=
-    case
-      ((PC=3) &amp; (unclass_read)) : shared_buffer;
-      TRUE: P2_unclass_out;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">P2_unclass_out</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">shared_buffer</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">P2_unclass_out</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(PC) :=
-    case
-      (PC=1): 2;
-      (PC=2): 3;
-      (PC=3): 3;
-      TRUE: PC;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">PC</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-  halt := PC = 3 ;
-  no_conflict := !(sec_read &amp; unclass_read);
+<span class="kd">DEFINE</span>
+<span class="w">  </span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">PC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="nv">no_conflict</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">sec_read</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">unclass_read</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. exists B.
-(G((!(*P1_sec_in[A]=P1_sec_in[B]*)))
-/\
-(G(((sec_read[A]&lt;-&gt;sec_read[B]) /\
-  (sec_write[A]&lt;-&gt;sec_write[B])/\
-  (unclass_read[A]&lt;-&gt;unclass_read[B])/\
-  (unclass_write[A]&lt;-&gt;unclass_write[B]))\/
-(*P2_unclass_out[A]=P2_unclass_out[B]*))))
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span>
+<span class="p">(</span><span class="ow">G</span><span class="p">((</span><span class="o">!</span><span class="p">(</span><span class="o">*</span><span class="nv">P1_sec_in</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">P1_sec_in</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)))</span>
+<span class="o">/</span><span class="err">\</span>
+<span class="p">(</span><span class="ow">G</span><span class="p">(((</span><span class="nv">sec_read</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">sec_read</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">sec_write</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">sec_write</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">unclass_read</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">unclass_read</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">unclass_write</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">&lt;-&gt;</span><span class="nv">unclass_write</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span><span class="err">\</span><span class="o">/</span>
+<span class="p">(</span><span class="o">*</span><span class="nv">P2_unclass_out</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">P2_unclass_out</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))))</span>
 </pre></div>
 </div>
 </div></div>

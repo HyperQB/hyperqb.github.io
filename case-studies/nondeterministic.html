@@ -7,18 +7,18 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Nondeterministic Inputs and Transitions - HyperQB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bcc72795" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=563648f0" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
+    --color-code-background: #ffffff;
   --color-code-foreground: black;
   --color-brand-primary: #4CAF50;
   --color-brand-content: #388E3C;
@@ -271,93 +271,93 @@ have high initially as <span class="math notranslate nohighlight">\(0\)</span>, 
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #14.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #14.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI v2</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>-- (hand-craft)
-MODULE main
--- A simple program that violates non-interference
--- 1: LOW=0, HIGH={0....10}
--- 2: if(HIGH&gt;5):
--- 3:   LOW=HIGH
---
-VAR
-  HIGH: 0..12;
-  LOW: 0..12;
-  PC: 1..3;
-ASSIGN
-  -- Initial Conditions
-  init(HIGH):= {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12};
-  init(LOW):= {0};
-  init(PC):= 1; -- program counter starts at 1.
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI v2</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- (hand-craft)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="c">-- A simple program that violates non-interference</span>
+<span class="c">-- 1: LOW=0, HIGH={0....10}</span>
+<span class="c">-- 2: if(HIGH&gt;5):</span>
+<span class="c">-- 3:   LOW=HIGH</span>
+<span class="c">--</span>
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">HIGH</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">12</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">LOW</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">12</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">HIGH</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">LOW</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- program counter starts at 1.</span>
 
-  -- Transition Relations
-  next(HIGH) := HIGH;
-  next(LOW) :=
-    case
-      ((PC=2) &amp; (HIGH&gt;6)): HIGH;
-      TRUE: LOW;
-    esac;
-  next(PC) :=
-    case
-      (PC=3): 3;
-      TRUE: PC+1;
-    esac;
-DEFINE
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">HIGH</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">HIGH</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">LOW</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">HIGH</span><span class="o">&gt;</span><span class="mi">6</span><span class="p">)):</span><span class="w"> </span><span class="nv">HIGH</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">LOW</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">PC</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="kd">DEFINE</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. exists B.
-F~(*HIGH[A] = HIGH[B]*)
-/\
-G(*LOW[A] = LOW[B]*)
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span>
+<span class="ow">F</span><span class="err">~</span><span class="p">(</span><span class="o">*</span><span class="nv">HIGH</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">HIGH</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+<span class="o">/</span><span class="err">\</span>
+<span class="ow">G</span><span class="p">(</span><span class="o">*</span><span class="nv">LOW</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">LOW</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NI v3</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>-- (hand-craft)
-MODULE main
--- A simple program that violates non-interference
---
--- 1: LOW=0, HIGH={0}
--- 2: HIGH={0...10}
--- 3: if(HIGH&gt;5):
--- 4:   LOW=HIGH
---
-VAR
-  HIGH: 0..15;
-  LOW: 0..15;
-  PC: 1..4;
-ASSIGN
-  -- Initial Conditions
-  init(HIGH):= {0};
-  init(LOW):= {0};
-  init(PC):= 1; -- program counter starts at 1.
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NI v3</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- (hand-craft)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="c">-- A simple program that violates non-interference</span>
+<span class="c">--</span>
+<span class="c">-- 1: LOW=0, HIGH={0}</span>
+<span class="c">-- 2: HIGH={0...10}</span>
+<span class="c">-- 3: if(HIGH&gt;5):</span>
+<span class="c">-- 4:   LOW=HIGH</span>
+<span class="c">--</span>
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">HIGH</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">15</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">LOW</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">15</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">4</span><span class="p">;</span>
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">HIGH</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">LOW</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- program counter starts at 1.</span>
 
-  -- Transition Relations
-  next(HIGH):=
-    case
-      (PC=2): {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-      TRUE: HIGH;
-    esac;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">HIGH</span><span class="p">)</span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">};</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">HIGH</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(LOW) :=
-    case
-      ((PC=3) &amp; (HIGH&gt;7)): HIGH;
-      TRUE: LOW;
-    esac;
-  next(PC) :=
-    case
-      (PC=4): 4;
-      TRUE: PC+1;
-    esac;
-DEFINE
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">LOW</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">HIGH</span><span class="o">&gt;</span><span class="mi">7</span><span class="p">)):</span><span class="w"> </span><span class="nv">HIGH</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">LOW</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">PC</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="kd">DEFINE</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. exists B.
-F~(*HIGH[A] = HIGH[B]*)
-/\
-G(*LOW[A] = LOW[B]*)
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span>
+<span class="ow">F</span><span class="err">~</span><span class="p">(</span><span class="o">*</span><span class="nv">HIGH</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">HIGH</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+<span class="o">/</span><span class="err">\</span>
+<span class="ow">G</span><span class="p">(</span><span class="o">*</span><span class="nv">LOW</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">LOW</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></div>

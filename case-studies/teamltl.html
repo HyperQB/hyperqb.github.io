@@ -7,18 +7,18 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>LTL with Team Semantics - HyperQB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bcc72795" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=563648f0" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
+    --color-code-background: #ffffff;
   --color-code-foreground: black;
   --color-brand-primary: #4CAF50;
   --color-brand-content: #388E3C;
@@ -278,107 +278,107 @@ and <span class="math notranslate nohighlight">\(\pi_{B}\)</span>), correctly</p
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #13.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #13.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Team</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--TEAMLTL
---(adopted from: Jonni Virtema, Jana Hofmann, Bernd Finkbeiner, Juha Kontinen, and Fan Yang. Linear-time temporal logic with team semantics: Expressivity and complexity. arXiv preprint arXiv:2010.03311, 2020)
-MODULE main
-VAR
-  x-axis: 0..3;
-  y-axis: 0..3;
-  action: 0..4;
-ASSIGN
-  -- Initial Conditions
-  init(x-axis):= 0;
-  init(y-axis):= 0;
-  init(action):= {0,1,2,3,4};
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Team</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--TEAMLTL</span>
+<span class="c">--(adopted from: Jonni Virtema, Jana Hofmann, Bernd Finkbeiner, Juha Kontinen, and Fan Yang. Linear-time temporal logic with team semantics: Expressivity and complexity. arXiv preprint arXiv:2010.03311, 2020)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">x-axis</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">y-axis</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">action</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">4</span><span class="p">;</span>
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">x-axis</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">y-axis</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">action</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
 
-  -- Transition Relations
-  next(x-axis) :=
-    case
-      (action=4): x-axis;
-      (action=0 | action=1): x-axis;
-      (action=2 &amp; x-axis=0): x-axis;
-      (action=3 &amp; x-axis=3): x-axis;
-      (action=2 &amp; x-axis!=0): x-axis - 1; -- action2: move left
-      (action=3 &amp; x-axis!=3): x-axis + 1; -- action3: move right
-      TRUE: x-axis;
-    esac;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">x-axis</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">action</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x-axis</span><span class="o">!=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- action2: move left</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x-axis</span><span class="o">!=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- action3: move right</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(y-axis) :=
-    case
-      (action=4): y-axis;
-      (action=2 | action=3): y-axis;
-      (action=0 &amp; y-axis=0): y-axis;
-      (action=1 &amp; y-axis=3): y-axis;
-      (action=0 &amp; y-axis!=0): y-axis - 1; -- action 0: move down
-      (action=1 &amp; y-axis!=3): y-axis + 1; -- action 1: move up
-      TRUE: y-axis;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">y-axis</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">action</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">y-axis</span><span class="o">!=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- action 0: move down</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">y-axis</span><span class="o">!=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- action 1: move up</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(action) := {0, 1, 2, 3};
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">action</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
 
-DEFINE
-  STARTED := !((x-axis=0) &amp; (y-axis=0));
-  GOALA := (x-axis=0) &amp; (y-axis=3);
-  GOALB := (x-axis=3) &amp; (y-axis=0);
+<span class="kd">DEFINE</span>
+<span class="w">  </span><span class="nv">STARTED</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">!</span><span class="p">((</span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">));</span>
+<span class="w">  </span><span class="nv">GOALA</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">GOALB</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>exists A. exists B. forall C.
-G(GOALA[A] &lt;-&gt; GOALA[C]) \/ G(GOALB[B] &lt;-&gt; GOALB[C])
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">exists</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">C</span><span class="p">.</span>
+<span class="ow">G</span><span class="p">(</span><span class="nv">GOALA</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-&gt;</span><span class="w"> </span><span class="nv">GOALA</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span><span class="w"> </span><span class="err">\</span><span class="o">/</span><span class="w"> </span><span class="ow">G</span><span class="p">(</span><span class="nv">GOALB</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-&gt;</span><span class="w"> </span><span class="nv">GOALB</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Team 2</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--TEAMLTL
---(adopted from: Jonni Virtema, Jana Hofmann, Bernd Finkbeiner, Juha Kontinen, and Fan Yang. Linear-time temporal logic with team semantics: Expressivity and complexity. arXiv preprint arXiv:2010.03311, 2020)
-MODULE main
-VAR
-  x-axis: 0..7;
-  y-axis: 0..7;
-  action: 0..4;
-ASSIGN
-  -- Initial Conditions
-  init(x-axis):= 0;
-  init(y-axis):= 0;
-  init(action):= {0,1,2,3,4};
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Team 2</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--TEAMLTL</span>
+<span class="c">--(adopted from: Jonni Virtema, Jana Hofmann, Bernd Finkbeiner, Juha Kontinen, and Fan Yang. Linear-time temporal logic with team semantics: Expressivity and complexity. arXiv preprint arXiv:2010.03311, 2020)</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">x-axis</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">7</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">y-axis</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">7</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">action</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">4</span><span class="p">;</span>
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">x-axis</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">y-axis</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">action</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
 
-  -- Transition Relations
-  next(x-axis) :=
-    case
-      (action=4): x-axis;
-      (action=0 | action=1): x-axis;
-      (action=2 &amp; x-axis=0): x-axis;
-      (action=3 &amp; x-axis=7): x-axis;
-      (action=2 &amp; x-axis!=0): x-axis - 1; -- action2: move left
-      (action=3 &amp; x-axis!=7): x-axis + 1; -- action3: move right
-      TRUE: x-axis;
-    esac;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">x-axis</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">action</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x-axis</span><span class="o">!=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- action2: move left</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">x-axis</span><span class="o">!=</span><span class="mi">7</span><span class="p">):</span><span class="w"> </span><span class="nv">x-axis</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- action3: move right</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">x-axis</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(y-axis) :=
-    case
-      (action=4): y-axis;
-      (action=2 | action=3): y-axis;
-      (action=0 &amp; y-axis=0): y-axis;
-      (action=1 &amp; y-axis=7): y-axis;
-      (action=0 &amp; y-axis!=0): y-axis - 1; -- action 0: move down
-      (action=1 &amp; y-axis!=7): y-axis + 1; -- action 1: move up
-      TRUE: y-axis;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">y-axis</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">action</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">y-axis</span><span class="o">!=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- action 0: move down</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">action</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">y-axis</span><span class="o">!=</span><span class="mi">7</span><span class="p">):</span><span class="w"> </span><span class="nv">y-axis</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- action 1: move up</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">y-axis</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(action) := {0, 1, 2, 3};
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">action</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
 
-DEFINE
-  STARTED := !((x-axis=0) &amp; (y-axis=0));
-  GOALA := (x-axis=0) &amp; (y-axis=7);
-  GOALB := (x-axis=7) &amp; (y-axis=0);
-  GOALC := (x-axis=7) &amp; (y-axis=7);
+<span class="kd">DEFINE</span>
+<span class="w">  </span><span class="nv">STARTED</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">!</span><span class="p">((</span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">));</span>
+<span class="w">  </span><span class="nv">GOALA</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">GOALB</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="nv">GOALC</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">x-axis</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">y-axis</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>exists A. exists B. forall C.
-G(GOALA[A] &lt;-&gt; GOALA[C]) \/ G(GOALB[B] &lt;-&gt; GOALB[C])
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">exists</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">C</span><span class="p">.</span>
+<span class="ow">G</span><span class="p">(</span><span class="nv">GOALA</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-&gt;</span><span class="w"> </span><span class="nv">GOALA</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span><span class="w"> </span><span class="err">\</span><span class="o">/</span><span class="w"> </span><span class="ow">G</span><span class="p">(</span><span class="nv">GOALB</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-&gt;</span><span class="w"> </span><span class="nv">GOALB</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
 </pre></div>
 </div>
 </div></div>

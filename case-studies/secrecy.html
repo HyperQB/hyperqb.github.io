@@ -7,18 +7,18 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Secrecy-preserving Refinement - HyperQB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bcc72795" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=563648f0" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
+    --color-code-background: #ffffff;
   --color-code-foreground: black;
   --color-brand-primary: #4CAF50;
   --color-brand-content: #388E3C;
@@ -284,312 +284,312 @@ hierarchy compared to the original non-interference formula.</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #12.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #12.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Mapping Synthesis MA</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Mapping Synthesis MB</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Mapping Synthesis MM</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
---(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
-MODULE main
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Mapping Synthesis MA</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Mapping Synthesis MB</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Mapping Synthesis MM</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MAPSYNTH</span>
+<span class="c">--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 
-VAR
-  atom_p: boolean;
-  atom_q: boolean;
-  PC: 0..3;
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">atom_p</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">atom_q</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
-ASSIGN
-  -- Initial Conditions
-  init(atom_p):= FALSE;
-  init(atom_q):= FALSE;
-  init(PC) := 0;
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">atom_p</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">atom_q</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-  -- Transition Relations
-  next(atom_p) :=
-    case
-      (PC=0): {TRUE,  FALSE};
-      (PC=1): {TRUE,  FALSE};
-      (PC=2): FALSE;
-      TRUE: atom_p;
-    esac;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">atom_p</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w">  </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w">  </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">atom_p</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(atom_q) :=
-    case
-      (PC=0): {TRUE,  FALSE};
-      (PC=1): {TRUE,  FALSE};
-      (PC=2): FALSE;
-      TRUE: atom_q;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">atom_q</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w">  </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w">  </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">atom_q</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(PC) :=
-    case
-      (PC=3): 3;
-      TRUE: PC+1;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">PC</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-  FAIL := (atom_p &amp; atom_q);
+<span class="kd">DEFINE</span>
+<span class="w">  </span><span class="nv">FAIL</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_p</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">atom_q</span><span class="p">);</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
---(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
-MODULE main
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MAPSYNTH</span>
+<span class="c">--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 
-VAR
-  atom_r: boolean;
-  atom_s: boolean;
-  PC: 0..3;
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">atom_r</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">atom_s</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
-ASSIGN
-  -- Initial Conditions
-  init(atom_r):= FALSE;
-  init(atom_s):= FALSE;
-  init(PC) := 0;
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">atom_r</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">atom_s</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-  -- Transition Relations
-  next(atom_r) :=
-    case
-      (PC=0): {TRUE,  FALSE};
-      (PC=1): FALSE;
-      (PC=2): FALSE;
-      TRUE: atom_r;
-    esac;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">atom_r</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w">  </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">atom_r</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(atom_s) :=
-    case
-      (PC=0): {TRUE,  FALSE};
-      (PC=1): TRUE;
-      (PC=2): FALSE;
-      TRUE: atom_s;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">atom_s</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w">  </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">atom_s</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-  next(PC) :=
-    case
-      (PC=3): 3;
-      TRUE: PC+1;
-    esac;
-    
-DEFINE
-  FAIL := (atom_r &amp; atom_s);
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">PC</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="kd">DEFINE</span>
+<span class="w">  </span><span class="nv">FAIL</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_r</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">atom_s</span><span class="p">);</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
---(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
-MODULE main
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MAPSYNTH</span>
+<span class="c">--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 
-VAR
-  pr: boolean;
-  ps: boolean;
-  qr: boolean;
-  qs: boolean;
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">pr</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">ps</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">qr</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">qs</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
-ASSIGN
-  -- Initial Conditions is arbitrary in mapping synth
-  init(pr) := {TRUE, FALSE};
-  init(ps) := {TRUE, FALSE};
-  init(qr) := {TRUE, FALSE};
-  init(qs) := {TRUE, FALSE};
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions is arbitrary in mapping synth</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">pr</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">ps</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">qr</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">qs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
 
-  -- Transition Relations
-  next(pr) := pr;
-  next(ps) := ps;
-  next(qr) := qr;
-  next(qs) := qs;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">pr</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">pr</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">ps</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">ps</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">qr</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">qr</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">qs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">qs</span><span class="p">;</span>
 
-DEFINE
+<span class="kd">DEFINE</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>exists A. forall B. forall C. exists D. exists E.
-G 
-(
-  (pr[A]/\~ps[A] /\ ~qr[A]/\qs[A]) 
-  \/ 
-  (~pr[A]/\ps[A] /\ qr[A]/\~qs[A])
-)
-/\
-(
-  G (
-      ((pr[A]) -&gt; ((atom_p[B]) -&gt; (atom_r[C]))) /\
-      ((ps[A]) -&gt; ((atom_p[B]) -&gt; (atom_s[C]))) /\
-      ((qr[A]) -&gt; ((atom_q[B]) -&gt; (atom_r[C]))) /\
-      ((qs[A]) -&gt; ((atom_q[B]) -&gt; (atom_s[C]))) /\
-      (~FAIL[B] /\ ~FAIL[C])
-  )
-  -&gt;
-  (
-  G ( 
-      ((pr[A]) -&gt; ((atom_p[D]) -&gt; (atom_r[E]))) /\
-      ((ps[A]) -&gt; ((atom_p[D]) -&gt; (atom_s[E]))) /\
-      ((qr[A]) -&gt; ((atom_q[D]) -&gt; (atom_r[E]))) /\
-      ((qs[A]) -&gt; ((atom_q[D]) -&gt; (atom_s[E]))) /\
-      (~FAIL[D] /\ ~FAIL[E])
-  )
-  /\
-  G (
-      (atom_p[B]) -&gt; (~atom_p[D])
-    )
-  )
-)
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">exists</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">C</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">D</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="ow">E</span><span class="p">.</span>
+<span class="ow">G</span><span class="w"> </span>
+<span class="p">(</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">pr</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">/</span><span class="err">\~</span><span class="nv">ps</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="err">~</span><span class="nv">qr</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">/</span><span class="err">\</span><span class="nv">qs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span>
+<span class="w">  </span><span class="err">\</span><span class="o">/</span><span class="w"> </span>
+<span class="w">  </span><span class="p">(</span><span class="err">~</span><span class="nv">pr</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">/</span><span class="err">\</span><span class="nv">ps</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="nv">qr</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">/</span><span class="err">\~</span><span class="nv">qs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="o">/</span><span class="err">\</span>
+<span class="p">(</span>
+<span class="w">  </span><span class="ow">G</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">pr</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">ps</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">qr</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">qs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">(</span><span class="err">~</span><span class="nv">FAIL</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="err">~</span><span class="nv">FAIL</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="o">-&gt;</span>
+<span class="w">  </span><span class="p">(</span>
+<span class="w">  </span><span class="ow">G</span><span class="w"> </span><span class="p">(</span><span class="w"> </span>
+<span class="w">      </span><span class="p">((</span><span class="nv">pr</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">ps</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">qr</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">qs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">(</span><span class="err">~</span><span class="nv">FAIL</span><span class="p">[</span><span class="nv">D</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="err">~</span><span class="nv">FAIL</span><span class="p">[</span><span class="ow">E</span><span class="p">])</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="ow">G</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="err">~</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Mapping Synthesis MA</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Mapping Synthesis MB</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Mapping Synthesis MM</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
---(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
-MODULE main
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Mapping Synthesis MA</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Mapping Synthesis MB</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Mapping Synthesis MM</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MAPSYNTH</span>
+<span class="c">--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 
-VAR
-  secret: 0..1;
-  Alice_Bob_sec: boolean;
-  Bob_Eve_pub: boolean;
-  Bob_sec: boolean;
-  Eve_secisnotempty: boolean;
-  STATE: 0..6;
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">secret</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">Alice_Bob_sec</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">Bob_Eve_pub</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">Bob_sec</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">Eve_secisnotempty</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">STATE</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">6</span><span class="p">;</span>
 
-ASSIGN
-  -- Initial Conditions
-  init(secret) := {0,1};
-  init(Alice_Bob_sec):= FALSE;
-  init(Bob_Eve_pub):= FALSE;
-  init(Bob_sec):= FALSE;
-  init(Eve_secisnotempty):= FALSE;
-  init(STATE):= 0;
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">secret</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">Alice_Bob_sec</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">Bob_Eve_pub</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">Bob_sec</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">Eve_secisnotempty</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">STATE</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-  -- Transition Relations
-  next(secret) := secret;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">secret</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">secret</span><span class="p">;</span>
 
-  next(Alice_Bob_sec) := {TRUE, FALSE};
-  next(Bob_Eve_pub) := {TRUE, FALSE};
-  next(Bob_sec):= {TRUE, FALSE};
-  next(Eve_secisnotempty) := {TRUE, FALSE};
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">Alice_Bob_sec</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">Bob_Eve_pub</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">Bob_sec</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">Eve_secisnotempty</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
 
-  next(STATE) :=
-    case
-      (STATE=0) : {1, 2};
-      (STATE=1) : {3, 4};
-      (STATE=2) : {2, 1};
-      (STATE=3) : {3, 4};
-      (STATE=4) : {5, 6};
-      TRUE: STATE;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">STATE</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">};</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">STATE</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-    VALID :=    ((STATE=0) -&gt; (!Alice_Bob_sec&amp; !Bob_Eve_pub &amp; !Bob_sec &amp; !Eve_secisnotempty))
-              &amp; ((STATE=1) -&gt; (Alice_Bob_sec &amp; !Bob_Eve_pub &amp; !Bob_sec &amp; !Eve_secisnotempty))
-              &amp; ((STATE=2) -&gt; (!Alice_Bob_sec &amp; Bob_Eve_pub &amp; !Bob_sec &amp; !Eve_secisnotempty))
-              &amp; ((STATE=3) -&gt; (Alice_Bob_sec &amp; !Bob_Eve_pub &amp; Bob_sec &amp; !Eve_secisnotempty))
-              &amp; ((STATE=4) -&gt; (!Alice_Bob_sec &amp; Bob_Eve_pub &amp; Bob_sec &amp; !Eve_secisnotempty))
-              &amp; ((STATE=5) -&gt; (!Alice_Bob_sec &amp; Bob_Eve_pub &amp; Bob_sec &amp; !Eve_secisnotempty &amp; (secret=0)))
-              &amp; ((STATE=6) -&gt; (!Alice_Bob_sec &amp; Bob_Eve_pub &amp; Bob_sec &amp;  Eve_secisnotempty &amp; (secret=1)));
+<span class="kd">DEFINE</span>
+<span class="w">    </span><span class="nv">VALID</span><span class="w"> </span><span class="o">:=</span><span class="w">    </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nv">Alice_Bob_sec</span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Bob_Eve_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Eve_secisnotempty</span><span class="p">))</span>
+<span class="w">              </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">Alice_Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Bob_Eve_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Eve_secisnotempty</span><span class="p">))</span>
+<span class="w">              </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nv">Alice_Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">Bob_Eve_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Eve_secisnotempty</span><span class="p">))</span>
+<span class="w">              </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">Alice_Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Bob_Eve_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Eve_secisnotempty</span><span class="p">))</span>
+<span class="w">              </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nv">Alice_Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">Bob_Eve_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Eve_secisnotempty</span><span class="p">))</span>
+<span class="w">              </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nv">Alice_Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">Bob_Eve_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">Eve_secisnotempty</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">secret</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
+<span class="w">              </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nv">Alice_Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">Bob_Eve_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">Bob_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="nv">Eve_secisnotempty</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">secret</span><span class="o">=</span><span class="mi">1</span><span class="p">)));</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
---(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
-MODULE main
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MAPSYNTH</span>
+<span class="c">--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 
-VAR
-  S_R_sec: boolean;
-  S_R_pub: boolean;
-  R_pub: boolean;
-  R_sec: boolean;
-  STATE: 0..3;
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">S_R_sec</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">S_R_pub</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">R_pub</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">R_sec</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">STATE</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
-ASSIGN
-  -- Initial Conditions
-  init(S_R_sec):= FALSE;
-  init(S_R_pub):= FALSE;
-  init(R_pub):= FALSE;
-  init(R_sec):= FALSE;
-  init(STATE):= 0;
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">S_R_sec</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">S_R_pub</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">R_pub</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">R_sec</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">STATE</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-  -- Transition Relations
-  next(S_R_sec) := {TRUE, FALSE};
-  next(S_R_pub) := {TRUE, FALSE};
-  next(R_pub) := {TRUE, FALSE};
-  next(R_sec) := {TRUE, FALSE};
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">S_R_sec</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">S_R_pub</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">R_pub</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">R_sec</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
 
 
-  next(STATE) :=
-    case
-      (STATE=0) : {1, 2};
-      (STATE=1) : {1, 3};
-      (STATE=2) : {2};
-      (STATE=3) : {3};
-      TRUE: STATE;
-    esac;
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">STATE</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">    </span><span class="k">case</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">};</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">};</span>
+<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">STATE</span><span class="p">;</span>
+<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-    VALID :=    ((STATE=0) -&gt; (!S_R_sec &amp; !S_R_pub &amp; !R_pub &amp; !R_sec ))
-              &amp; ((STATE=1) -&gt; (!S_R_sec &amp;  S_R_pub &amp;  R_pub &amp; !R_sec ))
-              &amp; ((STATE=2) -&gt; ( S_R_sec &amp; !S_R_pub &amp; !R_pub &amp;  R_sec ))
-              &amp; ((STATE=3) -&gt; ( S_R_sec &amp; !S_R_pub &amp;  R_pub &amp;  R_sec ));
+<span class="kd">DEFINE</span>
+<span class="w">    </span><span class="nv">VALID</span><span class="w"> </span><span class="o">:=</span><span class="w">    </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nv">S_R_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">S_R_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">R_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">R_sec</span><span class="w"> </span><span class="p">))</span>
+<span class="w">              </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nv">S_R_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="nv">S_R_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="nv">R_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">R_sec</span><span class="w"> </span><span class="p">))</span>
+<span class="w">              </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nv">S_R_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">S_R_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">R_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="nv">R_sec</span><span class="w"> </span><span class="p">))</span>
+<span class="w">              </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">STATE</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nv">S_R_sec</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">S_R_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="nv">R_pub</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="nv">R_sec</span><span class="w"> </span><span class="p">));</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MAPSYNTH
---(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))
-MODULE main
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MAPSYNTH</span>
+<span class="c">--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 
-VAR
-  ABs_SRs: boolean;
-  ABs_SRp: boolean;
-  BEp_SRs: boolean;
-  BEp_SRp: boolean;
-  Bs_Rp: boolean;
-  Bs_Rs: boolean;
-  Es_Rp: boolean;
-  Es_Rs: boolean;
+<span class="kd">VAR</span>
+<span class="w">  </span><span class="nv">ABs_SRs</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">ABs_SRp</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">BEp_SRs</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">BEp_SRp</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">Bs_Rp</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">Bs_Rs</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">Es_Rp</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">Es_Rs</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
 
-ASSIGN
-  -- Initial Conditions is arbitrary in mapping synth
-  init(ABs_SRs) := {TRUE, FALSE};
-  init(ABs_SRp) := {TRUE, FALSE};
-  init(BEp_SRs) := {TRUE, FALSE};
-  init(BEp_SRp) := {TRUE, FALSE};
-  init(Bs_Rp) := {TRUE, FALSE};
-  init(Bs_Rs) := {TRUE, FALSE};
-  init(Es_Rp) := {TRUE, FALSE};
-  init(Es_Rs) := {TRUE, FALSE};
+<span class="kd">ASSIGN</span>
+<span class="w">  </span><span class="c">-- Initial Conditions is arbitrary in mapping synth</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">ABs_SRs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">ABs_SRp</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">BEp_SRs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">BEp_SRp</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">Bs_Rp</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">Bs_Rs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">Es_Rp</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
+<span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">Es_Rs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">};</span>
 
-  -- Transition Relations
-  next(ABs_SRs) := ABs_SRs;
-  next(ABs_SRp) := ABs_SRp;
-  next(BEp_SRs) := BEp_SRs;
-  next(BEp_SRp) := BEp_SRp;
-  next(Bs_Rp) := Bs_Rp;
-  next(Bs_Rs) := Bs_Rs;
-  next(Es_Rp) := Es_Rp;
-  next(Es_Rs) := Es_Rs;
+<span class="w">  </span><span class="c">-- Transition Relations</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">ABs_SRs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">ABs_SRs</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">ABs_SRp</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">ABs_SRp</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">BEp_SRs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">BEp_SRs</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">BEp_SRp</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">BEp_SRp</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">Bs_Rp</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">Bs_Rp</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">Bs_Rs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">Bs_Rs</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">Es_Rp</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">Es_Rp</span><span class="p">;</span>
+<span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">Es_Rs</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">Es_Rs</span><span class="p">;</span>
 
-DEFINE
+<span class="kd">DEFINE</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>exists A. forall B. forall C. exists D. exists E.
-(G (
-      ((ABs_SRs[A]) -&gt; ((Alice_Bob_sec[B]) -&gt; (S_R_sec[C]))) /\
-      ((ABs_SRp[A]) -&gt; ((Alice_Bob_sec[B]) -&gt; (S_R_pub[C]))) /\
-      ((BEp_SRs[A]) -&gt; ((Bob_Eve_pub[B]) -&gt; (S_R_sec[C]))) /\
-      ((BEp_SRp[A]) -&gt; ((Bob_Eve_pub[B]) -&gt; (S_R_pub[C]))) /\
-      ((Bs_Rp[A]) -&gt; ((Bob_sec[B]) -&gt; (R_pub[C]))) /\
-      ((Bs_Rs[A]) -&gt; ((Bob_sec[B]) -&gt; (R_sec[C]))) /\
-      ((Es_Rp[A]) -&gt; ((Eve_secisnotempty[B]) -&gt; (R_pub[C]))) /\
-      ((Es_Rs[A]) -&gt; ((Eve_secisnotempty[B]) -&gt; (R_sec[C])))
-)
--&gt;
-(
-  G (
-      ((ABs_SRs[A]) -&gt; ((Alice_Bob_sec[D]) -&gt; (S_R_sec[E]))) /\
-      ((ABs_SRp[A]) -&gt; ((Alice_Bob_sec[D]) -&gt; (S_R_pub[E]))) /\
-      ((BEp_SRs[A]) -&gt; ((Bob_Eve_pub[D]) -&gt; (S_R_sec[E]))) /\
-      ((BEp_SRp[A]) -&gt; ((Bob_Eve_pub[D]) -&gt; (S_R_pub[E]))) /\
-      ((Bs_Rp[A]) -&gt; ((Bob_sec[D]) -&gt; (R_pub[E]))) /\
-      ((Bs_Rs[A]) -&gt; ((Bob_sec[D]) -&gt; (R_sec[E]))) /\
-      ((Es_Rp[A]) -&gt; ((Eve_secisnotempty[D]) -&gt; (R_pub[E]))) /\
-      ((Es_Rs[A]) -&gt; ((Eve_secisnotempty[D]) -&gt; (R_sec[E])))
-  )
-  /\
-  G ( ~(*secret[B] = secret[D]*) /\ (Eve_secisnotempty[B] &lt;-&gt; Eve_secisnotempty[D]))
-)
-)
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">exists</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">C</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">D</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="ow">E</span><span class="p">.</span>
+<span class="p">(</span><span class="ow">G</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">ABs_SRs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Alice_Bob_sec</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">S_R_sec</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">ABs_SRp</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Alice_Bob_sec</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">S_R_pub</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">BEp_SRs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Bob_Eve_pub</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">S_R_sec</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">BEp_SRp</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Bob_Eve_pub</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">S_R_pub</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">Bs_Rp</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Bob_sec</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">R_pub</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">Bs_Rs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Bob_sec</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">R_sec</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">Es_Rp</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Eve_secisnotempty</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">R_pub</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">Es_Rs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Eve_secisnotempty</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">R_sec</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span>
+<span class="p">)</span>
+<span class="o">-&gt;</span>
+<span class="p">(</span>
+<span class="w">  </span><span class="ow">G</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">ABs_SRs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Alice_Bob_sec</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">S_R_sec</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">ABs_SRp</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Alice_Bob_sec</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">S_R_pub</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">BEp_SRs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Bob_Eve_pub</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">S_R_sec</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">BEp_SRp</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Bob_Eve_pub</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">S_R_pub</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">Bs_Rp</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Bob_sec</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">R_pub</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">Bs_Rs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Bob_sec</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">R_sec</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">Es_Rp</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Eve_secisnotempty</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">R_pub</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">Es_Rs</span><span class="p">[</span><span class="ow">A</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">((</span><span class="nv">Eve_secisnotempty</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">R_sec</span><span class="p">[</span><span class="ow">E</span><span class="p">])))</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="o">/</span><span class="err">\</span>
+<span class="w">  </span><span class="ow">G</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="err">~</span><span class="p">(</span><span class="o">*</span><span class="nv">secret</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">secret</span><span class="p">[</span><span class="nv">D</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="nv">Eve_secisnotempty</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-&gt;</span><span class="w"> </span><span class="nv">Eve_secisnotempty</span><span class="p">[</span><span class="nv">D</span><span class="p">]))</span>
+<span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div></div>

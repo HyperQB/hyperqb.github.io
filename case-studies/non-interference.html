@@ -7,18 +7,18 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Non-interference in multi-threaded programs - HyperQB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bcc72795" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=563648f0" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
+    --color-code-background: #ffffff;
   --color-code-foreground: black;
   --color-brand-primary: #4CAF50;
   --color-brand-content: #388E3C;
@@ -281,388 +281,388 @@ the absence of a violation.</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #3.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #3.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI Incorrect</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MULTI-THREADED PROGRAM
---(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))
--- //// TRIGGER 0
--- // 0   trigger0 loops if (mask != 0) else go to line25
--- // 1        - while (trigger0 == 0) do nothing
--- // 2		- result = result OR mask
--- // 3		- trigger0 = 0
--- // 4		- maintrigger = matrigger + 1
--- // 5 		- if maintrigger = 1, then trigger1 = 1
--- // 6 		- if (mask != 0 and trigger0 = 0) back to line 1
--- //// TRIGGER 1
--- // 8	trigger1 loops if (mask != 0) else go to line25
--- // 9		- while (trigger1 == 0) do nothing
--- // 10		- result = result AND compliment(mask)
--- // 11		- trigger1 = 0
--- // 12   	- maintrigger = maintriger + 1
--- // 13       - if maintrigger = 1, then trigger0 = 1
--- // 14		- if (mask != 0 and trigger1 = 0) back to line 9
--- //// MAIN TRIGGER
--- // 16	maintrigger starts:
--- // 17		- while (mask != 0) // Hm mm
--- // 18		- maintrigger = 0
--- // 19		- if (PIN &amp; Mask = 0)
--- // 20		- trigger0 = 1
--- // 21		- else    trigger1 = 1
--- // 22		while (maintrigger != 2) loop
--- // 23		mask = mask / 2
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI Incorrect</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MULTI-THREADED PROGRAM</span>
+<span class="c">--(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))</span>
+<span class="c">-- //// TRIGGER 0</span>
+<span class="c">-- // 0   trigger0 loops if (mask != 0) else go to line25</span>
+<span class="c">-- // 1        - while (trigger0 == 0) do nothing</span>
+<span class="c">-- // 2		- result = result OR mask</span>
+<span class="c">-- // 3		- trigger0 = 0</span>
+<span class="c">-- // 4		- maintrigger = matrigger + 1</span>
+<span class="c">-- // 5 		- if maintrigger = 1, then trigger1 = 1</span>
+<span class="c">-- // 6 		- if (mask != 0 and trigger0 = 0) back to line 1</span>
+<span class="c">-- //// TRIGGER 1</span>
+<span class="c">-- // 8	trigger1 loops if (mask != 0) else go to line25</span>
+<span class="c">-- // 9		- while (trigger1 == 0) do nothing</span>
+<span class="c">-- // 10		- result = result AND compliment(mask)</span>
+<span class="c">-- // 11		- trigger1 = 0</span>
+<span class="c">-- // 12   	- maintrigger = maintriger + 1</span>
+<span class="c">-- // 13       - if maintrigger = 1, then trigger0 = 1</span>
+<span class="c">-- // 14		- if (mask != 0 and trigger1 = 0) back to line 9</span>
+<span class="c">-- //// MAIN TRIGGER</span>
+<span class="c">-- // 16	maintrigger starts:</span>
+<span class="c">-- // 17		- while (mask != 0) // Hm mm</span>
+<span class="c">-- // 18		- maintrigger = 0</span>
+<span class="c">-- // 19		- if (PIN &amp; Mask = 0)</span>
+<span class="c">-- // 20		- trigger0 = 1</span>
+<span class="c">-- // 21		- else    trigger1 = 1</span>
+<span class="c">-- // 22		while (maintrigger != 2) loop</span>
+<span class="c">-- // 23		mask = mask / 2</span>
 
 
-MODULE main
-VAR
-	PIN[0] : 0..1;
-    PIN[1] : 0..1;
-    PIN[2] : 0..1;
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="kd">VAR</span>
+<span class="w">	</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
 
-    MASK[0] : 0..1;
-    MASK[1] : 0..1;
-    MASK[2] : 0..1;
+<span class="w">    </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
 
-    RESULT[0] : 0..1;
-    RESULT[1] : 0..1;
-    RESULT[2] : 0..1;
-    
-	main_trigger: 0..2;
-	trigger_alpha: boolean;
-	trigger_beta: boolean;
+<span class="w">    </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">	</span><span class="nv">main_trigger</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">trigger_alpha</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">trigger_beta</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
-	alpha_line: 0..6;
-	beta_line: 0..6;
-	theta_line: 0..6;
+<span class="w">	</span><span class="nv">alpha_line</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">6</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">beta_line</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">6</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">theta_line</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">6</span><span class="p">;</span>
 
-ASSIGN
-	-- when PIN is arbitrary, small PINs such as 001, is leaking information
-	init(PIN[2]) := {1,0}; init(PIN[1]) := {1,0}; init(PIN[0]) := {1,0};
-	init(MASK[2]) := 1; init(MASK[1]) := 0; init(MASK[0]) := 0;
-	-- the lines
-	init(alpha_line) := 0;
-	init(beta_line) := 0;
-	init(theta_line) := 0;
+<span class="kd">ASSIGN</span>
+<span class="w">	</span><span class="c">-- when PIN is arbitrary, small PINs such as 001, is leaking information</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">	</span><span class="c">-- the lines</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">alpha_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">beta_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">theta_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-	init(RESULT[0]) := 0; init(RESULT[1]) := 0; init(RESULT[2]) := 0;
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-	init(main_trigger) := 0;
-	init(trigger_alpha) := FALSE;
-	init(trigger_beta) := FALSE;
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">main_trigger</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">trigger_alpha</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">trigger_beta</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
 
-	next(PIN[2]) := PIN[2];
-	next(PIN[1]) := PIN[1];
-	next(PIN[0]) := PIN[0];
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 
-	next(RESULT[2]) :=
-		case
-			(alpha_line=2 &amp; (RESULT[2]=1 | (MASK[2]=1))) : 1;
-			(alpha_line=2 &amp; !(RESULT[2]=1 | (MASK[2]=1))) : 0;
-			(beta_line=2 &amp; (RESULT[2]=1 &amp; (MASK[2]=0))) : 1;
-			(beta_line=2 &amp; !(RESULT[2]=1 &amp; (MASK[2]=0))) : 0;
-			TRUE: RESULT[2];
-		esac;
-	next(RESULT[1]) :=
-		case
-			(alpha_line=2 &amp; (RESULT[1]=1 | (MASK[1]=1))) : 1;
-			(alpha_line=2 &amp; !(RESULT[1]=1 | (MASK[1]=1))) : 0;
-			(beta_line=2 &amp; (RESULT[1]=1 &amp; (MASK[1]=0))) : 1;
-			(beta_line=2 &amp; !(RESULT[1]=1 &amp; (MASK[1]=0))) : 0;
-			TRUE: RESULT[1];
-		esac;
-	next(RESULT[0]) :=
-		case
-			(alpha_line=2 &amp; (RESULT[0]=1 | (MASK[0]=1))) : 1;
-			(alpha_line=2 &amp; !(RESULT[0]=1 | (MASK[0]=1))) : 0;
-			(beta_line=2 &amp; (RESULT[0]=1 &amp; (MASK[0]=0))) : 1;
-			(beta_line=2 &amp; !(RESULT[0]=1 &amp; (MASK[0]=0))) : 0;
-			TRUE: RESULT[0];
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(MASK[2]) :=
-		case
-			(theta_line=6 &amp; MASK[2]=1) : 0;
-			TRUE: MASK[2];
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(MASK[1]) :=
-		case
-			(theta_line=6 &amp; MASK[2]=1) : 1; -- divided by 2
-			(theta_line=6 &amp; MASK[1]=1) : 0;
-			TRUE: MASK[1];
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- divided by 2</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(MASK[0]) :=
-		case
-			(theta_line=6 &amp; MASK[1]=1) : 1; -- divided by 2
-			(theta_line=6 &amp; MASK[0]=1) : 0;
-			TRUE: MASK[0];
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- divided by 2</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
 
-	next(main_trigger) :=
-		case
-			(theta_line=1) : 0;
-			(alpha_line=4 &amp; main_trigger=0) : 1;
-			(alpha_line=4 &amp; main_trigger=1) : 2;
-			(beta_line=4 &amp; main_trigger=0) : 1;
-			(beta_line=4 &amp; main_trigger=1) : 2;
-			TRUE : main_trigger;
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">main_trigger</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">main_trigger</span><span class="p">;</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(trigger_alpha) :=
-		case
-			(theta_line=3) : TRUE;
-			(beta_line=5 &amp; main_trigger=1): TRUE;
-			(alpha_line=3) : FALSE;
-			TRUE: trigger_alpha;
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">trigger_alpha</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">trigger_alpha</span><span class="p">;</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(trigger_beta) :=
-		case
-			(theta_line=4) : TRUE;
-			(alpha_line=5 &amp; main_trigger=1): TRUE;
-			(beta_line=3) : FALSE;
-			TRUE: trigger_beta;
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">trigger_beta</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">trigger_beta</span><span class="p">;</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(alpha_line) :=
-		case
-			(alpha_line=0 &amp;  (MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {0}; -- END
-			(alpha_line=0 &amp;  !(MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {1};
-			(alpha_line=1 &amp; (trigger_alpha = FALSE)) : {1};
-			(alpha_line=1 &amp; (trigger_alpha = TRUE)) : {2};
-			(alpha_line=2) : {3}; -- result = result OR mask
-			(alpha_line=3) : {4}; -- trigger0 = 0
-			(alpha_line=4) : {5}; -- maintrigger = matrigger + 1
-			(alpha_line=5) : {6}; -- if maintrigger = 1, then trigger1 = 1
-			(alpha_line=6) : {0}; -- if (mask != 0 and trigger0 = 0) back to line 1
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">alpha_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">-- END</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="o">!</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">trigger_alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">trigger_alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c">-- result = result OR mask</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c">-- trigger0 = 0</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- maintrigger = matrigger + 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">};</span><span class="w"> </span><span class="c">-- if maintrigger = 1, then trigger1 = 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">-- if (mask != 0 and trigger0 = 0) back to line 1</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(beta_line) :=
-		case
-			(beta_line=0 &amp;  (MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {0}; --END
-			(beta_line=0 &amp;  !(MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {1};
-			(beta_line=1 &amp; (trigger_beta = FALSE)) : {1};
-			(beta_line=1 &amp; (trigger_beta = TRUE)) : {2};
-			(beta_line=2) : {3}; -- result = result AND compliment(mask)
-			(beta_line=3) : {4}; -- trigger1 = 0
-			(beta_line=4) : {5}; -- maintrigger = maintriger + 1
-			(beta_line=5) : {6}; -- if maintrigger = 1, then trigger0 = 1
-			(beta_line=6) : {0}; -- if (mask != 0 and trigger1 = 0) back to line 1
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">beta_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">--END</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="o">!</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">trigger_beta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">trigger_beta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c">-- result = result AND compliment(mask)</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c">-- trigger1 = 0</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- maintrigger = maintriger + 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">};</span><span class="w"> </span><span class="c">-- if maintrigger = 1, then trigger0 = 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">-- if (mask != 0 and trigger1 = 0) back to line 1</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(theta_line) :=
-		case
-			(theta_line=0 &amp;  (MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {0};
-			(theta_line=0 &amp;  !(MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {1};
-			(theta_line=1) : {2}; -- maintrigger = 0
-			(theta_line=2 &amp; ((PIN[2] = MASK[2]) &amp; (PIN[1] = MASK[1]) &amp; (PIN[0] = MASK[0]))) : {3}; -- if (PIN &amp; Mask = 0)
-			(theta_line=3) : {5}; -- trigger_alpha = 1
-			(theta_line=2 &amp; !((PIN[2] = MASK[2]) &amp; (PIN[1] = MASK[1]) &amp; (PIN[0] = MASK[0]))) : {4}; -- if !(PIN &amp; Mask = 0)
-			(theta_line=4) : {5}; -- trigger_beta=1
-			(theta_line=5 &amp; !(main_trigger=2)) : {5}; -- while (maintrigger != 2) loop
-			(theta_line=5 &amp; (main_trigger=2)) : {6}; -- proceed
-			(theta_line=6) : {0}; --mask = mask / 2
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">theta_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="o">!</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"> </span><span class="c">-- maintrigger = 0</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c">-- if (PIN &amp; Mask = 0)</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- trigger_alpha = 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">((</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c">-- if !(PIN &amp; Mask = 0)</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- trigger_beta=1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- while (maintrigger != 2) loop</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">};</span><span class="w"> </span><span class="c">-- proceed</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">--mask = mask / 2</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-		halt := (theta_line=0 &amp; (MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0));
+<span class="kd">DEFINE</span>
+<span class="w">		</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">));</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. exists B. F~((*PIN[2][A] = PIN[2][B]*) /\ (*PIN[1][A] = PIN[1][B]*) /\ (*PIN[0][A] = PIN[0][B]*)) /\ ( (~halt[A] \/ ~halt[B]) U ((halt[A] /\ halt[B]) /\ ((*RESULT[2][A] = RESULT[2][B]*) /\ (*RESULT[1][A] = RESULT[1][B]*) /\ (*RESULT[0][A] = RESULT[0][B]*))))
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="w"> </span><span class="ow">F</span><span class="err">~</span><span class="p">((</span><span class="o">*</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="err">~</span><span class="nv">halt</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="err">\</span><span class="o">/</span><span class="w"> </span><span class="err">~</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="ow">U</span><span class="w"> </span><span class="p">((</span><span class="nv">halt</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">((</span><span class="o">*</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))))</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NI Correct</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>--MULTI-THREADED PROGRAM
---(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))
--- //// TRIGGER 0
--- // 0   trigger0 loops if (mask != 0) else go to line25
--- // 1        - while (trigger0 == 0) do nothing
--- // 2		- result = result OR mask
--- // 3		- trigger0 = 0
--- // 4		- maintrigger = matrigger + 1
--- // 5 		- if maintrigger = 1, then trigger1 = 1
--- // 6 		- if (mask != 0 and trigger0 = 0) back to line 1
--- //// TRIGGER 1
--- // 8	trigger1 loops if (mask != 0) else go to line25
--- // 9		- while (trigger1 == 0) do nothing
--- // 10		- result = result AND compliment(mask)
--- // 11		- trigger1 = 0
--- // 12   	- maintrigger = maintriger + 1
--- // 13       - if maintrigger = 1, then trigger0 = 1
--- // 14		- if (mask != 0 and trigger1 = 0) back to line 9
--- //// MAIN TRIGGER
--- // 16	maintrigger starts:
--- // 17		- while (mask != 0) // Hm mm
--- // 18		- maintrigger = 0
--- // 19		- if (PIN &amp; Mask = 0)
--- // 20		- trigger0 = 1
--- // 21		- else    trigger1 = 1
--- // 22		while (maintrigger != 2) loop
--- // 23		mask = mask / 2
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NI Correct</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MULTI-THREADED PROGRAM</span>
+<span class="c">--(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))</span>
+<span class="c">-- //// TRIGGER 0</span>
+<span class="c">-- // 0   trigger0 loops if (mask != 0) else go to line25</span>
+<span class="c">-- // 1        - while (trigger0 == 0) do nothing</span>
+<span class="c">-- // 2		- result = result OR mask</span>
+<span class="c">-- // 3		- trigger0 = 0</span>
+<span class="c">-- // 4		- maintrigger = matrigger + 1</span>
+<span class="c">-- // 5 		- if maintrigger = 1, then trigger1 = 1</span>
+<span class="c">-- // 6 		- if (mask != 0 and trigger0 = 0) back to line 1</span>
+<span class="c">-- //// TRIGGER 1</span>
+<span class="c">-- // 8	trigger1 loops if (mask != 0) else go to line25</span>
+<span class="c">-- // 9		- while (trigger1 == 0) do nothing</span>
+<span class="c">-- // 10		- result = result AND compliment(mask)</span>
+<span class="c">-- // 11		- trigger1 = 0</span>
+<span class="c">-- // 12   	- maintrigger = maintriger + 1</span>
+<span class="c">-- // 13       - if maintrigger = 1, then trigger0 = 1</span>
+<span class="c">-- // 14		- if (mask != 0 and trigger1 = 0) back to line 9</span>
+<span class="c">-- //// MAIN TRIGGER</span>
+<span class="c">-- // 16	maintrigger starts:</span>
+<span class="c">-- // 17		- while (mask != 0) // Hm mm</span>
+<span class="c">-- // 18		- maintrigger = 0</span>
+<span class="c">-- // 19		- if (PIN &amp; Mask = 0)</span>
+<span class="c">-- // 20		- trigger0 = 1</span>
+<span class="c">-- // 21		- else    trigger1 = 1</span>
+<span class="c">-- // 22		while (maintrigger != 2) loop</span>
+<span class="c">-- // 23		mask = mask / 2</span>
 
 
-MODULE main
-VAR
-    PIN[0] : 0..1;
-    PIN[1] : 0..1;
-    PIN[2] : 0..1;
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="kd">VAR</span>
+<span class="w">    </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
 
-    MASK[0] : 0..1;
-    MASK[1] : 0..1;
-    MASK[2] : 0..1;
+<span class="w">    </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
 
-    RESULT[0] : 0..1;
-    RESULT[1] : 0..1;
-    RESULT[2] : 0..1;
+<span class="w">    </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
 
-	main_trigger: 0..2;
-	trigger_alpha: boolean;
-	trigger_beta: boolean;
+<span class="w">	</span><span class="nv">main_trigger</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">trigger_alpha</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">trigger_beta</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 
-	alpha_line: 0..6;
-	beta_line: 0..6;
-	theta_line: 0..6;
+<span class="w">	</span><span class="nv">alpha_line</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">6</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">beta_line</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">6</span><span class="p">;</span>
+<span class="w">	</span><span class="nv">theta_line</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">6</span><span class="p">;</span>
 
-ASSIGN
-	-- correct version: when PIN is at least 2times+1 of MASK:
-	init(PIN[2]) := {1}; init(PIN[1]) := {1,0}; init(PIN[0]) := {1,0};
-	init(MASK[2]) := 0; init(MASK[1]) := 0; init(MASK[0]) := 1;
-	-- the lines
-	init(alpha_line) := 0;
-	init(beta_line) := 0;
-	init(theta_line) := 0;
+<span class="kd">ASSIGN</span>
+<span class="w">	</span><span class="c">-- correct version: when PIN is at least 2times+1 of MASK:</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">	</span><span class="c">-- the lines</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">alpha_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">beta_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">theta_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-	init(RESULT[0]) := 0; init(RESULT[1]) := 0; init(RESULT[2]) := 0;
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nb">init</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-	init(main_trigger) := 0;
-	init(trigger_alpha) := FALSE;
-	init(trigger_beta) := FALSE;
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">main_trigger</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">trigger_alpha</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">trigger_beta</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
 
-	next(PIN[2]) := PIN[2];
-	next(PIN[1]) := PIN[1];
-	next(PIN[0]) := PIN[0];
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 
-	next(RESULT[2]) :=
-		case
-			(alpha_line=2 &amp; (RESULT[2]=1 | (MASK[2]=1))) : 1;
-			(alpha_line=2 &amp; !(RESULT[2]=1 | (MASK[2]=1))) : 0;
-			(beta_line=2 &amp; (RESULT[2]=1 &amp; (MASK[2]=0))) : 1;
-			(beta_line=2 &amp; !(RESULT[2]=1 &amp; (MASK[2]=0))) : 0;
-			TRUE: RESULT[2];
-		esac;
-	next(RESULT[1]) :=
-		case
-			(alpha_line=2 &amp; (RESULT[1]=1 | (MASK[1]=1))) : 1;
-			(alpha_line=2 &amp; !(RESULT[1]=1 | (MASK[1]=1))) : 0;
-			(beta_line=2 &amp; (RESULT[1]=1 &amp; (MASK[1]=0))) : 1;
-			(beta_line=2 &amp; !(RESULT[1]=1 &amp; (MASK[1]=0))) : 0;
-			TRUE: RESULT[1];
-		esac;
-	next(RESULT[0]) :=
-		case
-			(alpha_line=2 &amp; (RESULT[0]=1 | (MASK[0]=1))) : 1;
-			(alpha_line=2 &amp; !(RESULT[0]=1 | (MASK[0]=1))) : 0;
-			(beta_line=2 &amp; (RESULT[0]=1 &amp; (MASK[0]=0))) : 1;
-			(beta_line=2 &amp; !(RESULT[0]=1 &amp; (MASK[0]=0))) : 0;
-			TRUE: RESULT[0];
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(MASK[2]) :=
-		case
-			(theta_line=6 &amp; MASK[2]=1) : 0;
-			TRUE: MASK[2];
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(MASK[1]) :=
-		case
-			(theta_line=6 &amp; MASK[2]=1) : 1; -- divided by 2
-			(theta_line=6 &amp; MASK[1]=1) : 0;
-			TRUE: MASK[1];
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- divided by 2</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(MASK[0]) :=
-		case
-			(theta_line=6 &amp; MASK[1]=1) : 1; -- divided by 2
-			(theta_line=6 &amp; MASK[0]=1) : 0;
-			TRUE: MASK[0];
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- divided by 2</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
 
-	next(main_trigger) :=
-		case
-			(theta_line=1) : 0;
-			(alpha_line=4 &amp; main_trigger=0) : 1;
-			(alpha_line=4 &amp; main_trigger=1) : 2;
-			(beta_line=4 &amp; main_trigger=0) : 1;
-			(beta_line=4 &amp; main_trigger=1) : 2;
-			TRUE : main_trigger;
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">main_trigger</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">4</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">main_trigger</span><span class="p">;</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(trigger_alpha) :=
-		case
-			(theta_line=3) : TRUE;
-			(beta_line=5 &amp; main_trigger=1): TRUE;
-			(alpha_line=3) : FALSE;
-			TRUE: trigger_alpha;
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">trigger_alpha</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">trigger_alpha</span><span class="p">;</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(trigger_beta) :=
-		case
-			(theta_line=4) : TRUE;
-			(alpha_line=5 &amp; main_trigger=1): TRUE;
-			(beta_line=3) : FALSE;
-			TRUE: trigger_beta;
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">trigger_beta</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="w">			</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">trigger_beta</span><span class="p">;</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(alpha_line) :=
-		case
-			(alpha_line=0 &amp;  (MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {0}; -- END
-			(alpha_line=0 &amp;  !(MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {1};
-			(alpha_line=1 &amp; (trigger_alpha = FALSE)) : {1};
-			(alpha_line=1 &amp; (trigger_alpha = TRUE)) : {2};
-			(alpha_line=2) : {3}; -- result = result OR mask
-			(alpha_line=3) : {4}; -- trigger0 = 0
-			(alpha_line=4) : {5}; -- maintrigger = matrigger + 1
-			(alpha_line=5) : {6}; -- if maintrigger = 1, then trigger1 = 1
-			(alpha_line=6) : {0}; -- if (mask != 0 and trigger0 = 0) back to line 1
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">alpha_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">-- END</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="o">!</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">trigger_alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">trigger_alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c">-- result = result OR mask</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c">-- trigger0 = 0</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- maintrigger = matrigger + 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">};</span><span class="w"> </span><span class="c">-- if maintrigger = 1, then trigger1 = 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">alpha_line</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">-- if (mask != 0 and trigger0 = 0) back to line 1</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(beta_line) :=
-		case
-			(beta_line=0 &amp;  (MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {0}; --END
-			(beta_line=0 &amp;  !(MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {1};
-			(beta_line=1 &amp; (trigger_beta = FALSE)) : {1};
-			(beta_line=1 &amp; (trigger_beta = TRUE)) : {2};
-			(beta_line=2) : {3}; -- result = result AND compliment(mask)
-			(beta_line=3) : {4}; -- trigger1 = 0
-			(beta_line=4) : {5}; -- maintrigger = maintriger + 1
-			(beta_line=5) : {6}; -- if maintrigger = 1, then trigger0 = 1
-			(beta_line=6) : {0}; -- if (mask != 0 and trigger1 = 0) back to line 1
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">beta_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">--END</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="o">!</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">trigger_beta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">trigger_beta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c">-- result = result AND compliment(mask)</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c">-- trigger1 = 0</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- maintrigger = maintriger + 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">};</span><span class="w"> </span><span class="c">-- if maintrigger = 1, then trigger0 = 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">beta_line</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">-- if (mask != 0 and trigger1 = 0) back to line 1</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-	next(theta_line) :=
-		case
-			(theta_line=0 &amp;  (MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {0};
-			(theta_line=0 &amp;  !(MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0)) : {1};
-			(theta_line=1) : {2}; -- maintrigger = 0
-			(theta_line=2 &amp; ((PIN[2] = MASK[2]) &amp; (PIN[1] = MASK[1]) &amp; (PIN[0] = MASK[0]))) : {3}; -- if (PIN &amp; Mask = 0)
-			(theta_line=3) : {5}; -- trigger_alpha = 1
-			(theta_line=2 &amp; !((PIN[2] = MASK[2]) &amp; (PIN[1] = MASK[1]) &amp; (PIN[0] = MASK[0]))) : {4}; -- if !(PIN &amp; Mask = 0)
-			(theta_line=4) : {5}; -- trigger_beta=1
-			(theta_line=5 &amp; !(main_trigger=2)) : {5}; -- while (maintrigger != 2) loop
-			(theta_line=5 &amp; (main_trigger=2)) : {6}; -- proceed
-			(theta_line=6) : {0}; --mask = mask / 2
-		esac;
+<span class="w">	</span><span class="ow">next</span><span class="p">(</span><span class="nv">theta_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">		</span><span class="k">case</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="o">!</span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"> </span><span class="c">-- maintrigger = 0</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c">-- if (PIN &amp; Mask = 0)</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- trigger_alpha = 1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">((</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c">-- if !(PIN &amp; Mask = 0)</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- trigger_beta=1</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c">-- while (maintrigger != 2) loop</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">main_trigger</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">};</span><span class="w"> </span><span class="c">-- proceed</span>
+<span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">--mask = mask / 2</span>
+<span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 
-DEFINE
-	halt := (theta_line=0 &amp; (MASK[2]=0 &amp; MASK[1]=0 &amp; MASK[0]=0));
+<span class="kd">DEFINE</span>
+<span class="w">	</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">theta_line</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">MASK</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">MASK</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">));</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span>forall A. exists B. F~((*PIN[2][A] = PIN[2][B]*) /\ (*PIN[1][A] = PIN[1][B]*) /\ (*PIN[0][A] = PIN[0][B]*)) /\ ( (~halt[A] \/ ~halt[B]) U ((halt[A] /\ halt[B]) /\ ((*RESULT[2][A] = RESULT[2][B]*) /\ (*RESULT[1][A] = RESULT[1][B]*) /\ (*RESULT[0][A] = RESULT[0][B]*))))
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">exists</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="w"> </span><span class="ow">F</span><span class="err">~</span><span class="p">((</span><span class="o">*</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">PIN</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="err">~</span><span class="nv">halt</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="err">\</span><span class="o">/</span><span class="w"> </span><span class="err">~</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="ow">U</span><span class="w"> </span><span class="p">((</span><span class="nv">halt</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">((</span><span class="o">*</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="err">\</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="ow">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RESULT</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="nv">B</span><span class="p">]</span><span class="o">*</span><span class="p">))))</span>
 </pre></div>
 </div>
 </div></div>

@@ -1,3 +1,10 @@
+from pygments.lexers.smv import NuSMVLexer
+from sphinx.highlighting import lexers
+
+# Lexer configuration
+lexers['smv'] = NuSMVLexer()
+pygments_style = "vs"
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -40,5 +47,4 @@ html_css_files = ['custom.css']
 extensions = [
     'sphinx.ext.mathjax',
     'sphinx_tabs.tabs',
-
 ]

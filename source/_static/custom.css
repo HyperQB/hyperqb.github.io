@@ -2,15 +2,19 @@
     color: #4caf50;
     border: none;
 }
+body[data-theme="dark"] .sphinx-tabs-tab{
+    color: #4caf50;
+    border-bottom: 4px solid #232326;
+}
 .sphinx-tabs-tab[aria-selected="true"]{
-    /*border: 1px solid #4caf50;*/
-    /*border-bottom: none;*/
+    border: none;
+    border-bottom: 4px solid #4caf50;
+}
+body[data-theme="dark"] .sphinx-tabs-tab[aria-selected="true"]{
     border: none;
     border-bottom: 4px solid #4caf50;
 }
 .sphinx-tabs-panel{
-    /*border: 1px solid #4caf50;*/
-    /*border-top: none;*/
     border: none;
     border-bottom: 1px solid #4caf50;
     border-radius: 0;
@@ -19,3 +23,12 @@
     border-bottom: 1px solid #4caf50;
 }
 
+/* Remove scrolling from math block containers */
+.math-wrapper.docutils.container {
+    overflow: visible !important;
+    margin: 40px 0;
+}
+
+.highlight{
+    background: rgb(249, 250, 252);
+}

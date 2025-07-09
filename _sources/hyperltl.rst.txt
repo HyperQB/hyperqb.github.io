@@ -1,15 +1,6 @@
 HyperLTL
 ========
 
-We consider hyperproperties as formulas in HyperLTL [1], which allows explicit quantification on traces. The syntax of HyperLTL formulas is defined by the following grammar:
-
-.. math::
-
-   \begin{array}{rcl}
-   \varphi & ::= & \exists \pi . \varphi \mid \forall \pi . \varphi \mid \phi \\
-   \phi    & ::= & \mathit{true} \mid a_\pi \mid \neg \phi \mid \phi \lor \phi \mid \phi \land \phi \mid \phi \mathcal{U} \phi \mid \phi \mathcal{R} \phi \mid \bigcirc \phi
-   \end{array}
-
 References
 ----------
 

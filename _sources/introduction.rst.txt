@@ -23,9 +23,3 @@ Overview
     3. Solve the QBF with a solver (currently **QuAbs**), then decode result back into:
         - A **counterexample** (bug hunting), or
         - A **witness** (trace set satisfying the property)
-
-Publication
------------
-
-- `HyperQB: A QBF-Based Bounded Model Checker for Hyperproperties <https://arxiv.org/abs/2109.12989>`_
-  *Tzu-Han Hsu, Borzoo Bonakdarpour, César Sánchez*

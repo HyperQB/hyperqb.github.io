@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="HyperLTL" href="hyperltl.html" /><link rel="prev" title="Introduction" href="introduction.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Case Studies" href="case-studies/index.html" /><link rel="prev" title="Introduction" href="introduction.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Background Theory - HyperQB</title>
@@ -209,8 +209,34 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Background Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hyperltl.html">HyperLTL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case-studies.html">Case Studies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="case-studies/index.html">Case Studies</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/security/index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/symmetry.html">Symmetry in the Bakery Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/non-interference.html">Non-interference in multi-threaded programs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/fairness.html">Fairness in Non-Repudiation Protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/mutation.html">Mutation testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/co-termination.html">Co-termination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/deniability.html">Deniability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/intransitive-non-interference.html">Intransitive Non-interference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/termination-non-interference.html">Termination-sensitive/-insensitive Non-interference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/nondeterministic.html">Nondeterministic Inputs and Transitions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/concurrency/index.html">Concurrency</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Concurrency</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/concurrency/linearizability.html">Linearizability</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/planning/index.html">Planning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/planning/path-planning.html">Path planning for robots</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/synthesis/index.html">Synthesis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/synthesis/secrecy.html">Secrecy-preserving Refinement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/synthesis/teamltl.html">LTL with Team Semantics</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="playground.html">Playground</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
@@ -257,9 +283,22 @@
         <article role="main" id="furo-main-content">
           <section id="background-theory">
 <h1>Background Theory<a class="headerlink" href="#background-theory" title="Permalink to this heading">¶</a></h1>
+<section id="hyperltl">
+<h2>HyperLTL<a class="headerlink" href="#hyperltl" title="Permalink to this heading">¶</a></h2>
+<p>We consider hyperproperties as formulas in HyperLTL [1], which allows explicit quantification on traces. The syntax of HyperLTL formulas is defined by the following grammar:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{rcl}
+\varphi &amp; ::= &amp; \exists \pi . \varphi \mid \forall \pi . \varphi \mid \phi \\
+\phi    &amp; ::= &amp; \mathit{true} \mid a_\pi \mid \neg \phi \mid \phi \lor \phi \mid \phi \land \phi \mid \phi \mathcal{U} \phi \mid \phi \mathcal{R} \phi \mid \bigcirc \phi
+\end{array}\end{split}\]</div>
+</div>
 <p>Given a HyperLTL formula <span class="math notranslate nohighlight">\(\varphi\)</span>, a bound <span class="math notranslate nohighlight">\(k\)</span>, and a set of Kripke structures <span class="math notranslate nohighlight">\(\mathcal{K}\)</span>, the goal is to construct a <span class="math notranslate nohighlight">\(\text{QBF}\)</span> formula <span class="math notranslate nohighlight">\(⟦ \mathcal{K}, \varphi ⟧_k\)</span> whose satisfiability reflects whether <span class="math notranslate nohighlight">\(\mathcal{K} \models \varphi\)</span> holds within bound <span class="math notranslate nohighlight">\(k\)</span>.</p>
+</section>
+<section id="reducing-bmc-to-qbf-solving">
+<h2>Reducing BMC to QBF Solving<a class="headerlink" href="#reducing-bmc-to-qbf-solving" title="Permalink to this heading">¶</a></h2>
 <section id="encoding-the-kripke-structures">
-<h2>Encoding the Kripke Structures<a class="headerlink" href="#encoding-the-kripke-structures" title="Permalink to this heading">¶</a></h2>
+<h3>1. Encoding the Kripke Structures<a class="headerlink" href="#encoding-the-kripke-structures" title="Permalink to this heading">¶</a></h3>
 <p>To reduce model checking to QBF, each Kripke structure is encoded as a Boolean formula representing all its valid traces up to a fixed bound <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <ul>
 <li><p>States are encoded using fresh Boolean variables <span class="math notranslate nohighlight">\(n_0, n_1, \dots\)</span>, added to the set of atomic propositions:
@@ -276,7 +315,7 @@
 <p>This formula represents all traces of length <span class="math notranslate nohighlight">\(k\)</span> from the Kripke structure, and provides the basis for checking temporal properties using QBF.</p>
 </section>
 <section id="encoding-the-inner-ltl-formula">
-<h2>Encoding the Inner LTL Formula<a class="headerlink" href="#encoding-the-inner-ltl-formula" title="Permalink to this heading">¶</a></h2>
+<h3>2. Encoding the Inner LTL Formula<a class="headerlink" href="#encoding-the-inner-ltl-formula" title="Permalink to this heading">¶</a></h3>
 <p>The inner LTL formula is translated into a Boolean formula over the unrolled trace, using standard bounded model checking (BMC) techniques with semantic variations.</p>
 <ul class="simple">
 <li><p>The formula is encoded inductively as <span class="math notranslate nohighlight">\(⟦ \psi ⟧_i^k\)</span>, where <span class="math notranslate nohighlight">\(i\)</span> is the current time step and <span class="math notranslate nohighlight">\(k\)</span> is the bound.</p></li>
@@ -307,7 +346,7 @@
 <p>These base cases affect how temporal operators are evaluated at the final unrolling step.</p>
 </section>
 <section id="combining-the-encodings">
-<h2>Combining the Encodings<a class="headerlink" href="#combining-the-encodings" title="Permalink to this heading">¶</a></h2>
+<h3>3. Combining the Encodings<a class="headerlink" href="#combining-the-encodings" title="Permalink to this heading">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(\varphi = \mathbb{Q}_A \pi_A. \mathbb{Q}_B \pi_B. \dots \mathbb{Q}_Z \pi_Z. \psi\)</span> be a HyperLTL formula, and let each <span class="math notranslate nohighlight">\(\pi_j\)</span> be associated with a Kripke structure <span class="math notranslate nohighlight">\(K_j\)</span>.</p>
 <p>The full QBF encoding is:</p>
 <div class="math-wrapper docutils container">
@@ -327,9 +366,6 @@
 </dl>
 <p>This combined formula allows a QBF solver to decide whether the HyperLTL formula holds for all (or some) traces up to bound <span class="math notranslate nohighlight">\(k\)</span>.</p>
 </section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
-<p>A more detailed explanation can be found in the paper <a class="reference external" href="https://www.cse.msu.edu/tart/sites/default/files/publications/files/2021-07/tacas21.pdf">Bounded Model Checking for Hyperproperties</a> <em>Tzu-Han Hsu, César Sánchez, and Borzoo Bonakdarpour</em></p>
 </section>
 </section>
 
@@ -338,12 +374,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="hyperltl.html">
+          <a class="next-page" href="case-studies/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">HyperLTL</div>
+                <div class="title">Case Studies</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -389,10 +425,13 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Background Theory</a><ul>
-<li><a class="reference internal" href="#encoding-the-kripke-structures">Encoding the Kripke Structures</a></li>
-<li><a class="reference internal" href="#encoding-the-inner-ltl-formula">Encoding the Inner LTL Formula</a></li>
-<li><a class="reference internal" href="#combining-the-encodings">Combining the Encodings</a></li>
-<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#hyperltl">HyperLTL</a></li>
+<li><a class="reference internal" href="#reducing-bmc-to-qbf-solving">Reducing BMC to QBF Solving</a><ul>
+<li><a class="reference internal" href="#encoding-the-kripke-structures">1. Encoding the Kripke Structures</a></li>
+<li><a class="reference internal" href="#encoding-the-inner-ltl-formula">2. Encoding the Inner LTL Formula</a></li>
+<li><a class="reference internal" href="#combining-the-encodings">3. Combining the Encodings</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

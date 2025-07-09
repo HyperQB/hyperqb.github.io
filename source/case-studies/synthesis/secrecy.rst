@@ -37,22 +37,22 @@ Benchmarks
 
             .. tab:: Mapping Synthesis MA
 
-                .. literalinclude :: models/12_mapsynth/msynth_MA.smv
+                .. literalinclude :: ../models/12_mapsynth/msynth_MA.smv
                     :language: smv
 
             .. tab:: Mapping Synthesis MB
 
-                .. literalinclude :: models/12_mapsynth/msynth_MB.smv
+                .. literalinclude :: ../models/12_mapsynth/msynth_MB.smv
                     :language: smv
 
             .. tab:: Mapping Synthesis MM
 
-                .. literalinclude :: models/12_mapsynth/msynth_MM.smv
+                .. literalinclude :: ../models/12_mapsynth/msynth_MM.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/12_mapsynth/msynth.hq
+        .. literalinclude :: ../models/12_mapsynth/msynth.hq
             :language: smv
 
     .. tab:: Case #12.2
@@ -63,20 +63,20 @@ Benchmarks
 
             .. tab:: Mapping Synthesis MA
 
-                .. literalinclude :: models/12_mapsynth/msynth2_MA.smv
+                .. literalinclude :: ../models/12_mapsynth/msynth2_MA.smv
                     :language: smv
 
             .. tab:: Mapping Synthesis MB
 
-                .. literalinclude :: models/12_mapsynth/msynth2_MB.smv
+                .. literalinclude :: ../models/12_mapsynth/msynth2_MB.smv
                     :language: smv
 
             .. tab:: Mapping Synthesis MM
 
-                .. literalinclude :: models/12_mapsynth/msynth2_MM.smv
+                .. literalinclude :: ../models/12_mapsynth/msynth2_MM.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/12_mapsynth/msynth2.hq
+        .. literalinclude :: ../models/12_mapsynth/msynth2.hq
             :language: smv

@@ -1,10 +1,24 @@
 Background Theory
 =================
+HyperLTL
+--------
+
+We consider hyperproperties as formulas in HyperLTL [1], which allows explicit quantification on traces. The syntax of HyperLTL formulas is defined by the following grammar:
+
+.. math::
+
+   \begin{array}{rcl}
+   \varphi & ::= & \exists \pi . \varphi \mid \forall \pi . \varphi \mid \phi \\
+   \phi    & ::= & \mathit{true} \mid a_\pi \mid \neg \phi \mid \phi \lor \phi \mid \phi \land \phi \mid \phi \mathcal{U} \phi \mid \phi \mathcal{R} \phi \mid \bigcirc \phi
+   \end{array}
 
 Given a HyperLTL formula :math:`\varphi`, a bound :math:`k`, and a set of Kripke structures :math:`\mathcal{K}`, the goal is to construct a :math:`\text{QBF}` formula :math:`⟦ \mathcal{K}, \varphi ⟧_k` whose satisfiability reflects whether :math:`\mathcal{K} \models \varphi` holds within bound :math:`k`.
 
-Encoding the Kripke Structures
-------------------------------
+Reducing BMC to QBF Solving
+---------------------------
+
+1. Encoding the Kripke Structures
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To reduce model checking to QBF, each Kripke structure is encoded as a Boolean formula representing all its valid traces up to a fixed bound :math:`k`.
 
@@ -23,8 +37,8 @@ To reduce model checking to QBF, each Kripke structure is encoded as a Boolean f
 
 This formula represents all traces of length :math:`k` from the Kripke structure, and provides the basis for checking temporal properties using QBF.
 
-Encoding the Inner LTL Formula
-------------------------------
+2. Encoding the Inner LTL Formula
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The inner LTL formula is translated into a Boolean formula over the unrolled trace, using standard bounded model checking (BMC) techniques with semantic variations.
 
@@ -56,8 +70,8 @@ The inner LTL formula is translated into a Boolean formula over the unrolled tra
    \end{align}
 These base cases affect how temporal operators are evaluated at the final unrolling step.
 
-Combining the Encodings
------------------------
+3. Combining the Encodings
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Let :math:`\varphi = \mathbb{Q}_A \pi_A. \mathbb{Q}_B \pi_B. \dots \mathbb{Q}_Z \pi_Z. \psi` be a HyperLTL formula, and let each :math:`\pi_j` be associated with a Kripke structure :math:`K_j`.
 
@@ -76,8 +90,3 @@ Where:
     - :math:`⟦ \psi ⟧_0^k` is the encoding of the LTL subformula under the chosen semantics
 
 This combined formula allows a QBF solver to decide whether the HyperLTL formula holds for all (or some) traces up to bound :math:`k`.
-
-References
-----------
-
-A more detailed explanation can be found in the paper `Bounded Model Checking for Hyperproperties <https://www.cse.msu.edu/tart/sites/default/files/publications/files/2021-07/tacas21.pdf>`_ *Tzu-Han Hsu, César Sánchez, and Borzoo Bonakdarpour*

@@ -33,17 +33,17 @@ Benchmarks
 
             .. tab:: Snark 1 M1 concurrent
 
-                .. literalinclude :: models/2_snark/snark1_M1_concurrent.smv
+                .. literalinclude :: ../models/2_snark/snark1_M1_concurrent.smv
                     :language: smv
 
             .. tab:: Snark 1 M2 sequential
 
-                .. literalinclude :: models/2_snark/snark1_M2_sequential.smv
+                .. literalinclude :: ../models/2_snark/snark1_M2_sequential.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/2_snark/snark1.hq
+        .. literalinclude :: ../models/2_snark/snark1.hq
             :language: smv
 
     .. tab:: Case #2.2
@@ -54,15 +54,22 @@ Benchmarks
 
                 .. tab:: Snark 2 M1 concurrent
 
-                    .. literalinclude :: models/2_snark/snark2_M1_concurrent.smv
+                    .. literalinclude :: ../models/2_snark/snark2_M1_concurrent.smv
                         :language: smv
 
                 .. tab:: Snark 2 M2 sequential
 
-                    .. literalinclude :: models/2_snark/snark2_M2_sequential.smv
+                    .. literalinclude :: ../models/2_snark/snark2_M2_sequential.smv
                         :language: smv
 
             **Formula**
 
-            .. literalinclude :: models/2_snark/snark2.hq
+            .. literalinclude :: ../models/2_snark/snark2.hq
                 :language: smv
+
+References
+----------
+.. _DDG+04:
+- [DDG+04] S. Doherty, D. Detlefs, L. Groves, C. H. Flood, V. Luchangco, P. A. Martin, M. Moir, N. Shavit, and G. L. Steele Jr. DCAS is not a silver bullet for nonblocking algorithm design. In *Proceedings of the 16th Annual ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)*, pages 216–224, 2004.
+.. _HW90:
+- [HW90] M. Herlihy and J. M. Wing. Linearizability: A correctness condition for concurrent objects. ACM Transactions on Programming Languages and Systems, 12(3):463–492, 1990.

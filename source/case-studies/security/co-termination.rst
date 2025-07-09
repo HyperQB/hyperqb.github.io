@@ -27,15 +27,20 @@ Benchmarks
 
             .. tab:: Co-termination 1
 
-                .. literalinclude :: models/7_coterm/coterm1.smv
+                .. literalinclude :: ../models/7_coterm/coterm1.smv
                     :language: smv
 
             .. tab:: Co-termination 2
 
-                .. literalinclude :: models/7_coterm/coterm2.smv
+                .. literalinclude :: ../models/7_coterm/coterm2.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/7_coterm/coterm.hq
+        .. literalinclude :: ../models/7_coterm/coterm.hq
             :language: smv
+
+References
+----------
+.. _UTK21:
+- [UTK21] Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021, Virtual Event, July 20–23, 2021, Proceedings, Part I, pages 742–766. Springer, 2021.

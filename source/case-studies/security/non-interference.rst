@@ -33,12 +33,12 @@ Benchmarks
 
             .. tab:: NI Incorrect
 
-                .. literalinclude :: models/3_ni/NI_incorrect.smv
+                .. literalinclude :: ../models/3_ni/NI_incorrect.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/3_ni/NI_formula.hq
+        .. literalinclude :: ../models/3_ni/NI_formula.hq
             :language: smv
 
     .. tab:: Case #3.2
@@ -49,10 +49,17 @@ Benchmarks
 
             .. tab:: NI Correct
 
-                .. literalinclude :: models/3_ni/NI_correct.smv
+                .. literalinclude :: ../models/3_ni/NI_correct.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/3_ni/NI_formula.hq
+        .. literalinclude :: ../models/3_ni/NI_formula.hq
             :language: smv
+
+References
+----------
+.. _GM82:
+- [GM82] J. A. Goguen and J. Meseguer. Security policies and security models. In IEEE Symp. on Security and Privacy, pages 11–20, 1982.
+.. _SV98:
+- [SV98] G. Smith and D. M. Volpano. Secure information flow in a multi-threaded imperative language. In Proceedings of the 25th ACM Symposium on Principles of Programming Languages (POPL), pages 355–364, 1998.

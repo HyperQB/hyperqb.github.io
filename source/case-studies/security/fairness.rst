@@ -45,12 +45,12 @@ Benchmarks
 
             .. tab:: NRP Incorrect
 
-                .. literalinclude :: models/4_nrp/NRP_incorrect.smv
+                .. literalinclude :: ../models/4_nrp/NRP_incorrect.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/4_nrp/NRP_formula.hq
+        .. literalinclude :: ../models/4_nrp/NRP_formula.hq
             :language: smv
 
     .. tab:: Case #4.2
@@ -61,10 +61,15 @@ Benchmarks
 
             .. tab:: NRP Correct
 
-                .. literalinclude :: models/4_nrp/NRP_correct.smv
+                .. literalinclude :: ../models/4_nrp/NRP_correct.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/4_nrp/NRP_formula.hq
+        .. literalinclude :: ../models/4_nrp/NRP_formula.hq
             :language: smv
+
+References
+----------
+.. _JMM11:
+- [JMM11] W. Jamroga, S. Mauw, and M. Melissen. Fairness in non-repudiation protocols. In Proceedings of the 7th International Workshop on Security and Trust Management (STM), volume 7170, pages 122–139. Springer, 2011.

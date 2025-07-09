@@ -7,13 +7,12 @@ Welcome to HyperQB!
 ===================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    introduction
    theory
-   hyperltl
-   case-studies
+   case-studies/index
    playground
    download
    people

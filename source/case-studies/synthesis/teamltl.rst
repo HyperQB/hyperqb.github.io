@@ -31,12 +31,12 @@ Benchmarks
 
             .. tab:: Team
 
-                .. literalinclude :: models/13_teamltl/team.smv
+                .. literalinclude :: ../models/13_teamltl/team.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/13_teamltl/team.hq
+        .. literalinclude :: ../models/13_teamltl/team.hq
             :language: smv
 
     .. tab:: Case #13.2
@@ -47,10 +47,15 @@ Benchmarks
 
             .. tab:: Team 2
 
-                .. literalinclude :: models/13_teamltl/team2.smv
+                .. literalinclude :: ../models/13_teamltl/team2.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/13_teamltl/team.hq
+        .. literalinclude :: ../models/13_teamltl/team.hq
             :language: smv
+
+References
+----------
+.. _VHF+20:
+- [VHF+20] Jonni Virtema, Jana Hofmann, Bernd Finkbeiner, Juha Kontinen, and Fan Yang. Linear-time temporal logic with team semantics: Expressivity and complexity. arXiv preprint arXiv:2010.03311, 2020.

@@ -34,12 +34,12 @@ Benchmarks
 
             .. tab:: Robotic Robustness 100
 
-                .. literalinclude :: models/5_planning/robotic_robustness_100.smv
+                .. literalinclude :: ../models/5_planning/robotic_robustness_100.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/5_planning/robotic_robustness_formula.hq
+        .. literalinclude :: ../models/5_planning/robotic_robustness_formula.hq
             :language: smv
 
     .. tab:: Case #5.2
@@ -50,12 +50,12 @@ Benchmarks
 
             .. tab:: Robotic Robustness 400
 
-                .. literalinclude :: models/5_planning/robotic_robustness_400.smv
+                .. literalinclude :: ../models/5_planning/robotic_robustness_400.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/5_planning/robotic_robustness_formula.hq
+        .. literalinclude :: ../models/5_planning/robotic_robustness_formula.hq
             :language: smv
 
     .. tab:: Case #5.3
@@ -66,12 +66,12 @@ Benchmarks
 
             .. tab:: Robotic Robustness 1600
 
-                .. literalinclude :: models/5_planning/robotic_robustness_1600.smv
+                .. literalinclude :: ../models/5_planning/robotic_robustness_1600.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/5_planning/robotic_robustness_formula.hq
+        .. literalinclude :: ../models/5_planning/robotic_robustness_formula.hq
             :language: smv
 
     .. tab:: Case #5.4
@@ -82,10 +82,15 @@ Benchmarks
 
             .. tab:: Robotic Robustness 3600
 
-                .. literalinclude :: models/5_planning/robotic_robustness_3600.smv
+                .. literalinclude :: ../models/5_planning/robotic_robustness_3600.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/5_planning/robotic_robustness_formula.hq
+        .. literalinclude :: ../models/5_planning/robotic_robustness_formula.hq
             :language: smv
+
+References
+----------
+.. _NWP19:
+- [NWP19] S. Nalluri Y. Wang and M. Pajic. Hyperproperties for robotics: Planning via HyperLTL. In International Conference on Robotics and Automation (ICRA), pages 8011–8017, 2019.

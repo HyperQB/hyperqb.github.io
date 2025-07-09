@@ -31,12 +31,12 @@ Benchmarks
 
             .. tab:: NI Example
 
-                .. literalinclude :: models/10_NIexp/ni_example.smv
+                .. literalinclude :: ../models/10_NIexp/ni_example.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/10_NIexp/tini.hq
+        .. literalinclude :: ../models/10_NIexp/tini.hq
             :language: smv
 
     .. tab:: Case #10.2
@@ -47,10 +47,17 @@ Benchmarks
 
             .. tab:: NI Example
 
-                .. literalinclude :: models/10_NIexp/ni_example.smv
+                .. literalinclude :: ../models/10_NIexp/ni_example.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/10_NIexp/tsni.hq
+        .. literalinclude :: ../models/10_NIexp/tsni.hq
             :language: smv
+
+References
+----------
+.. _CS10:
+- [CS10] M. R. Clarkson and F. B. Schneider. Hyperproperties. Journal of Computer Security, 18(6):1157–1210, 2010.
+.. _UTK21:
+- [UTK21] Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021, Virtual Event, July 20–23, 2021, Proceedings, Part I, pages 742–766. Springer, 2021.

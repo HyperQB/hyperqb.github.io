@@ -35,12 +35,12 @@ Benchmarks
 
             .. tab:: Unscheduled Buffer
 
-                .. literalinclude :: models/9_buffer/unscheduled_buffer.smv
+                .. literalinclude :: ../models/9_buffer/unscheduled_buffer.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/9_buffer/classic_OD.hq
+        .. literalinclude :: ../models/9_buffer/classic_OD.hq
             :language: smv
 
     .. tab:: Case #9.2
@@ -51,12 +51,12 @@ Benchmarks
 
             .. tab:: Scheduled Buffer
 
-                .. literalinclude :: models/9_buffer/scheduled_buffer.smv
+                .. literalinclude :: ../models/9_buffer/scheduled_buffer.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/9_buffer/intrans_OD.hq
+        .. literalinclude :: ../models/9_buffer/intrans_OD.hq
             :language: smv
 
     .. tab:: Case #9.3
@@ -67,11 +67,17 @@ Benchmarks
 
             .. tab:: Scheduled Buffer
 
-                .. literalinclude :: models/9_buffer/scheduled_buffer.smv
+                .. literalinclude :: ../models/9_buffer/scheduled_buffer.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/9_buffer/intrans_GMNI.hq
+        .. literalinclude :: ../models/9_buffer/intrans_GMNI.hq
             :language: smv
-    
+
+References
+----------
+.. _RG99:
+- [RG99] Andrew W Roscoe and Michael H Goldsmith. What is intransitive noninterference? In Proceedings of the 12th IEEE computer security foundations workshop, pages 228–238. IEEE, 1999.
+.. _WGW10:
+- [WGW10] Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications, pages 381–428. Springer, 2010.

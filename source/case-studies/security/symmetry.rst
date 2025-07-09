@@ -79,12 +79,12 @@ Benchmarks
 
             .. tab:: Bakery 3 Processes
 
-                .. literalinclude :: models/1_bakery/bakery_3procs.smv
+                .. literalinclude :: ../models/1_bakery/bakery_3procs.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/1_bakery/bakery_phi_sym1_3proc.hq
+        .. literalinclude :: ../models/1_bakery/bakery_phi_sym1_3proc.hq
             :language: hq
 
     .. tab:: Case #1.2
@@ -94,12 +94,12 @@ Benchmarks
 
             .. tab:: Bakery 3 Processes
 
-                .. literalinclude :: models/1_bakery/bakery_3procs.smv
+                .. literalinclude :: ../models/1_bakery/bakery_3procs.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/1_bakery/bakery_phi_sym2_3proc.hq
+        .. literalinclude :: ../models/1_bakery/bakery_phi_sym2_3proc.hq
             :language: hq
 
     .. tab:: Case #1.3
@@ -109,12 +109,12 @@ Benchmarks
 
             .. tab:: Bakery 5 Processes
 
-                .. literalinclude :: models/1_bakery/bakery_5procs.smv
+                .. literalinclude :: ../models/1_bakery/bakery_5procs.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/1_bakery/bakery_phi_sym1_5proc.hq
+        .. literalinclude :: ../models/1_bakery/bakery_phi_sym1_5proc.hq
             :language: hq
 
     .. tab:: Case #1.4
@@ -124,10 +124,10 @@ Benchmarks
 
             .. tab:: Bakery 5 Processes
 
-                .. literalinclude :: models/1_bakery/bakery_5procs.smv
+                .. literalinclude :: ../models/1_bakery/bakery_5procs.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/1_bakery/bakery_phi_sym2_5proc.hq
+        .. literalinclude :: ../models/1_bakery/bakery_phi_sym2_5proc.hq
             :language: hq

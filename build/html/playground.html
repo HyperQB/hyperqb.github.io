@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Download" href="download.html" /><link rel="prev" title="Case Studies" href="case-studies.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Download" href="download.html" /><link rel="prev" title="LTL with Team Semantics" href="case-studies/synthesis/teamltl.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>Playground - HyperQB</title>
@@ -209,8 +209,34 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theory.html">Background Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hyperltl.html">HyperLTL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="case-studies.html">Case Studies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="case-studies/index.html">Case Studies</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/security/index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/symmetry.html">Symmetry in the Bakery Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/non-interference.html">Non-interference in multi-threaded programs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/fairness.html">Fairness in Non-Repudiation Protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/mutation.html">Mutation testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/co-termination.html">Co-termination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/deniability.html">Deniability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/intransitive-non-interference.html">Intransitive Non-interference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/termination-non-interference.html">Termination-sensitive/-insensitive Non-interference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/security/nondeterministic.html">Nondeterministic Inputs and Transitions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/concurrency/index.html">Concurrency</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Concurrency</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/concurrency/linearizability.html">Linearizability</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/planning/index.html">Planning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/planning/path-planning.html">Path planning for robots</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/synthesis/index.html">Synthesis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/synthesis/secrecy.html">Secrecy-preserving Refinement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case-studies/synthesis/teamltl.html">LTL with Team Semantics</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Playground</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
@@ -257,6 +283,17 @@
         <article role="main" id="furo-main-content">
           <section id="playground">
 <h1>Playground<a class="headerlink" href="#playground" title="Link to this heading">¶</a></h1>
+ <style>
+ .sidebar-drawer{
+     justify-content: center;
+     width: auto;
+     padding-left: 20px;
+ }
+ .content{
+     width: 100%;
+ }
+ </style>
+
 <iframe src="https://hyperqb.egr.msu.edu/" width="100%" height="950px" style="border:1px solid #ccc;">
 </iframe><p><a class="reference internal" href="download.html"><span class="doc">Download</span></a> the tool, or open <a class="reference external" href="https://hyperqb.egr.msu.edu/">playground</a> in a new tab.</p>
 </section>
@@ -275,14 +312,14 @@
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="case-studies.html">
+          <a class="prev-page" href="case-studies/synthesis/teamltl.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Case Studies</div>
+                <div class="title">LTL with Team Semantics</div>
                 
               </div>
             </a>

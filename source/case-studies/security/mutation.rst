@@ -6,7 +6,6 @@ Description of the Case Study
 
 Another application of hyperproperties with quantifier
 alternation is the efficient generation of test suites for mutation testing. We
-22
 borrow a model from :ref:`[FBW19] <FBW19>` and apply the original formula that describes a good
 test mutant together with the model, expressed as:
 
@@ -35,10 +34,15 @@ Benchmarks
 
             .. tab:: Mutation Testing
 
-                .. literalinclude :: models/6_mutation/mutation_testing.smv
+                .. literalinclude :: ../models/6_mutation/mutation_testing.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: models/6_mutation/mutation_testing.hq
+        .. literalinclude :: ../models/6_mutation/mutation_testing.hq
             :language: smv
+
+References
+----------
+.. _FBW19:
+- [FBW19] A. Fellner, M. Tabaei Befrouei, and G. Weissenbacher. Mutation testing with hyperproperties. In Proceedings of the 17th International Conference on Software Engineering and Formal Methods (SEFM), pages 203–221. Springer, 2019.

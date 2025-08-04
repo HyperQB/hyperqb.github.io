@@ -58,4 +58,4 @@ Benchmarks
 References
 ----------
 .. _VHF+20:
-- [VHF+20] Jonni Virtema, Jana Hofmann, Bernd Finkbeiner, Juha Kontinen, and Fan Yang. Linear-time temporal logic with team semantics: Expressivity and complexity. arXiv preprint arXiv:2010.03311, 2020.
+- [VHF+20] `Jonni Virtema, Jana Hofmann, Bernd Finkbeiner, Juha Kontinen, and Fan Yang. Linear-time temporal logic with team semantics: Expressivity and complexity. arXiv preprint arXiv:2010.03311, 2020. <https://doi.org/10.48550/arXiv.2010.03311>`_

@@ -1,5 +1,5 @@
-Symmetry in the Bakery Algorithm
-================================
+Symmetry in the Bakery Algorithm (NuSMV)
+========================================
 
 Description of the Case Study
 -----------------------------

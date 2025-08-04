@@ -3,15 +3,15 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Intransitive Non-interference" href="intransitive-non-interference.html" /><link rel="prev" title="Co-termination" href="co-termination.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Intransitive Non-interference (NuSMV)" href="intransitive-non-interference.html" /><link rel="prev" title="Co-termination (NuSMV)" href="co-termination.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Deniability - HyperQB</title>
+        <title>Deniability (NuSMV) - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=563648f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf126380" />
     
     
 
@@ -210,30 +210,34 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../theory.html">Background Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ir.html">Intermediate Representation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Case Studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Security</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="symmetry.html">Symmetry in the Bakery Algorithm</a></li>
-<li class="toctree-l3"><a class="reference internal" href="non-interference.html">Non-interference in multi-threaded programs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fairness.html">Fairness in Non-Repudiation Protocols</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mutation.html">Mutation testing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="co-termination.html">Co-termination</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Deniability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="intransitive-non-interference.html">Intransitive Non-interference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="termination-non-interference.html">Termination-sensitive/-insensitive Non-interference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nondeterministic.html">Nondeterministic Inputs and Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symmetry.html">Symmetry in the Bakery Algorithm (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="non-interference.html">Non-interference in multi-threaded programs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fairness.html">Fairness in Non-Repudiation Protocols (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co-termination.html">Co-termination (NuSMV)</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Deniability (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intransitive-non-interference.html">Intransitive Non-interference (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="termination-non-interference.html">Termination-sensitive/-insensitive Non-interference (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nondeterministic.html">Nondeterministic Inputs and Transitions (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../concurrency/index.html">Concurrency</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Concurrency</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../concurrency/linearizability.html">Linearizability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/linearizability.html">Linearizability (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../planning/index.html">Planning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../planning/path-planning.html">Path planning for robots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../planning/path-planning.html">Path planning for robots (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../synthesis/index.html">Synthesis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../synthesis/secrecy.html">Secrecy-preserving Refinement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../synthesis/teamltl.html">LTL with Team Semantics</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Testing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/mutation.html">Mutation Testing (NuSMV)</a></li>
 </ul>
 </li>
 </ul>
@@ -282,8 +286,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="deniability">
-<h1>Deniability<a class="headerlink" href="#deniability" title="Permalink to this heading">¶</a></h1>
+          <section id="deniability-nusmv">
+<h1>Deniability (NuSMV)<a class="headerlink" href="#deniability-nusmv" title="Permalink to this heading">¶</a></h1>
 <section id="description-of-the-case-study">
 <h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#sss20"><span class="std std-ref">[SSS20]</span></a>. In a program, for every possible run <span class="math notranslate nohighlight">\(\pi_{A}\)</span> (e.g., potentially being observed by an adversary), there must
@@ -453,13 +457,13 @@ bug-hunting by HyperQB gives a positive verdict (i.e., <span class="math notrans
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
 <ul class="simple" id="sss20">
-<li><p>[SSS20] Shubham Sahai, Pramod Subramanyan, and Rohit Sinha. Verification of quantitative hyperproperties using trace enumeration relations. In Computer Aided Verification: 32nd International Conference, CAV 2020, Los Angeles, CA, USA, July 21–24, 2020, Proceedings, Part I 32, pages 201–224. Springer, 2020.</p></li>
+<li><p>[SSS20] <a class="reference external" href="https://doi.org/10.48550/arXiv.2005.04606">Shubham Sahai, Pramod Subramanyan, and Rohit Sinha. Verification of quantitative hyperproperties using trace enumeration relations. In Computer Aided Verification: 32nd International Conference, CAV 2020, Los Angeles, CA, USA, July 21–24, 2020, Proceedings, Part I 32, pages 201–224. Springer, 2020.</a></p></li>
 </ul>
 <ul class="simple" id="fht18">
-<li><p>[FHT18] Bernd Finkbeiner, Christopher Hahn, and Hazem Torfah. Model checking quantitative hyperproperties. In Computer Aided Verification: 30th International Conference, CAV 2018, Held as Part of the Federated Logic Conference, FloC 2018, Oxford, UK, July 14-17, 2018, Proceedings, Part I, pages 144–163. Springer, 2018.</p></li>
+<li><p>[FHT18] <a class="reference external" href="https://doi.org/10.1007/978-3-319-96145-3_8">Bernd Finkbeiner, Christopher Hahn, and Hazem Torfah. Model checking quantitative hyperproperties. In Computer Aided Verification: 30th International Conference, CAV 2018, Held as Part of the Federated Logic Conference, FloC 2018, Oxford, UK, July 14-17, 2018, Proceedings, Part I, pages 144–163. Springer, 2018.</a></p></li>
 </ul>
 <ul class="simple" id="bkr09">
-<li><p>[BKR09] Michael Backes, Boris Köpf, and Andrey Rybalchenko. Automatic discovery and quantification of information leaks. In 2009 30th IEEE Symposium on Security and Privacy, pages 141–153. IEEE, 2009.</p></li>
+<li><p>[BKR09] <a class="reference external" href="https://doi.org/10.1109/SP.2009.18">Michael Backes, Boris Köpf, and Andrey Rybalchenko. Automatic discovery and quantification of information leaks. In 2009 30th IEEE Symposium on Security and Privacy, pages 141–153. IEEE, 2009.</a></p></li>
 </ul>
 </section>
 </section>
@@ -474,7 +478,7 @@ bug-hunting by HyperQB gives a positive verdict (i.e., <span class="math notrans
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Intransitive Non-interference</div>
+                <div class="title">Intransitive Non-interference (NuSMV)</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -485,7 +489,7 @@ bug-hunting by HyperQB gives a positive verdict (i.e., <span class="math notrans
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Co-termination</div>
+                <div class="title">Co-termination (NuSMV)</div>
                 
               </div>
             </a>
@@ -519,7 +523,7 @@ bug-hunting by HyperQB gives a positive verdict (i.e., <span class="math notrans
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Deniability</a><ul>
+<li><a class="reference internal" href="#">Deniability (NuSMV)</a><ul>
 <li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
 <li><a class="reference internal" href="#benchmarks">Benchmarks</a></li>
 <li><a class="reference internal" href="#references">References</a></li>

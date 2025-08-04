@@ -3,15 +3,15 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Concurrency" href="../concurrency/index.html" /><link rel="prev" title="Termination-sensitive/-insensitive Non-interference" href="termination-non-interference.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Concurrency" href="../concurrency/index.html" /><link rel="prev" title="Termination-sensitive/-insensitive Non-interference (NuSMV)" href="termination-non-interference.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Nondeterministic Inputs and Transitions - HyperQB</title>
+        <title>Nondeterministic Inputs and Transitions (NuSMV) - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=563648f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf126380" />
     
     
 
@@ -210,30 +210,34 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../theory.html">Background Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ir.html">Intermediate Representation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Case Studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Security</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="symmetry.html">Symmetry in the Bakery Algorithm</a></li>
-<li class="toctree-l3"><a class="reference internal" href="non-interference.html">Non-interference in multi-threaded programs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fairness.html">Fairness in Non-Repudiation Protocols</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mutation.html">Mutation testing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="co-termination.html">Co-termination</a></li>
-<li class="toctree-l3"><a class="reference internal" href="deniability.html">Deniability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="intransitive-non-interference.html">Intransitive Non-interference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="termination-non-interference.html">Termination-sensitive/-insensitive Non-interference</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Nondeterministic Inputs and Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symmetry.html">Symmetry in the Bakery Algorithm (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="non-interference.html">Non-interference in multi-threaded programs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fairness.html">Fairness in Non-Repudiation Protocols (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co-termination.html">Co-termination (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deniability.html">Deniability (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intransitive-non-interference.html">Intransitive Non-interference (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="termination-non-interference.html">Termination-sensitive/-insensitive Non-interference (NuSMV)</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Nondeterministic Inputs and Transitions (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../concurrency/index.html">Concurrency</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Concurrency</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../concurrency/linearizability.html">Linearizability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/linearizability.html">Linearizability (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../planning/index.html">Planning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../planning/path-planning.html">Path planning for robots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../planning/path-planning.html">Path planning for robots (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../synthesis/index.html">Synthesis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../synthesis/secrecy.html">Secrecy-preserving Refinement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../synthesis/teamltl.html">LTL with Team Semantics</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Testing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/mutation.html">Mutation Testing (NuSMV)</a></li>
 </ul>
 </li>
 </ul>
@@ -282,8 +286,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="nondeterministic-inputs-and-transitions">
-<h1>Nondeterministic Inputs and Transitions<a class="headerlink" href="#nondeterministic-inputs-and-transitions" title="Permalink to this heading">¶</a></h1>
+          <section id="nondeterministic-inputs-and-transitions-nusmv">
+<h1>Nondeterministic Inputs and Transitions (NuSMV)<a class="headerlink" href="#nondeterministic-inputs-and-transitions-nusmv" title="Permalink to this heading">¶</a></h1>
 <section id="description-of-the-case-study">
 <h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
 <p>To evaluate how nondeterministic choices impact model checking performance, we extend a standard example in two ways.</p>
@@ -411,7 +415,7 @@ have high initially as <span class="math notranslate nohighlight">\(0\)</span>, 
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Termination-sensitive/-insensitive Non-interference</div>
+                <div class="title">Termination-sensitive/-insensitive Non-interference (NuSMV)</div>
                 
               </div>
             </a>
@@ -445,7 +449,7 @@ have high initially as <span class="math notranslate nohighlight">\(0\)</span>, 
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Nondeterministic Inputs and Transitions</a><ul>
+<li><a class="reference internal" href="#">Nondeterministic Inputs and Transitions (NuSMV)</a><ul>
 <li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
 <li><a class="reference internal" href="#benchmarks">Benchmarks</a></li>
 </ul>

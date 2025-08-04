@@ -3,15 +3,15 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Co-termination" href="co-termination.html" /><link rel="prev" title="Fairness in Non-Repudiation Protocols" href="fairness.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Playground" href="../../playground.html" /><link rel="prev" title="Testing" href="index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Mutation testing - HyperQB</title>
+        <title>Mutation Testing (NuSMV) - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=563648f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf126380" />
     
     
 
@@ -210,30 +210,34 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../theory.html">Background Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ir.html">Intermediate Representation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Case Studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Security</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="symmetry.html">Symmetry in the Bakery Algorithm</a></li>
-<li class="toctree-l3"><a class="reference internal" href="non-interference.html">Non-interference in multi-threaded programs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fairness.html">Fairness in Non-Repudiation Protocols</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Mutation testing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="co-termination.html">Co-termination</a></li>
-<li class="toctree-l3"><a class="reference internal" href="deniability.html">Deniability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="intransitive-non-interference.html">Intransitive Non-interference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="termination-non-interference.html">Termination-sensitive/-insensitive Non-interference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nondeterministic.html">Nondeterministic Inputs and Transitions</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../security/index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../security/symmetry.html">Symmetry in the Bakery Algorithm (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/non-interference.html">Non-interference in multi-threaded programs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/fairness.html">Fairness in Non-Repudiation Protocols (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/co-termination.html">Co-termination (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/deniability.html">Deniability (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/intransitive-non-interference.html">Intransitive Non-interference (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/termination-non-interference.html">Termination-sensitive/-insensitive Non-interference (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/nondeterministic.html">Nondeterministic Inputs and Transitions (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../concurrency/index.html">Concurrency</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Concurrency</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../concurrency/linearizability.html">Linearizability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/linearizability.html">Linearizability (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../planning/index.html">Planning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../planning/path-planning.html">Path planning for robots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../planning/path-planning.html">Path planning for robots (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../synthesis/index.html">Synthesis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../synthesis/secrecy.html">Secrecy-preserving Refinement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../synthesis/teamltl.html">LTL with Team Semantics</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Testing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Testing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Mutation Testing (NuSMV)</a></li>
 </ul>
 </li>
 </ul>
@@ -262,7 +266,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../../_sources/case-studies/security/mutation.rst.txt" title="View this page">
+  <a class="muted-link" href="../../_sources/case-studies/testing/mutation.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -282,8 +286,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="mutation-testing">
-<h1>Mutation testing<a class="headerlink" href="#mutation-testing" title="Permalink to this heading">¶</a></h1>
+          <section id="mutation-testing-nusmv">
+<h1>Mutation Testing (NuSMV)<a class="headerlink" href="#mutation-testing-nusmv" title="Permalink to this heading">¶</a></h1>
 <section id="description-of-the-case-study">
 <h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
 <p>Another application of hyperproperties with quantifier
@@ -362,7 +366,7 @@ mut_{\pi_A} \land \neg mut_{\pi_B} \right) \land
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
 <ul class="simple" id="fbw19">
-<li><p>[FBW19] A. Fellner, M. Tabaei Befrouei, and G. Weissenbacher. Mutation testing with hyperproperties. In Proceedings of the 17th International Conference on Software Engineering and Formal Methods (SEFM), pages 203–221. Springer, 2019.</p></li>
+<li><p>[FBW19] <a class="reference external" href="https://doi.org/10.1007/978-3-030-30446-1_11">A. Fellner, M. Tabaei Befrouei, and G. Weissenbacher. Mutation testing with hyperproperties. In Proceedings of the 17th International Conference on Software Engineering and Formal Methods (SEFM), pages 203–221. Springer, 2019.</a></p></li>
 </ul>
 </section>
 </section>
@@ -372,23 +376,23 @@ mut_{\pi_A} \land \neg mut_{\pi_B} \right) \land
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="co-termination.html">
+          <a class="next-page" href="../../playground.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Co-termination</div>
+                <div class="title">Playground</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="fairness.html">
+          <a class="prev-page" href="index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Fairness in Non-Repudiation Protocols</div>
+                <div class="title">Testing</div>
                 
               </div>
             </a>
@@ -422,7 +426,7 @@ mut_{\pi_A} \land \neg mut_{\pi_B} \right) \land
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Mutation testing</a><ul>
+<li><a class="reference internal" href="#">Mutation Testing (NuSMV)</a><ul>
 <li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
 <li><a class="reference internal" href="#benchmarks">Benchmarks</a></li>
 <li><a class="reference internal" href="#references">References</a></li>

@@ -1,5 +1,5 @@
-Path planning for robots
-========================
+Path planning for robots (NuSMV)
+================================
 
 Description of the Case Study
 -----------------------------
@@ -93,4 +93,4 @@ Benchmarks
 References
 ----------
 .. _NWP19:
-- [NWP19] S. Nalluri Y. Wang and M. Pajic. Hyperproperties for robotics: Planning via HyperLTL. In International Conference on Robotics and Automation (ICRA), pages 8011–8017, 2019.
+- [NWP19] `S. Nalluri Y. Wang and M. Pajic. Hyperproperties for robotics: Planning via HyperLTL. In International Conference on Robotics and Automation (ICRA), pages 8011–8017, 2019 <https://doi.org/10.48550/arXiv.1911.11870>.`_

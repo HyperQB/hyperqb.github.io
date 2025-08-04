@@ -8,3 +8,4 @@ Case Studies
     concurrency/index
     planning/index
     synthesis/index
+    testing/index

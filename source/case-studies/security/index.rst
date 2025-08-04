@@ -7,7 +7,6 @@ Security
     symmetry
     non-interference
     fairness
-    mutation
     co-termination
     deniability
     intransitive-non-interference

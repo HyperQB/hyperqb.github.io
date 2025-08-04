@@ -1,5 +1,5 @@
-Fairness in Non-Repudiation Protocols
-=====================================
+Fairness in Non-Repudiation Protocols (NuSMV)
+=============================================
 
 Description of the Case Study
 -----------------------------
@@ -72,4 +72,4 @@ Benchmarks
 References
 ----------
 .. _JMM11:
-- [JMM11] W. Jamroga, S. Mauw, and M. Melissen. Fairness in non-repudiation protocols. In Proceedings of the 7th International Workshop on Security and Trust Management (STM), volume 7170, pages 122–139. Springer, 2011.
+- [JMM11] `W. Jamroga, S. Mauw, and M. Melissen. Fairness in non-repudiation protocols. In Proceedings of the 7th International Workshop on Security and Trust Management (STM), volume 7170, pages 122–139. Springer, 2011. <https://doi.org/10.1007/978-3-642-29963-6_10>`_

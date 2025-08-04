@@ -1,5 +1,5 @@
-Nondeterministic Inputs and Transitions
-=======================================
+Nondeterministic Inputs and Transitions (NuSMV)
+===============================================
 
 Description of the Case Study
 -----------------------------

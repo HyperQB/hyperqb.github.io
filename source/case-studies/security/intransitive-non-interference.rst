@@ -1,5 +1,5 @@
-Intransitive Non-interference
-=============================
+Intransitive Non-interference (NuSMV)
+=====================================
 
 Description of the Case Study
 -----------------------------
@@ -78,6 +78,6 @@ Benchmarks
 References
 ----------
 .. _RG99:
-- [RG99] Andrew W Roscoe and Michael H Goldsmith. What is intransitive noninterference? In Proceedings of the 12th IEEE computer security foundations workshop, pages 228–238. IEEE, 1999.
+- [RG99] `Andrew W Roscoe and Michael H Goldsmith. What is intransitive noninterference? In Proceedings of the 12th IEEE computer security foundations workshop, pages 228–238. IEEE, 1999. <https://doi.org/10.1109/CSFW.1999.779776>`_
 .. _WGW10:
-- [WGW10] Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications, pages 381–428. Springer, 2010.
+- [WGW10] `Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications, pages 381–428. Springer, 2010. <https://doi.org/10.1007/978-1-4419-1539-9_13>`_

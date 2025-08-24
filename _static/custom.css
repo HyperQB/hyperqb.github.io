@@ -44,3 +44,5 @@ body[data-theme="dark"] .sphinx-tabs-tab[aria-selected="true"]{
     flex: 0 0 auto;
     text-align: center;
 }
+
+.highlight .o { color: #27AE60; }  /* Operators */

@@ -79,12 +79,12 @@ Benchmarks
 
             .. tab:: Bakery 3 Processes
 
-                .. literalinclude :: ../models/1_bakery/bakery_3procs.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery3.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/1_bakery/bakery_phi_sym1_3proc.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/symmetry.hq
             :language: hq
 
     .. tab:: Case #1.2
@@ -92,14 +92,14 @@ Benchmarks
 
         .. tabs::
 
-            .. tab:: Bakery 3 Processes
+            .. tab:: Bakery 7 Processes
 
-                .. literalinclude :: ../models/1_bakery/bakery_3procs.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery7.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/1_bakery/bakery_phi_sym2_3proc.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/symmetry7.hq
             :language: hq
 
     .. tab:: Case #1.3
@@ -107,14 +107,14 @@ Benchmarks
 
         .. tabs::
 
-            .. tab:: Bakery 5 Processes
+            .. tab:: Bakery 9 Processes
 
-                .. literalinclude :: ../models/1_bakery/bakery_5procs.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery9.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/1_bakery/bakery_phi_sym1_5proc.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/symmetry9.hq
             :language: hq
 
     .. tab:: Case #1.4
@@ -122,12 +122,12 @@ Benchmarks
 
         .. tabs::
 
-            .. tab:: Bakery 5 Processes
+            .. tab:: Bakery 11 Processes
 
-                .. literalinclude :: ../models/1_bakery/bakery_5procs.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery11.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/1_bakery/bakery_phi_sym2_5proc.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/symmetry11.hq
             :language: hq

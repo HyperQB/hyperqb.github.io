@@ -27,17 +27,17 @@ Benchmarks
 
             .. tab:: Co-termination 1
 
-                .. literalinclude :: ../models/7_coterm/coterm1.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/coterm/coterm1.smv
                     :language: smv
 
             .. tab:: Co-termination 2
 
-                .. literalinclude :: ../models/7_coterm/coterm2.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/coterm/coterm2.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/7_coterm/coterm.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/coterm/coterm.hq
             :language: smv
 
 References

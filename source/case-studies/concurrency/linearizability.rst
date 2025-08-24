@@ -31,17 +31,17 @@ Benchmarks
 
             .. tab:: Snark 1 M1 concurrent
 
-                .. literalinclude :: ../models/2_snark/snark1_M1_concurrent.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark1_conc.smv
                     :language: smv
 
             .. tab:: Snark 1 M2 sequential
 
-                .. literalinclude :: ../models/2_snark/snark1_M2_sequential.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark1_seq.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/2_snark/snark1.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/lin.hq
             :language: smv
 
     .. tab:: Case #2.2
@@ -52,17 +52,17 @@ Benchmarks
 
                 .. tab:: Snark 2 M1 concurrent
 
-                    .. literalinclude :: ../models/2_snark/snark2_M1_concurrent.smv
+                    .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2_M1_concurrent.smv
                         :language: smv
 
                 .. tab:: Snark 2 M2 sequential
 
-                    .. literalinclude :: ../models/2_snark/snark2_M2_sequential.smv
+                    .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2_M2_sequential.smv
                         :language: smv
 
             **Formula**
 
-            .. literalinclude :: ../models/2_snark/snark2.hq
+            .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2.hq
                 :language: smv
 
 References

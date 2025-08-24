@@ -37,12 +37,12 @@ Benchmarks
 
             .. tab:: Deniability Small
 
-                .. literalinclude :: ../models/8_deniability/den_small.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/deniability/den_small.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/8_deniability/den_f1.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/deniability/den.hq
             :language: smv
 
     .. tab:: Case #8.2
@@ -53,12 +53,12 @@ Benchmarks
 
             .. tab:: Deniability
 
-                .. literalinclude :: ../models/8_deniability/den.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/deniability/den.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/8_deniability/den_f1.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/deniability/den.hq
             :language: smv
 
 References

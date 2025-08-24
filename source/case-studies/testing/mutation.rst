@@ -34,13 +34,13 @@ Benchmarks
 
             .. tab:: Mutation Testing
 
-                .. literalinclude :: ../models/6_mutation/mutation_testing.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/testing/mutation/mutation_testing.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/6_mutation/mutation_testing.hq
-            :language: smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/testing/mutation/mutation_testing.hq
+            :language: hq
 
 References
 ----------

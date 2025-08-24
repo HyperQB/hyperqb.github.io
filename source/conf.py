@@ -1,6 +1,11 @@
 from pygments.lexers.smv import NuSMVLexer
 from sphinx.highlighting import lexers
 
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath('_ext'))
+
 # Lexer configuration
 lexers['smv'] = NuSMVLexer()
 pygments_style = "vs"
@@ -21,7 +26,6 @@ release = '2.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -47,4 +51,5 @@ html_css_files = ['custom.css']
 extensions = [
     'sphinx.ext.mathjax',
     'sphinx_tabs.tabs',
+    'hyperltl_ext'
 ]

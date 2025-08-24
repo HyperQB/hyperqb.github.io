@@ -39,7 +39,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_formula.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #5.2
 
@@ -55,7 +55,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_formula.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #5.3
 
@@ -71,7 +71,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_formula.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #5.4
 
@@ -87,9 +87,11 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_formula.hq
-            :language: smv
+            :language: hq
 
 References
 ----------
+
 .. _NWP19:
-- [NWP19] `S. Nalluri Y. Wang and M. Pajic. Hyperproperties for robotics: Planning via HyperLTL. In International Conference on Robotics and Automation (ICRA), pages 8011–8017, 2019 <https://doi.org/10.48550/arXiv.1911.11870>.`_
+
+- [NWP19] `S. Nalluri Y. Wang and M. Pajic. Hyperproperties for robotics: Planning via HyperLTL. In International Conference on Robotics and Automation (ICRA), pages 8011–8017, 2019. <https://doi.org/10.48550/arXiv.1911.11870>`_

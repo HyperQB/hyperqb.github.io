@@ -42,7 +42,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/lin.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #2.2
 
@@ -63,11 +63,15 @@ Benchmarks
             **Formula**
 
             .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2.hq
-                :language: smv
+                :language: hq
 
 References
 ----------
+
 .. _DDG+04:
+
 - [DDG+04] `S. Doherty, D. Detlefs, L. Groves, C. H. Flood, V. Luchangco, P. A. Martin, M. Moir, N. Shavit, and G. L. Steele Jr. DCAS is not a silver bullet for nonblocking algorithm design. In *Proceedings of the 16th Annual ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)*, pages 216–224, 2004. <https://doi.org/10.1145/1007912.1007945>`_
+
 .. _HW90:
+
 - [HW90] `M. Herlihy and J. M. Wing. Linearizability: A correctness condition for concurrent objects. ACM Transactions on Programming Languages and Systems, 12(3):463–492, 1990. <https://doi.org/10.1145/78969.78972>`_

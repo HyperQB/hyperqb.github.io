@@ -53,7 +53,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/synthesis/mapsynth/msynth.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #12.2
 
@@ -79,4 +79,4 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/synthesis/mapsynth/msynth2.hq
-            :language: smv
+            :language: hq

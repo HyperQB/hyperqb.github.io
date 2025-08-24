@@ -33,13 +33,12 @@ Benchmarks
         .. tabs::
 
             .. tab:: Robotic Robustness 100
-
-                .. literalinclude :: ../models/5_planning/robotic_robustness_100.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_100.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/5_planning/robotic_robustness_formula.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_formula.hq
             :language: smv
 
     .. tab:: Case #5.2
@@ -50,12 +49,12 @@ Benchmarks
 
             .. tab:: Robotic Robustness 400
 
-                .. literalinclude :: ../models/5_planning/robotic_robustness_400.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_400.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/5_planning/robotic_robustness_formula.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_formula.hq
             :language: smv
 
     .. tab:: Case #5.3
@@ -66,12 +65,12 @@ Benchmarks
 
             .. tab:: Robotic Robustness 1600
 
-                .. literalinclude :: ../models/5_planning/robotic_robustness_1600.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_1600.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/5_planning/robotic_robustness_formula.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_formula.hq
             :language: smv
 
     .. tab:: Case #5.4
@@ -82,12 +81,12 @@ Benchmarks
 
             .. tab:: Robotic Robustness 3600
 
-                .. literalinclude :: ../models/5_planning/robotic_robustness_3600.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_3600.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/5_planning/robotic_robustness_formula.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_robustness_formula.hq
             :language: smv
 
 References

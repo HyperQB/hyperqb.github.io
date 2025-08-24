@@ -35,12 +35,12 @@ Benchmarks
 
             .. tab:: Unscheduled Buffer
 
-                .. literalinclude :: ../models/9_buffer/unscheduled_buffer.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/buffer/unscheduled_buffer.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/9_buffer/classic_OD.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/buffer/classic_OD.hq
             :language: smv
 
     .. tab:: Case #9.2
@@ -51,12 +51,12 @@ Benchmarks
 
             .. tab:: Scheduled Buffer
 
-                .. literalinclude :: ../models/9_buffer/scheduled_buffer.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/buffer/scheduled_buffer.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/9_buffer/intrans_OD.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/buffer/intrans_OD.hq
             :language: smv
 
     .. tab:: Case #9.3
@@ -67,12 +67,12 @@ Benchmarks
 
             .. tab:: Scheduled Buffer
 
-                .. literalinclude :: ../models/9_buffer/scheduled_buffer.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/buffer/scheduled_buffer.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/9_buffer/intrans_GMNI.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/buffer/intrans_GMNI.hq
             :language: smv
 
 References

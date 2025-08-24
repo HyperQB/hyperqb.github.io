@@ -25,12 +25,12 @@ Benchmarks
 
             .. tab:: NI v2
 
-                .. literalinclude :: ../models/14_ndet/NI_v2.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI_v2.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/14_ndet/NI.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI.hq
             :language: smv
 
     .. tab:: Case #14.2
@@ -41,10 +41,10 @@ Benchmarks
 
             .. tab:: NI v3
 
-                .. literalinclude :: ../models/14_ndet/NI_v3.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI_v3.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/14_ndet/NI.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI.hq
             :language: smv

@@ -33,12 +33,12 @@ Benchmarks
 
             .. tab:: NI Incorrect
 
-                .. literalinclude :: ../models/3_ni/NI_incorrect.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/ni/NI_incorrect.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/3_ni/NI_formula.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ni/NI_formula.hq
             :language: smv
 
     .. tab:: Case #3.2
@@ -49,12 +49,12 @@ Benchmarks
 
             .. tab:: NI Correct
 
-                .. literalinclude :: ../models/3_ni/NI_correct.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/ni/NI_correct.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/3_ni/NI_formula.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ni/NI_formula.hq
             :language: smv
 
 References

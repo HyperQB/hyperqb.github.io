@@ -313,13 +313,10 @@ opt), is able to give a meaningful verdict even though this is not a finitely-re
 <span class="c">-- 1		x = x - y</span>
 <span class="c">-- 2	}</span>
 <span class="w">	</span><span class="kd">VAR</span>
-<span class="w">		</span><span class="nv">x</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">..</span><span class="mi">100</span><span class="p">;</span>
+<span class="w">		</span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">100</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">t</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">y</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">5</span><span class="p">;</span>
-
-<span class="w">	</span><span class="c">-- FROZENVAR</span>
-<span class="w">		</span><span class="c">-- y: 0..5;</span>
 
 <span class="w">	</span><span class="kd">ASSIGN</span>
 <span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -331,26 +328,26 @@ opt), is able to give a meaningful verdict even though this is not a finitely-re
 <span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
 <span class="w">		</span><span class="k">case</span>
 <span class="w">			</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">      </span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="p">;</span>
-<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">      		</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      		</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    	</span><span class="k">esac</span><span class="p">;</span>
 
-<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
-<span class="w">		</span><span class="k">case</span>
-<span class="w">			</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">y</span><span class="p">;</span>
-<span class="w">      </span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
-<span class="w">      </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
-<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">			</span><span class="k">case</span>
+<span class="w">				</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">y</span><span class="p">;</span>
+<span class="w">				</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">				</span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">			</span><span class="k">esac</span><span class="p">;</span>
 
-<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
-<span class="w">		</span><span class="k">case</span>
-<span class="w">      </span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">			</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">      </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">t</span><span class="p">;</span>
-<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">			</span><span class="k">case</span>
+<span class="w">				</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">				</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">				</span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">t</span><span class="p">;</span>
+<span class="w">			</span><span class="k">esac</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kd">DEFINE</span>
-<span class="w">			</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">;</span>
+<span class="w">			</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- CO-TERMINATION</span>
@@ -362,7 +359,7 @@ opt), is able to give a meaningful verdict even though this is not a finitely-re
 <span class="c">-- 2	}</span>
 
 <span class="w">	</span><span class="kd">VAR</span>
-<span class="w">		</span><span class="nv">x</span><span class="p">:</span><span class="o">-</span><span class="mi">10</span><span class="p">..</span><span class="mi">100</span><span class="p">;</span>
+<span class="w">		</span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">..</span><span class="mi">100</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">t</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">y</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">5</span><span class="p">;</span>
@@ -380,32 +377,32 @@ opt), is able to give a meaningful verdict even though this is not a finitely-re
 <span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
 <span class="w">		</span><span class="k">case</span>
 <span class="w">			</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">      </span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">      </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="p">;</span>
-<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">      		</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">      		</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    	</span><span class="k">esac</span><span class="p">;</span>
 
 <span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
 <span class="w">		</span><span class="k">case</span>
 <span class="w">			</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)):</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">y</span><span class="p">));</span>
-<span class="w">      </span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
-<span class="w">      </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
-<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">      		</span><span class="p">((</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">      		</span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="p">;</span>
+<span class="w">    	</span><span class="k">esac</span><span class="p">;</span>
 
 <span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
 <span class="w">		</span><span class="k">case</span>
-<span class="w">      </span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">      		</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">			</span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">):</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">      </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">t</span><span class="p">;</span>
-<span class="w">    </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">      		</span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">t</span><span class="p">;</span>
+<span class="w">    	</span><span class="k">esac</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kd">DEFINE</span>
-<span class="w">			</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">;</span>
+<span class="w">			</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">forall</span><span class="w"> </span><span class="ow">A</span><span class="p">.</span><span class="w"> </span><span class="nv">forall</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span>
-<span class="p">(</span><span class="ow">F</span><span class="p">(</span><span class="nv">halt</span><span class="p">[</span><span class="ow">A</span><span class="p">]))</span><span class="o">&lt;-&gt;</span><span class="p">(</span><span class="ow">F</span><span class="p">(</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span>
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">Forall</span><span class="w"> </span><span class="ow">A</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nv">Forall</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="p">.</span>
+<span class="p">(</span><span class="ow">F</span><span class="p">(</span><span class="nv">halt</span><span class="p">[</span><span class="ow">A</span><span class="p">]))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="ow">F</span><span class="p">(</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div></div>

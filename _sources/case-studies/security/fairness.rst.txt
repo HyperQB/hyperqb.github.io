@@ -45,12 +45,12 @@ Benchmarks
 
             .. tab:: NRP Incorrect
 
-                .. literalinclude :: ../models/4_nrp/NRP_incorrect.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_incorrect.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/4_nrp/NRP_formula.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_formula.hq
             :language: smv
 
     .. tab:: Case #4.2
@@ -61,12 +61,12 @@ Benchmarks
 
             .. tab:: NRP Correct
 
-                .. literalinclude :: ../models/4_nrp/NRP_correct.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_correct.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/4_nrp/NRP_formula.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_formula.hq
             :language: smv
 
 References

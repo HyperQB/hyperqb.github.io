@@ -31,12 +31,12 @@ Benchmarks
 
             .. tab:: NI Example
 
-                .. literalinclude :: ../models/10_NIexp/ni_example.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/ni_example.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/10_NIexp/tini.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/tini.hq
             :language: smv
 
     .. tab:: Case #10.2
@@ -47,12 +47,12 @@ Benchmarks
 
             .. tab:: NI Example
 
-                .. literalinclude :: ../models/10_NIexp/ni_example.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/ni_example.smv
                     :language: smv
 
         **Formula**
 
-        .. literalinclude :: ../models/10_NIexp/tsni.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/tsni.hq
             :language: smv
 
 References

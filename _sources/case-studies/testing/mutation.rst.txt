@@ -44,5 +44,7 @@ Benchmarks
 
 References
 ----------
+
 .. _FBW19:
+
 - [FBW19] `A. Fellner, M. Tabaei Befrouei, and G. Weissenbacher. Mutation testing with hyperproperties. In Proceedings of the 17th International Conference on Software Engineering and Formal Methods (SEFM), pages 203–221. Springer, 2019. <https://doi.org/10.1007/978-3-030-30446-1_11>`_

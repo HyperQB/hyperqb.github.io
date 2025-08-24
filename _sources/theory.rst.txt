@@ -1,5 +1,6 @@
 Background Theory
 =================
+
 HyperLTL
 --------
 
@@ -68,6 +69,7 @@ The inner LTL formula is translated into a Boolean formula over the unrolled tra
    &⟦\psi⟧^{\text{hpes}}_{k+1,k} := ⟦\text{halted}⟧^{\text{hpes}}_{k,k} \land ⟦\psi⟧^{\text{hpes}}_{k,k}
    &&⟦\psi⟧^{\text{hopt}}_{k+1,k} := ⟦\text{halted}⟧^{\text{hopt}}_{k,k} \rightarrow ⟦\psi⟧^{\text{hopt}}_{k,k}
    \end{align}
+
 These base cases affect how temporal operators are evaluated at the final unrolling step.
 
 3. Combining the Encodings
@@ -85,8 +87,11 @@ The full QBF encoding is:
    \right)
 
 Where:
+
     - :math:`⟦ K_j ⟧_k` is the unrolling of Kripke structure :math:`K_j`
+
     - :math:`\circ_j = \wedge` if :math:`\mathbb{Q}_j = \exists`, and :math:`\rightarrow` if :math:`\mathbb{Q}_j = \forall` for :math:`\in \mathit{Vars}(\varphi)`
+
     - :math:`⟦ \psi ⟧_0^k` is the encoding of the LTL subformula under the chosen semantics
 
 This combined formula allows a QBF solver to decide whether the HyperLTL formula holds for all (or some) traces up to bound :math:`k`.

@@ -31,7 +31,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #14.2
 
@@ -47,4 +47,4 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI.hq
-            :language: smv
+            :language: hq

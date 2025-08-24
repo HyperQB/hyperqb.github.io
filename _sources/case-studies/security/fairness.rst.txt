@@ -51,7 +51,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_formula.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #4.2
 
@@ -67,9 +67,11 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_formula.hq
-            :language: smv
+            :language: hq
 
 References
 ----------
+
 .. _JMM11:
+
 - [JMM11] `W. Jamroga, S. Mauw, and M. Melissen. Fairness in non-repudiation protocols. In Proceedings of the 7th International Workshop on Security and Trust Management (STM), volume 7170, pages 122–139. Springer, 2011. <https://doi.org/10.1007/978-3-642-29963-6_10>`_

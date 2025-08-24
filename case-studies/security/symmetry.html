@@ -593,29 +593,29 @@ the property</p>
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span>Forall A . Exists B .
-G(
-    (
-        (p1_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p2_line[B])
-        &amp;(p2_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p3_line[B])
-        &amp;(p3_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p3_line[B])
-        &amp;(p3_line[A] = p2_line[B])
-    )
-)
+<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Forall</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">B</span> <span class="p">.</span>
+<span class="ow">G</span><span class="p">(</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
@@ -890,155 +890,155 @@ G(
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span>Forall A . Exists B .
-G(
-    (
-        (p1_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p2_line[B])
-        &amp;(p2_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p3_line[B])
-        &amp;(p3_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p4_line[B])
-        &amp;(p4_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p3_line[B])
-        &amp;(p3_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p4_line[B])
-        &amp;(p4_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p4_line[B])
-        &amp;(p4_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p6_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p6_line[B])
-    )
-)
+<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Forall</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">B</span> <span class="p">.</span>
+<span class="ow">G</span><span class="p">(</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
@@ -1301,260 +1301,260 @@ G(
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span>Forall A . Exists B .
-G(
-    (
-        (p1_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p2_line[B])
-        &amp;(p2_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p3_line[B])
-        &amp;(p3_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p4_line[B])
-        &amp;(p4_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p3_line[B])
-        &amp;(p3_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p4_line[B])
-        &amp;(p4_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p4_line[B])
-        &amp;(p4_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p6_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p6_line[B])
-    )
-    &amp;
-    (
-        (p6_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p6_line[B])
-    )
-    &amp;
-    (
-        (p6_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p6_line[B])
-    )
-    &amp;
-    (
-        (p7_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p7_line[B])
-    )
-    &amp;
-    (
-        (p7_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p7_line[B])
-    )
-    &amp;
-    (
-        (p8_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p8_line[B])
-    )
-)
+<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Forall</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">B</span> <span class="p">.</span>
+<span class="ow">G</span><span class="p">(</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
@@ -1867,393 +1867,393 @@ G(
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span>Forall A . Exists B .
-G(
-    (
-        (p1_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p2_line[B])
-        &amp;(p2_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p3_line[B])
-        &amp;(p3_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p4_line[B])
-        &amp;(p4_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p10_line[B])
-        &amp;(p10_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p1_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p1_TOKEN[B])
-        &amp;(p1_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p1_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p3_line[B])
-        &amp;(p3_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p4_line[B])
-        &amp;(p4_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p10_line[B])
-        &amp;(p10_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p2_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p2_TOKEN[B])
-        &amp;(p2_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p2_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p4_line[B])
-        &amp;(p4_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p10_line[B])
-        &amp;(p10_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p3_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p3_TOKEN[B])
-        &amp;(p3_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p3_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p5_line[B])
-        &amp;(p5_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p10_line[B])
-        &amp;(p10_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p4_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p4_TOKEN[B])
-        &amp;(p4_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p4_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p6_line[B])
-        &amp;(p6_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p10_line[B])
-        &amp;(p10_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p5_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p5_TOKEN[B])
-        &amp;(p5_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p5_line[B])
-    )
-    &amp;
-    (
-        (p6_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_line[A] = p7_line[B])
-        &amp;(p7_line[A] = p6_line[B])
-    )
-    &amp;
-    (
-        (p6_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p6_line[B])
-    )
-    &amp;
-    (
-        (p6_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p6_line[B])
-    )
-    &amp;
-    (
-        (p6_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_line[A] = p10_line[B])
-        &amp;(p10_line[A] = p6_line[B])
-    )
-    &amp;
-    (
-        (p6_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p6_TOKEN[B])
-        &amp;(p6_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p6_line[B])
-    )
-    &amp;
-    (
-        (p7_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_line[A] = p8_line[B])
-        &amp;(p8_line[A] = p7_line[B])
-    )
-    &amp;
-    (
-        (p7_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p7_line[B])
-    )
-    &amp;
-    (
-        (p7_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_line[A] = p10_line[B])
-        &amp;(p10_line[A] = p7_line[B])
-    )
-    &amp;
-    (
-        (p7_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p7_TOKEN[B])
-        &amp;(p7_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p7_line[B])
-    )
-    &amp;
-    (
-        (p8_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_line[A] = p9_line[B])
-        &amp;(p9_line[A] = p8_line[B])
-    )
-    &amp;
-    (
-        (p8_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_line[A] = p10_line[B])
-        &amp;(p10_line[A] = p8_line[B])
-    )
-    &amp;
-    (
-        (p8_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p8_TOKEN[B])
-        &amp;(p8_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p8_line[B])
-    )
-    &amp;
-    (
-        (p9_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_line[A] = p10_line[B])
-        &amp;(p10_line[A] = p9_line[B])
-    )
-    &amp;
-    (
-        (p9_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p9_TOKEN[B])
-        &amp;(p9_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p9_line[B])
-    )
-    &amp;
-    (
-        (p10_TOKEN[A] = p11_TOKEN[B])
-        &amp;(p11_TOKEN[A] = p10_TOKEN[B])
-        &amp;(p10_line[A] = p11_line[B])
-        &amp;(p11_line[A] = p10_line[B])
-    )
-)
+<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Forall</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">B</span> <span class="p">.</span>
+<span class="ow">G</span><span class="p">(</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p1_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p1_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p2_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p2_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p3_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p3_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p4_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p4_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p4_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p5_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p5_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p5_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p6_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p6_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p6_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p7_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p7_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p7_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p8_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p8_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p8_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p9_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p9_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p9_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="o">&amp;</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="nv">p10_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_TOKEN</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_TOKEN</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p10_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p11_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+        <span class="o">&amp;</span><span class="p">(</span><span class="nv">p11_line</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">p10_line</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div></div>

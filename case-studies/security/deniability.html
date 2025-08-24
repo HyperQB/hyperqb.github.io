@@ -372,13 +372,13 @@ bug-hunting by HyperQB gives a positive verdict (i.e., <span class="math notrans
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">Forall</span><span class="w"> </span><span class="ow">A</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nv">Exists</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nv">Exists</span><span class="w"> </span><span class="nv">C</span><span class="w"> </span><span class="p">.</span>
+<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Forall</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">B</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">C</span> <span class="p">.</span>
 <span class="ow">G</span><span class="p">(</span>
-<span class="w">  </span><span class="p">(</span><span class="nv">debits_amount</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
-<span class="w">  </span><span class="o">&amp;</span>
-<span class="w">  </span><span class="p">(</span><span class="nv">debits_amount</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
-<span class="w">  </span><span class="o">&amp;</span>
-<span class="w">  </span><span class="err">~</span><span class="p">(</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
+  <span class="p">(</span><span class="nv">debits_amount</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+  <span class="o">&amp;</span>
+  <span class="p">(</span><span class="nv">debits_amount</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
+  <span class="o">&amp;</span>
+  <span class="o">~</span><span class="p">(</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -442,13 +442,13 @@ bug-hunting by HyperQB gives a positive verdict (i.e., <span class="math notrans
 </div>
 </div></div>
 <p><strong>Formula</strong></p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="nv">Forall</span><span class="w"> </span><span class="ow">A</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nv">Exists</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nv">Exists</span><span class="w"> </span><span class="nv">C</span><span class="w"> </span><span class="p">.</span>
+<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Forall</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">B</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">C</span> <span class="p">.</span>
 <span class="ow">G</span><span class="p">(</span>
-<span class="w">  </span><span class="p">(</span><span class="nv">debits_amount</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
-<span class="w">  </span><span class="o">&amp;</span>
-<span class="w">  </span><span class="p">(</span><span class="nv">debits_amount</span><span class="p">[</span><span class="ow">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
-<span class="w">  </span><span class="o">&amp;</span>
-<span class="w">  </span><span class="err">~</span><span class="p">(</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
+  <span class="p">(</span><span class="nv">debits_amount</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span>
+  <span class="o">&amp;</span>
+  <span class="p">(</span><span class="nv">debits_amount</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">=</span><span class="nv">debits_amount</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
+  <span class="o">&amp;</span>
+  <span class="o">~</span><span class="p">(</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="nv">init_balance</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
 <span class="p">)</span>
 </pre></div>
 </div>

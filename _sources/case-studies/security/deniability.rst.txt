@@ -43,7 +43,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/deniability/den.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #8.2
 
@@ -59,13 +59,19 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/deniability/den.hq
-            :language: smv
+            :language: hq
 
 References
 ----------
+
 .. _SSS20:
+
 - [SSS20] `Shubham Sahai, Pramod Subramanyan, and Rohit Sinha. Verification of quantitative hyperproperties using trace enumeration relations. In Computer Aided Verification: 32nd International Conference, CAV 2020, Los Angeles, CA, USA, July 21–24, 2020, Proceedings, Part I 32, pages 201–224. Springer, 2020. <https://doi.org/10.48550/arXiv.2005.04606>`_
+
 .. _FHT18:
+
 - [FHT18] `Bernd Finkbeiner, Christopher Hahn, and Hazem Torfah. Model checking quantitative hyperproperties. In Computer Aided Verification: 30th International Conference, CAV 2018, Held as Part of the Federated Logic Conference, FloC 2018, Oxford, UK, July 14-17, 2018, Proceedings, Part I, pages 144–163. Springer, 2018. <https://doi.org/10.1007/978-3-319-96145-3_8>`_
+
 .. _BKR09:
+
 - [BKR09] `Michael Backes, Boris Köpf, and Andrey Rybalchenko. Automatic discovery and quantification of information leaks. In 2009 30th IEEE Symposium on Security and Privacy, pages 141–153. IEEE, 2009. <https://doi.org/10.1109/SP.2009.18>`_

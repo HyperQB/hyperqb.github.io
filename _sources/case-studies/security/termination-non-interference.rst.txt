@@ -37,7 +37,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/tini.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #10.2
 
@@ -53,11 +53,15 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/tsni.hq
-            :language: smv
+            :language: hq
 
 References
 ----------
+
 .. _CS10:
+
 - [CS10] `M. R. Clarkson and F. B. Schneider. Hyperproperties. Journal of Computer Security, 18(6):1157–1210, 2010. <https://doi.org/10.3233/JCS-2009-0393>`_
+
 .. _UTK21:
+
 - [UTK21] `Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021, Virtual Event, July 20–23, 2021, Proceedings, Part I, pages 742–766. Springer, 2021. <https://doi.org/10.1007/978-3-030-81685-8_35>`_

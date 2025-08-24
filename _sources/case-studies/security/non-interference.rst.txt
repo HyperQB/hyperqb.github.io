@@ -39,7 +39,7 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/ni/NI_formula.hq
-            :language: smv
+            :language: hq
 
     .. tab:: Case #3.2
 
@@ -55,11 +55,15 @@ Benchmarks
         **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/ni/NI_formula.hq
-            :language: smv
+            :language: hq
 
 References
 ----------
+
 .. _GM82:
+
 - [GM82] `J. A. Goguen and J. Meseguer. Security policies and security models. In IEEE Symp. on Security and Privacy, pages 11–20, 1982. <https://doi.org/10.1109/SP.1982.10014>`_
+
 .. _SV98:
+
 - [SV98] `G. Smith and D. M. Volpano. Secure information flow in a multi-threaded imperative language. In Proceedings of the 25th ACM Symposium on Principles of Programming Languages (POPL), pages 355–364, 1998. <https://doi.org/10.1145/268946.268975>`_

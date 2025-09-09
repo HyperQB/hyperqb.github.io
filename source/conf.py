@@ -48,8 +48,18 @@ html_theme_options = {
 html_static_path = ['_static']
 html_css_files = ['custom.css']
 
+mathjax3_config = {
+    "tex": {
+        "macros": {
+            "llbracket": r"{\lbrack\!\lbrack}",
+            "rrbracket": r"{\rbrack\!\rbrack}",
+        }
+    }
+}
+
 extensions = [
     'sphinx.ext.mathjax',
     'sphinx_tabs.tabs',
-    'hyperltl_ext'
+    'hyperltl_ext',
+    'sphinx_design'
 ]

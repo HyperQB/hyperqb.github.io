@@ -27,6 +27,29 @@ Background Theory
          &(T,\Pi,i)\vDash \psi_1\,\mathcal{R}\,\psi_2 &&\Leftrightarrow&& \Big(\forall j\ge i:\ (T,\Pi,j)\vDash \psi_2\Big)\ \text{or}\ \Big(\exists j\ge i:\ (T,\Pi,j)\vDash \psi_1 \land \forall k\in[i,j]:\ (T,\Pi,k)\vDash \psi_2\Big).
          \end{aligned}
 
+      .. rubric:: Higher-order LTL (HLTL: syntax and semantics)
+
+      **HLTL** generalizes HyperLTL by permitting variables that range over *tuples of traces* (arity :math:`d\ge 1`). This enables compact specifications of n-ary relations (e.g., 3-safety).
+
+      Syntax extends atoms to point into a component of a tuple:
+
+      .. math::
+
+         \begin{array}{rcl}
+         \varphi &::=& \exists \Pi.\,\varphi \mid \forall \Pi.\,\varphi \mid \psi,\\
+         \psi &::=& \mathit{true} \mid a_{\Pi[j]} \mid \neg \psi \mid \psi \lor \psi \mid \psi \land \psi \mid \psi \,\mathcal{U}\, \psi \mid \psi \,\mathcal{R}\, \psi \mid \bigcirc \psi,
+         \end{array}
+
+      where :math:`\Pi` ranges over tuples :math:`((2^{AP})^\omega)^d` and :math:`j\in\{0,\dots,d-1\}`.
+
+      A **tuple assignment** :math:`\Theta:\mathrm{Vars}(\varphi)\rightharpoonup ((2^{AP})^\omega)^d` maps each variable to a fixed-arity tuple of traces. Satisfaction extends the HyperLTL clauses; the atomic case becomes:
+
+      .. math::
+
+         (T,\Theta,i)\vDash a_{\Pi[j]} \ \Leftrightarrow\ a\in \Theta(\Pi)[j](i).
+
+      (All Boolean/temporal operators and quantifiers behave as in HyperLTL, lifted through :math:`\Theta`.)
+
       .. rubric:: Asynchronous HyperLTL (A-HLTL: syntax and asynchronous semantics)
 
       **A-HLTL** augments HyperLTL with *trajectory quantifiers* that govern how traces progress relative to each other [2, 3]. In the BMC-oriented fragment (without next :math:`\bigcirc`):
@@ -40,7 +63,7 @@ Background Theory
 
       A **trajectory** :math:`t` for the set of trace variables :math:`\mathrm{Paths}(\varphi)` is an :math:`\omega`-sequence :math:`t(0),t(1),\ldots` with :math:`t(i)\subseteq \mathrm{Paths}(\varphi)` indicating which traces advance at global step :math:`i` (others *stutter*). A trajectory is **fair** if every trace is selected infinitely often.
 
-      We use a trajectory assignment :math:`\Gamma:\mathrm{Trajs}(\varphi)\rightharpoonup \mathrm{TRJ}` and an **asynchronous trace assignment** :math:`\Pi:\mathrm{Paths}(\varphi)\times \mathrm{Trajs}(\varphi)\to (2^{AP})^\omega\times \mathbb{N}` mapping :math:`(\pi,\tau)` to a pointed trace :math:`(\sigma,n)`. Define the successor :math:`(\Pi,\Gamma){+}1=(\Pi',\Gamma')` by incrementing :math:`n` exactly for those pairs with :math:`\pi\in \Gamma(\tau)(0)` and rotating the trajectories; write :math:`(\Pi,\Gamma){+}k` for the :math:`k`-fold iterate. Characteristic clauses (Boolean/quantifier cases as expected) are:
+      We use a trajectory assignment :math:`\Gamma:\mathrm{Trajs}(\varphi)\rightharpoonup \mathrm{TRJ}` and an **asynchronous trace assignment** :math:`\Pi:\mathrm{Paths}(\varphi)\times \mathrm{Trajs}(\varphi)\to (2^{AP})^\omega\times \mathbb{N}` mapping :math:`(\pi,\tau)` to a pointed trace :math:`(\sigma,n)`. Define the successor :math:`\!(\Pi,\Gamma){+}1=(\Pi',\Gamma')\!` by incrementing :math:`n` exactly for those pairs with :math:`\pi\in \Gamma(\tau)(0)` and rotating the trajectories; write :math:`(\Pi,\Gamma){+}k` for the :math:`k`-fold iterate. Characteristic clauses (Boolean/quantifier cases as expected) are:
 
       .. math::
 
@@ -52,6 +75,24 @@ Background Theory
 
       **Stutter-invariant fragment.** For bounded checking we restrict to formulas without :math:`\bigcirc`, so that inserted stuttering does not affect satisfaction; trajectories are assumed fair [2].
 
+      .. rubric:: Worked example (HLTL vs A-HLTL)
+
+      Property: *“Any two runs eventually produce the same output value, allowing different speeds.”*
+
+      • **HLTL (synchronous)** (requires lockstep convergence):
+
+      .. math::
+
+         \forall \Pi.\ \Box\Diamond\big(out_{\Pi[0]} = out_{\Pi[1]}\big)
+         \qquad\text{with arity } d{=}2.
+
+      • **A-HLTL (asynchronous)** (allows stuttering/interleavings):
+
+      .. math::
+
+         \forall \pi_1.\forall \pi_2.\ A_\tau.\ \Box\Diamond\big(out_{\pi_1,\tau} = out_{\pi_2,\tau}\big).
+
+      If one trace pauses while the other advances, A-HLTL still measures “eventually equal” along the fair trajectory, whereas HLTL demands equality along the *global* time axis.
 
    .. tab-item:: BMC Algorithm
 
@@ -96,6 +137,10 @@ Background Theory
 
       We bound **paths** by :math:`k` and **trajectories** by :math:`m` [2]. Let :math:`\mathrm{pos}_{\pi,\tau}(i)` count how many times :math:`\pi` has been selected in :math:`\tau(0),\ldots,\tau(i)`. Predicate :math:`\mathsf{off}` holds at :math:`(\Pi,\Gamma,i)` iff some selected pair :math:`(\pi,\tau)` has :math:`\mathrm{pos}_{\pi,\tau}(i)>k` before visiting a halting state. Temporal clauses follow the inductive rules above for :math:`i<m`; boundary behavior at :math:`i=m` is given by the halting pessimistic/optimistic variants (require vs. allow reading satisfaction at the boundary if :math:`\mathsf{halted}` holds).
 
+      .. rubric:: 3′) Bounded HLTL semantics (synchronous tuples)
+
+      For **HLTL**, tuple components advance **in lockstep**. On bound :math:`k`, satisfaction of :math:`\psi` at index 0 is exactly :math:`\text{⟦}\psi\text{⟧}^{*}_{0,k}` with atoms interpreted as :math:`a_{\Pi[j]}^i`. No trajectory bound is needed since there is no interleaving; halting variants (hpes/hopt) apply verbatim at :math:`k{+}1`.
+
       .. rubric:: 4) QBF compilation
 
       For :math:`\varphi=Q_A\,\pi_A.\cdots Q_Z\,\pi_Z.\,\psi` (stutter-invariant), associate each :math:`\pi_j` with :math:`K_j` and build
@@ -108,49 +153,3 @@ Background Theory
          \circ_j=\begin{cases}\wedge & Q_j=\exists,\\ \rightarrow & Q_j=\forall.\end{cases}
 
       The QBF’s satisfiability is equivalent to the bounded satisfaction of :math:`\varphi` (and is exact on terminating systems under halting variants) [1, 2].
-
-
-   .. tab-item:: Loop Condition Algorithm
-
-      .. rubric:: Motivation
-
-      Lasso constraints (prefix+loop) finitely represent infinite runs for LTL. For hyperproperties, different traces may loop at unrelated instants; a single synchronized loop is unsound/incomplete. **Efficient loop conditions** specialized to (A-)HyperLTL address this [3].
-
-      .. rubric:: Automata-based completeness (one alternation)
-
-      For fragments with at most one quantifier alternation (AE or EA), lasso-shaped witnesses suffice. Using Büchi-automata translations and product constructions yields a **completeness threshold** (worst-case doubly-exponential) such that increasing :math:`k` past the threshold cannot change SAT/UNSAT [3].
-
-      .. rubric:: Simulation-based encodings (SIMEA/SIMAE)
-
-      We avoid full automata by encoding **simulation** between explored prefixes.
-
-      • **SIMEA (EA)**: search a lasso in the existential model and universally require the other model to simulate it.  
-      • **SIMAE (AE)**: universally quantify a lasso in the first model and existentially find a simulating run in the second. When nondeterminism blocks simulation, introduce **prophecy variables** to pre-commit to choices enabling alignment.
-
-      A (forward) simulation :math:`R\subseteq S_P\times S_Q` between Kripke structures :math:`K_P,K_Q` satisfies
-
-      .. math::
-
-         \begin{aligned}
-         &\forall s_P^0\in S_P^0\,\exists s_Q^0\in S_Q^0:\ (s_P^0,s_Q^0)\in R,\qquad &&L_P(s_P)=L_Q(s_Q)\ \text{for }(s_P,s_Q)\in R,\\
-         &\forall (s_P,s_Q)\in R,\ \forall (s_P,s_P')\in \delta_P\ \exists (s_Q,s_Q')\in \delta_Q:\ (s_P',s_Q')\in R.
-         \end{aligned}
-
-      .. rubric:: Encoding skeleton (AE example :math:`\forall \pi.\exists \pi'.\,\Box\,\mathsf{Pred}`)
-
-      1) Select a lasso in :math:`K_P` via loop-selector Booleans.
-
-      2) Declare Booleans for a run of :math:`K_Q` and a matrix :math:`\mathsf{sim}_{i,j}` for the candidate relation.
-
-      3) Constrain initials and step-preservation so that :math:`\mathsf{sim}` is a simulation; enforce label agreement for :math:`\mathsf{Pred}`.
-
-      4) (Optional) Add **prophecy** variables to resolve nondeterminism and enable alignment.
-
-      The EA case dually selects the lasso in the existential model and universally quantifies the simulation obligation.
-
-      .. rubric:: Scope and benefits
-
-      • Captures early loops/infinite behavior with finite exploration.  
-      • Often explores only a subset of a large model yet remains conclusive.  
-      • Produces compact witnesses/counterexamples.  
-      • Targeted at **one** alternation (AE/EA); for A-HLTL BMC we remain in the **stutter-invariant** fragment.

@@ -131,6 +131,7 @@ Specifically, the one of the first violations found by HyperQB occur when the in
 Property
 ----------
 As mentioned earlier, we want to verify that the FPU executes in constant time regardless of the input values. The HyperLTL formula expressing this property is as follows:
+
 .. math::
 
     \forall \pi_A.\forall \pi_B.\ (\mathrm{rst}_{\pi_A} \land \mathrm{rst}_{\pi_B} \land \bigcirc\Box(\neg\mathrm{rst}_{\pi_A}  \land \neg \mathrm{rst}_{\pi_B})) \\ \rightarrow 

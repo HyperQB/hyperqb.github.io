@@ -297,10 +297,114 @@
 <p>The Verilog module under consideration implements a simple FPU that supports addition, subtraction, multiplication, and division of floating-point numbers. The design includes control logic to handle different operations and edge cases, such as overflow and underflow.</p>
 <p>Here we are interested in verifying that the execution time of the FPU is independent of the specific values of the input operands, thus ensuring that no timing side-channel information can be inferred by an attacker.</p>
 <p>HyperQB is able to discover a violation of this property in the division operation, where certain input values lead to longer execution times due to additional handling of special cases (e.g., division by zero).</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>module divider(
+        input_a,
+        input_b,
+        input_a_stb,
+        input_b_stb,
+        output_z_ack,
+        clk,
+        rst,
+        output_z,
+        output_z_stb,
+        input_a_ack,
+        input_b_ack);
+
+
+input     clk;
+input     rst;
+
+input     [31:0] input_a;
+input     input_a_stb;
+output    input_a_ack;
+
+input     [31:0] input_b;
+input     input_b_stb;
+output    input_b_ack;
+
+output    [31:0] output_z;
+output    output_z_stb;
+input     output_z_ack;
+</pre></div>
+</div>
 <p>In the code snippet above, we show the interface of the divider module of the FPU. The module takes two 32-bit floating-point inputs, <cite>input_a</cite> and <cite>input_b</cite>, along with their respective strobe signals. It produces a 32-bit output <cite>output_z</cite> along with its strobe signal. The module also includes clock and reset signals.</p>
 <p>We are interested in verifying that the output strobe signal <cite>output_z_stb</cite> is produced in constant time after both input strobe signals <cite>input_a_stb</cite> and <cite>input_b_stb</cite> are acknowledged, regardless of the specific values of <cite>input_a</cite> and <cite>input_b</cite>.
 The module also uses handshaking signals (<cite>input_a_ack</cite>, <cite>input_b_ack</cite>, and <cite>output_z_ack</cite>) to manage data flow and ensure proper synchronization between input and output operations.</p>
 <p>Specifically, the one of the first violations found by HyperQB occur when the inputs to the divider are such that <cite>input_b</cite> is zero, leading to a longer execution time due to the special handling of division by zero cases.  Similar counterexamples exist for other special cases as defined in the snippet below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>special_cases:
+  begin
+    //if a is NaN or b is NaN return NaN
+    if ((a_e == 128 &amp;&amp; a_m != 0) || (b_e == 128 &amp;&amp; b_m != 0)) begin
+      z[31] &lt;= 1;
+      z[30:23] &lt;= 255;
+      z[22] &lt;= 1;
+      z[21:0] &lt;= 0;
+      state_var &lt;= put_z;
+      //if a is inf and b is inf return NaN
+    end else if ((a_e == 128) &amp;&amp; (b_e == 128)) begin
+      z[31] &lt;= 1;
+      z[30:23] &lt;= 255;
+      z[22] &lt;= 1;
+      z[21:0] &lt;= 0;
+      state_var &lt;= put_z;
+    //if a is inf return inf
+    end else if (a_e == 128) begin
+      z[31] &lt;= a_s ^ b_s;
+      z[30:23] &lt;= 255;
+      z[22:0] &lt;= 0;
+      state_var &lt;= put_z;
+       //if b is zero return NaN
+      if ($signed(b_e == -127) &amp;&amp; (b_m == 0)) begin
+        z[31] &lt;= 1;
+        z[30:23] &lt;= 255;
+        z[22] &lt;= 1;
+        z[21:0] &lt;= 0;
+        state_var &lt;= put_z;
+      end
+    //if b is inf return zero
+    end else if (b_e == 128) begin
+      z[31] &lt;= a_s ^ b_s;
+      z[30:23] &lt;= 0;
+      z[22:0] &lt;= 0;
+      state_var &lt;= put_z;
+    //if a is zero return zero
+    end else if (($signed(a_e) == -127) &amp;&amp; (a_m == 0)) begin
+      z[31] &lt;= a_s ^ b_s;
+      z[30:23] &lt;= 0;
+      z[22:0] &lt;= 0;
+      state_var &lt;= put_z;
+       //if b is zero return NaN
+      if (($signed(b_e) == -127) &amp;&amp; (b_m == 0)) begin
+        z[31] &lt;= 1;
+        z[30:23] &lt;= 255;
+        z[22] &lt;= 1;
+        z[21:0] &lt;= 0;
+        state_var &lt;= put_z;
+      end
+    //if b is zero return inf
+    end else if (($signed(b_e) == -127) &amp;&amp; (b_m == 0)) begin
+      z[31] &lt;= a_s ^ b_s;
+      z[30:23] &lt;= 255;
+      z[22:0] &lt;= 0;
+      state_var &lt;= put_z;
+    end else begin
+      //Denormalised Number
+      if ($signed(a_e) == -127) begin
+        a_e &lt;= -126;
+      end else begin
+        a_m[23] &lt;= 1;
+      end
+      //Denormalised Number
+      if ($signed(b_e) == -127) begin
+        b_e &lt;= -126;
+      end else begin
+        b_m[23] &lt;= 1;
+      end
+      state_var &lt;= normalise_a;
+    end
+  end
+</pre></div>
+</div>
 </section>
 <section id="property-to-verify">
 <h2>Property to Verify<a class="headerlink" href="#property-to-verify" title="Permalink to this heading">¶</a></h2>

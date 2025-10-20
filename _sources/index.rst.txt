@@ -11,7 +11,7 @@ Welcome to HyperQB!
    :caption: Contents:
 
    introduction
-   theory
+   background_theory_tabs
    ir
    case-studies/index
    playground

@@ -1,4 +1,4 @@
-SPI Bus (Verilog)
+Observational Determinism (Verilog)
 ======================
 
 Description of the Case Study

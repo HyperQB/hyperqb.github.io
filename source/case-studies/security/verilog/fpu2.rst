@@ -1,10 +1,12 @@
 Constant-Time Execution (Verilog)
 ======================
 
-Description of the Case Study
+Floating Point Unit (FPU)
 -----------------------------
 
 This case study involves verifying that a floating-point unit (FPU) implementation in Verilog executes in constant time, regardless of the input values. The FPU performs various arithmetic operations, and it is crucial to ensure that the execution time does not leak any sensitive information about the operands.
+
+The full Verilog code for the FPU can be found in the benchmark repository `here <https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider>`_. This case study was sourced from the IODINE tool's benchmarks `here <https://github.com/gokhankici/iodine>`_.
 
 The Verilog module under consideration implements a simple FPU that supports addition, subtraction, multiplication, and division of floating-point numbers. The design includes control logic to handle different operations and edge cases, such as overflow and underflow.
 
@@ -14,7 +16,7 @@ HyperQB is able to discover a violation of this property in the division operati
 
 
 .. code-block:: text
-    
+
     module divider(
             input_a,
             input_b,
@@ -125,11 +127,14 @@ Specifically, the one of the first violations found by HyperQB occur when the in
           state_var <= normalise_a;
         end
       end
-Property to Verify
-----------
 
+Property
+----------
+As mentioned earlier, we want to verify that the FPU executes in constant time regardless of the input values. The HyperLTL formula expressing this property is as follows:
 .. math::
 
     \forall \pi_A.\forall \pi_B.\ (\mathrm{rst}_{\pi_A} \land \mathrm{rst}_{\pi_B} \land \bigcirc\Box(\neg\mathrm{rst}_{\pi_A}  \land \neg \mathrm{rst}_{\pi_B})) \\ \rightarrow 
     \bigcirc\Box(\mathrm{input\_b\_stb}_{\pi_A} \land \mathrm{s\_input\_b\_ack}_{\pi_A} \land  \\ \mathrm{input\_b\_stb}_{\pi_B} \land \mathrm{s\_input\_b\_ack}_{\pi_B})  
     \\ \rightarrow \Box(\mathrm{s\_output\_b\_stb}_{\pi_A} \leftrightarrow \mathrm{s\_output\_b\_stb}_{\pi_B}).
+
+In this formula, we quantify over two traces, :math:`\pi_A` and :math:`\pi_B`, representing two different executions of the FPU. The formula states that if both executions start in a reset state and then proceed without resets, and if both executions receive the same input strobe and acknowledgment signals for `input_b`, then the output strobe signals for `output_z` must occur simultaneously in both executions. This ensures that the timing of the output does not depend on the specific input values, thus verifying constant-time execution.

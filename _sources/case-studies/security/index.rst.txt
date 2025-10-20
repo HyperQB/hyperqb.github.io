@@ -12,6 +12,11 @@ Security
     intransitive-non-interference
     termination-non-interference
     nondeterministic
-    verilog/led
-    verilog/spi
-    verilog/fpu2
+
+.. toctree::
+   :caption: Verilog
+   :maxdepth: 1
+
+   verilog/led
+   verilog/spi
+   verilog/fpu2

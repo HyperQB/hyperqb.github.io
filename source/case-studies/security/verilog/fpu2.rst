@@ -1,4 +1,4 @@
-FPU2 (Verilog)
+Constant-Time Execution (Verilog)
 ======================
 
 Description of the Case Study

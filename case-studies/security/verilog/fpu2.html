@@ -293,9 +293,23 @@
 <h1>Constant-Time Execution (Verilog)<a class="headerlink" href="#constant-time-execution-verilog" title="Permalink to this heading">¶</a></h1>
 <section id="description-of-the-case-study">
 <h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
+<p>This case study involves verifying that a floating-point unit (FPU) implementation in Verilog executes in constant time, regardless of the input values. The FPU performs various arithmetic operations, and it is crucial to ensure that the execution time does not leak any sensitive information about the operands.</p>
+<p>The Verilog module under consideration implements a simple FPU that supports addition, subtraction, multiplication, and division of floating-point numbers. The design includes control logic to handle different operations and edge cases, such as overflow and underflow.</p>
+<p>Here we are interested in verifying that the execution time of the FPU is independent of the specific values of the input operands, thus ensuring that no timing side-channel information can be inferred by an attacker.</p>
+<p>HyperQB is able to discover a violation of this property in the division operation, where certain input values lead to longer execution times due to additional handling of special cases (e.g., division by zero).</p>
+<p>In the code snippet above, we show the interface of the divider module of the FPU. The module takes two 32-bit floating-point inputs, <cite>input_a</cite> and <cite>input_b</cite>, along with their respective strobe signals. It produces a 32-bit output <cite>output_z</cite> along with its strobe signal. The module also includes clock and reset signals.</p>
+<p>We are interested in verifying that the output strobe signal <cite>output_z_stb</cite> is produced in constant time after both input strobe signals <cite>input_a_stb</cite> and <cite>input_b_stb</cite> are acknowledged, regardless of the specific values of <cite>input_a</cite> and <cite>input_b</cite>.
+The module also uses handshaking signals (<cite>input_a_ack</cite>, <cite>input_b_ack</cite>, and <cite>output_z_ack</cite>) to manage data flow and ensure proper synchronization between input and output operations.</p>
+<p>Specifically, the one of the first violations found by HyperQB occur when the inputs to the divider are such that <cite>input_b</cite> is zero, leading to a longer execution time due to the special handling of division by zero cases.  Similar counterexamples exist for other special cases as defined in the snippet below.</p>
 </section>
 <section id="property-to-verify">
 <h2>Property to Verify<a class="headerlink" href="#property-to-verify" title="Permalink to this heading">¶</a></h2>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\forall \pi_A.\forall \pi_B.\ (\mathrm{rst}_{\pi_A} \land \mathrm{rst}_{\pi_B} \land \bigcirc\Box(\neg\mathrm{rst}_{\pi_A}  \land \neg \mathrm{rst}_{\pi_B})) \\ \rightarrow
+\bigcirc\Box(\mathrm{input\_b\_stb}_{\pi_A} \land \mathrm{s\_input\_b\_ack}_{\pi_A} \land  \\ \mathrm{input\_b\_stb}_{\pi_B} \land \mathrm{s\_input\_b\_ack}_{\pi_B})
+\\ \rightarrow \Box(\mathrm{s\_output\_b\_stb}_{\pi_A} \leftrightarrow \mathrm{s\_output\_b\_stb}_{\pi_B}).\end{split}\]</div>
+</div>
 </section>
 </section>
 
@@ -373,5 +387,7 @@
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>window.MathJax = {"tex": {"macros": {"llbracket": "{\\lbrack\\!\\lbrack}", "rrbracket": "{\\rbrack\\!\\rbrack}"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

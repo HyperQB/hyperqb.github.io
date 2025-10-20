@@ -14,6 +14,7 @@ HyperQB is able to discover a violation of this property in the division operati
 
 
 .. code-block:: text
+    
     module divider(
             input_a,
             input_b,
@@ -51,6 +52,7 @@ The module also uses handshaking signals (`input_a_ack`, `input_b_ack`, and `out
 Specifically, the one of the first violations found by HyperQB occur when the inputs to the divider are such that `input_b` is zero, leading to a longer execution time due to the special handling of division by zero cases.  Similar counterexamples exist for other special cases as defined in the snippet below.
 
 .. code-block:: text
+
     special_cases:
       begin
         //if a is NaN or b is NaN return NaN 

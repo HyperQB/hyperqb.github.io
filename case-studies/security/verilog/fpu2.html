@@ -291,9 +291,10 @@
         <article role="main" id="furo-main-content">
           <section id="constant-time-execution-verilog">
 <h1>Constant-Time Execution (Verilog)<a class="headerlink" href="#constant-time-execution-verilog" title="Permalink to this heading">¶</a></h1>
-<section id="description-of-the-case-study">
-<h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
+<section id="floating-point-unit-fpu">
+<h2>Floating Point Unit (FPU)<a class="headerlink" href="#floating-point-unit-fpu" title="Permalink to this heading">¶</a></h2>
 <p>This case study involves verifying that a floating-point unit (FPU) implementation in Verilog executes in constant time, regardless of the input values. The FPU performs various arithmetic operations, and it is crucial to ensure that the execution time does not leak any sensitive information about the operands.</p>
+<p>The full Verilog code for the FPU can be found in the benchmark repository <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider">here</a>. This case study was sourced from the IODINE tool’s benchmarks <a class="reference external" href="https://github.com/gokhankici/iodine">here</a>.</p>
 <p>The Verilog module under consideration implements a simple FPU that supports addition, subtraction, multiplication, and division of floating-point numbers. The design includes control logic to handle different operations and edge cases, such as overflow and underflow.</p>
 <p>Here we are interested in verifying that the execution time of the FPU is independent of the specific values of the input operands, thus ensuring that no timing side-channel information can be inferred by an attacker.</p>
 <p>HyperQB is able to discover a violation of this property in the division operation, where certain input values lead to longer execution times due to additional handling of special cases (e.g., division by zero).</p>
@@ -406,14 +407,16 @@ The module also uses handshaking signals (<cite>input_a_ack</cite>, <cite>input_
 </pre></div>
 </div>
 </section>
-<section id="property-to-verify">
-<h2>Property to Verify<a class="headerlink" href="#property-to-verify" title="Permalink to this heading">¶</a></h2>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\forall \pi_A.\forall \pi_B.\ (\mathrm{rst}_{\pi_A} \land \mathrm{rst}_{\pi_B} \land \bigcirc\Box(\neg\mathrm{rst}_{\pi_A}  \land \neg \mathrm{rst}_{\pi_B})) \\ \rightarrow
-\bigcirc\Box(\mathrm{input\_b\_stb}_{\pi_A} \land \mathrm{s\_input\_b\_ack}_{\pi_A} \land  \\ \mathrm{input\_b\_stb}_{\pi_B} \land \mathrm{s\_input\_b\_ack}_{\pi_B})
-\\ \rightarrow \Box(\mathrm{s\_output\_b\_stb}_{\pi_A} \leftrightarrow \mathrm{s\_output\_b\_stb}_{\pi_B}).\end{split}\]</div>
+<section id="property">
+<h2>Property<a class="headerlink" href="#property" title="Permalink to this heading">¶</a></h2>
+<p>As mentioned earlier, we want to verify that the FPU executes in constant time regardless of the input values. The HyperLTL formula expressing this property is as follows:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">forall</span> \<span class="n">pi_A</span><span class="o">.</span>\<span class="n">forall</span> \<span class="n">pi_B</span><span class="o">.</span>\ <span class="p">(</span>\<span class="n">mathrm</span><span class="p">{</span><span class="n">rst</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_A</span><span class="p">}</span> \<span class="n">land</span> \<span class="n">mathrm</span><span class="p">{</span><span class="n">rst</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_B</span><span class="p">}</span> \<span class="n">land</span> \<span class="n">bigcirc</span>\<span class="n">Box</span><span class="p">(</span>\<span class="n">neg</span>\<span class="n">mathrm</span><span class="p">{</span><span class="n">rst</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_A</span><span class="p">}</span>  \<span class="n">land</span> \<span class="n">neg</span> \<span class="n">mathrm</span><span class="p">{</span><span class="n">rst</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_B</span><span class="p">}))</span> \\ \<span class="n">rightarrow</span>
+\<span class="n">bigcirc</span>\<span class="n">Box</span><span class="p">(</span>\<span class="n">mathrm</span><span class="p">{</span><span class="nb">input</span>\<span class="n">_b</span>\<span class="n">_stb</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_A</span><span class="p">}</span> \<span class="n">land</span> \<span class="n">mathrm</span><span class="p">{</span><span class="n">s</span>\<span class="n">_input</span>\<span class="n">_b</span>\<span class="n">_ack</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_A</span><span class="p">}</span> \<span class="n">land</span>  \\ \<span class="n">mathrm</span><span class="p">{</span><span class="nb">input</span>\<span class="n">_b</span>\<span class="n">_stb</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_B</span><span class="p">}</span> \<span class="n">land</span> \<span class="n">mathrm</span><span class="p">{</span><span class="n">s</span>\<span class="n">_input</span>\<span class="n">_b</span>\<span class="n">_ack</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_B</span><span class="p">})</span>
+\\ \<span class="n">rightarrow</span> \<span class="n">Box</span><span class="p">(</span>\<span class="n">mathrm</span><span class="p">{</span><span class="n">s</span>\<span class="n">_output</span>\<span class="n">_b</span>\<span class="n">_stb</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_A</span><span class="p">}</span> \<span class="n">leftrightarrow</span> \<span class="n">mathrm</span><span class="p">{</span><span class="n">s</span>\<span class="n">_output</span>\<span class="n">_b</span>\<span class="n">_stb</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">pi_B</span><span class="p">})</span><span class="o">.</span>
+</pre></div>
 </div>
+<p>In this formula, we quantify over two traces, <span class="math notranslate nohighlight">\(\pi_A\)</span> and <span class="math notranslate nohighlight">\(\pi_B\)</span>, representing two different executions of the FPU. The formula states that if both executions start in a reset state and then proceed without resets, and if both executions receive the same input strobe and acknowledgment signals for <cite>input_b</cite>, then the output strobe signals for <cite>output_z</cite> must occur simultaneously in both executions. This ensures that the timing of the output does not depend on the specific input values, thus verifying constant-time execution.</p>
 </section>
 </section>
 
@@ -473,8 +476,8 @@ The module also uses handshaking signals (<cite>input_a_ack</cite>, <cite>input_
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Constant-Time Execution (Verilog)</a><ul>
-<li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
-<li><a class="reference internal" href="#property-to-verify">Property to Verify</a></li>
+<li><a class="reference internal" href="#floating-point-unit-fpu">Floating Point Unit (FPU)</a></li>
+<li><a class="reference internal" href="#property">Property</a></li>
 </ul>
 </li>
 </ul>

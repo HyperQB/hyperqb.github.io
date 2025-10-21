@@ -291,7 +291,7 @@
         <article role="main" id="furo-main-content">
           <section id="intermediate-representation">
 <h1>Intermediate Representation<a class="headerlink" href="#intermediate-representation" title="Permalink to this heading">¶</a></h1>
-<p>A key component of any <cite>Bounded Model Checking`</cite> (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. It is designed to be <strong>solver-agnostic</strong> and captures the two essential components of a state machine: the state variables and the transition logic.</p>
+<p>A key component of any <cite>Bounded Model Checking`</cite> (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. It is designed to be <strong>solver-agnostic</strong> and captures the two essential components of a state machine: the state variables and the transition logic.</p>
 <p>Suppose the set of transitions for a variable <code class="docutils literal notranslate"><span class="pre">var</span></code> is as follows:</p>
 <div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="ow">next</span><span class="p">(</span><span class="nv">var</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
 <span class="w">    </span><span class="nv">g1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">u1</span><span class="p">;</span>
@@ -332,7 +332,7 @@ Once the IR is constructed, the remainder of the pipeline operates uniformly on 
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
 <p>As an example, consider a simple system with a counter that iterates repeatedly from 0 to 15, and an LED that blinks every third cycle (i.e., when the counter is 0, 3, 6, 9, 12, or 15).</p>
-<p>This system can be modeled in <a href="#id2"><span class="problematic" id="id3">**</span></a>NuSMV* as shown below:</p>
+<p>This system can be modeled in <strong>NuSMV</strong> as shown below:</p>
 <div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
 <span class="nv">counter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">15</span><span class="p">;</span><span class="w">     </span><span class="c">-- 4-bit counter</span>
@@ -435,7 +435,7 @@ Once the IR is constructed, the remainder of the pipeline operates uniformly on 
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="doc-footnote">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>NuSMV paper: <a class="reference external" href="https://nusmv.fbk.eu/papers/sttt_j/pdf/sttt_j.pdf">https://nusmv.fbk.eu/papers/sttt_j/pdf/sttt_j.pdf</a></p>
 </aside>

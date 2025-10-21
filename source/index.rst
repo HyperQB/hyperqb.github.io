@@ -7,3 +7,16 @@ Welcome to HyperQB!
 ===================
 
 .. include:: introduction.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents:
+
+   introduction
+   background_theory_tabs
+   ir
+   case-studies/index
+   playground
+   download
+   people
+   publications

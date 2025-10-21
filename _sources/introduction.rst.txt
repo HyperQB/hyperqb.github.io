@@ -6,7 +6,7 @@ It takes as input a NuSMV model and a formula expressed in the temporal logic Hy
 HyperQB to seamlessly deal with quantifier alternations. Based on the selection of either bug hunting or synthesis,
 the instances of counterexamples (for negated formula) or witnesses (for synthesis of positive formulas) are returned.
 
-.. figure:: _static/flowchart.jpg
+.. figure:: _static/flowchart.png
    :scale: 50 %
    :alt: A descriptive alt text for the image
    :align: center

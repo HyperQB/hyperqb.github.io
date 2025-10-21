@@ -31,11 +31,7 @@ Based on the selection of either bug hunting or synthesis, the instances of coun
     - Satisfaction and *Witness*
 
 - **Core Technique**:
-    1. Parse the inputs into Boolean/unrolled representations.
-    2. Encode model plus temporal formula up to bound *k* as a **QBF** or **SMT** instance.
-    3. Solve the QBF/SMT with a solver (currently **QuAbs/Z3**), then decode result back into:
-        - A **counterexample** (bug hunting), or
-        - A **witness** (trace set satisfying the property)
+    - After parse the inputs into Boolean/SMT unrolled representations, the model(s) and specification are unrolled up to a bound *k* as a **QBF** or **SMT** instance. Then, a solver QBF/SMT (currently **QuAbs/Z3**) will solve the decision problem and decode the result back into a **counterexample** (bug hunting), or a **witness** (trace set satisfying the property).
 
 Sponsors
 --------

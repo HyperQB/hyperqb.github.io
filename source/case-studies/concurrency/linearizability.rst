@@ -9,14 +9,16 @@ concurrent double-ended queue using double-compare-and-swap (DCAS) and a doubly 
 hyperproperty that requires that any *history* of execution of a concurrent data structure—where history is sequence of
 *invocations* and *responses* by different threads—matches some sequential order of invocations and responses.
 
-.. math::
-
-   \varphi_{\text{lin}} = \forall \pi_A.\exists \pi_B.\ \Box\left( \mathit{history}_{\pi_A} \leftrightarrow \mathit{history}_{\pi_B} \right)
-
 SNARK is known to have two linearizability bugs. With the use of *pessimistic semantics*, a witness of linearizability
 violation of length :math:`k` is enough to infer that the given system does not satisfy the linearizability property.
 *HyperQB* returns SAT identifying both bugs and producing two counterexamples. The bugs returned are consistent with the
 ones reported in :ref:`[DDG+04] <DDG+04>`.
+
+The Hyperproperty to be checked is:
+
+.. math::
+
+   \varphi_{\text{lin}} = \forall \pi_A.\exists \pi_B.\ \Box\left( \mathit{history}_{\pi_A} \leftrightarrow \mathit{history}_{\pi_B} \right)
 
 Benchmarks
 ----------

@@ -4,7 +4,7 @@ Introduction
 **HyperQB** is a *push-button*, **bounded model checker** for verifying **hyperproperties**.
 Hyperproperties [1] are systems-wide properties that express the behavior of system as a whole rather than the behavior of individual execution traces.
 Hyperproperties can express important information-flow security policies (e.g., confidentiality and integrity), consistency models in concurrent computing (e.g., linearizability [2]]), robustness conditions in cyber-physical
-systems [3], and path planning in multi-agent systems.
+systems `[WZBP19] <https://www.cse.msu.edu/tart/publication/statistical-verification-hyperproperties-cyber-physical-systems>`_, and path planning in multi-agent systems.
 The core technology of HyperQB as a bounded model checker is based on an efficient transformation of the verification problem to solving the satisfiability problem for qunatified boolean formulas (QBF) and modulo theory (SMT).
 
 Overview
@@ -14,7 +14,7 @@ The QBF/SMT-based technique allows HyperQB to seamlessly deal with quantifier al
 Based on the selection of either bug hunting or synthesis, the instances of counterexamples (for negated formula) or witnesses (for synthesis of positive formulas) are returned.
 
 .. figure:: _static/flowchart.png
-   :scale: 70 %
+   :scale: 60 %
    :alt: Internal architechture of HyperQB
    :align: center
 

@@ -22,7 +22,7 @@ Based on the selection of either bug hunting or synthesis, the instances of coun
 - **Inputs**:
     - A set of models (up to one per trace quantifier) in **NuSMV** or **Verilog** languages (the C -> LLVM path is still under construction) 
     - A **HyperLTL**[4] or **A-HLTL**[5] formula specifying the hyperproperty
-    - The type of bounded semantics [6]
+    - The type of bounded semantics Link [HSB21] <https://www.cse.msu.edu/tart/publication/bounded-model-checking-hyperproperties>`_
     - The type of loop condition
     - SMT or QBF decision procedure
 

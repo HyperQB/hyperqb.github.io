@@ -21,8 +21,8 @@ Based on the selection of either bug hunting or synthesis, the instances of coun
 
 - **Inputs**:
     - A set of models (up to one per trace quantifier) in **NuSMV** or **Verilog** languages (the C -> LLVM path is still under construction) 
-    - A **HyperLTL**[4] or **A-HLTL**[5] formula specifying the hyperproperty
-    - The type of bounded semantics `Link [HSB21] <https://www.cse.msu.edu/tart/publication/bounded-model-checking-hyperproperties>`_
+    - A **HyperLTL**[4] or **A-HLTL** `[BCBFS21] <https://www.cse.msu.edu/tart/publication/temporal-logic-asynchronous-hyperproperties>`_ formula specifying the hyperproperty
+    - The type of bounded semantics `[HSB21] <https://www.cse.msu.edu/tart/publication/bounded-model-checking-hyperproperties>`_
     - The type of loop condition
     - SMT or QBF decision procedure
 
@@ -52,7 +52,3 @@ Sponsors
 [3] Y. Wang, M. Zarei, B. Bonakdarpour, Miroslav Pajic: Statistical Verification of Hyperproperties for Cyber-Physical Systems. ACM Transactions on Embedded Computing Systems 18(5s): 92:1-92:23 (2019)
 
 [4] M. R. Clarkson, B. Finkbeiner, M. Koleini, K. K. Micinski, M. N. Rabe, C. Sánchez: Temporal Logics for Hyperproperties. POST 2014: 265-284
-
-[5] J. Baumeister, N. Coenen, B. Bonakdarpour, B. Finkbeiner, C. Sánchez: A Temporal Logic for Asynchronous Hyperproperties. CAV (1) 2021: 694-717
-
-[6] T.-H. Hsu, C. Sánchez, B. Bonakdarpour: Bounded Model Checking for Hyperproperties. TACAS (1) 2021: 94-112

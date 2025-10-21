@@ -7,6 +7,8 @@ Hyperproperties can express important information-flow security policies (e.g., 
 systems `[WZBP19] <https://www.cse.msu.edu/tart/publication/statistical-verification-hyperproperties-cyber-physical-systems>`_, and path planning in multi-agent systems.
 The core technology of HyperQB as a bounded model checker is based on an efficient transformation of the verification problem to solving the satisfiability problem for qunatified boolean formulas (QBF) and modulo theory (SMT).
 
+Download HyperQB source code for command-line and stand alone desktop application here. Or, try our playground!
+
 Overview
 --------
 HyperQB can build and analyze several types of input models and temporal-logic specifications for hyperproperties.

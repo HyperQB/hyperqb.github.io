@@ -931,40 +931,7 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 <span class="w">	</span><span class="c">-- ##############################################################################</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--</span>
-<span class="c">-- // SNARK structure (with some accelerations):</span>
-<span class="c">-- // 0   ------- STAND BY: could go to line:1/ line:10/ line:19</span>
-<span class="c">-- // 	  popRight() starts:</span>
-<span class="c">-- // 1   - getRightHat as rh</span>
-<span class="c">-- // 2		- getLeftHat as lh</span>
-<span class="c">-- // 3		- if (rh is self-pointing) return assign popRight_fAIL</span>
-<span class="c">-- // 4 	- else if (rh equals lh)</span>
-<span class="c">-- // 5			DCAS (RightHat, LeftHat, rh, lh, Dummy, Dummy)</span>
-<span class="c">-- // 6			assign pop_result as rh-&gt;V</span>
-<span class="c">-- // 7		- else  assign rhl as rh-&gt;L</span>
-<span class="c">-- // 8				DCAS (RightHat, rh-&gt;L, rh, rhL, rhL, rh)</span>
-<span class="c">-- // 9				assign popRight_result as rh-&gt;V, assign rh-&gt;R as DUMMY</span>
-<span class="c">-- //     pushRight() starts:</span>
-<span class="c">-- // 10    - assing nd as Y --&gt; if null, return pushRight_fAIL</span>
-<span class="c">-- // 11		- assign nd-&gt;R as Dummy,assign nd-&gt; V as something (zero for now)</span>
-<span class="c">-- // 12		- assign rh as RightHat, assign rhR as rh-&gt;R</span>
-<span class="c">-- // 13		if (rh == rhR), assign nd -&gt; L = Dummy, assign lh = LeftHat</span>
-<span class="c">-- // 14			 DCAS (RightHat, LeftHat, rh, lh, nd, nd)</span>
-<span class="c">-- // 15			 return pushRight_SUCCESS</span>
-<span class="c">-- // 16		else   assign nd-&gt;L as rh</span>
-<span class="c">-- // 17			   DCAS(RightHat, rh-&gt;R, rh, rhR, nd, nd)</span>
-<span class="c">-- // 18			   return pushRight_SUCCESS</span>
-<span class="c">-- //  	  popLeft() starts:</span>
-<span class="c">-- // 19		- assign lh as LeftHat, assign rh as RightHat</span>
-<span class="c">-- // 20		- if (lh is self-pointing), return assign popLeft_fAIL</span>
-<span class="c">-- // 21		- else if (lh == rh)</span>
-<span class="c">-- // 22				DCAS (LeftHat, RightHat, lh, rh, Dummy, Dummy)</span>
-<span class="c">-- // 23				assign popLeft_result as lh -&gt; V</span>
-<span class="c">-- // 24		- else  assign lhR as lh-&gt;R</span>
-<span class="c">-- // 25				DCAS (LeftHat, lh-&gt;R, lh, lhR, lfR, lh)</span>
-<span class="c">-- // 26				assign popLeft_result as lh-&gt;V, assign lh_L as DDUMMY</span>
-
-<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
 
 <span class="w">	</span><span class="c">-- ##############################################################################</span>
@@ -1303,35 +1270,6 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 <span class="w">					</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">AllNodes</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
 <span class="w">				</span><span class="k">esac</span><span class="p">;</span>
 
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-
-
-<span class="w">	</span><span class="kd">DEFINE</span><span class="w"> </span>
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-<span class="w">		</span><span class="c">-- Proc 1 DEFINE</span>
-<span class="w">		</span><span class="c">-- proc1.popRightSTART 	:= proc1.line=1 | proc1.line=2 | proc1.line=3;</span>
-<span class="w">		</span><span class="c">-- proc1.popRightEND 		:= proc1.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc1.pushRightSTART	:= proc1.line=4 | proc1.line=5;</span>
-<span class="w">		</span><span class="c">-- proc1.pushRightEND		:= proc1.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc1.popLeftSTART		:= proc1.line=7 | proc1.line=8;</span>
-<span class="w">		</span><span class="c">-- proc1.popLeftEND		:= proc1.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc1.modifying			:= proc1.line=1 | proc1.line=4| proc1.line=7;</span>
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-<span class="w">		</span><span class="c">-- Proc 2 DEFINE</span>
-<span class="w">		</span><span class="c">-- proc2.popRightSTART 	:= proc2.line=1 | proc2.line=2 | proc2.line=3;</span>
-<span class="w">		</span><span class="c">-- proc2.popRightEND 		:= proc2.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc2.pushRightSTART	:= proc2.line=4 | proc2.line=5;</span>
-<span class="w">		</span><span class="c">-- proc2.pushRightEND		:= proc2.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc2.popLeftSTART		:= proc2.line=7 | proc2.line=8;</span>
-<span class="w">		</span><span class="c">-- proc2.popLeftEND		:= proc2.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc2.modifying			:= proc2.line=1 | proc2.line=4| proc2.line=7;</span>
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-<span class="w">		</span><span class="c">-- Queue DEFINE</span>
-<span class="w">		</span><span class="c">-- BOTH_MODIFYING := (proc1.modifying &amp; proc2.modifying);</span>
 <span class="w">		</span><span class="c">-- ##############################################################################</span>
 </pre></div>
 </div>

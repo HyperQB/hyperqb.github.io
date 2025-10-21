@@ -91,7 +91,8 @@ As an example, consider the following simple NuSMV model, which creates a counte
 
 This model can be represented in IR as the following Rust code (imports  omitted):
 
-.. code-block:: Rust
+.. code-block:: rust
+    
     let env = SMVEnv::new(&ctx);
 
     env.register_variable("counter", VarType::Int {

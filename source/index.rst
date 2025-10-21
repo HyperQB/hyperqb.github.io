@@ -6,4 +6,4 @@
 Welcome to HyperQB!
 ===================
 
-.. include:: introduction.rst
+.. literalinclude:: introduction.rst

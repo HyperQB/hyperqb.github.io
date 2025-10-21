@@ -37,7 +37,6 @@ the instances of counterexamples (for negated formula) or witnesses (for synthes
 Sponsors
 --------
 .. figure:: _static/NSF-Symbol.png
-   :scale: 30 %
    :alt: NSF
    :align: center
 

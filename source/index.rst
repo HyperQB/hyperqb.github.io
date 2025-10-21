@@ -6,6 +6,8 @@
 Welcome to HyperQB!
 ===================
 
+.. include:: introduction.rst
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents:

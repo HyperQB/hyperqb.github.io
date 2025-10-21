@@ -325,18 +325,9 @@ Based on the selection of either bug hunting or synthesis, the instances of coun
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>Core Technique</strong>:</dt><dd><ol class="arabic simple">
-<li><p>Parse the inputs into Boolean/unrolled representations.</p></li>
-<li><p>Encode model plus temporal formula up to bound <em>k</em> as a <strong>QBF</strong> or <strong>SMT</strong> instance.</p></li>
-<li><dl class="simple">
-<dt>Solve the QBF/SMT with a solver (currently <strong>QuAbs/Z3</strong>), then decode result back into:</dt><dd><ul>
-<li><p>A <strong>counterexample</strong> (bug hunting), or</p></li>
-<li><p>A <strong>witness</strong> (trace set satisfying the property)</p></li>
+<dt><strong>Core Technique</strong>:</dt><dd><ul>
+<li><p>After parse the inputs into Boolean/SMT unrolled representations, the model(s) and specification are unrolled up to a bound <em>k</em> as a <strong>QBF</strong> or <strong>SMT</strong> instance. Then, a solver QBF/SMT (currently <strong>QuAbs/Z3</strong>) will solve the decision problem and decode the result back into a <strong>counterexample</strong> (bug hunting), or a <strong>witness</strong> (trace set satisfying the property).</p></li>
 </ul>
-</dd>
-</dl>
-</li>
-</ol>
 </dd>
 </dl>
 </li>

@@ -16,7 +16,7 @@ The QBF/SMT-based technique allows HyperQB to seamlessly deal with quantifier al
 Based on the selection of either bug hunting or synthesis, the instances of counterexamples (for negated formula) or witnesses (for synthesis of positive formulas) are returned.
 
 .. figure:: _static/flowchart.png
-   :scale: 80 %
+   :scale: 70 %
    :alt: Internal architechture of HyperQB
    :align: center
 

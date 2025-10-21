@@ -291,15 +291,18 @@
         <article role="main" id="furo-main-content">
           <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
-<p><strong>HyperQB</strong> is a <em>push-button</em>, <strong>bounded model checker</strong> for verifying <strong>hyperproperties</strong>. Hyperproperties [1] are systems-wide properties
-It takes as input a NuSMV model and a formula expressed in the temporal logic HyperLTL. Our QBF-based technique allows
+<p><strong>HyperQB</strong> is a <em>push-button</em>, <strong>bounded model checker</strong> for verifying <strong>hyperproperties</strong>.
+Hyperproperties [1] are systems-wide properties that express the behavior of system as a whole rather than the behavior of individual execution traces.
+Hyperproperties can express important information-flow security policies (e.g., confidentiality and integrity), consistency models in concurrent computing (e.g., linearizability [2]]), robustness conditions in cyber-physical
+systems [3], and path planning in multi-agent systems.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<p>It takes as input a NuSMV model and a formula expressed in the temporal logic HyperLTL. Our QBF-based technique allows
 HyperQB to seamlessly deal with quantifier alternations. Based on the selection of either bug hunting or synthesis,
 the instances of counterexamples (for negated formula) or witnesses (for synthesis of positive formulas) are returned.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="_images/flowchart.png"><img alt="A descriptive alt text for the image" src="_images/flowchart.png" style="width: 728.8000000000001px; height: 289.6px;" /></a>
+<a class="reference internal image-reference" href="_images/flowchart.png"><img alt="Internal architechture of HyperQB" src="_images/flowchart.png" style="width: 728.8000000000001px; height: 289.6px;" /></a>
 </figure>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt><strong>Inputs</strong>:</dt><dd><ul>

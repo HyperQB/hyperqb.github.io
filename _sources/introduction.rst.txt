@@ -37,11 +37,13 @@ the instances of counterexamples (for negated formula) or witnesses (for synthes
 Sponsors
 --------
 .. figure:: _static/NSF-Symbol.png
-   :scale: 20 %
+   :scale: 30 %
    :alt: NSF
    :align: center
 
 
 [1] M. R. Clarkson and F. B. Schneider: **Hyperproperties.** Journal of Computer Security 18(6): 1157-1210 (2010)
+
 [2] M. Herlihy and J. M. Wing. Linearizability: A correctness condition for concurrent objects. ACM Transactions on Programming Languages and Systems, 12(3):463–492 (1990)
+
 [3] Y. Wang, M. Zarei, B. Bonakdarpour, Miroslav Pajic: Statistical Verification of Hyperproperties for Cyber-Physical Systems. ACM Transactions on Embedded Computing Systems 18(5s): 92:1-92:23 (2019)

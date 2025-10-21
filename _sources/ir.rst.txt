@@ -123,11 +123,11 @@ This model can be represented in IR as the following Rust code (imports  omitted
     );
 
     env.register_transition("LED",
-    |_env, _ctx, _state| exact!(Node, predicate!("led_blink", _env, _ctx, _state))
+    |_env, _ctx, _state| exact!(Node, predicate!("led_blink", _env, _ctx, _state)),
     |_env, _ctx, _state| exact!(Bool, true)
     );
     env.register_transition("LED",
-    |_env, _ctx, _state| exact!(Bool, true)
+    |_env, _ctx, _state| exact!(Bool, true),
     |_env, _ctx, _state| exact!(Bool, false)
     );
 

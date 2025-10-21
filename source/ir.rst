@@ -59,7 +59,7 @@ Usage
 ----------
 As an example, consider a simple system with a counter that iterates repeatedly from 0 to 15, and an LED that blinks every third cycle (i.e., when the counter is 0, 3, 6, 9, 12, or 15).
 
-This system can be modeled in **NuSMV* as shown below:
+This system can be modeled in **NuSMV** as shown below:
 
 .. code-block:: smv
 

@@ -291,12 +291,9 @@
         <article role="main" id="furo-main-content">
           <section id="intermediate-representation">
 <h1>Intermediate Representation<a class="headerlink" href="#intermediate-representation" title="Permalink to this heading">¶</a></h1>
-<p>A key component of any <cite>Bounded Model Checking`</cite> (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
-<p>We chose this model for its natural ability to clearly and independently define the transition logic for each state variable. This separation simplifies the analysis pipeline, as we can reason about transitions without concern for the concrete representation of a full state. In this model, a state is simply a valuation of all system variables. The core data structure implementing this IR in our code is <code class="docutils literal notranslate"><span class="pre">SMVEnv</span></code>, which we refer to as the environment.</p>
-<section id="the-nusmv-transition-model">
-<h2>The NuSMV Transition Model<a class="headerlink" href="#the-nusmv-transition-model" title="Permalink to this heading">¶</a></h2>
-<p>Our IR’s logic is based on NuSMV’s <code class="docutils literal notranslate"><span class="pre">case...esac</span></code> structure for defining next-state transitions:</p>
-<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="ow">next</span><span class="p">(</span><span class="nv">variable</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<p>A key component of any <cite>Bounded Model Checking`</cite> (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. It is designed to be <strong>solver-agnostic</strong> and captures the two essential components of a state machine: the state variables and the transition logic.</p>
+<p>Suppose the set of transitions for a variable <code class="docutils literal notranslate"><span class="pre">var</span></code> is as follows:</p>
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="ow">next</span><span class="p">(</span><span class="nv">var</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
 <span class="w">    </span><span class="nv">g1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">u1</span><span class="p">;</span>
 <span class="w">    </span><span class="nv">g2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">u2</span><span class="p">;</span>
 <span class="w">    </span><span class="p">...</span>
@@ -305,19 +302,15 @@
 <span class="k">esac</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>In this format, each line <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">:</span> <span class="pre">u;</span></code> is a guarded transition, consisting of a boolean condition <code class="docutils literal notranslate"><span class="pre">g</span></code> and an update expression <code class="docutils literal notranslate"><span class="pre">u</span></code> (which must match the variable’s type).</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">next(var)</span></code> specifies the value of <code class="docutils literal notranslate"><span class="pre">var</span></code> in the next state. In this format, each line <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">:</span> <span class="pre">u;</span></code> is a guarded transition, consisting of a boolean condition <code class="docutils literal notranslate"><span class="pre">g</span></code> and an update expression <code class="docutils literal notranslate"><span class="pre">u</span></code> (which must match the variable’s type).</p>
+<p>We chose this model for its natural ability to clearly and independently define the transition logic for each state variable. This separation simplifies the analysis pipeline, as we can reason about transitions without concern for the concrete representation of a full state. In this model, a state is simply a valuation of all system variables. The core data structure implementing this IR in our code is <code class="docutils literal notranslate"><span class="pre">SMVEnv</span></code>, which we refer to as the environment.</p>
 <p>During a state change, the conditions are evaluated in order from top to bottom. The first condition <code class="docutils literal notranslate"><span class="pre">g</span></code> that holds determines the variable’s next value via its corresponding update expression <code class="docutils literal notranslate"><span class="pre">u</span></code>. If no condition holds, the <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> branch is taken, which typically assigns the variable’s current value (e.g., <code class="docutils literal notranslate"><span class="pre">TRUE</span> <span class="pre">:</span> <span class="pre">variable;</span></code>), indicating a self-loop where no value change occurs.</p>
-</section>
-<section id="id2">
-<h2>The <code class="docutils literal notranslate"><span class="pre">NuSMV</span></code> Transition Model<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
-<p>As its name suggests, our IR is an <cite>intermediate</cite> representation. It is designed to be <strong>solver-agnostic</strong> and captures the two essential components of a state machine: the state variables and the transition logic.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">SMVEnv</span></code> currently supports three variable types:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Boolean</span></code>: A boolean type, with an optional initial value.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Int</span></code>: A boundless mathematical integer, with optional initial, lower-bound, and upper-bound values.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BV</span></code>: A bit-vector type, which requires a bit-width. It can also have optional initial, lower-bound, and upper-bound values.</p></li>
 </ol>
-</section>
 <section id="defining-states-and-transitions">
 <h2>Defining States and Transitions<a class="headerlink" href="#defining-states-and-transitions" title="Permalink to this heading">¶</a></h2>
 <p>Once an <code class="docutils literal notranslate"><span class="pre">SMVEnv</span></code> is created, new variables are added using the <code class="docutils literal notranslate"><span class="pre">register_variable(name,</span> <span class="pre">type)</span></code> method. All metadata (such as bounds or initial values) is specified within the <code class="docutils literal notranslate"><span class="pre">type</span></code> argument.</p>
@@ -330,9 +323,16 @@
 <p>It is often necessary to check if a specific Boolean condition holds in a given state. Instead of rewriting this logic repeatedly, the IR allows you to define <cite>predicates</cite>.</p>
 <p>A predicate is a named, reusable Rust boolean function that is evaluated against the current state. They are defined using the <code class="docutils literal notranslate"><span class="pre">register_predicate(name,</span> <span class="pre">pred)</span></code> method, where <code class="docutils literal notranslate"><span class="pre">name</span></code> is a string for future reference and pred is the boolean function. Predicates are useful for defining properties or checking for specific conditions, such as identifying a halting state in the system.</p>
 </section>
+<section id="translation-to-ir">
+<h2>Translation to IR<a class="headerlink" href="#translation-to-ir" title="Permalink to this heading">¶</a></h2>
+<p>Our tool accepts two types of input files: NuSMV and Verilog.
+We implement dedicated parsers for each language to translate the input into our intermediate representation (IR).
+Once the IR is constructed, the remainder of the pipeline operates uniformly on it to generate either the QBF or SMT encoding.</p>
+</section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
-<p>As an example, consider the following simple NuSMV model, which creates a counter that goes through 0 to 15, resets to 0, and an LED that will turn on every third cycle of the counter.</p>
+<p>As an example, consider a simple system with a counter that iterates repeatedly from 0 to 15, and an LED that blinks every third cycle (i.e., when the counter is 0, 3, 6, 9, 12, or 15).</p>
+<p>This system can be modeled in NuSMV as shown below:</p>
 <div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
 <span class="nv">counter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">15</span><span class="p">;</span><span class="w">     </span><span class="c">-- 4-bit counter</span>
@@ -359,7 +359,39 @@
 <span class="k">esac</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>This model can be represented in IR as the following Rust code (imports  omitted):</p>
+<p>The corresponding Verilog implementation is presented below:</p>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">counter_led</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="kt">wire</span><span class="w">       </span><span class="n">clk</span><span class="p">,</span>
+<span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="kt">wire</span><span class="w">       </span><span class="n">rst_n</span><span class="p">,</span><span class="w">     </span><span class="c1">// active-low reset</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">  </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">counter</span><span class="p">,</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">        </span><span class="n">LED</span>
+<span class="p">);</span>
+
+<span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">reset_pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d15</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">led_blink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d11</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d14</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="n">reset_pred</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+
+<span class="w">            </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d0</span><span class="p">;</span>
+<span class="w">            </span><span class="n">LED</span><span class="w">     </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span>
+
+<span class="w">            </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">reset_pred</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">LED</span><span class="w">     </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">led_blink</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+<p>Both models are parsed to construct the following intermediate representation (imports omitted):</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SMVEnv</span>::<span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ctx</span><span class="p">);</span>
 
 <span class="n">env</span><span class="p">.</span><span class="n">register_variable</span><span class="p">(</span><span class="s">&quot;counter&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">VarType</span>::<span class="n">Int</span><span class="w"> </span><span class="p">{</span>
@@ -403,7 +435,7 @@
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id3" role="doc-footnote">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>NuSMV paper: <a class="reference external" href="https://nusmv.fbk.eu/papers/sttt_j/pdf/sttt_j.pdf">https://nusmv.fbk.eu/papers/sttt_j/pdf/sttt_j.pdf</a></p>
 </aside>
@@ -467,10 +499,9 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Intermediate Representation</a><ul>
-<li><a class="reference internal" href="#the-nusmv-transition-model">The NuSMV Transition Model</a></li>
-<li><a class="reference internal" href="#id2">The <code class="docutils literal notranslate"><span class="pre">NuSMV</span></code> Transition Model</a></li>
 <li><a class="reference internal" href="#defining-states-and-transitions">Defining States and Transitions</a></li>
 <li><a class="reference internal" href="#using-predicates">Using Predicates</a></li>
+<li><a class="reference internal" href="#translation-to-ir">Translation to IR</a></li>
 <li><a class="reference internal" href="#usage">Usage</a></li>
 <li><a class="reference internal" href="#references">References</a></li>
 </ul>

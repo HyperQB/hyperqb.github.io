@@ -21,7 +21,7 @@ Based on the selection of either bug hunting or synthesis, the instances of coun
 
 - **Inputs**:
     - A set of models (up to one per trace quantifier) in **NuSMV** or **Verilog** languages (the C -> LLVM path is still under construction) 
-    - A **HyperLTL**[4] or **A-HLTL** `[BCBFS21] <https://www.cse.msu.edu/tart/publication/temporal-logic-asynchronous-hyperproperties>`_ formula specifying the hyperproperty
+    - A **HyperLTL** [3] or **A-HLTL** `[BCBFS21] <https://www.cse.msu.edu/tart/publication/temporal-logic-asynchronous-hyperproperties>`_ formula specifying the hyperproperty
     - The type of bounded semantics `[HSB21] <https://www.cse.msu.edu/tart/publication/bounded-model-checking-hyperproperties>`_
     - The type of loop condition
     - SMT or QBF decision procedure
@@ -49,6 +49,4 @@ Sponsors
 
 [2] M. Herlihy and J. M. Wing. Linearizability: A correctness condition for concurrent objects. ACM Transactions on Programming Languages and Systems, 12(3):463–492 (1990)
 
-[3] Y. Wang, M. Zarei, B. Bonakdarpour, Miroslav Pajic: Statistical Verification of Hyperproperties for Cyber-Physical Systems. ACM Transactions on Embedded Computing Systems 18(5s): 92:1-92:23 (2019)
-
-[4] M. R. Clarkson, B. Finkbeiner, M. Koleini, K. K. Micinski, M. N. Rabe, C. Sánchez: Temporal Logics for Hyperproperties. POST 2014: 265-284
+[3] M. R. Clarkson, B. Finkbeiner, M. Koleini, K. K. Micinski, M. N. Rabe, C. Sánchez: Temporal Logics for Hyperproperties. POST 2014: 265-284

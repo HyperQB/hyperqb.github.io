@@ -294,7 +294,7 @@
 <section id="floating-point-unit-fpu">
 <h2>Floating Point Unit (FPU)<a class="headerlink" href="#floating-point-unit-fpu" title="Permalink to this heading">¶</a></h2>
 <p>This case study involves verifying that a floating-point unit (FPU) implementation in Verilog executes in constant time, regardless of the input values. The FPU performs various arithmetic operations, and it is crucial to ensure that the execution time does not leak any sensitive information about the operands.</p>
-<p>The full Verilog code for the FPU can be found in the benchmark repository <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider">here</a>. This case study was sourced from the IODINE tool’s benchmarks <a class="reference external" href="https://github.com/gokhankici/iodine">here</a>.</p>
+<p>The full Verilog code for the FPU division module can be found in the benchmark repository: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider">https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider</a>. This case study was sourced from the IODINE tool’s benchmarks: <a class="reference external" href="https://github.com/gokhankici/iodine">https://github.com/gokhankici/iodine</a>.</p>
 <p>The Verilog module under consideration implements a simple FPU that supports addition, subtraction, multiplication, and division of floating-point numbers. The design includes control logic to handle different operations and edge cases, such as overflow and underflow.</p>
 <p>Here we are interested in verifying that the execution time of the FPU is independent of the specific values of the input operands, thus ensuring that no timing side-channel information can be inferred by an attacker.</p>
 <p>HyperQB is able to discover a violation of this property in the division operation, where certain input values lead to longer execution times due to additional handling of special cases (e.g., division by zero).</p>
@@ -417,6 +417,7 @@ The module also uses handshaking signals (<cite>input_a_ack</cite>, <cite>input_
 \\ \rightarrow \Box(\mathrm{s\_output\_b\_stb}_{\pi_A} \leftrightarrow \mathrm{s\_output\_b\_stb}_{\pi_B}).\end{split}\]</div>
 </div>
 <p>In this formula, we quantify over two traces, <span class="math notranslate nohighlight">\(\pi_A\)</span> and <span class="math notranslate nohighlight">\(\pi_B\)</span>, representing two different executions of the FPU. The formula states that if both executions start in a reset state and then proceed without resets, and if both executions receive the same input strobe and acknowledgment signals for <cite>input_b</cite>, then the output strobe signals for <cite>output_z</cite> must occur simultaneously in both executions. This ensures that the timing of the output does not depend on the specific input values, thus verifying constant-time execution.</p>
+<p>The file containing the HyperLTL formula can be found at this link: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/divider/formula.hq">https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/divider/formula.hq</a>.</p>
 </section>
 </section>
 

@@ -76,8 +76,6 @@ The formula can be found file here: `https://github.com/HyperQB/HyperRUSTY/blob/
 AE Hyperliveness Property for the 5-LED Blinker
 ^^^^^^^^^^^
 
-Forall p . Exists q . G (~(reset[p] = reset[q])) -> (X G (~reset[p] & ~reset[q]) & F (~(LEDs[p] = LEDs[q])))
-
 .. math::
 
     \forall \pi_A.\exists \pi_B.\Box(\neg(\mathrm{reset}_{\pi_A} \land \mathrm{reset}_{\pi_B})) \rightarrow

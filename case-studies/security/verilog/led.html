@@ -354,7 +354,6 @@ endmodule
 </section>
 <section id="ae-hyperliveness-property-for-the-5-led-blinker">
 <h3>AE Hyperliveness Property for the 5-LED Blinker<a class="headerlink" href="#ae-hyperliveness-property-for-the-5-led-blinker" title="Permalink to this heading">¶</a></h3>
-<p>Forall p . Exists q . G (~(reset[p] = reset[q])) -&gt; (X G (~reset[p] &amp; ~reset[q]) &amp; F (~(LEDs[p] = LEDs[q])))</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\forall \pi_A.\exists \pi_B.\Box(\neg(\mathrm{reset}_{\pi_A} \land \mathrm{reset}_{\pi_B})) \rightarrow

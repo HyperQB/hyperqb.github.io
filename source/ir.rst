@@ -51,7 +51,7 @@ A predicate is a named, reusable Rust boolean function that is evaluated against
 Translation to IR
 -----------------
 
-Our tool accepts two types of input files: NuSMV and Verilog.
+Our tool accepts two types of input files: **NuSMV** and **Verilog**.
 We implement dedicated parsers for each language to translate the input into our intermediate representation (IR).
 Once the IR is constructed, the remainder of the pipeline operates uniformly on it to generate either the QBF or SMT encoding.
 
@@ -59,7 +59,7 @@ Usage
 ----------
 As an example, consider a simple system with a counter that iterates repeatedly from 0 to 15, and an LED that blinks every third cycle (i.e., when the counter is 0, 3, 6, 9, 12, or 15).
 
-This system can be modeled in NuSMV as shown below:
+This system can be modeled in **NuSMV* as shown below:
 
 .. code-block:: smv
 
@@ -88,7 +88,7 @@ This system can be modeled in NuSMV as shown below:
         TRUE: FALSE;
     esac;
 
-The corresponding Verilog implementation is presented below:
+The corresponding **Verilog** implementation is presented below:
 
 .. code-block:: verilog
 

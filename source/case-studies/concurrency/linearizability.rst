@@ -4,7 +4,7 @@ Linearizability (NuSMV)
 Description of the Case Study
 -----------------------------
 
-The second study consists on verifying linearizability of the SNARK concurrent datatype :ref:`[DDG+04] <DDG+04>`. SNARK implements a
+The second case study verifies linearizability of the SNARK concurrent datatype :ref:`[DDG+04] <DDG+04>`. SNARK implements a
 concurrent double-ended queue using double-compare-and-swap (DCAS) and a doubly linked-list. *Linearizability* :ref:`[HW90] <HW90>` is a
 hyperproperty that requires that any *history* of execution of a concurrent data structure—where history is sequence of
 *invocations* and *responses* by different threads—matches some sequential order of invocations and responses.

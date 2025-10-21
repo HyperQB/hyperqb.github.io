@@ -1,18 +1,13 @@
 Intermediate Representation
 ===========================
 
-A key component of any `Bounded Model Checking`` (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language [1]_.
+A key component of any `Bounded Model Checking`` (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language [1]_. It is designed to be **solver-agnostic** and captures the two essential components of a state machine: the state variables and the transition logic.
 
-We chose this model for its natural ability to clearly and independently define the transition logic for each state variable. This separation simplifies the analysis pipeline, as we can reason about transitions without concern for the concrete representation of a full state. In this model, a state is simply a valuation of all system variables. The core data structure implementing this IR in our code is ``SMVEnv``, which we refer to as the environment.
-
-The NuSMV Transition Model
---------------------------
-
-Our IR's logic is based on NuSMV's ``case...esac`` structure for defining next-state transitions:
+Suppose the set of transitions for a variable ``var`` is as follows:
 
 .. code-block:: smv
 
-    next(variable) := case
+    next(var) := case
         g1 : u1;
         g2 : u2;
         ...
@@ -20,15 +15,11 @@ Our IR's logic is based on NuSMV's ``case...esac`` structure for defining next-s
         TRUE : u
     esac;
 
-In this format, each line ``g : u;`` is a guarded transition, consisting of a boolean condition ``g`` and an update expression ``u`` (which must match the variable's type).
+where ``next(var)`` specifies the value of ``var`` in the next state. In this format, each line ``g : u;`` is a guarded transition, consisting of a boolean condition ``g`` and an update expression ``u`` (which must match the variable's type).
+
+We chose this model for its natural ability to clearly and independently define the transition logic for each state variable. This separation simplifies the analysis pipeline, as we can reason about transitions without concern for the concrete representation of a full state. In this model, a state is simply a valuation of all system variables. The core data structure implementing this IR in our code is ``SMVEnv``, which we refer to as the environment.
 
 During a state change, the conditions are evaluated in order from top to bottom. The first condition ``g`` that holds determines the variable's next value via its corresponding update expression ``u``. If no condition holds, the ``TRUE`` branch is taken, which typically assigns the variable's current value (e.g., ``TRUE : variable;``), indicating a self-loop where no value change occurs.
-
-
-The ``NuSMV`` Transition Model
-------------------------------
-
-As its name suggests, our IR is an `intermediate` representation. It is designed to be **solver-agnostic** and captures the two essential components of a state machine: the state variables and the transition logic.
 
 The ``SMVEnv`` currently supports three variable types:
 
@@ -57,9 +48,18 @@ It is often necessary to check if a specific Boolean condition holds in a given 
 
 A predicate is a named, reusable Rust boolean function that is evaluated against the current state. They are defined using the ``register_predicate(name, pred)`` method, where ``name`` is a string for future reference and pred is the boolean function. Predicates are useful for defining properties or checking for specific conditions, such as identifying a halting state in the system.
 
+Translation to IR
+-----------------
+
+Our tool accepts two types of input files: NuSMV and Verilog.
+We implement dedicated parsers for each language to translate the input into our intermediate representation (IR).
+Once the IR is constructed, the remainder of the pipeline operates uniformly on it to generate either the QBF or SMT encoding.
+
 Usage
 ----------
-As an example, consider the following simple NuSMV model, which creates a counter that goes through 0 to 15, resets to 0, and an LED that will turn on every third cycle of the counter.
+As an example, consider a simple system with a counter that iterates repeatedly from 0 to 15, and an LED that blinks every third cycle (i.e., when the counter is 0, 3, 6, 9, 12, or 15).
+
+This system can be modeled in NuSMV as shown below:
 
 .. code-block:: smv
 
@@ -88,8 +88,42 @@ As an example, consider the following simple NuSMV model, which creates a counte
         TRUE: FALSE;
     esac;
 
+The corresponding Verilog implementation is presented below:
 
-This model can be represented in IR as the following Rust code (imports  omitted):
+.. code-block:: verilog
+
+    module counter_led (
+        input  wire       clk,
+        input  wire       rst_n,     // active-low reset
+        output reg  [3:0] counter,
+        output reg        LED
+    );
+
+        wire reset_pred = (counter == 4'd15);
+
+        wire led_blink = (counter == 4'd2 ) |
+                        (counter == 4'd5 ) |
+                        (counter == 4'd8 ) |
+                        (counter == 4'd11) |
+                        (counter == 4'd14) |
+                        reset_pred;
+
+        always @(posedge clk or negedge rst_n) begin
+            if (!rst_n) begin
+                
+                counter <= 4'd0;
+                LED     <= 1'b1;
+            end else begin
+                
+                counter <= reset_pred ? 4'd0 : (counter + 4'd1);
+                LED     <= led_blink ? 1'b1 : 1'b0;
+            end
+        end
+
+    endmodule
+
+
+Both models are parsed to construct the following intermediate representation (imports omitted):
 
 .. code-block:: rust
     

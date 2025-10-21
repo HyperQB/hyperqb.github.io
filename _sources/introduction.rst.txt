@@ -1,10 +1,15 @@
 Introduction
 ============
 
-**HyperQB** is a *push-button*, **QBF-based bounded model checker** for verifying **hyperproperties**.
+**HyperQB** is a *push-button*, **bounded model checker** for verifying **hyperproperties**. Hyperproperties are systems-wide properties 
 It takes as input a NuSMV model and a formula expressed in the temporal logic HyperLTL. Our QBF-based technique allows
 HyperQB to seamlessly deal with quantifier alternations. Based on the selection of either bug hunting or synthesis,
 the instances of counterexamples (for negated formula) or witnesses (for synthesis of positive formulas) are returned.
+
+.. figure:: _static/flowchart.jpg
+   :scale: 50 %
+   :alt: A descriptive alt text for the image
+   :align: center
 
 Overview
 --------

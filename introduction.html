@@ -295,20 +295,23 @@
 Hyperproperties [1] are systems-wide properties that express the behavior of system as a whole rather than the behavior of individual execution traces.
 Hyperproperties can express important information-flow security policies (e.g., confidentiality and integrity), consistency models in concurrent computing (e.g., linearizability [2]]), robustness conditions in cyber-physical
 systems [3], and path planning in multi-agent systems.
-The core technology of HyperQB as a bounded model checker is an efficient transformation of the verification problem to solving the satisfiability problem for qunatified boolean formulas (QBF) and modulo theory (SMT).</p>
+The core technology of HyperQB as a bounded model checker is based on an efficient transformation of the verification problem to solving the satisfiability problem for qunatified boolean formulas (QBF) and modulo theory (SMT).</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
-<p>HyperQB can build and analyse many types It takes as input a NuSMV model and a formula expressed in the temporal logic HyperLTL. Our QBF-based technique allows
-HyperQB to seamlessly deal with quantifier alternations. Based on the selection of either bug hunting or synthesis,
-the instances of counterexamples (for negated formula) or witnesses (for synthesis of positive formulas) are returned.</p>
+<p>HyperQB can build and analyze several types of input models and temporal-logic specifications for hyperproperties.
+The QBF/SMT-based technique allows HyperQB to seamlessly deal with quantifier alternations.
+Based on the selection of either bug hunting or synthesis, the instances of counterexamples (for negated formula) or witnesses (for synthesis of positive formulas) are returned.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/flowchart.png"><img alt="Internal architechture of HyperQB" src="_images/flowchart.png" style="width: 637.6999999999999px; height: 253.39999999999998px;" /></a>
 </figure>
 <ul class="simple">
 <li><dl class="simple">
 <dt><strong>Inputs</strong>:</dt><dd><ul>
-<li><p>A set of models (up to one per trace quantifier)</p></li>
-<li><p>A <strong>HyperLTL</strong> formula specifying the hyperproperty</p></li>
+<li><p>A set of models (up to one per trace quantifier) in <strong>NuSMV</strong> or <strong>Verilog</strong> languages (the C -&gt; LLVM path is still under construction)</p></li>
+<li><p>A <a href="#id1"><span class="problematic" id="id2">**</span></a>HyperLTL**[4] or <a href="#id3"><span class="problematic" id="id4">**</span></a>A-HLTL**[5] formula specifying the hyperproperty</p></li>
+<li><p>The type of bounded semantics [6]</p></li>
+<li><p>The type of loop condition</p></li>
+<li><p>SMT or QBF decision procedure</p></li>
 </ul>
 </dd>
 </dl>
@@ -324,9 +327,9 @@ the instances of counterexamples (for negated formula) or witnesses (for synthes
 <li><dl class="simple">
 <dt><strong>Core Technique</strong>:</dt><dd><ol class="arabic simple">
 <li><p>Parse the inputs into Boolean/unrolled representations.</p></li>
-<li><p>Encode model plus temporal formula up to bound <em>k</em> as a <strong>QBF</strong>.</p></li>
+<li><p>Encode model plus temporal formula up to bound <em>k</em> as a <strong>QBF</strong> or <strong>SMT</strong> instance.</p></li>
 <li><dl class="simple">
-<dt>Solve the QBF with a solver (currently <strong>QuAbs</strong>), then decode result back into:</dt><dd><ul>
+<dt>Solve the QBF/SMT with a solver (currently <strong>QuAbs/Z3</strong>), then decode result back into:</dt><dd><ul>
 <li><p>A <strong>counterexample</strong> (bug hunting), or</p></li>
 <li><p>A <strong>witness</strong> (trace set satisfying the property)</p></li>
 </ul>
@@ -342,11 +345,14 @@ the instances of counterexamples (for negated formula) or witnesses (for synthes
 <section id="sponsors">
 <h2>Sponsors<a class="headerlink" href="#sponsors" title="Permalink to this heading">¶</a></h2>
 <figure class="align-center">
-<img alt="NSF" src="_images/NSF-Symbol.png" />
+<a class="reference internal image-reference" href="_images/NSF-Symbol.png"><img alt="NSF" src="_images/NSF-Symbol.png" style="width: 147.29999999999998px; height: 83.1px;" /></a>
 </figure>
 <p>[1] M. R. Clarkson and F. B. Schneider: <strong>Hyperproperties.</strong> Journal of Computer Security 18(6): 1157-1210 (2010)</p>
 <p>[2] M. Herlihy and J. M. Wing. Linearizability: A correctness condition for concurrent objects. ACM Transactions on Programming Languages and Systems, 12(3):463–492 (1990)</p>
 <p>[3] Y. Wang, M. Zarei, B. Bonakdarpour, Miroslav Pajic: Statistical Verification of Hyperproperties for Cyber-Physical Systems. ACM Transactions on Embedded Computing Systems 18(5s): 92:1-92:23 (2019)</p>
+<p>[4] M. R. Clarkson, B. Finkbeiner, M. Koleini, K. K. Micinski, M. N. Rabe, C. Sánchez: Temporal Logics for Hyperproperties. POST 2014: 265-284</p>
+<p>[5] J. Baumeister, N. Coenen, B. Bonakdarpour, B. Finkbeiner, C. Sánchez: A Temporal Logic for Asynchronous Hyperproperties. CAV (1) 2021: 694-717</p>
+<p>[6] T.-H. Hsu, C. Sánchez, B. Bonakdarpour: Bounded Model Checking for Hyperproperties. TACAS (1) 2021: 94-112</p>
 </section>
 </section>
 

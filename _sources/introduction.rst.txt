@@ -31,7 +31,7 @@ Based on the selection of either bug hunting or synthesis, the instances of coun
     - Satisfaction and *Witness*
 
 - **Core Technique**:
-    - After parse the inputs into Boolean/SMT unrolled representations, the model(s) and specification are unrolled up to a bound *k* as a **QBF** or **SMT** instance `[HSB21] <https://www.cse.msu.edu/tart/publication/bounded-model-checking-hyperproperties>`_ `[HBFS23]<https://www.cse.msu.edu/tart/publication/bounded-model-checking-asynchronous-hyperproperties>`_. Then, a solver QBF/SMT (currently **QuAbs/Z3**) will solve the decision problem and decode the result back into a **counterexample** (bug hunting), or a **witness** (trace set satisfying the property).
+    - After parse the inputs into Boolean/SMT unrolled representations, the model(s) and specification are unrolled up to a bound *k* as a **QBF** or **SMT** instance `[HSB21] <https://www.cse.msu.edu/tart/publication/bounded-model-checking-hyperproperties>`_ `[HBFS23] <https://www.cse.msu.edu/tart/publication/bounded-model-checking-asynchronous-hyperproperties>`_. Then, a solver QBF/SMT (currently **QuAbs/Z3**) will solve the decision problem and decode the result back into a **counterexample** (bug hunting), or a **witness** (trace set satisfying the property).
 
 Sponsors
 --------

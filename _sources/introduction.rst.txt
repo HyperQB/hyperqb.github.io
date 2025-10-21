@@ -44,7 +44,8 @@ Sponsors
    :alt: NSF
    :align: center
 
-
+Overview
+--------
 [1] M. R. Clarkson and F. B. Schneider: **Hyperproperties.** Journal of Computer Security 18(6): 1157-1210 (2010)
 
 [2] M. Herlihy and J. M. Wing. Linearizability: A correctness condition for concurrent objects. ACM Transactions on Programming Languages and Systems, 12(3):463–492 (1990)

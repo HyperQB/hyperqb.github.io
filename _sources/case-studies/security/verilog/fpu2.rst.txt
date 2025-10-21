@@ -17,6 +17,10 @@ HyperQB is able to discover a violation of this property in the division operati
 
 .. code-block:: text
 
+    //IEEE Floating Point Divider (Single Precision)
+    //Copyright (C) Jonathan P Dawson 2013
+    //2013-12-12
+    //
     module divider(
             input_a,
             input_b,

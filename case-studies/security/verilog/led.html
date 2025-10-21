@@ -291,11 +291,99 @@
         <article role="main" id="furo-main-content">
           <section id="led-blinker-verilog">
 <h1>LED Blinker (Verilog)<a class="headerlink" href="#led-blinker-verilog" title="Permalink to this heading">¶</a></h1>
-<section id="description-of-the-case-study">
-<h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
+<section id="led-blinker-modules">
+<h2>LED Blinker Modules<a class="headerlink" href="#led-blinker-modules" title="Permalink to this heading">¶</a></h2>
+<p>In this case study, we analyze a few Verilog implementations of LED blinker modules. These modules are designed to control the blinking behavior of LEDs based on input signals and timing parameters.</p>
+<p>The Verilog code for the LED blinker modules can be found in the repository here: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/LED">https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/LED</a>.</p>
+<p>The case study was sourced from the MCHyper repository: <a class="reference external" href="https://github.com/reactive-systems/MCHyper/tree/master/case-studies/asynchronous-hyperltl_2021/spi">https://github.com/reactive-systems/MCHyper/tree/master/case-studies/asynchronous-hyperltl_2021/spi</a>.</p>
+<p>The LED blinker modules typically include inputs for clock signals and reset signals.</p>
+<p>The first module is a simple blinker with one LED that toggles its LED state each clock cycle.  Despite this, there is an extra internal state based on the status of the up signal, which is not observable from the LED output alone.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>module light(input clock, input up, output light_out);
+    parameter [1:0] STATE_0 = 2&#39;b00, STATE_1 = 2&#39;b01, STATE_2 = 2&#39;b10;
+    parameter ON = 1&#39;b1, OFF = 1&#39;b0;
+
+    reg l = OFF;
+    reg [1:0] state123 = STATE_0;
+
+    always @(posedge clock)
+    begin
+        case (state123)
+            STATE_0:
+            begin
+                if (up) begin
+                    state123 &lt;= STATE_1;
+                    l &lt;= ON;
+                end else begin
+                    state123 &lt;= STATE_2;
+                    l &lt;= ON;
+                end
+            end
+
+            STATE_1:
+            begin
+                state123 &lt;= STATE_0;
+                l &lt;= OFF;
+            end
+
+            STATE_2:
+            begin
+                state123 &lt;= STATE_0;
+                l &lt;= OFF;
+            end
+        endcase
+    end
+
+    assign light_out = l;
+endmodule
+</pre></div>
+</div>
+<p>The second module is slightly more complex, with five LEDs which light up from the least-significant LED upward and then shrinks back down, with a blanking tick between every visible frame. On each rising clock edge, a synchronous reset loads a starting pattern (LEDs=10101, led_state=010, up=0, on=1), but the very next active cycle the on flag forces LEDs to 00000 and clears on to 0, creating a one-cycle all-off “strobe.” Thereafter the logic alternates: when on==0 it outputs the next bar pattern and advances the state, then sets on&lt;=1; when on==1 it blanks (LEDs&lt;=00000) and sets on&lt;=0. The patterns produced on the non-blank cycles are contiguous 1s starting at bit 0 (rightmost LED): 00001 → 00011 → 00111 → 01111 → 11111 → 01111 → 00111 → 00011 → back to 00001, i.e., grow from 1 to 5 LEDs, then shrink to 1, and repeat. The led_state values 010,011,100,101 represent the mid/upper “bar lengths,” while the “default” branch handles the edge cases (000/001/…) to insert the 1-LED and housekeeping steps; the up flag is the direction bit that flips to 0 at the top (after reaching 11111) and back to 1 at the bottom (when returning to a single lit LED).</p>
 </section>
-<section id="property-to-verify">
-<h2>Property to Verify<a class="headerlink" href="#property-to-verify" title="Permalink to this heading">¶</a></h2>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h2>
+<p>There are four properties we want to verify about these two LED blinker modules.</p>
+<section id="ea-hyperliveness-property-for-the-5-led-blinker">
+<h3>EA Hyperliveness Property for the 5-LED Blinker<a class="headerlink" href="#ea-hyperliveness-property-for-the-5-led-blinker" title="Permalink to this heading">¶</a></h3>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\exists \pi_A.\forall \pi_B.\ \Diamond (\mathrm{LED0}_{\pi_A} \leftrightarrow \mathrm{LED0}_{\pi_B}).\]</div>
+</div>
+<p>This formula states that there exists a trace <span class="math notranslate nohighlight">\(\pi_A\)</span> such that for all traces <span class="math notranslate nohighlight">\(\pi_B\)</span>, eventually the state of the least-significant LED (LED0) in both traces will be the same. This property ensures that the blinking behavior of the least-significant LED is observable across different executions of the module.</p>
+<p>This is satisfiable because by choosing a trace where the reset signal is always high, we can ensure that all other traces will eventually have the least-significant LED in the same state.</p>
+<p>The formula can be found file here: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ea.hq">https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ea.hq</a>.</p>
+</section>
+<section id="ae-hyperliveness-property-for-the-5-led-blinker">
+<h3>AE Hyperliveness Property for the 5-LED Blinker<a class="headerlink" href="#ae-hyperliveness-property-for-the-5-led-blinker" title="Permalink to this heading">¶</a></h3>
+<p>Forall p . Exists q . G (~(reset[p] = reset[q])) -&gt; (X G (~reset[p] &amp; ~reset[q]) &amp; F (~(LEDs[p] = LEDs[q])))</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\forall \pi_A.\exists \pi_B.\Box(\neg(\mathrm{reset}_{\pi_A} \land \mathrm{reset}_{\pi_B})) \rightarrow
+\bigcirc\Box(\neg\mathrm{reset}_{\pi_A} \land \neg \mathrm{reset}_{\pi_B}) \land \Diamond (\neg(\mathrm{LEDs}_{\pi_A} \leftrightarrow \mathrm{LEDs}_{\pi_B})).\]</div>
+</div>
+<p>This formula states that for all traces <span class="math notranslate nohighlight">\(\pi_A\)</span>, there exists a trace <span class="math notranslate nohighlight">\(\pi_B\)</span> such that if the reset signals in both traces are never high simultaneously, then after the initial state, both traces will eventually have different LED patterns. This property ensures that there is always a possibility of divergence in the LED patterns when the reset signals are not active.</p>
+<p>This is satisfiable because we can choose a trace where the reset signal is always low, allowing for different LED patterns to emerge in other traces.</p>
+<p>The formula can be found here: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ae.hq">https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ae.hq</a>.</p>
+</section>
+<section id="ee-hypersafety-property-1-for-the-1-led-blinker">
+<h3>EE Hypersafety Property 1 for the 1-LED Blinker<a class="headerlink" href="#ee-hypersafety-property-1-for-the-1-led-blinker" title="Permalink to this heading">¶</a></h3>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\exists \pi_A.\exists \pi_B.\Box(\mathrm{light\_out}_{\pi_A} \leftrightarrow \mathrm{light\_out}_{\pi_B}).\]</div>
+</div>
+<p>This formula states that there exist two traces <span class="math notranslate nohighlight">\(\pi_A\)</span> and <span class="math notranslate nohighlight">\(\pi_B\)</span> such that the output of the LED (light_out) is always the same in both traces. This property ensures that there are at least two executions of the module where the LED behaves identically at all times.</p>
+<p>This is satisfiable because any two traces that start with the same initial conditions and receive the same input signals will produce identical LED outputs, despite the internal state differences.</p>
+<p>The formula can be found here: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ee_f.hq">https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ee_f.hq</a>.</p>
+</section>
+<section id="ee-hypersafety-property-2-for-the-1-led-blinker">
+<h3>EE Hypersafety Property 2 for the 1-LED Blinker<a class="headerlink" href="#ee-hypersafety-property-2-for-the-1-led-blinker" title="Permalink to this heading">¶</a></h3>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\exists \pi_A.\exists \pi_B.\Box(\neg(\mathrm{light\_out}_{\pi_A} \leftrightarrow \mathrm{light\_out}_{\pi_B})).\]</div>
+</div>
+<p>This formula states that there exist two traces <span class="math notranslate nohighlight">\(\pi_A\)</span> and <span class="math notranslate nohighlight">\(\pi_B\)</span> such that the output of the LED (light_out) is never the same in both traces. This property ensures that there are at least two executions of the module where the LED behaves differently at all times.</p>
+<p>This is unsatisfiable, as the LED behavior is deterministic, and there are no two traces that will diverge.</p>
+<p>The formula can be found here: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ee_t.hq">https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ee_t.hq</a>.</p>
+</section>
 </section>
 </section>
 
@@ -355,8 +443,14 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">LED Blinker (Verilog)</a><ul>
-<li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
-<li><a class="reference internal" href="#property-to-verify">Property to Verify</a></li>
+<li><a class="reference internal" href="#led-blinker-modules">LED Blinker Modules</a></li>
+<li><a class="reference internal" href="#properties">Properties</a><ul>
+<li><a class="reference internal" href="#ea-hyperliveness-property-for-the-5-led-blinker">EA Hyperliveness Property for the 5-LED Blinker</a></li>
+<li><a class="reference internal" href="#ae-hyperliveness-property-for-the-5-led-blinker">AE Hyperliveness Property for the 5-LED Blinker</a></li>
+<li><a class="reference internal" href="#ee-hypersafety-property-1-for-the-1-led-blinker">EE Hypersafety Property 1 for the 1-LED Blinker</a></li>
+<li><a class="reference internal" href="#ee-hypersafety-property-2-for-the-1-led-blinker">EE Hypersafety Property 2 for the 1-LED Blinker</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -373,5 +467,7 @@
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>window.MathJax = {"tex": {"macros": {"llbracket": "{\\lbrack\\!\\lbrack}", "rrbracket": "{\\rbrack\\!\\rbrack}"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

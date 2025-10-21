@@ -298,7 +298,11 @@
 <p>The Verilog module under consideration implements a simple FPU that supports addition, subtraction, multiplication, and division of floating-point numbers. The design includes control logic to handle different operations and edge cases, such as overflow and underflow.</p>
 <p>Here we are interested in verifying that the execution time of the FPU is independent of the specific values of the input operands, thus ensuring that no timing side-channel information can be inferred by an attacker.</p>
 <p>HyperQB is able to discover a violation of this property in the division operation, where certain input values lead to longer execution times due to additional handling of special cases (e.g., division by zero).</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>module divider(
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>//IEEE Floating Point Divider (Single Precision)
+//Copyright (C) Jonathan P Dawson 2013
+//2013-12-12
+//
+module divider(
         input_a,
         input_b,
         input_a_stb,

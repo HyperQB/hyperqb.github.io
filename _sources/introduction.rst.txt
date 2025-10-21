@@ -44,7 +44,7 @@ Sponsors
    :alt: NSF
    :align: center
 
-Overview
+References
 --------
 [1] M. R. Clarkson and F. B. Schneider: **Hyperproperties.** Journal of Computer Security 18(6): 1157-1210 (2010)
 

@@ -310,7 +310,7 @@ Based on the selection of either bug hunting or synthesis, the instances of coun
 <li><p>A set of models (up to one per trace quantifier) in <strong>NuSMV</strong> or <strong>Verilog</strong> languages (the C -&gt; LLVM path is still under construction)</p></li>
 <li><p>A <strong>HyperLTL</strong> [3] or <strong>A-HLTL</strong> <a class="reference external" href="https://www.cse.msu.edu/tart/publication/temporal-logic-asynchronous-hyperproperties">[BCBFS21]</a> formula specifying the hyperproperty</p></li>
 <li><p>The type of bounded semantics <a class="reference external" href="https://www.cse.msu.edu/tart/publication/bounded-model-checking-hyperproperties">[HSB21]</a></p></li>
-<li><p>The type of loop condition</p></li>
+<li><p>The type of loop condition <a class="reference external" href="https://www.cse.msu.edu/tart/publication/efficient-loop-conditions-bounded-model-checking-hyperproperties">[HSSB23]</a></p></li>
 <li><p>SMT or QBF decision procedure</p></li>
 </ul>
 </dd>
@@ -326,7 +326,7 @@ Based on the selection of either bug hunting or synthesis, the instances of coun
 </li>
 <li><dl class="simple">
 <dt><strong>Core Technique</strong>:</dt><dd><ul>
-<li><p>After parse the inputs into Boolean/SMT unrolled representations, the model(s) and specification are unrolled up to a bound <em>k</em> as a <strong>QBF</strong> or <strong>SMT</strong> instance. Then, a solver QBF/SMT (currently <strong>QuAbs/Z3</strong>) will solve the decision problem and decode the result back into a <strong>counterexample</strong> (bug hunting), or a <strong>witness</strong> (trace set satisfying the property).</p></li>
+<li><p>After parse the inputs into Boolean/SMT unrolled representations, the model(s) and specification are unrolled up to a bound <em>k</em> as a <strong>QBF</strong> or <strong>SMT</strong> instance <a class="reference external" href="https://www.cse.msu.edu/tart/publication/bounded-model-checking-hyperproperties">[HSB21]</a> <a href="#id2"><span class="problematic" id="id3">`[HBFS23]&lt;https://www.cse.msu.edu/tart/publication/bounded-model-checking-asynchronous-hyperproperties&gt;`_</span></a>. Then, a solver QBF/SMT (currently <strong>QuAbs/Z3</strong>) will solve the decision problem and decode the result back into a <strong>counterexample</strong> (bug hunting), or a <strong>witness</strong> (trace set satisfying the property).</p></li>
 </ul>
 </dd>
 </dl>

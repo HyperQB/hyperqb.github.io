@@ -1,4 +1,32 @@
+--MULTI-THREADED PROGRAM
 --(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))
+-- //// TRIGGER 0
+-- // 0   trigger0 loops if (mask != 0) else go to line25
+-- // 1        - while (trigger0 == 0) do nothing
+-- // 2		- result = result OR mask
+-- // 3		- trigger0 = 0
+-- // 4		- maintrigger = matrigger + 1
+-- // 5 		- if maintrigger = 1, then trigger1 = 1
+-- // 6 		- if (mask != 0 and trigger0 = 0) back to line 1
+-- //// TRIGGER 1
+-- // 8	trigger1 loops if (mask != 0) else go to line25
+-- // 9		- while (trigger1 == 0) do nothing
+-- // 10		- result = result AND compliment(mask)
+-- // 11		- trigger1 = 0
+-- // 12   	- maintrigger = maintriger + 1
+-- // 13       - if maintrigger = 1, then trigger0 = 1
+-- // 14		- if (mask != 0 and trigger1 = 0) back to line 9
+-- //// MAIN TRIGGER
+-- // 16	maintrigger starts:
+-- // 17		- while (mask != 0) // Hm mm
+-- // 18		- maintrigger = 0
+-- // 19		- if (PIN & Mask = 0)
+-- // 20		- trigger0 = 1
+-- // 21		- else    trigger1 = 1
+-- // 22		while (maintrigger != 2) loop
+-- // 23		mask = mask / 2
+
+
 MODULE main
 VAR
     PIN_0 : 0..1;
@@ -25,7 +53,7 @@ VAR
 
 ASSIGN
 
-	init(halt) := FALSE;
+	init(halt) := {TRUE,FALSE};
 	next(halt) :=
 	case
 		((theta_line=0) & (MASK_2=0) & (MASK_1=0) & (MASK_0=0)) : TRUE;
@@ -52,6 +80,7 @@ ASSIGN
 	init(trigger_beta) := FALSE;
 
 	next(PIN_2) := PIN_2;
+
 	next(PIN_1) := PIN_1;
 	next(PIN_0) := PIN_0;
 
@@ -166,3 +195,6 @@ ASSIGN
 			(theta_line=5 & (main_trigger=2)) : {6}; -- proceed
 			(theta_line=6) : {0}; --mask = mask / 2
 		esac;
+
+-- DEFINE
+-- 	halt := ((theta_line=0) & (MASK_2=0) & (MASK_1=0) & (MASK_0=0));

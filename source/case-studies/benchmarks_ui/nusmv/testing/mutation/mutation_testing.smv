@@ -56,3 +56,6 @@ ASSIGN
             TRUE : water;
         esac;
 
+-- DEFINE
+    -- NO_water := ((action = 1) & (water = 0));
+    -- NO_output := ((action != 1) | ((action = 1) & (beverage = 0)));

@@ -1,133 +1,150 @@
-Symmetry in the Bakery Algorithm (NuSMV)
+Symmetry: Bakery Algorithm (NuSMV)
 ========================================
 
 Description of the Case Study
 -----------------------------
 
-Lamport’s Bakery algorithm is a mutual exclusion protocol
-for concurrent processes. The symmetry property states that no specific process
-is privileged in terms of a faster access to the critical section, which is a desirable
-property because it implies that concrete process ids are not relevant for faster
-accesses. Symmetry is a hyperproperty that can be expressed with different HyperLTL formulas
+Lamport's Bakery algorithm :ref:`[Lam74] <Lam74>` is a classic first-come-first-served mutual exclusion protocol in which each
+process draws a ticket and enters the critical section once it observes that it holds the smallest number. While safety and
+liveness are guaranteed, the algorithm breaks ties using the intrinsic process identifier, potentially privileging lower-numbered
+processes. We examine *symmetry*: if two executions differ only by swapping process identifiers, the resulting behaviour should
+remain indistinguishable. The case study models configurations with 3, 7, 9, and 11 processes. HyperQB explores the reachable
+state space under pessimistic semantics, so any bounded counterexample to symmetry generalises to an infinite execution that
+demonstrates asymmetric access to the critical section.
 
-.. math::
-    \varphi_{S1} = \forall \pi_A . \forall \pi_B . \left(
-    \neg \mathsf{sym}(select_{\pi_A}, select_{\pi_B}) \lor
-    \neg(pause_{\pi_A} = pause_{\pi_B})
-    \right) \mathcal{R} \\
-    \left(
-     (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B}) \land
-     (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B})
-    \right)
-
-.. math::
-
-   \varphi_{S2} =\ & \forall \pi_A . \forall \pi_B . \big( \neg \mathsf{sym}(select_{\pi_A}, select_{\pi_B}) \lor
-         \neg(pause_{\pi_A} = pause_{\pi_B}) \lor \\
-   &\quad \neg(select_{\pi_A} < 3) \lor
-         \neg(select_{\pi_B} < 3) \big) \ \mathcal{R} \\
-   &\quad \big( (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B}) \land
-          (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B}) \big)
-
-.. math::
-
-   \varphi_{S3} =\ & \forall \pi_A . \forall \pi_B . \big(\neg \mathsf{sym}(select_{\pi_A}, select_{\pi_B}) \lor
-          \neg(pause_{\pi_A} = pause_{\pi_B}) \lor \\
-   &\quad \neg(select_{\pi_A} < 3) \lor
-          \neg(select_{\pi_B} < 3) \lor \\
-   &\quad \neg \mathsf{sym}(sym\_break_{\pi_A}, sym\_break_{\pi_B}) \big)
-          \ \mathcal{R} \\
-   &\quad \big( (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B}) \land
-           (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B}) \big)
-
-.. math::
-
-    \varphi_{\text{sym}_1} =\ & \forall \pi_A . \exists \pi_B . \Box \mathsf{sym}(select_{\pi_A}, select_{\pi_B})
-    \land (pause_{\pi_A} = pause_{\pi_B}) \land \\
-    &\quad (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B}) \land (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B})
-
-.. math::
-
-   \begin{aligned}
-   \varphi_{\text{sym}_2} =\ & \forall \pi_A . \exists \pi_B . \Box \mathsf{sym}(select_{\pi_A}, select_{\pi_B}) \land (pause_{\pi_A} = pause_{\pi_B}) \land \\
-   &\quad (select_{\pi_A} < 3) \land (select_{\pi_B} < 3) \land \\
-   &\quad (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B}) \land (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B})
-   \end{aligned}
-
-In these formulas, each process :math:`P_{n}` has
-a program counter :math:`pc(P_{n})`; select indicates which process is selected to process
-next; :math:`\text{pause}` if both processes are not selected; :math:`\text{sym_break}` is which process is
-selected after a tie; and sym(:math:`\text{select}\pi_{A}` , :math:`\text{select}\pi_{B}` ) indicates if two traces exchange
-the process ids of which processes proceeds. The basic Bakery algorithm does
-not satisfy symmetry (i.e. :math:`\varphi_{sym_{1}}`), because when two or more processes are trying
-to enter the critical section with the same ticket number, the process with the
-smaller process ID has priority and process ID is statically fixed attribute. HyperQB returns SAT using the :math:`\text{pessimistic}` semantics, indicating that there exists a
-counterexample to symmetry in the form of a falsifying witness to :math:`\pi_{A}` in formula
-:math:`\varphi_{sym_{1}}`. The tool returns an observable witness within finite bound using the the
-pessimistic semantics. Therefore, we conclude that all future observations violate
-the property
-
-Benchmarks
-----------
-
+The NuSMV model(s)
+------------------
 
 .. tabs::
-    .. tab:: Case #1.1
-        **The Model(s)**
 
-        .. tabs::
+    .. tab:: 3 processes
 
-            .. tab:: Bakery 3 Processes
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery3.smv
+            :language: smv
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery3.smv
-                    :language: smv
+    .. tab:: 7 processes
 
-        **Formula**
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery7.smv
+            :language: smv
+
+    .. tab:: 9 processes
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery9.smv
+            :language: smv
+
+    .. tab:: 11 processes
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery11.smv
+            :language: smv
+
+The HyperLTL formula(s)
+-----------------------
+
+Symmetry can be expressed by relating pairs of traces that exchange process identifiers yet follow the same scheduling choices.
+The formulas below progressively reinforce the equality constraints on ticket selection and tie-breaking. HyperQB reports SAT
+for the standard Bakery implementation, producing witnesses that show how lower-numbered processes retain priority even when
+tickets match.
+
+.. math::
+
+   \varphi_{S1} = \forall \pi_A . \forall \pi_B .
+   \left(
+      \neg \mathsf{sym}(select_{\pi_A}, select_{\pi_B})
+      \lor \neg(pause_{\pi_A} = pause_{\pi_B})
+   \right) \mathcal{R}
+   \left(
+      (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B})
+      \land
+      (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B})
+   \right)
+
+.. math::
+
+   \varphi_{S2} = {} & \forall \pi_A . \forall \pi_B .
+      \big(
+         \neg \mathsf{sym}(select_{\pi_A}, select_{\pi_B})
+         \lor \neg(pause_{\pi_A} = pause_{\pi_B})
+         \lor \neg(select_{\pi_A} < 3)
+         \lor \neg(select_{\pi_B} < 3)
+      \big) \ \mathcal{R} \\
+   & \big(
+      (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B})
+      \land
+      (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B})
+   \big)
+
+
+.. math::
+
+   \varphi_{S3} = {} & \forall \pi_A . \forall \pi_B .
+      \big(
+         \neg \mathsf{sym}(select_{\pi_A}, select_{\pi_B})
+         \lor \neg(pause_{\pi_A} = pause_{\pi_B})
+         \lor \neg(select_{\pi_A} < 3)
+         \lor \neg(select_{\pi_B} < 3)
+         \lor \neg \mathsf{sym}(sym\_break_{\pi_A}, sym\_break_{\pi_B})
+      \big) \ \mathcal{R} \\
+   & \big(
+      (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B})
+      \land
+      (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B})
+   \big)
+
+
+.. math::
+
+   \varphi_{\text{sym}_1} =
+   \forall \pi_A . \exists \pi_B .
+   \Box \Big(
+      \mathsf{sym}(select_{\pi_A}, select_{\pi_B})
+      \land (pause_{\pi_A} = pause_{\pi_B})
+      \land (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B})
+      \land (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B})
+   \Big)
+
+.. math::
+
+   \varphi_{\text{sym}_2} = {} & \forall \pi_A . \exists \pi_B .
+      \Box \Big(
+         \mathsf{sym}(select_{\pi_A}, select_{\pi_B})
+         \land (pause_{\pi_A} = pause_{\pi_B})
+         \land (select_{\pi_A} < 3)
+         \land (select_{\pi_B} < 3) \\
+      & \qquad \land (pc(P_0)_{\pi_A} = pc(P_1)_{\pi_B})
+         \land (pc(P_1)_{\pi_A} = pc(P_0)_{\pi_B})
+      \Big)
+
+
+The predicate :math:`sym(x_{\pi_A}, x_{\pi_B})` asserts that traces :math:`\pi_A` and :math:`\pi_B` coincide up to a swap of process
+identifiers; ``select`` and ``pause`` capture the scheduler state; and ``sym_break`` records which process wins the tie after
+equal tickets. The program counter :math:`pc(P_n)` tracks the stage of process :math:`P_n` in the Bakery protocol. Together these
+constraints detect any trace where identifier swapping changes the observed behaviour.
+
+.. tabs::
+
+    .. tab:: Symmetry 3procs
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/symmetry.hq
             :language: hq
 
-    .. tab:: Case #1.2
-        **The Model(s)**
-
-        .. tabs::
-
-            .. tab:: Bakery 7 Processes
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery7.smv
-                    :language: smv
-
-        **Formula**
+    .. tab:: Symmetry 7procs
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/symmetry7.hq
             :language: hq
 
-    .. tab:: Case #1.3
-        **The Model(s)**
-
-        .. tabs::
-
-            .. tab:: Bakery 9 Processes
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery9.smv
-                    :language: smv
-
-        **Formula**
+    .. tab:: Symmetry 9procs
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/symmetry9.hq
             :language: hq
 
-    .. tab:: Case #1.4
-        **The Model(s)**
-
-        .. tabs::
-
-            .. tab:: Bakery 11 Processes
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/bakery11.smv
-                    :language: smv
-
-        **Formula**
+    .. tab:: Symmetry 11procs
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/bakery/symmetry11.hq
             :language: hq
+
+References
+----------
+
+.. _Lam74:
+
+- [Lam74] `L. Lamport. A new solution of Dijkstra's concurrent programming problem. Communications of the ACM, 17(8):453–455, 1974. <https://doi.org/10.1145/361082.361093>`_

@@ -1,4 +1,4 @@
-Mutation Testing (NuSMV)
+Synthesis for Mutation Testing (NuSMV)
 ========================
 
 Description of the Case Study
@@ -8,6 +8,22 @@ Another application of hyperproperties with quantifier
 alternation is the efficient generation of test suites for mutation testing. We
 borrow a model from :ref:`[FBW19] <FBW19>` and apply the original formula that describes a good
 test mutant together with the model, expressed as:
+
+The NuSMV model(s)
+------------------
+
+.. tabs::
+
+    .. tab:: Mutation Testing
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/testing/mutation/mutation_testing.smv
+            :language: smv
+
+The HyperLTL formula(s)
+-----------------------
+
+The property seeks a mutant trace that diverges from the original when driven by the same inputs. HyperQB’s SAT result
+identifies such a mutant, confirming the effectiveness of the generated test.
 
 .. math::
 
@@ -19,25 +35,9 @@ test mutant together with the model, expressed as:
      \left( out_{\pi_A} \not\leftrightarrow out_{\pi_B} \right)
    \right)
 
-HyperQB returns SAT which implies the successful finding of a qualified mutant.
-
-Benchmarks
-----------
-
 .. tabs::
 
     .. tab:: Case #6.1
-
-        **The Model(s)**
-
-        .. tabs::
-
-            .. tab:: Mutation Testing
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/testing/mutation/mutation_testing.smv
-                    :language: smv
-
-        **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/testing/mutation/mutation_testing.hq
             :language: hq

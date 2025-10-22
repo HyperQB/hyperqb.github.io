@@ -1,7 +1,7 @@
-Observational Determinism (Verilog)
+Observational Determinism: SPI Bus Secondary (Verilog)
 ======================
 
-SPI Bus Secondary
+Description of the Case Study
 -----------------------------
 
 In this case study, we examine a Verilog implementation of an SPI (Serial Peripheral Interface) bus secondary module. The SPI protocol is widely used for communication between microcontrollers and peripheral devices. The controller manages data transmission and reception over the SPI bus, handling various modes of operation and clock configurations.

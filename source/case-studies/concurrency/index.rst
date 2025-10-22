@@ -4,4 +4,8 @@ Concurrency
 .. toctree::
     :maxdepth: 1
 
-    linearizability
+    snark
+    emmaba
+    lazy_list
+    iqueue
+    simple_queue

@@ -1,4 +1,4 @@
-Linearizability (NuSMV)
+Linearizability: SNARK (NuSMV)
 =======================
 
 Description of the Case Study
@@ -14,20 +14,12 @@ violation of length :math:`k` is enough to infer that the given system does not 
 *HyperQB* returns SAT identifying both bugs and producing two counterexamples. The bugs returned are consistent with the
 ones reported in :ref:`[DDG+04] <DDG+04>`.
 
-The Hyperproperty to be checked is:
-
-.. math::
-
-   \varphi_{\text{lin}} = \forall \pi_A.\exists \pi_B.\ \Box\left( \mathit{history}_{\pi_A} \leftrightarrow \mathit{history}_{\pi_B} \right)
-
-Benchmarks
-----------
+The NuSMV model(s)
+------------------
 
 .. tabs::
 
     .. tab:: Case #2.1
-
-        **The Model(s)**
 
         .. tabs::
 
@@ -41,31 +33,41 @@ Benchmarks
                 .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark1_seq.smv
                     :language: smv
 
-        **Formula**
+    .. tab:: Case #2.2
+
+        .. tabs::
+
+            .. tab:: Snark 2 M1 concurrent
+
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2_M1_concurrent.smv
+                    :language: smv
+
+            .. tab:: Snark 2 M2 sequential
+
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2_M2_sequential.smv
+                    :language: smv
+
+The HyperLTL formula(s)
+-----------------------
+
+Linearizability forces the concurrent SNARK histories to match those of a sequential witness. Both benchmark variants use the
+same HyperLTL template; HyperQB produces counterexamples demonstrating the two known bugs.
+
+.. math::
+
+   \varphi_{\text{lin}} = \forall \pi_A.\exists \pi_B.\ \Box\left( \mathit{history}_{\pi_A} \leftrightarrow \mathit{history}_{\pi_B} \right)
+
+.. tabs::
+
+    .. tab:: Case #2.1
 
         .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/lin.hq
             :language: hq
 
     .. tab:: Case #2.2
 
-            **The Model(s)**
-
-            .. tabs::
-
-                .. tab:: Snark 2 M1 concurrent
-
-                    .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2_M1_concurrent.smv
-                        :language: smv
-
-                .. tab:: Snark 2 M2 sequential
-
-                    .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2_M2_sequential.smv
-                        :language: smv
-
-            **Formula**
-
-            .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2.hq
-                :language: hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2.hq
+            :language: hq
 
 References
 ----------

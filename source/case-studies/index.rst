@@ -12,43 +12,43 @@ benchmarks using the cards below.
       :class-card: sd-shadow-sm
 
       - :doc:`Overview <security/index>`
-      - :doc:`Symmetry <security/symmetry>`
-      - :doc:`Non-Interference <security/non-interference>`
-      - :doc:`Fairness <security/fairness>`
-      - :doc:`Co-termination <security/co-termination>`
-      - :doc:`Deniability <security/deniability>`
-      - :doc:`Intransitive NI <security/intransitive-non-interference>`
-      - :doc:`Termination NI <security/termination-non-interference>`
-      - :doc:`Nondeterministic NI <security/nondeterministic>`
-      - :doc:`Generalized NI <security/gmni>`
-      - :doc:`LED (Verilog) <security/verilog/led>`
-      - :doc:`SPI (Verilog) <security/verilog/spi>`
-      - :doc:`FPU (Verilog) <security/verilog/fpu2>`
+      - :doc:`Symmetry: Bakery Algorithm (NuSMV) <security/symmetry>`
+      - :doc:`Non-interference: Multi-threaded Programs (NuSMV) <security/non-interference>`
+      - :doc:`Fairness: Non-Repudiation Protocols (NuSMV) <security/fairness>`
+      - :doc:`Co-termination (NuSMV) <security/co-termination>`
+      - :doc:`Deniability (NuSMV) <security/deniability>`
+      - :doc:`Intransitive Non-interference (NuSMV) <security/intransitive-non-interference>`
+      - :doc:`Termination-sensitive/-insensitive Non-interference (NuSMV) <security/termination-non-interference>`
+      - :doc:`Nondeterministic Inputs and Transitions (NuSMV) <security/nondeterministic>`
+      - :doc:`Generalized Non-interference: Banking Audit Logs (NuSMV) <security/gmni>`
+      - :doc:`LED Blinker Modules (Verilog) <security/verilog/led>`
+      - :doc:`Observational Determinism: SPI Bus Secondary (Verilog) <security/verilog/spi>`
+      - :doc:`Constant-Time Execution: Floating Point Unit (Verilog) <security/verilog/fpu2>`
 
    .. grid-item-card:: Concurrency
       :class-card: sd-shadow-sm
 
       - :doc:`Overview <concurrency/index>`
-      - :doc:`SNARK <concurrency/snark>`
-      - :doc:`EMMABA <concurrency/emmaba>`
-      - :doc:`Lazy List <concurrency/lazy_list>`
-      - :doc:`IQueue <concurrency/iqueue>`
-      - :doc:`Simple Queue <concurrency/simple_queue>`
+      - :doc:`Linearizability: SNARK (NuSMV) <concurrency/snark>`
+      - :doc:`Linearizability: Explicit Memory Management ABA (NuSMV) <concurrency/emmaba>`
+      - :doc:`Linearizability: Lazy List Set (NuSMV) <concurrency/lazy_list>`
+      - :doc:`Linearizability: IQueue (NuSMV) <concurrency/iqueue>`
+      - :doc:`Linearizability: Simple Queue (NuSMV) <concurrency/simple_queue>`
 
    .. grid-item-card:: Planning
       :class-card: sd-shadow-sm
 
       - :doc:`Overview <planning/index>`
-      - :doc:`Shortest Paths <planning/shortest_path>`
-      - :doc:`Path Robustness <planning/robustness>`
+      - :doc:`Shortest Paths: Grid-World Planning (NuSMV) <planning/shortest_path>`
+      - :doc:`Path Robustness: Grid-World Planning (NuSMV) <planning/robustness>`
 
    .. grid-item-card:: Synthesis
       :class-card: sd-shadow-sm
 
       - :doc:`Overview <synthesis/index>`
-      - :doc:`Secrecy <synthesis/secrecy>`
-      - :doc:`Team LTL <synthesis/teamltl>`
-      - :doc:`Mutation <synthesis/mutation>`
+      - :doc:`Secrecy-preserving Refinement (NuSMV) <synthesis/secrecy>`
+      - :doc:`LTL with Team Semantics (NuSMV) <synthesis/teamltl>`
+      - :doc:`Synthesis for Mutation Testing (NuSMV) <synthesis/mutation>`
 
 .. toctree::
    :hidden:

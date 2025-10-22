@@ -321,36 +321,36 @@ input[7:0] send_item
 </pre></div>
 </div>
 <p>SPISlave runs off a local system clock clk and takes the master’s SPI signals: sclk_in (serial clock), mosi_in (master-out, secondary-in), and ss_in (chip-select, active low). It also has a stutter_in gate that, when high, freezes the interface logic. The module drives miso (secondary-out) back to the master, and exposes a few synchronized/diagnostic copies of the incoming lines: sclk, mosi, and ss are the debounced, clock-domain-crossed versions of sclk_in, mosi_in, and ss_in respectively. Edge detectors raise one-cycle strobes rising_sclk_edge and falling_sclk_edge around sclk_in. start pulses for one cycle when ss_in asserts (transaction start). byte_transfered is a sticky flag that goes high after 8 bits have been shifted out on MISO and is cleared when ss_in deasserts. The st output mirrors the synchronized stutter_in. Finally, send_item[7:0] is a parallel preload value that seeds the transmit shift register once, on the first active cycle after reset.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>if (!ss_v) begin
-            // receiving
-            if(rising_edge) begin
-                if(!byte_received) begin
-                    rx_pos &lt;= (rx_pos + 4&#39;b0001) % 8;
-                    rx_buffer &lt;= {rx_buffer[6:0], mosi_v};
-                    byte_received &lt;= (rx_pos == 4&#39;b0111);
-                end
-            end
-            //sending
-            if(falling_edge) begin
-                if(!byte_transfered) begin
-                    tx_pos &lt;= (tx_pos + 4&#39;b0001) % 8;
-                    miso &lt;= tx_buffer[tx_pos];
-                    byte_transfered &lt;= (tx_pos == 4&#39;b0111);
-                end
-            end
-        end else begin
-            byte_received &lt;= 1&#39;b0;
-            byte_transfered &lt;= 1&#39;b0;
-        end
-        //outputs
-        sclk &lt;= sclk_v;
-        mosi &lt;= mosi_v;
-        en &lt;= ~ss_v;
-        st &lt;= stutter_v;
-        rising_sclk_edge &lt;= rising_edge;
-        falling_sclk_edge &lt;= falling_edge;
-        prev_en &lt;= ~ss_v;
-        start &lt;= ({prev_en,~ss_v} == 2&#39;b01);
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ss_v</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">            </span><span class="c1">// receiving</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">rising_edge</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">byte_received</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">                    </span><span class="n">rx_pos</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">rx_pos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="mb">&#39;b0001</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mh">8</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">rx_buffer</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">{</span><span class="n">rx_buffer</span><span class="p">[</span><span class="mh">6</span><span class="o">:</span><span class="mh">0</span><span class="p">],</span><span class="w"> </span><span class="n">mosi_v</span><span class="p">};</span>
+<span class="w">                    </span><span class="n">byte_received</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">rx_pos</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mb">&#39;b0111</span><span class="p">);</span>
+<span class="w">                </span><span class="k">end</span>
+<span class="w">            </span><span class="k">end</span>
+<span class="w">            </span><span class="c1">//sending</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">falling_edge</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">byte_transfered</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">                    </span><span class="n">tx_pos</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">tx_pos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="mb">&#39;b0001</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mh">8</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">miso</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">tx_buffer</span><span class="p">[</span><span class="n">tx_pos</span><span class="p">];</span>
+<span class="w">                    </span><span class="n">byte_transfered</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">tx_pos</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mb">&#39;b0111</span><span class="p">);</span>
+<span class="w">                </span><span class="k">end</span>
+<span class="w">            </span><span class="k">end</span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">            </span><span class="n">byte_received</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<span class="w">            </span><span class="n">byte_transfered</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="c1">//outputs</span>
+<span class="w">        </span><span class="n">sclk</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">sclk_v</span><span class="p">;</span>
+<span class="w">        </span><span class="n">mosi</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">mosi_v</span><span class="p">;</span>
+<span class="w">        </span><span class="n">en</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">ss_v</span><span class="p">;</span>
+<span class="w">        </span><span class="n">st</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">stutter_v</span><span class="p">;</span>
+<span class="w">        </span><span class="n">rising_sclk_edge</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">rising_edge</span><span class="p">;</span>
+<span class="w">        </span><span class="n">falling_sclk_edge</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">falling_edge</span><span class="p">;</span>
+<span class="w">        </span><span class="n">prev_en</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">ss_v</span><span class="p">;</span>
+<span class="w">        </span><span class="n">start</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">({</span><span class="n">prev_en</span><span class="p">,</span><span class="o">~</span><span class="n">ss_v</span><span class="p">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b01</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>On each clk edge, the module first synchronizes sclk_in, mosi_in, ss_in, and stutter_in into the local clock domain. If stutter_in is deasserted and the chip-select is active (ss_in == 0), it implements SPI mode-0 timing: on every rising edge of sclk_in it samples mosi_v into an 8-bit rx_buffer and advances rx_pos; on every falling edge it drives miso from the transmit buffer tx_buffer[tx_pos] and advances tx_pos. After the 8th bit (when the position counter reaches 7), it latches byte_received internally for RX and raises byte_transfered for TX; both counters and the flags are cleared when ss_in goes high. The outputs sclk, mosi, and ss present the synchronized views of the respective inputs for downstream logic, while start is asserted for one cycle on the 0→1 transition of the internal “enable” (i.e., when a new SPI frame begins). The transmit buffer is initialized exactly once from send_item immediately after reset, so the first outbound byte shifted on MISO is that preload; subsequent bytes will repeat unless external logic later rewrites tx_buffer (which this snippet does not do).</p>

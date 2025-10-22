@@ -1,70 +1,62 @@
-Fairness in Non-Repudiation Protocols (NuSMV)
-=============================================
+Fairness: Non-Repudiation Protocols (NuSMV)
+===========================================
 
 Description of the Case Study
 -----------------------------
 
-A *non-repudiation* protocol ensures that a receiver obtains a receipt from the sender, called *non-repudiation of
-origin* (*NRO*), and the sender ends up having an evidence, named *non-repudiation of receipt* (*NRR*), through a
-trusted third party. A non-repudiation protocol is *fair* if both *NRR* and *NRO* are either both received or both not
-received by the parties.
+Non-repudiation protocols aim to ensure that a sender cannot deny having sent a message (non-repudiation of origin, NRO) and
+that a receiver cannot deny having received it (non-repudiation of receipt, NRR). Fairness requires that these evidences are
+obtained symmetrically—either both parties possess their evidence or neither does. Following Jamroga, Mauw, and Melissen
+:ref:`[JMM11] <JMM11>`, we model two variants: an incorrect protocol :math:`T_{\text{incorrect}}` that withholds the receipt after
+obtaining NRO, and a corrected version :math:`T_{\text{correct}}`. When analysed with HyperQB, the faulty protocol yields a SAT
+counterexample under halting pessimistic semantics, demonstrating unfair behaviour. The corrected protocol produces UNSAT
+under halting optimistic semantics, confirming that it guarantees fairness.
 
-.. math::
-
-   \varphi_{\text{fair}} = \exists \pi_A . \forall \pi_B .
-   (\lozenge m_{\pi_A}) \land
-   (\lozenge NRR_{\pi_A}) \land
-   (\lozenge NRO_{\pi_A}) \land \\
-   \big(
-     (\Box \bigwedge_{\mathit{act} \in \mathit{Act}_P} act_{\pi_A} \leftrightarrow act_{\pi_B})
-     \rightarrow
-     ((\lozenge NRR_{\pi_B}) \leftrightarrow (\lozenge NRO_{\pi_B}))
-   \big) \land \\
-   \big(
-     (\Box \bigwedge_{\mathit{act} \in \mathit{Act}_Q} \neg act_{\pi_A} \leftrightarrow act_{\pi_B})
-     \rightarrow
-     ((\lozenge NRR_{\pi_B}) \leftrightarrow (\lozenge NRO_{\pi_B}))
-   \big)
-
-We studied two different protocols from :ref:`[JMM11] <JMM11>`, namely, :math:`T_{\text{incorrect}}` that chooses not to send out *NRR*
-after receiving *NRO*, and a correct implementation :math:`T_{\text{correct}}` which is fair. For
-:math:`T_{\text{correct}}`, *HyperQB* returns UNSAT in the *halting optimistic* semantics which indicates that the
-protocol satisfies fairness. For :math:`T_{\text{incorrect}}`, *HyperQB* returns SAT in the *halting pessimistic*
-semantics which implies that fairness is violated.
-
-Benchmarks
-----------
+The NuSMV model(s)
+------------------
 
 .. tabs::
 
     .. tab:: Case #4.1
 
-        **The Model(s)**
-
-        .. tabs::
-
-            .. tab:: NRP Incorrect
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_incorrect.smv
-                    :language: smv
-
-        **Formula**
-
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_formula.hq
-            :language: hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_incorrect.smv
+            :language: smv
 
     .. tab:: Case #4.2
 
-        **The Model(s)**
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_correct.smv
+            :language: smv
 
-        .. tabs::
+The HyperLTL formula(s)
+-----------------------
 
-            .. tab:: NRP Correct
+Fairness is captured by a HyperLTL property requiring that whenever a cooperative environment delivers the same sequence of
+actions for two traces, the availability of NRO and NRR must match. The existential trace chooses an execution where the sender
+delivers the message and both evidences are eventually obtained; every trace that mirrors the sender or receiver schedules must
+exhibit the same eventual outcomes.
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_correct.smv
-                    :language: smv
+.. math::
 
-        **Formula**
+   \begin{aligned}
+   \varphi_{\text{fair}} = {} & \exists \pi_A . \forall \pi_B .
+      (\lozenge m_{\pi_A}) \land
+      (\lozenge NRR_{\pi_A}) \land
+      (\lozenge NRO_{\pi_A}) \land \\
+   & \big(
+      (\Box \bigwedge_{\mathit{act} \in \mathit{Act}_P} act_{\pi_A} \leftrightarrow act_{\pi_B})
+      \rightarrow
+      ((\lozenge NRR_{\pi_B}) \leftrightarrow (\lozenge NRO_{\pi_B}))
+   \big) \land \\
+   & \big(
+      (\Box \bigwedge_{\mathit{act} \in \mathit{Act}_Q} \neg act_{\pi_A} \leftrightarrow act_{\pi_B})
+      \rightarrow
+      ((\lozenge NRR_{\pi_B}) \leftrightarrow (\lozenge NRO_{\pi_B}))
+   \big)
+   \end{aligned}
+
+.. tabs::
+
+    .. tab:: Case #4.1 & #4.2
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/nrp/NRP_formula.hq
             :language: hq

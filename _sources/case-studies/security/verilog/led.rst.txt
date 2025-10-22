@@ -1,8 +1,12 @@
-LED Blinker (Verilog)
+LED Blinker Modules (Verilog)
 ======================
 
-LED Blinker Modules
+.. LED Blinker Modules
+.. -----------------------------
+
+Description of the Case Study
 -----------------------------
+
 
 In this case study, we analyze a few Verilog implementations of LED blinker modules. These modules are designed to control the blinking behavior of LEDs based on input signals and timing parameters.
 
@@ -57,8 +61,9 @@ The first module is a simple blinker with one LED that toggles its LED state eac
 The second module is slightly more complex, with five LEDs which light up from the least-significant LED upward and then shrinks back down, with a blanking tick between every visible frame. On each rising clock edge, a synchronous reset loads a starting pattern (LEDs=10101, led_state=010, up=0, on=1), but the very next active cycle the on flag forces LEDs to 00000 and clears on to 0, creating a one-cycle all-off “strobe.” Thereafter the logic alternates: when on==0 it outputs the next bar pattern and advances the state, then sets on<=1; when on==1 it blanks (LEDs<=00000) and sets on<=0. The patterns produced on the non-blank cycles are contiguous 1s starting at bit 0 (rightmost LED): 00001 → 00011 → 00111 → 01111 → 11111 → 01111 → 00111 → 00011 → back to 00001, i.e., grow from 1 to 5 LEDs, then shrink to 1, and repeat. The led_state values 010,011,100,101 represent the mid/upper “bar lengths,” while the “default” branch handles the edge cases (000/001/...) to insert the 1-LED and housekeeping steps; the up flag is the direction bit that flips to 0 at the top (after reaching 11111) and back to 1 at the bottom (when returning to a single lit LED).
 
 
-Properties
-----------
+The HyperLTL formula(s)
+-----------------------
+
 There are four properties we want to verify about these two LED blinker modules.
 
 EA Hyperliveness Property for the 5-LED Blinker

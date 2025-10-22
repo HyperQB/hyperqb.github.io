@@ -12,6 +12,7 @@ Security
     intransitive-non-interference
     termination-non-interference
     nondeterministic
+    gmni
 
 .. toctree::
    :caption: Verilog

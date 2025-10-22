@@ -1,8 +1,9 @@
-Constant-Time Execution (Verilog)
+Constant-Time Execution: Floating Point Unit (Verilog)
 ======================
 
-Floating Point Unit (FPU)
+Description of the Case Study
 -----------------------------
+
 
 This case study involves verifying that a floating-point unit (FPU) implementation in Verilog executes in constant time, regardless of the input values. The FPU performs various arithmetic operations, and it is crucial to ensure that the execution time does not leak any sensitive information about the operands.
 
@@ -132,8 +133,10 @@ Specifically, the one of the first violations found by HyperQB occur when the in
         end
       end
 
-Property
-----------
+
+The HyperLTL formula(s)
+-----------------------
+
 As mentioned earlier, we want to verify that the FPU executes in constant time regardless of the input values. The HyperLTL formula expressing this property is as follows:
 
 .. math::

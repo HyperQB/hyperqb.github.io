@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Constant-Time Execution (Verilog)" href="fpu2.html" /><link rel="prev" title="LED Blinker (Verilog)" href="led.html" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Constant-Time Execution: Floating Point Unit (Verilog)" href="fpu2.html" /><link rel="prev" title="LED Blinker Modules (Verilog)" href="led.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Observational Determinism (Verilog) - HyperQB</title>
+        <title>Observational Determinism: SPI Bus Secondary (Verilog) - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
@@ -213,34 +213,37 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ir.html">Intermediate Representation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">Case Studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current has-children"><a class="reference internal" href="../index.html">Security</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../symmetry.html">Symmetry in the Bakery Algorithm (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../non-interference.html">Non-interference in multi-threaded programs (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../fairness.html">Fairness in Non-Repudiation Protocols (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../symmetry.html">Symmetry: Bakery Algorithm (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../non-interference.html">Non-interference: Multi-threaded Programs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fairness.html">Fairness: Non-Repudiation Protocols (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../co-termination.html">Co-termination (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../deniability.html">Deniability (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intransitive-non-interference.html">Intransitive Non-interference (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../termination-non-interference.html">Termination-sensitive/-insensitive Non-interference (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nondeterministic.html">Nondeterministic Inputs and Transitions (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="led.html">LED Blinker (Verilog)</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Observational Determinism (Verilog)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fpu2.html">Constant-Time Execution (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gmni.html">Generalized Non-interference: Banking Audit Logs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="led.html">LED Blinker Modules (Verilog)</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Observational Determinism: SPI Bus Secondary (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fpu2.html">Constant-Time Execution: Floating Point Unit (Verilog)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../concurrency/index.html">Concurrency</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Concurrency</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../concurrency/linearizability.html">Linearizability (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/snark.html">Linearizability: SNARK (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/emmaba.html">Linearizability: Explicit Memory Management ABA (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/lazy_list.html">Linearizability: Lazy List Set (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/iqueue.html">Linearizability: IQueue (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/simple_queue.html">Linearizability: Simple Queue (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../planning/index.html">Planning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../planning/path-planning.html">Path planning for robots (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../planning/shortest_path.html">Shortest Paths: Grid-World Planning (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../planning/robustness.html">Path Robustness: Grid-World Planning (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../synthesis/index.html">Synthesis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../synthesis/secrecy.html">Secrecy-preserving Refinement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../synthesis/teamltl.html">LTL with Team Semantics</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Testing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../testing/mutation.html">Mutation Testing (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../synthesis/secrecy.html">Secrecy-preserving Refinement (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../synthesis/teamltl.html">LTL with Team Semantics (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../synthesis/mutation.html">Synthesis for Mutation Testing (NuSMV)</a></li>
 </ul>
 </li>
 </ul>
@@ -289,10 +292,10 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="observational-determinism-verilog">
-<h1>Observational Determinism (Verilog)<a class="headerlink" href="#observational-determinism-verilog" title="Permalink to this heading">¶</a></h1>
-<section id="spi-bus-secondary">
-<h2>SPI Bus Secondary<a class="headerlink" href="#spi-bus-secondary" title="Permalink to this heading">¶</a></h2>
+          <section id="observational-determinism-spi-bus-secondary-verilog">
+<h1>Observational Determinism: SPI Bus Secondary (Verilog)<a class="headerlink" href="#observational-determinism-spi-bus-secondary-verilog" title="Permalink to this heading">¶</a></h1>
+<section id="description-of-the-case-study">
+<h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
 <p>In this case study, we examine a Verilog implementation of an SPI (Serial Peripheral Interface) bus secondary module. The SPI protocol is widely used for communication between microcontrollers and peripheral devices. The controller manages data transmission and reception over the SPI bus, handling various modes of operation and clock configurations.</p>
 <p>This design is sourced from the MCHyper repository: <a class="reference external" href="https://github.com/reactive-systems/MCHyper">https://github.com/reactive-systems/MCHyper</a>. The adapted Verilog code we used for our analysis can be found here: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/SPI">https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/SPI</a>.</p>
 <p>The role of the SPI secondary is to receive data from the SPI controller and respond accordingly. The module includes various signals for data input/output, clock management, and control flags.</p>
@@ -352,8 +355,8 @@ input[7:0] send_item
 </div>
 <p>On each clk edge, the module first synchronizes sclk_in, mosi_in, ss_in, and stutter_in into the local clock domain. If stutter_in is deasserted and the chip-select is active (ss_in == 0), it implements SPI mode-0 timing: on every rising edge of sclk_in it samples mosi_v into an 8-bit rx_buffer and advances rx_pos; on every falling edge it drives miso from the transmit buffer tx_buffer[tx_pos] and advances tx_pos. After the 8th bit (when the position counter reaches 7), it latches byte_received internally for RX and raises byte_transfered for TX; both counters and the flags are cleared when ss_in goes high. The outputs sclk, mosi, and ss present the synchronized views of the respective inputs for downstream logic, while start is asserted for one cycle on the 0→1 transition of the internal “enable” (i.e., when a new SPI frame begins). The transmit buffer is initialized exactly once from send_item immediately after reset, so the first outbound byte shifted on MISO is that preload; subsequent bytes will repeat unless external logic later rewrites tx_buffer (which this snippet does not do).</p>
 </section>
-<section id="property">
-<h2>Property<a class="headerlink" href="#property" title="Permalink to this heading">¶</a></h2>
+<section id="the-hyperltl-formula-s">
+<h2>The HyperLTL formula(s)<a class="headerlink" href="#the-hyperltl-formula-s" title="Permalink to this heading">¶</a></h2>
 <p>The property we want to verify is observational determinism, which ensures that for any two executions of the SPI secondary module with the same observable inputs, the observable outputs remain indistinguishable to an external observer.</p>
 </section>
 </section>
@@ -368,7 +371,7 @@ input[7:0] send_item
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Constant-Time Execution (Verilog)</div>
+                <div class="title">Constant-Time Execution: Floating Point Unit (Verilog)</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -379,7 +382,7 @@ input[7:0] send_item
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">LED Blinker (Verilog)</div>
+                <div class="title">LED Blinker Modules (Verilog)</div>
                 
               </div>
             </a>
@@ -413,9 +416,9 @@ input[7:0] send_item
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Observational Determinism (Verilog)</a><ul>
-<li><a class="reference internal" href="#spi-bus-secondary">SPI Bus Secondary</a></li>
-<li><a class="reference internal" href="#property">Property</a></li>
+<li><a class="reference internal" href="#">Observational Determinism: SPI Bus Secondary (Verilog)</a><ul>
+<li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
+<li><a class="reference internal" href="#the-hyperltl-formula-s">The HyperLTL formula(s)</a></li>
 </ul>
 </li>
 </ul>

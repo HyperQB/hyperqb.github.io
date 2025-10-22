@@ -1,7 +1,7 @@
-Observational Determinism (Verilog)
+Observational Determinism: SPI Bus Secondary (Verilog)
 ======================
 
-SPI Bus Secondary
+Description of the Case Study
 -----------------------------
 
 In this case study, we examine a Verilog implementation of an SPI (Serial Peripheral Interface) bus secondary module. The SPI protocol is widely used for communication between microcontrollers and peripheral devices. The controller manages data transmission and reception over the SPI bus, handling various modes of operation and clock configurations.
@@ -69,7 +69,7 @@ SPISlave runs off a local system clock clk and takes the master's SPI signals: s
 
 On each clk edge, the module first synchronizes sclk_in, mosi_in, ss_in, and stutter_in into the local clock domain. If stutter_in is deasserted and the chip-select is active (ss_in == 0), it implements SPI mode-0 timing: on every rising edge of sclk_in it samples mosi_v into an 8-bit rx_buffer and advances rx_pos; on every falling edge it drives miso from the transmit buffer tx_buffer[tx_pos] and advances tx_pos. After the 8th bit (when the position counter reaches 7), it latches byte_received internally for RX and raises byte_transfered for TX; both counters and the flags are cleared when ss_in goes high. The outputs sclk, mosi, and ss present the synchronized views of the respective inputs for downstream logic, while start is asserted for one cycle on the 0→1 transition of the internal “enable” (i.e., when a new SPI frame begins). The transmit buffer is initialized exactly once from send_item immediately after reset, so the first outbound byte shifted on MISO is that preload; subsequent bytes will repeat unless external logic later rewrites tx_buffer (which this snippet does not do).
 
-Property
-----------
+The HyperLTL formula(s)
+-----------------------
 
 The property we want to verify is observational determinism, which ensures that for any two executions of the SPI secondary module with the same observable inputs, the observable outputs remain indistinguishable to an external observer.

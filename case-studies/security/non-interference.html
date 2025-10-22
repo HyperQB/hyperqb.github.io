@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Fairness in Non-Repudiation Protocols (NuSMV)" href="fairness.html" /><link rel="prev" title="Symmetry in the Bakery Algorithm (NuSMV)" href="symmetry.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Fairness: Non-Repudiation Protocols (NuSMV)" href="fairness.html" /><link rel="prev" title="Symmetry: Bakery Algorithm (NuSMV)" href="symmetry.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Non-interference in multi-threaded programs (NuSMV) - HyperQB</title>
+        <title>Non-interference: Multi-threaded Programs (NuSMV) - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
@@ -214,34 +214,37 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ir.html">Intermediate Representation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Case Studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Security</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="symmetry.html">Symmetry in the Bakery Algorithm (NuSMV)</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Non-interference in multi-threaded programs (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fairness.html">Fairness in Non-Repudiation Protocols (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symmetry.html">Symmetry: Bakery Algorithm (NuSMV)</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Non-interference: Multi-threaded Programs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fairness.html">Fairness: Non-Repudiation Protocols (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="co-termination.html">Co-termination (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="deniability.html">Deniability (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intransitive-non-interference.html">Intransitive Non-interference (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="termination-non-interference.html">Termination-sensitive/-insensitive Non-interference (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nondeterministic.html">Nondeterministic Inputs and Transitions (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="verilog/led.html">LED Blinker (Verilog)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="verilog/spi.html">Observational Determinism (Verilog)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="verilog/fpu2.html">Constant-Time Execution (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gmni.html">Generalized Non-interference: Banking Audit Logs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="verilog/led.html">LED Blinker Modules (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="verilog/spi.html">Observational Determinism: SPI Bus Secondary (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="verilog/fpu2.html">Constant-Time Execution: Floating Point Unit (Verilog)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../concurrency/index.html">Concurrency</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Concurrency</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../concurrency/linearizability.html">Linearizability (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/snark.html">Linearizability: SNARK (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/emmaba.html">Linearizability: Explicit Memory Management ABA (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/lazy_list.html">Linearizability: Lazy List Set (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/iqueue.html">Linearizability: IQueue (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/simple_queue.html">Linearizability: Simple Queue (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../planning/index.html">Planning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../planning/path-planning.html">Path planning for robots (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../planning/shortest_path.html">Shortest Paths: Grid-World Planning (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../planning/robustness.html">Path Robustness: Grid-World Planning (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../synthesis/index.html">Synthesis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../synthesis/secrecy.html">Secrecy-preserving Refinement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../synthesis/teamltl.html">LTL with Team Semantics</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Testing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../testing/mutation.html">Mutation Testing (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synthesis/secrecy.html">Secrecy-preserving Refinement (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synthesis/teamltl.html">LTL with Team Semantics (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synthesis/mutation.html">Synthesis for Mutation Testing (NuSMV)</a></li>
 </ul>
 </li>
 </ul>
@@ -290,32 +293,22 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="non-interference-in-multi-threaded-programs-nusmv">
-<h1>Non-interference in multi-threaded programs (NuSMV)<a class="headerlink" href="#non-interference-in-multi-threaded-programs-nusmv" title="Permalink to this heading">¶</a></h1>
+          <section id="non-interference-multi-threaded-programs-nusmv">
+<h1>Non-interference: Multi-threaded Programs (NuSMV)<a class="headerlink" href="#non-interference-multi-threaded-programs-nusmv" title="Permalink to this heading">¶</a></h1>
 <section id="description-of-the-case-study">
 <h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
-<p>The hyperproperty of <em>non-interference</em> <a class="reference internal" href="#gm82"><span class="std std-ref">[GM82]</span></a> states that low-security variables are independent from the high-security
-variables, thus preserving secure information flow. We consider the concurrent program example in <a class="reference internal" href="#sv98"><span class="std std-ref">[SV98]</span></a>, where <cite>PIN</cite> is
-high security input and <cite>Result</cite> is low security output. <em>HyperQB</em> returns SAT in the <em>halting pessimistic</em> semantics,
-indicating that there is a trace that we can spot the difference of high-variables by observing low variables, that is,
-violating non-interference. With <em>HyperQB</em> we also verified the correctness of a fix to this algorithm, proposed in <a class="reference internal" href="#sv98"><span class="std std-ref">[SV98]</span></a>
-as well. In this case, <em>HyperQB</em> uses the UNSAT results from the solver (with <em>halting optimistic</em> semantics) to infer
-the absence of a violation.</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-\varphi_{\text{NI}} =\ &amp; \forall \pi_A . \exists \pi_B . (\mathit{PIN}_{\pi_A} \neq \mathit{PIN}_{\pi_B}) \land \big( (\neg \mathit{halt}_{\pi_A} \lor \neg \mathit{halt}_{\pi_B})\ \mathcal{U} \\
-&amp;\qquad ((\mathit{halt}_{\pi_A} \land \mathit{halt}_{\pi_B}) \land
-         (\mathit{Result}_{\pi_A} = \mathit{Result}_{\pi_B})) \big)
-\end{aligned}\end{split}\]</div>
-</div>
+<p>Non-interference <a class="reference internal" href="#gm82"><span class="std std-ref">[GM82]</span></a> demands that changes to confidential inputs cannot be observed through public outputs.
+We analyse the concurrent program introduced by Smith and Volpano <a class="reference internal" href="#sv98"><span class="std std-ref">[SV98]</span></a>, where the high-security input <cite>PIN</cite>
+controls whether the low-security output <cite>Result</cite> reveals sensitive information. The benchmark includes both the original,
+vulnerable implementation and the repaired version proposed in the paper. Using HyperQB under halting pessimistic semantics we
+obtain a satisfying witness for the buggy program—demonstrating that two runs differing only in <cite>PIN</cite> can expose the secret via
+<cite>Result</cite>. Switching to the fixed implementation and halting optimistic semantics, HyperQB proves unsatisfiability, confirming
+that the repaired program enforces non-interference.</p>
 </section>
-<section id="benchmarks">
-<h2>Benchmarks<a class="headerlink" href="#benchmarks" title="Permalink to this heading">¶</a></h2>
+<section id="the-nusmv-model-s">
+<h2>The NuSMV model(s)<a class="headerlink" href="#the-nusmv-model-s" title="Permalink to this heading">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #3.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #3.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
-<div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI Incorrect</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #3.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #3.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
 <span class="w">	</span><span class="nv">PIN_0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
@@ -481,14 +474,7 @@ the absence of a violation.</p>
 <span class="w">		</span><span class="k">esac</span><span class="p">;</span>
 </pre></div>
 </div>
-</div></div>
-<p><strong>Formula</strong></p>
-<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Forall</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">B</span> <span class="p">.</span> <span class="ow">F</span><span class="o">~</span><span class="p">((</span><span class="nv">PIN_2</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">PIN_2</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">PIN_1</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">PIN_1</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">PIN_0</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">PIN_0</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span> <span class="o">&amp;</span> <span class="p">(</span> <span class="p">(</span><span class="o">~</span><span class="nv">halt</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">|</span> <span class="o">~</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="ow">U</span> <span class="p">((</span><span class="nv">halt</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">((</span><span class="nv">RESULT_2</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">RESULT_2</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">RESULT_1</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">RESULT_1</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">RESULT_0</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">RESULT_0</span><span class="p">[</span><span class="nv">B</span><span class="p">]))))</span>
-</pre></div>
-</div>
-</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
-<div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NI Correct</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))</span>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
 <span class="w">    </span><span class="nv">PIN_0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
@@ -659,8 +645,27 @@ the absence of a violation.</p>
 </pre></div>
 </div>
 </div></div>
-<p><strong>Formula</strong></p>
-<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Forall</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">B</span> <span class="p">.</span> <span class="ow">F</span><span class="o">~</span><span class="p">((</span><span class="nv">PIN_2</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">PIN_2</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">PIN_1</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">PIN_1</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">PIN_0</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">PIN_0</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span> <span class="o">&amp;</span> <span class="p">(</span> <span class="p">(</span><span class="o">~</span><span class="nv">halt</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">|</span> <span class="o">~</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="ow">U</span> <span class="p">((</span><span class="nv">halt</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">((</span><span class="nv">RESULT_2</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">RESULT_2</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">RESULT_1</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">RESULT_1</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">RESULT_0</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">RESULT_0</span><span class="p">[</span><span class="nv">B</span><span class="p">]))))</span>
+</section>
+<section id="the-hyperltl-formula-s">
+<h2>The HyperLTL formula(s)<a class="headerlink" href="#the-hyperltl-formula-s" title="Permalink to this heading">¶</a></h2>
+<p>The property below captures termination-sensitive non-interference. Two executions must agree on the publicly observable output
+<cite>Result</cite> whenever both runs terminate, even if they start with different secret inputs. The <em>until</em> operator constrains the
+traces until simultaneous halting, ensuring observable equivalence once both executions finish.</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\varphi_{\text{NI}} = {} &amp; \forall \pi_A . \exists \pi_B .
+   (\mathit{PIN}_{\pi_A} \neq \mathit{PIN}_{\pi_B}) \land \\
+&amp; \big(
+     (\neg \mathit{halt}_{\pi_A} \lor \neg \mathit{halt}_{\pi_B})
+     \ \mathcal{U} \
+     ((\mathit{halt}_{\pi_A} \land \mathit{halt}_{\pi_B})
+      \land (\mathit{Result}_{\pi_A} = \mathit{Result}_{\pi_B}))
+  \big)
+\end{aligned}\end{split}\]</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Case #3.1 &amp; #3.2</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Forall</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">B</span> <span class="p">.</span> <span class="ow">F</span><span class="o">~</span><span class="p">((</span><span class="nv">PIN_2</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">PIN_2</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">PIN_1</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">PIN_1</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">PIN_0</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">PIN_0</span><span class="p">[</span><span class="nv">B</span><span class="p">]))</span> <span class="o">&amp;</span> <span class="p">(</span> <span class="p">(</span><span class="o">~</span><span class="nv">halt</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">|</span> <span class="o">~</span><span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="ow">U</span> <span class="p">((</span><span class="nv">halt</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nv">halt</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">((</span><span class="nv">RESULT_2</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">RESULT_2</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">RESULT_1</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">RESULT_1</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">RESULT_0</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">=</span> <span class="nv">RESULT_0</span><span class="p">[</span><span class="nv">B</span><span class="p">]))))</span>
 </pre></div>
 </div>
 </div></div>
@@ -668,7 +673,7 @@ the absence of a violation.</p>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
 <ul class="simple" id="gm82">
-<li><p>[GM82] <a class="reference external" href="https://doi.org/10.1109/SP.1982.10014">J. A. Goguen and J. Meseguer. Security policies and security models. In IEEE Symp. on Security and Privacy, pages 11–20, 1982.</a></p></li>
+<li><p>[GM82] <a class="reference external" href="https://doi.org/10.1109/SP.1982.10014">J. A. Goguen and J. Meseguer. Security policies and security models. In IEEE Symposium on Security and Privacy, pages 11–20, 1982.</a></p></li>
 </ul>
 <ul class="simple" id="sv98">
 <li><p>[SV98] <a class="reference external" href="https://doi.org/10.1145/268946.268975">G. Smith and D. M. Volpano. Secure information flow in a multi-threaded imperative language. In Proceedings of the 25th ACM Symposium on Principles of Programming Languages (POPL), pages 355–364, 1998.</a></p></li>
@@ -686,7 +691,7 @@ the absence of a violation.</p>
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Fairness in Non-Repudiation Protocols (NuSMV)</div>
+                <div class="title">Fairness: Non-Repudiation Protocols (NuSMV)</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -697,7 +702,7 @@ the absence of a violation.</p>
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Symmetry in the Bakery Algorithm (NuSMV)</div>
+                <div class="title">Symmetry: Bakery Algorithm (NuSMV)</div>
                 
               </div>
             </a>
@@ -731,9 +736,10 @@ the absence of a violation.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Non-interference in multi-threaded programs (NuSMV)</a><ul>
+<li><a class="reference internal" href="#">Non-interference: Multi-threaded Programs (NuSMV)</a><ul>
 <li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
-<li><a class="reference internal" href="#benchmarks">Benchmarks</a></li>
+<li><a class="reference internal" href="#the-nusmv-model-s">The NuSMV model(s)</a></li>
+<li><a class="reference internal" href="#the-hyperltl-formula-s">The HyperLTL formula(s)</a></li>
 <li><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>

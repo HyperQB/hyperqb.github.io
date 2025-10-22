@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Concurrency" href="../../concurrency/index.html" /><link rel="prev" title="Observational Determinism (Verilog)" href="spi.html" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Concurrency" href="../../concurrency/index.html" /><link rel="prev" title="Observational Determinism: SPI Bus Secondary (Verilog)" href="spi.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Constant-Time Execution (Verilog) - HyperQB</title>
+        <title>Constant-Time Execution: Floating Point Unit (Verilog) - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
@@ -213,34 +213,37 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ir.html">Intermediate Representation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">Case Studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current has-children"><a class="reference internal" href="../index.html">Security</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../symmetry.html">Symmetry in the Bakery Algorithm (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../non-interference.html">Non-interference in multi-threaded programs (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../fairness.html">Fairness in Non-Repudiation Protocols (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../symmetry.html">Symmetry: Bakery Algorithm (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../non-interference.html">Non-interference: Multi-threaded Programs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fairness.html">Fairness: Non-Repudiation Protocols (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../co-termination.html">Co-termination (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../deniability.html">Deniability (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intransitive-non-interference.html">Intransitive Non-interference (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../termination-non-interference.html">Termination-sensitive/-insensitive Non-interference (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nondeterministic.html">Nondeterministic Inputs and Transitions (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="led.html">LED Blinker (Verilog)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spi.html">Observational Determinism (Verilog)</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Constant-Time Execution (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gmni.html">Generalized Non-interference: Banking Audit Logs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="led.html">LED Blinker Modules (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spi.html">Observational Determinism: SPI Bus Secondary (Verilog)</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Constant-Time Execution: Floating Point Unit (Verilog)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../concurrency/index.html">Concurrency</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Concurrency</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../concurrency/linearizability.html">Linearizability (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/snark.html">Linearizability: SNARK (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/emmaba.html">Linearizability: Explicit Memory Management ABA (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/lazy_list.html">Linearizability: Lazy List Set (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/iqueue.html">Linearizability: IQueue (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../concurrency/simple_queue.html">Linearizability: Simple Queue (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../planning/index.html">Planning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../planning/path-planning.html">Path planning for robots (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../planning/shortest_path.html">Shortest Paths: Grid-World Planning (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../planning/robustness.html">Path Robustness: Grid-World Planning (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../synthesis/index.html">Synthesis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../synthesis/secrecy.html">Secrecy-preserving Refinement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../synthesis/teamltl.html">LTL with Team Semantics</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Testing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../testing/mutation.html">Mutation Testing (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../synthesis/secrecy.html">Secrecy-preserving Refinement (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../synthesis/teamltl.html">LTL with Team Semantics (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../synthesis/mutation.html">Synthesis for Mutation Testing (NuSMV)</a></li>
 </ul>
 </li>
 </ul>
@@ -289,10 +292,10 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="constant-time-execution-verilog">
-<h1>Constant-Time Execution (Verilog)<a class="headerlink" href="#constant-time-execution-verilog" title="Permalink to this heading">¶</a></h1>
-<section id="floating-point-unit-fpu">
-<h2>Floating Point Unit (FPU)<a class="headerlink" href="#floating-point-unit-fpu" title="Permalink to this heading">¶</a></h2>
+          <section id="constant-time-execution-floating-point-unit-verilog">
+<h1>Constant-Time Execution: Floating Point Unit (Verilog)<a class="headerlink" href="#constant-time-execution-floating-point-unit-verilog" title="Permalink to this heading">¶</a></h1>
+<section id="description-of-the-case-study">
+<h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
 <p>This case study involves verifying that a floating-point unit (FPU) implementation in Verilog executes in constant time, regardless of the input values. The FPU performs various arithmetic operations, and it is crucial to ensure that the execution time does not leak any sensitive information about the operands.</p>
 <p>The full Verilog code for the FPU division module can be found in the benchmark repository: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider">https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider</a>. This case study was sourced from the IODINE tool’s benchmarks: <a class="reference external" href="https://github.com/gokhankici/iodine">https://github.com/gokhankici/iodine</a>.</p>
 <p>The Verilog module under consideration implements a simple FPU that supports addition, subtraction, multiplication, and division of floating-point numbers. The design includes control logic to handle different operations and edge cases, such as overflow and underflow.</p>
@@ -411,8 +414,8 @@ The module also uses handshaking signals (<cite>input_a_ack</cite>, <cite>input_
 </pre></div>
 </div>
 </section>
-<section id="property">
-<h2>Property<a class="headerlink" href="#property" title="Permalink to this heading">¶</a></h2>
+<section id="the-hyperltl-formula-s">
+<h2>The HyperLTL formula(s)<a class="headerlink" href="#the-hyperltl-formula-s" title="Permalink to this heading">¶</a></h2>
 <p>As mentioned earlier, we want to verify that the FPU executes in constant time regardless of the input values. The HyperLTL formula expressing this property is as follows:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -446,7 +449,7 @@ The module also uses handshaking signals (<cite>input_a_ack</cite>, <cite>input_
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Observational Determinism (Verilog)</div>
+                <div class="title">Observational Determinism: SPI Bus Secondary (Verilog)</div>
                 
               </div>
             </a>
@@ -480,9 +483,9 @@ The module also uses handshaking signals (<cite>input_a_ack</cite>, <cite>input_
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Constant-Time Execution (Verilog)</a><ul>
-<li><a class="reference internal" href="#floating-point-unit-fpu">Floating Point Unit (FPU)</a></li>
-<li><a class="reference internal" href="#property">Property</a></li>
+<li><a class="reference internal" href="#">Constant-Time Execution: Floating Point Unit (Verilog)</a><ul>
+<li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
+<li><a class="reference internal" href="#the-hyperltl-formula-s">The HyperLTL formula(s)</a></li>
 </ul>
 </li>
 </ul>

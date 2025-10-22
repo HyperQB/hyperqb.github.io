@@ -1,4 +1,4 @@
-LTL with Team Semantics
+LTL with Team Semantics (NuSMV)
 =======================
 
 Description of the Case Study
@@ -11,46 +11,40 @@ Consider an unknown input that affects the system behavior. To specify that
 executions either agree on :math:`a` or :math:`b` depending on the input, one can write the
 following HyperLTL formula:
 
-.. math::
-    \varphi_{\text{team}} = \exists \pi_A. \exists \pi_B. \forall \pi. \Box
-    \left( a_{\pi_A} \leftrightarrow a_{\pi} \right) \lor \left( b_{\pi_B} \leftrightarrow b_{\pi} \right).
-
-Team scenarios as HyperQB is able to correctly verify and synthesize the two traces in the team (i.e., :math:`\pi_{A}`
-and :math:`\pi_{B}`), correctly
-
-Benchmarks
-----------
+The NuSMV model(s)
+------------------
 
 .. tabs::
 
     .. tab:: Case #13.1
 
-        **The Model(s)**
+        .. literalinclude :: ../benchmarks_ui/nusmv/synthesis/teamltl/team.smv
+            :language: smv
 
-        .. tabs::
+    .. tab:: Case #13.2
 
-            .. tab:: Team
+        .. literalinclude :: ../benchmarks_ui/nusmv/synthesis/teamltl/team2.smv
+            :language: smv
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/synthesis/teamltl/team.smv
-                    :language: smv
+The HyperLTL formula(s)
+-----------------------
 
-        **Formula**
+Team semantics introduces existential witnesses for collective agreement. The HyperLTL encoding selects two traces that fix the
+values of propositions `a` and `b`; every other trace must agree with at least one of them forever.
+
+.. math::
+
+   \varphi_{\text{team}} = \exists \pi_A. \exists \pi_B. \forall \pi. \Box
+   \left( a_{\pi_A} \leftrightarrow a_{\pi} \right) \lor \left( b_{\pi_B} \leftrightarrow b_{\pi} \right)
+
+.. tabs::
+
+    .. tab:: Case #13.1
 
         .. literalinclude :: ../benchmarks_ui/nusmv/synthesis/teamltl/team.hq
             :language: hq
 
     .. tab:: Case #13.2
-
-        **The Model(s)**
-
-        .. tabs::
-
-            .. tab:: Team 2
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/synthesis/teamltl/team2.smv
-                    :language: smv
-
-        **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/synthesis/teamltl/team.hq
             :language: hq

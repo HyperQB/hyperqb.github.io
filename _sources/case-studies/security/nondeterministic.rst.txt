@@ -4,47 +4,48 @@ Nondeterministic Inputs and Transitions (NuSMV)
 Description of the Case Study
 -----------------------------
 
-To evaluate how nondeterministic choices impact model checking performance, we extend a standard example in two ways.
+To assess how nondeterminism affects non-interference verification, we extend the standard information-flow example by allowing
+integer secrets and observables in the range :math:`0 \ldots k`. The first variant draws the secret nondeterministically at
+initialisation, while the second keeps the initial secret fixed but introduces nondeterministic updates on the next transition.
+HyperQB checks whether these variations still satisfy non-interference, using arithmetic comparisons rather than Boolean
+equality. Exploring the search space reveals how additional nondeterminism impacts solver performance.
 
-We first change the high and low as
-integers ranging :math:`0 \ldots k`. Next, the model of #14.1 set the initial condition nondeterministically as a number from :math:`0 \ldots k`. Another model in #14.2, instead,
-have high initially as :math:`0`, but on the next transition, have high set to a number :math:`\le k`.
-
-The HyperLTL formula used is the classic :math:`\forall\exists` non-interference, but with arithmetic comparison instead of simply Boolean matching.
-
-Benchmarks
-----------
+The NuSMV model(s)
+------------------
 
 .. tabs::
 
     .. tab:: Case #14.1
 
-        **The Model(s)**
-
-        .. tabs::
-
-            .. tab:: NI v2
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI_v2.smv
-                    :language: smv
-
-        **Formula**
-
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI.hq
-            :language: hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI_v2.smv
+            :language: smv
 
     .. tab:: Case #14.2
 
-        **The Model(s)**
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI_v3.smv
+            :language: smv
 
-        .. tabs::
+The HyperLTL formula(s)
+-----------------------
 
-            .. tab:: NI v3
+Both variants are analysed with the classic :math:`\forall\exists` non-interference property, adapted to compare integer values.
+The existential trace must reproduce the public behaviour of the original run while allowing a different secret.
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI_v3.smv
-                    :language: smv
+.. math::
 
-        **Formula**
+   \varphi_{\text{NI}} =
+   \forall \pi_A . \exists \pi_B .
+   \Box \big(
+      \mathit{low}_{\pi_A} = \mathit{low}_{\pi_B}
+   \big)
+   \land
+   \Box \big(
+      \mathit{high}_{\pi_A} \neq \mathit{high}_{\pi_B}
+   \big)
+
+.. tabs::
+
+    .. tab:: Case #14.1 & #14.2
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/ndet/NI.hq
             :language: hq

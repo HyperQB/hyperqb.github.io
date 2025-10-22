@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="LTL with Team Semantics" href="teamltl.html" /><link rel="prev" title="Synthesis" href="index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="LTL with Team Semantics (NuSMV)" href="teamltl.html" /><link rel="prev" title="Synthesis" href="index.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Secrecy-preserving Refinement - HyperQB</title>
+        <title>Secrecy-preserving Refinement (NuSMV) - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
@@ -214,34 +214,37 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ir.html">Intermediate Representation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Case Studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="../security/index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../security/symmetry.html">Symmetry in the Bakery Algorithm (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../security/non-interference.html">Non-interference in multi-threaded programs (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../security/fairness.html">Fairness in Non-Repudiation Protocols (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/symmetry.html">Symmetry: Bakery Algorithm (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/non-interference.html">Non-interference: Multi-threaded Programs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/fairness.html">Fairness: Non-Repudiation Protocols (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/co-termination.html">Co-termination (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/deniability.html">Deniability (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/intransitive-non-interference.html">Intransitive Non-interference (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/termination-non-interference.html">Termination-sensitive/-insensitive Non-interference (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/nondeterministic.html">Nondeterministic Inputs and Transitions (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../security/verilog/led.html">LED Blinker (Verilog)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../security/verilog/spi.html">Observational Determinism (Verilog)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../security/verilog/fpu2.html">Constant-Time Execution (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/gmni.html">Generalized Non-interference: Banking Audit Logs (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/verilog/led.html">LED Blinker Modules (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/verilog/spi.html">Observational Determinism: SPI Bus Secondary (Verilog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/verilog/fpu2.html">Constant-Time Execution: Floating Point Unit (Verilog)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../concurrency/index.html">Concurrency</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Concurrency</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../concurrency/linearizability.html">Linearizability (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/snark.html">Linearizability: SNARK (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/emmaba.html">Linearizability: Explicit Memory Management ABA (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/lazy_list.html">Linearizability: Lazy List Set (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/iqueue.html">Linearizability: IQueue (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../concurrency/simple_queue.html">Linearizability: Simple Queue (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../planning/index.html">Planning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../planning/path-planning.html">Path planning for robots (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../planning/shortest_path.html">Shortest Paths: Grid-World Planning (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../planning/robustness.html">Path Robustness: Grid-World Planning (NuSMV)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Synthesis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Secrecy-preserving Refinement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="teamltl.html">LTL with Team Semantics</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Testing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../testing/mutation.html">Mutation Testing (NuSMV)</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Secrecy-preserving Refinement (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="teamltl.html">LTL with Team Semantics (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mutation.html">Synthesis for Mutation Testing (NuSMV)</a></li>
 </ul>
 </li>
 </ul>
@@ -290,8 +293,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="secrecy-preserving-refinement">
-<h1>Secrecy-preserving Refinement<a class="headerlink" href="#secrecy-preserving-refinement" title="Permalink to this heading">¶</a></h1>
+          <section id="secrecy-preserving-refinement-nusmv">
+<h1>Secrecy-preserving Refinement (NuSMV)<a class="headerlink" href="#secrecy-preserving-refinement-nusmv" title="Permalink to this heading">¶</a></h1>
 <section id="description-of-the-case-study">
 <h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
 <p>Relating programs at different levels (e.g., high vs. low, abstract vs. concrete) is often involved in system design.
@@ -299,25 +302,12 @@ For example, <em>secure compilation</em> specifies that when the compiler transf
 purposes), the compiled code should still satisfy the intended security property. For instance, to preserve the classic
 <span class="math notranslate nohighlight">\(\forall \exists\)</span> non-interference property during compilation, an <span class="math notranslate nohighlight">\(\exists \forall \forall \exists \exists\)</span>
 formula must be verified. That is, there exists a mapping <span class="math notranslate nohighlight">\(M\)</span> that preserves NI from code <span class="math notranslate nohighlight">\(A\)</span> to code
-<span class="math notranslate nohighlight">\(B\)</span>, as follows:</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\Phi_{\text{NI--ABM}} =
-\exists \pi_M .
-\forall \pi_{A_1} . \forall \pi_{B_1} .
-\exists \pi_{A_2} . \exists \pi_{B_2} .
-\left( \varphi_{\mathit{map}_1} \rightarrow
-\left( \varphi_{\mathit{map}_2} \land \psi_{\text{NI}} \right) \right)\]</div>
-</div>
-<p>HyperQB is able to correctly synthesize a correct mapping (i.e., the leading <span class="math notranslate nohighlight">\(\exists\)</span>) if one exists. Such a
-formula with <em>multiple quantifier alternations</em> bumps up the complexity of model checking by one step in the polynomial
-hierarchy compared to the original non-interference formula.</p>
+<span class="math notranslate nohighlight">\(B\)</span>.</p>
 </section>
-<section id="benchmarks">
-<h2>Benchmarks<a class="headerlink" href="#benchmarks" title="Permalink to this heading">¶</a></h2>
+<section id="the-nusmv-model-s">
+<h2>The NuSMV model(s)<a class="headerlink" href="#the-nusmv-model-s" title="Permalink to this heading">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #12.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #12.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
-<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">MapSynth 1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">MapSynth 2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Mapping Synthesis MA</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Mapping Synthesis MB</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Mapping Synthesis MM</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MAPSYNTH</span>
 <span class="c">--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
@@ -429,42 +419,7 @@ hierarchy compared to the original non-interference formula.</p>
 </pre></div>
 </div>
 </div></div>
-<p><strong>Formula</strong></p>
-<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Exists</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Forall</span> <span class="nv">B</span> <span class="p">.</span> <span class="kr">Forall</span> <span class="nv">C</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">D</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="kt">E</span> <span class="p">.</span>
-<span class="ow">G</span> 
-<span class="p">(</span>
-  <span class="p">(</span><span class="nv">pr</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">&amp;~</span><span class="nv">ps</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">&amp;</span> <span class="o">~</span><span class="nv">qr</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">&amp;</span><span class="nv">qs</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> 
-  <span class="o">|</span> 
-  <span class="p">(</span><span class="o">~</span><span class="nv">pr</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">&amp;</span><span class="nv">ps</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nv">qr</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">&amp;~</span><span class="nv">qs</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span>
-<span class="p">)</span>
-<span class="o">&amp;</span>
-<span class="p">(</span>
-  <span class="ow">G</span> <span class="p">(</span>
-      <span class="p">((</span><span class="nv">pr</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
-      <span class="p">((</span><span class="nv">ps</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
-      <span class="p">((</span><span class="nv">qr</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
-      <span class="p">((</span><span class="nv">qs</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
-      <span class="p">(</span><span class="o">~</span><span class="nv">fAIL</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span> <span class="o">&amp;</span> <span class="o">~</span><span class="nv">fAIL</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
-  <span class="p">)</span>
-  <span class="o">-&gt;</span>
-  <span class="p">(</span>
-  <span class="ow">G</span> <span class="p">(</span> 
-      <span class="p">((</span><span class="nv">pr</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="kt">E</span><span class="p">])))</span> <span class="o">&amp;</span>
-      <span class="p">((</span><span class="nv">ps</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="kt">E</span><span class="p">])))</span> <span class="o">&amp;</span>
-      <span class="p">((</span><span class="nv">qr</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="kt">E</span><span class="p">])))</span> <span class="o">&amp;</span>
-      <span class="p">((</span><span class="nv">qs</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="kt">E</span><span class="p">])))</span> <span class="o">&amp;</span>
-      <span class="p">(</span><span class="o">~</span><span class="nv">fAIL</span><span class="p">[</span><span class="nv">D</span><span class="p">]</span> <span class="o">&amp;</span> <span class="o">~</span><span class="nv">fAIL</span><span class="p">[</span><span class="kt">E</span><span class="p">])</span>
-  <span class="p">)</span>
-  <span class="o">&amp;</span>
-  <span class="ow">G</span> <span class="p">(</span>
-      <span class="p">(</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="o">~</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span>
-    <span class="p">)</span>
-  <span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
-<div class="sphinx-tabs docutils container">
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Mapping Synthesis MA</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Mapping Synthesis MB</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Mapping Synthesis MM</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MAPSYNTH</span>
 <span class="c">--(adopted from: Tzu-Han Hsu, Borzoo Bonakdarpour, Eunsuk Kang, and Stavros Tripakis. Mapping synthesis for hyperproperties. In 2022 IEEE 35th Computer Security Foundations Symposium (CSF))</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
@@ -596,8 +551,57 @@ hierarchy compared to the original non-interference formula.</p>
 </pre></div>
 </div>
 </div></div>
-<p><strong>Formula</strong></p>
-<div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Exists</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Forall</span> <span class="nv">B</span> <span class="p">.</span> <span class="kr">Forall</span> <span class="nv">C</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">D</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="kt">E</span> <span class="p">.</span>
+</div></div>
+</section>
+<section id="the-hyperltl-formula-s">
+<h2>The HyperLTL formula(s)<a class="headerlink" href="#the-hyperltl-formula-s" title="Permalink to this heading">¶</a></h2>
+<p>The synthesis specification nests quantifiers to ensure that every abstract/concrete execution pair can be related by some
+mapping trace <span class="math notranslate nohighlight">\(\pi_M\)</span> that preserves non-interference. HyperQB searches for a witness mapping, increasing complexity by one
+alternation over the underlying security requirement.</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\Phi_{\text{NI--ABM}} =
+\exists \pi_M .
+\forall \pi_{A_1} . \forall \pi_{B_1} .
+\exists \pi_{A_2} . \exists \pi_{B_2} .
+\left( \varphi_{\mathit{map}_1} \rightarrow
+\left( \varphi_{\mathit{map}_2} \land \psi_{\text{NI}} \right) \right)\]</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">Case #12.1</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Case #12.2</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Exists</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Forall</span> <span class="nv">B</span> <span class="p">.</span> <span class="kr">Forall</span> <span class="nv">C</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">D</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="kt">E</span> <span class="p">.</span>
+<span class="ow">G</span> 
+<span class="p">(</span>
+  <span class="p">(</span><span class="nv">pr</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">&amp;~</span><span class="nv">ps</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">&amp;</span> <span class="o">~</span><span class="nv">qr</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">&amp;</span><span class="nv">qs</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> 
+  <span class="o">|</span> 
+  <span class="p">(</span><span class="o">~</span><span class="nv">pr</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">&amp;</span><span class="nv">ps</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nv">qr</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">&amp;~</span><span class="nv">qs</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="o">&amp;</span>
+<span class="p">(</span>
+  <span class="ow">G</span> <span class="p">(</span>
+      <span class="p">((</span><span class="nv">pr</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
+      <span class="p">((</span><span class="nv">ps</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
+      <span class="p">((</span><span class="nv">qr</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
+      <span class="p">((</span><span class="nv">qs</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
+      <span class="p">(</span><span class="o">~</span><span class="nv">fAIL</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span> <span class="o">&amp;</span> <span class="o">~</span><span class="nv">fAIL</span><span class="p">[</span><span class="nv">C</span><span class="p">])</span>
+  <span class="p">)</span>
+  <span class="o">-&gt;</span>
+  <span class="p">(</span>
+  <span class="ow">G</span> <span class="p">(</span> 
+      <span class="p">((</span><span class="nv">pr</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="kt">E</span><span class="p">])))</span> <span class="o">&amp;</span>
+      <span class="p">((</span><span class="nv">ps</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="kt">E</span><span class="p">])))</span> <span class="o">&amp;</span>
+      <span class="p">((</span><span class="nv">qr</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_r</span><span class="p">[</span><span class="kt">E</span><span class="p">])))</span> <span class="o">&amp;</span>
+      <span class="p">((</span><span class="nv">qs</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">atom_q</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">atom_s</span><span class="p">[</span><span class="kt">E</span><span class="p">])))</span> <span class="o">&amp;</span>
+      <span class="p">(</span><span class="o">~</span><span class="nv">fAIL</span><span class="p">[</span><span class="nv">D</span><span class="p">]</span> <span class="o">&amp;</span> <span class="o">~</span><span class="nv">fAIL</span><span class="p">[</span><span class="kt">E</span><span class="p">])</span>
+  <span class="p">)</span>
+  <span class="o">&amp;</span>
+  <span class="ow">G</span> <span class="p">(</span>
+      <span class="p">(</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="o">~</span><span class="nv">atom_p</span><span class="p">[</span><span class="nv">D</span><span class="p">])</span>
+    <span class="p">)</span>
+  <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Exists</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Forall</span> <span class="nv">B</span> <span class="p">.</span> <span class="kr">Forall</span> <span class="nv">C</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="nv">D</span> <span class="p">.</span> <span class="kr">Exists</span> <span class="kt">E</span> <span class="p">.</span>
 <span class="p">(</span><span class="ow">G</span> <span class="p">(</span>
       <span class="p">((</span><span class="nv">ABs_SRs</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">Alice_Bob_sec</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">S_R_sec</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
       <span class="p">((</span><span class="nv">ABs_SRp</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="nv">Alice_Bob_sec</span><span class="p">[</span><span class="nv">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">S_R_pub</span><span class="p">[</span><span class="nv">C</span><span class="p">])))</span> <span class="o">&amp;</span>
@@ -640,7 +644,7 @@ hierarchy compared to the original non-interference formula.</p>
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">LTL with Team Semantics</div>
+                <div class="title">LTL with Team Semantics (NuSMV)</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -685,9 +689,10 @@ hierarchy compared to the original non-interference formula.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Secrecy-preserving Refinement</a><ul>
+<li><a class="reference internal" href="#">Secrecy-preserving Refinement (NuSMV)</a><ul>
 <li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
-<li><a class="reference internal" href="#benchmarks">Benchmarks</a></li>
+<li><a class="reference internal" href="#the-nusmv-model-s">The NuSMV model(s)</a></li>
+<li><a class="reference internal" href="#the-hyperltl-formula-s">The HyperLTL formula(s)</a></li>
 </ul>
 </li>
 </ul>

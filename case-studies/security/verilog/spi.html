@@ -374,7 +374,7 @@
 \\[4pt]
 &amp;\text{where}\quad
 O_x \equiv
-\big(\mathit{miso}[x]\land \lnot \mathit{sclk\_in}[x]\land \lnot \mathit{ss\_in}[x]\big).
+\big(\mathit{miso}[x]\land \lnot \mathit{sclk\_in}[x]\land \mathit{en}[x]\big).
 \end{aligned}\end{split}\]</div>
 </div>
 <p>In this formula, we quantify over two traces, <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, representing two different executions of the SPI secondary module. The left-hand side of the implication includes the SPI input assumptions (synchronization of sclk_in, mosi_in, ss_in, and stutter_in) for both traces and ensures that the transmit buffers are identical in both executions. The right-hand side states that whenever both traces are in an active SPI transaction (ss_in is low and sclk_in is low), the miso outputs must be equivalent on both traces. This ensures that an external observer cannot distinguish between the two executions based on the observable outputs, thus satisfying the property of observational determinism.</p>

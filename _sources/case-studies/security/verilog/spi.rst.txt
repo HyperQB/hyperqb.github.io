@@ -91,7 +91,7 @@ The property we want to verify is observational determinism, which ensures that 
     \\[4pt]
     &\text{where}\quad
     O_x \equiv
-    \big(\mathit{miso}[x]\land \lnot \mathit{sclk\_in}[x]\land \lnot \mathit{ss\_in}[x]\big).
+    \big(\mathit{miso}[x]\land \lnot \mathit{sclk\_in}[x]\land \mathit{en}[x]\big).
     \end{aligned}
 
 

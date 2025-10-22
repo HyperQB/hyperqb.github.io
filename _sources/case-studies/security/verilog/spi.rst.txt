@@ -69,7 +69,32 @@ SPISlave runs off a local system clock clk and takes the master's SPI signals: s
 
 On each clk edge, the module first synchronizes sclk_in, mosi_in, ss_in, and stutter_in into the local clock domain. If stutter_in is deasserted and the chip-select is active (ss_in == 0), it implements SPI mode-0 timing: on every rising edge of sclk_in it samples mosi_v into an 8-bit rx_buffer and advances rx_pos; on every falling edge it drives miso from the transmit buffer tx_buffer[tx_pos] and advances tx_pos. After the 8th bit (when the position counter reaches 7), it latches byte_received internally for RX and raises byte_transfered for TX; both counters and the flags are cleared when ss_in goes high. The outputs sclk, mosi, and ss present the synchronized views of the respective inputs for downstream logic, while start is asserted for one cycle on the 0→1 transition of the internal “enable” (i.e., when a new SPI frame begins). The transmit buffer is initialized exactly once from send_item immediately after reset, so the first outbound byte shifted on MISO is that preload; subsequent bytes will repeat unless external logic later rewrites tx_buffer (which this snippet does not do).
 
-The HyperLTL formula(s)
------------------------
+Specification of Observational Determinism
+----------
 
 The property we want to verify is observational determinism, which ensures that for any two executions of the SPI secondary module with the same observable inputs, the observable outputs remain indistinguishable to an external observer.
+
+.. math::
+    
+    \forall p.\,\forall q.\;
+    \left(
+    \begin{aligned}
+    &\text{SPI Input Assumptions}(p,q)\\[2pt]
+    &{}\land\ \bigwedge_{i=0}^{7}\ \mathit{tx\_buffer}\_{i}[p] \leftrightarrow \mathit{tx\_buffer}\_{i}[q]
+    \end{aligned}
+    \right)
+    \ \rightarrow\
+    \left(
+    \begin{aligned}
+    &\bigcirc\,\Box\Big(
+        (\mathit{miso}[p]\land \lnot \mathit{sclk\_in}[p]\land \lnot \mathit{ss\_in}[p])\\
+    &\qquad\qquad\ \leftrightarrow\
+        (\mathit{miso}[q]\land \lnot \mathit{sclk\_in}[q]\land \lnot \mathit{ss\_in}[q])
+    \Big)
+    \end{aligned}
+    \right).
+
+
+In this formula, we quantify over two traces, :math:`p` and :math:`q`, representing two different executions of the SPI secondary module. The left-hand side of the implication includes the SPI input assumptions (synchronization of sclk_in, mosi_in, ss_in, and stutter_in) for both traces and ensures that the transmit buffers are identical in both executions. The right-hand side states that whenever both traces are in an active SPI transaction (ss_in is low and sclk_in is low), the miso outputs must be equivalent on both traces. This ensures that an external observer cannot distinguish between the two executions based on the observable outputs, thus satisfying the property of observational determinism.
+
+The .hq file containing the HyperLTL formula can be found here: `https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/SPI/formula.hq <https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/SPI/formula.hq>`_.

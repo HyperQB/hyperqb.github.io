@@ -1,9 +1,9 @@
 Download
 ========
 
-`Download HyperQB <https://github.com/HyperQB/HyperRUSTY>`_
+`Build HyperQB from source <https://github.com/HyperQB/HyperRUSTY>`_
 
-`Download the HyperQB Standalone application <https://github.com/HyperQB/hyperqb-release>`_
+`Download the HyperQB Standalone application <https://github.com/HyperQB/hyperqb-release/releases>`_
 
 License
 -------

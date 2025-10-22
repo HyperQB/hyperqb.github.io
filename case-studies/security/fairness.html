@@ -424,14 +424,6 @@ semantics which implies that fairness is violated.</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NRP Correct</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- Non-repudiation Protocol</span>
 <span class="c">-- (adopted from: Wojciech Jamroga, Sjouke Mauw, and Matthijs Melissen. Fairness in nonrepudiation protocols. In Proc. of the 7th Int’l Workshop on Security and Trust Management (STM’11))</span>
-<span class="c">-- (1) skip until P-&gt;T: m ;</span>
-<span class="c">-- (2) skip until P-&gt;T: NRO ;</span>
-<span class="c">-- (3) T-&gt;Q: m ;</span>
-<span class="c">-- (4) skip until Q-&gt;T: NRR;</span>
-<span class="c">-- (5) T-&gt;Q: NRO;</span>
-<span class="c">-- (6) T-&gt;P: NRR;</span>
-<span class="c">-- (7) terminate</span>
-
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
 <span class="w">	</span><span class="c">-- P</span>

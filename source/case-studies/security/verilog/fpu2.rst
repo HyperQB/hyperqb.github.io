@@ -1,13 +1,16 @@
 Constant-Time Execution: Floating Point Unit (Verilog)
 ======================
 
+The full Verilog code for the FPU division module can be found in benchmarks of the HyperQB repository `here <https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider>`_. 
+
+This case study was sourced from the IODINE tool's benchmarks[1]. 
+
 Description of the Case Study
 -----------------------------
 
 
 This case study involves verifying that a floating-point unit (FPU) implementation in Verilog executes in constant time, regardless of the input values. The FPU performs various arithmetic operations, and it is crucial to ensure that the execution time does not leak any sensitive information about the operands.
 
-The full Verilog code for the FPU division module can be found in the benchmark repository: `https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider <https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/divider>`_. This case study was sourced from the IODINE tool's benchmarks: `https://github.com/gokhankici/iodine <https://github.com/gokhankici/iodine>`_.
 
 The Verilog module under consideration implements a simple FPU that supports addition, subtraction, multiplication, and division of floating-point numbers. The design includes control logic to handle different operations and edge cases, such as overflow and underflow.
 
@@ -16,7 +19,7 @@ Here we are interested in verifying that the execution time of the FPU is indepe
 HyperQB is able to discover a violation of this property in the division operation, where certain input values lead to longer execution times due to additional handling of special cases (e.g., division by zero).
 
 
-.. code-block:: text
+.. code-block:: verilog
 
     //IEEE Floating Point Divider (Single Precision)
     //Copyright (C) Jonathan P Dawson 2013
@@ -58,7 +61,7 @@ The module also uses handshaking signals (`input_a_ack`, `input_b_ack`, and `out
 
 Specifically, the one of the first violations found by HyperQB occur when the inputs to the divider are such that `input_b` is zero, leading to a longer execution time due to the special handling of division by zero cases.  Similar counterexamples exist for other special cases as defined in the snippet below.
 
-.. code-block:: text
+.. code-block:: verilog
 
     special_cases:
       begin
@@ -148,3 +151,7 @@ As mentioned earlier, we want to verify that the FPU executes in constant time r
 In this formula, we quantify over two traces, :math:`\pi_A` and :math:`\pi_B`, representing two different executions of the FPU. The formula states that if both executions start in a reset state and then proceed without resets, and if both executions receive the same input strobe and acknowledgment signals for `input_b`, then the output strobe signals for `output_z` must occur simultaneously in both executions. This ensures that the timing of the output does not depend on the specific input values, thus verifying constant-time execution.
 
 The file containing the HyperLTL formula can be found at this link: `https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/divider/formula.hq <https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/divider/formula.hq>`_.
+
+
+
+[1] IODINE Tool's Repository: `https://github.com/gokhankici/iodine <https://github.com/gokhankici/iodine>`_

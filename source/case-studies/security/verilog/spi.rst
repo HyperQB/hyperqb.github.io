@@ -1,16 +1,18 @@
 Observational Determinism: SPI Bus Secondary (Verilog)
 ======================
 
+This design is sourced from the MCHyper repository[1].
+
+The adapted Verilog code we used for our analysis can be found `here <https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/SPI>`_.
+
 Description of the Case Study
 -----------------------------
 
 In this case study, we examine a Verilog implementation of an SPI (Serial Peripheral Interface) bus secondary module. The SPI protocol is widely used for communication between microcontrollers and peripheral devices. The controller manages data transmission and reception over the SPI bus, handling various modes of operation and clock configurations.
 
-This design is sourced from the MCHyper repository: `https://github.com/reactive-systems/MCHyper <https://github.com/reactive-systems/MCHyper>`_. The adapted Verilog code we used for our analysis can be found here: `https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/SPI <https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/SPI>`_.
-
 The role of the SPI secondary is to receive data from the SPI controller and respond accordingly. The module includes various signals for data input/output, clock management, and control flags.
 
-.. code-block:: text
+.. code-block:: verilog
 
     module SPISlave(
     input clk,
@@ -76,25 +78,29 @@ The property we want to verify is observational determinism, which ensures that 
 
 .. math::
     
-    \forall p.\,\forall q.\;
+    \begin{aligned}
+    &\forall p.\,\forall q.\;
     \left(
     \begin{aligned}
-    &\text{SPI Input Assumptions}(p,q)\\[2pt]
+    &\text{SPI Input Assumptions}(p,q)\\
     &{}\land\ \bigwedge_{i=0}^{7}\ \mathit{tx\_buffer}\_{i}[p] \leftrightarrow \mathit{tx\_buffer}\_{i}[q]
     \end{aligned}
     \right)
     \ \rightarrow\
     \left(
-    \begin{aligned}
-    &\bigcirc\,\Box\Big(
-        (\mathit{miso}[p]\land \lnot \mathit{sclk\_in}[p]\land \lnot \mathit{ss\_in}[p])\\
-    &\qquad\qquad\ \leftrightarrow\
-        (\mathit{miso}[q]\land \lnot \mathit{sclk\_in}[q]\land \lnot \mathit{ss\_in}[q])
-    \Big)
+    \bigcirc\,\Box\big( O_p \leftrightarrow O_q \big)
+    \right)
+    \\[4pt]
+    &\text{where}\quad
+    O_x \equiv
+    \big(\mathit{miso}[x]\land \lnot \mathit{sclk\_in}[x]\land \lnot \mathit{ss\_in}[x]\big).
     \end{aligned}
-    \right).
 
 
 In this formula, we quantify over two traces, :math:`p` and :math:`q`, representing two different executions of the SPI secondary module. The left-hand side of the implication includes the SPI input assumptions (synchronization of sclk_in, mosi_in, ss_in, and stutter_in) for both traces and ensures that the transmit buffers are identical in both executions. The right-hand side states that whenever both traces are in an active SPI transaction (ss_in is low and sclk_in is low), the miso outputs must be equivalent on both traces. This ensures that an external observer cannot distinguish between the two executions based on the observable outputs, thus satisfying the property of observational determinism.
 
 The .hq file containing the HyperLTL formula can be found here: `https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/SPI/formula.hq <https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/SPI/formula.hq>`_.
+
+
+[1] MCHyper Repository: `https://github.com/reactive-systems/MCHyper <https://github.com/reactive-systems/MCHyper>`_
+

@@ -1,36 +1,3 @@
---
--- // SNARK structure (with some accelerations):
--- // 0   ------- STAND BY: could go to line:1/ line:10/ line:19
--- // 	  popRight() starts:
--- // 1   - getRightHat as rh
--- // 2		- getLeftHat as lh
--- // 3		- if (rh is self-pointing) return assign popRight_fAIL
--- // 4 	- else if (rh equals lh)
--- // 5			DCAS (RightHat, LeftHat, rh, lh, Dummy, Dummy)
--- // 6			assign pop_result as rh->V
--- // 7		- else  assign rhl as rh->L
--- // 8				DCAS (RightHat, rh->L, rh, rhL, rhL, rh)
--- // 9				assign popRight_result as rh->V, assign rh->R as DUMMY
--- //     pushRight() starts:
--- // 10    - assing nd as Y --> if null, return pushRight_fAIL
--- // 11		- assign nd->R as Dummy,assign nd-> V as something (zero for now)
--- // 12		- assign rh as RightHat, assign rhR as rh->R
--- // 13		if (rh == rhR), assign nd -> L = Dummy, assign lh = LeftHat
--- // 14			 DCAS (RightHat, LeftHat, rh, lh, nd, nd)
--- // 15			 return pushRight_SUCCESS
--- // 16		else   assign nd->L as rh
--- // 17			   DCAS(RightHat, rh->R, rh, rhR, nd, nd)
--- // 18			   return pushRight_SUCCESS
--- //  	  popLeft() starts:
--- // 19		- assign lh as LeftHat, assign rh as RightHat
--- // 20		- if (lh is self-pointing), return assign popLeft_fAIL
--- // 21		- else if (lh == rh)
--- // 22				DCAS (LeftHat, RightHat, lh, rh, Dummy, Dummy)
--- // 23				assign popLeft_result as lh -> V
--- // 24		- else  assign lhR as lh->R
--- // 25				DCAS (LeftHat, lh->R, lh, lhR, lfR, lh)
--- // 26				assign popLeft_result as lh->V, assign lh_L as DDUMMY
-
 MODULE main
 VAR
 
@@ -370,33 +337,4 @@ VAR
 					TRUE: AllNodes[2][1];
 				esac;
 
-		-- ##############################################################################
-
-
-	DEFINE 
-		-- ##############################################################################
-		-- Proc 1 DEFINE
-		-- proc1.popRightSTART 	:= proc1.line=1 | proc1.line=2 | proc1.line=3;
-		-- proc1.popRightEND 		:= proc1.line=0 ;
-		-- proc1.pushRightSTART	:= proc1.line=4 | proc1.line=5;
-		-- proc1.pushRightEND		:= proc1.line=0 ;
-		-- proc1.popLeftSTART		:= proc1.line=7 | proc1.line=8;
-		-- proc1.popLeftEND		:= proc1.line=0 ;
-		-- proc1.modifying			:= proc1.line=1 | proc1.line=4| proc1.line=7;
-		-- ##############################################################################
-
-		-- ##############################################################################
-		-- Proc 2 DEFINE
-		-- proc2.popRightSTART 	:= proc2.line=1 | proc2.line=2 | proc2.line=3;
-		-- proc2.popRightEND 		:= proc2.line=0 ;
-		-- proc2.pushRightSTART	:= proc2.line=4 | proc2.line=5;
-		-- proc2.pushRightEND		:= proc2.line=0 ;
-		-- proc2.popLeftSTART		:= proc2.line=7 | proc2.line=8;
-		-- proc2.popLeftEND		:= proc2.line=0 ;
-		-- proc2.modifying			:= proc2.line=1 | proc2.line=4| proc2.line=7;
-		-- ##############################################################################
-
-		-- ##############################################################################
-		-- Queue DEFINE
-		-- BOTH_MODIFYING := (proc1.modifying & proc2.modifying);
 		-- ##############################################################################

@@ -315,35 +315,7 @@ the absence of a violation.</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #3.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #3.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI Incorrect</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--MULTI-THREADED PROGRAM</span>
-<span class="c">--(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))</span>
-<span class="c">-- //// TRIGGER 0</span>
-<span class="c">-- // 0   trigger0 loops if (mask != 0) else go to line25</span>
-<span class="c">-- // 1        - while (trigger0 == 0) do nothing</span>
-<span class="c">-- // 2		- result = result OR mask</span>
-<span class="c">-- // 3		- trigger0 = 0</span>
-<span class="c">-- // 4		- maintrigger = matrigger + 1</span>
-<span class="c">-- // 5 		- if maintrigger = 1, then trigger1 = 1</span>
-<span class="c">-- // 6 		- if (mask != 0 and trigger0 = 0) back to line 1</span>
-<span class="c">-- //// TRIGGER 1</span>
-<span class="c">-- // 8	trigger1 loops if (mask != 0) else go to line25</span>
-<span class="c">-- // 9		- while (trigger1 == 0) do nothing</span>
-<span class="c">-- // 10		- result = result AND compliment(mask)</span>
-<span class="c">-- // 11		- trigger1 = 0</span>
-<span class="c">-- // 12   	- maintrigger = maintriger + 1</span>
-<span class="c">-- // 13       - if maintrigger = 1, then trigger0 = 1</span>
-<span class="c">-- // 14		- if (mask != 0 and trigger1 = 0) back to line 9</span>
-<span class="c">-- //// MAIN TRIGGER</span>
-<span class="c">-- // 16	maintrigger starts:</span>
-<span class="c">-- // 17		- while (mask != 0) // Hm mm</span>
-<span class="c">-- // 18		- maintrigger = 0</span>
-<span class="c">-- // 19		- if (PIN &amp; Mask = 0)</span>
-<span class="c">-- // 20		- trigger0 = 1</span>
-<span class="c">-- // 21		- else    trigger1 = 1</span>
-<span class="c">-- // 22		while (maintrigger != 2) loop</span>
-<span class="c">-- // 23		mask = mask / 2</span>
-
-
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI Incorrect</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--(adopted from: Geoffrey Smith and Dennis M. Volpano. Secure information flow in a multithreaded imperative language. In Proc. of the 25th ACM Symposium on Principles of Programming Languages (POPL’98))</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
 <span class="w">	</span><span class="nv">PIN_0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
@@ -507,8 +479,6 @@ the absence of a violation.</p>
 <span class="w">			</span><span class="p">((</span><span class="nv">theta_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">main_trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">};</span><span class="w"> </span><span class="c">-- proceed</span>
 <span class="w">			</span><span class="p">(</span><span class="nv">theta_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c">-- mask = mask / 2</span>
 <span class="w">		</span><span class="k">esac</span><span class="p">;</span>
-<span class="c">-- DEFINE</span>
-<span class="c">-- 		halt := ((theta_line=0) &amp; (MASK_2=0) &amp; (MASK_1=0) &amp; (MASK_0=0));</span>
 </pre></div>
 </div>
 </div></div>

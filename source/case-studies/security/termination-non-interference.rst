@@ -4,53 +4,71 @@ Termination-sensitive/-insensitive Non-interference (NuSMV)
 Description of the Case Study
 -----------------------------
 
-It is a classic definition :ref:`[CS10] <CS10>` of whether leaking the information via termination channels is allowed, which derives
-two notions of non-interference (NI). For *termination-insensitive*, if one trace terminates, then there must exists
-another trace that either (1) terminates and obeys NI, or (2) not terminate. That is,
+Termination channels allow secrets to leak by influencing whether a program halts. Clarkson and Schneider :ref:`[CS10] <CS10>` distinguish
+between termination-insensitive non-interference (TINI) and termination-sensitive non-interference (TSNI). We study the example
+from Unno, Terauchi, and Koskinen :ref:`[UTK21] <UTK21>`, checking both notions with HyperQB. Under optimistic semantics the solver returns
+UNSAT for both properties, indicating no finite counterexample exists—thus the program satisfies both TINI and TSNI.
 
-.. math::
-    \varphi_{\text{tini}} = \forall \pi_A. \exists \pi_B. \Diamond(\mathit{halt}_{\pi_A}) \rightarrow
-    \Box \left( \mathit{halt}_{\pi_B} \rightarrow
-    \left( \left( \mathit{high}_{\pi_A} \neq \mathit{high}_{\pi_B} \right) \land
-    \left( \mathit{low}_{\pi_A} = \mathit{low}_{\pi_B} \right) \right) \right)
-
-*Termination-sensitive* strengthens the property by asking there must exists another trace that terminates *and* obeys
-NI. We verify a program from :ref:`[UTK21] <UTK21>` with respect to termination sensitivity. By using *optimistic* semantics, both return
-UNSAT, meaning no bugs can be found in the finite exploration. Hence, the program satisfies the properties
-
-Benchmarks
-----------
+The NuSMV model(s)
+------------------
 
 .. tabs::
 
     .. tab:: Case #10.1
 
-        **The Model(s)**
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/ni_example.smv
+            :language: smv
 
-        .. tabs::
+    .. tab:: Case #10.2
 
-            .. tab:: NI Example
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/ni_example.smv
+            :language: smv
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/ni_example.smv
-                    :language: smv
+The HyperLTL formula(s)
+-----------------------
 
-        **Formula**
+The two properties differ in how they treat the halting trace. TINI allows the witness trace to diverge, while TSNI insists on
+matching termination. HyperQB evaluates both specifications to confirm the absence of termination leaks.
+
+.. math::
+
+   \varphi_{\text{TINI}} =
+   \forall \pi_A . \exists \pi_B .
+   \Big(
+      \Diamond \mathit{halt}_{\pi_A}
+      \rightarrow
+      \Box \big(
+         \mathit{halt}_{\pi_B}
+         \rightarrow
+         (\mathit{high}_{\pi_A} \neq \mathit{high}_{\pi_B}
+          \land \mathit{low}_{\pi_A} = \mathit{low}_{\pi_B})
+      \big)
+   \Big)
+
+.. math::
+
+   \varphi_{\text{TSNI}} =
+   \forall \pi_A . \exists \pi_B .
+   \Box \big(
+      \mathit{halt}_{\pi_A}
+      \leftrightarrow
+      \mathit{halt}_{\pi_B}
+   \big)
+   \land
+   \Box \big(
+      \mathit{high}_{\pi_A} \neq \mathit{high}_{\pi_B}
+      \rightarrow
+      \mathit{low}_{\pi_A} = \mathit{low}_{\pi_B}
+   \big)
+
+.. tabs::
+
+    .. tab:: Case #10.1
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/tini.hq
             :language: hq
 
     .. tab:: Case #10.2
-
-        **The Model(s)**
-
-        .. tabs::
-
-            .. tab:: NI Example
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/ni_example.smv
-                    :language: smv
-
-        **Formula**
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/ni_exp/tsni.hq
             :language: hq
@@ -64,4 +82,4 @@ References
 
 .. _UTK21:
 
-- [UTK21] `Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021, Virtual Event, July 20–23, 2021, Proceedings, Part I, pages 742–766. Springer, 2021. <https://doi.org/10.1007/978-3-030-81685-8_35>`_
+- [UTK21] `H. Unno, T. Terauchi, and E. Koskinen. Constraint-based relational verification. In *Computer Aided Verification (CAV)*, pages 742–766, 2021. <https://doi.org/10.1007/978-3-030-81685-8_35>`_

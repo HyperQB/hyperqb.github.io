@@ -4,4 +4,5 @@ Planning
 .. toctree::
     :maxdepth: 1
 
-    path-planning
+    shortest_path
+    robustness

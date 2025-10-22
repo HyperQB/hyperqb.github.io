@@ -1,18 +1,5 @@
---NI
 --(adpted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)
 MODULE main
--- gniEx(bool high, int low) {
---   1 if (high)
---      { int x = ndet_int ; // here we assign at the beginning
---   2    if (x >= low)
---   3      { return x; }
---   4    else { while (true) {} } }
---     else {
---   5   int x = low;
---       while ( ndet_bool ) {
---   6        x++; }
---       return x;
--- }
 
  VAR
 	location: 1..7;
@@ -20,10 +7,6 @@ MODULE main
 	nondet: boolean;
 	high: boolean;
 	low: 0..5;
-
---  FROZENVAR
-	-- high: boolean;
-	-- low: 0..5;
 
  ASSIGN
 	init(location) := 1 ;

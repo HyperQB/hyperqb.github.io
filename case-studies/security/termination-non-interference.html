@@ -313,21 +313,8 @@ UNSAT, meaning no bugs can be found in the finite exploration. Hence, the progra
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #10.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #10.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI Example</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--NI</span>
-<span class="c">--(adpted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">NI Example</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--(adpted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
-<span class="c">-- gniEx(bool high, int low) {</span>
-<span class="c">--   1 if (high)</span>
-<span class="c">--      { int x = ndet_int ; // here we assign at the beginning</span>
-<span class="c">--   2    if (x &gt;= low)</span>
-<span class="c">--   3      { return x; }</span>
-<span class="c">--   4    else { while (true) {} } }</span>
-<span class="c">--     else {</span>
-<span class="c">--   5   int x = low;</span>
-<span class="c">--       while ( ndet_bool ) {</span>
-<span class="c">--   6        x++; }</span>
-<span class="c">--       return x;</span>
-<span class="c">-- }</span>
 
 <span class="w"> </span><span class="kd">VAR</span>
 <span class="w">	</span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">7</span><span class="p">;</span>
@@ -335,10 +322,6 @@ UNSAT, meaning no bugs can be found in the finite exploration. Hence, the progra
 <span class="w">	</span><span class="nv">nondet</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 <span class="w">	</span><span class="nv">high</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 <span class="w">	</span><span class="nv">low</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">5</span><span class="p">;</span>
-
-<span class="c">--  FROZENVAR</span>
-<span class="w">	</span><span class="c">-- high: boolean;</span>
-<span class="w">	</span><span class="c">-- low: 0..5;</span>
 
 <span class="w"> </span><span class="kd">ASSIGN</span>
 <span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
@@ -386,21 +369,8 @@ UNSAT, meaning no bugs can be found in the finite exploration. Hence, the progra
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><strong>The Model(s)</strong></p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NI Example</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--NI</span>
-<span class="c">--(adpted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">NI Example</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--(adpted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
-<span class="c">-- gniEx(bool high, int low) {</span>
-<span class="c">--   1 if (high)</span>
-<span class="c">--      { int x = ndet_int ; // here we assign at the beginning</span>
-<span class="c">--   2    if (x &gt;= low)</span>
-<span class="c">--   3      { return x; }</span>
-<span class="c">--   4    else { while (true) {} } }</span>
-<span class="c">--     else {</span>
-<span class="c">--   5   int x = low;</span>
-<span class="c">--       while ( ndet_bool ) {</span>
-<span class="c">--   6        x++; }</span>
-<span class="c">--       return x;</span>
-<span class="c">-- }</span>
 
 <span class="w"> </span><span class="kd">VAR</span>
 <span class="w">	</span><span class="nv">location</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">7</span><span class="p">;</span>
@@ -408,10 +378,6 @@ UNSAT, meaning no bugs can be found in the finite exploration. Hence, the progra
 <span class="w">	</span><span class="nv">nondet</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 <span class="w">	</span><span class="nv">high</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 <span class="w">	</span><span class="nv">low</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">5</span><span class="p">;</span>
-
-<span class="c">--  FROZENVAR</span>
-<span class="w">	</span><span class="c">-- high: boolean;</span>
-<span class="w">	</span><span class="c">-- low: 0..5;</span>
 
 <span class="w"> </span><span class="kd">ASSIGN</span>
 <span class="w">	</span><span class="nb">init</span><span class="p">(</span><span class="nv">location</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>

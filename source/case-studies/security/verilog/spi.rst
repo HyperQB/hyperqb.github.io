@@ -87,9 +87,7 @@ The property we want to verify is observational determinism, which ensures that 
     \end{aligned}
     \right)
     \ \rightarrow\
-    \left(
     \bigcirc\,\Box\big( O_p \leftrightarrow O_q \big)
-    \right)
     \\[4pt]
     &\text{where}\quad
     O_x \equiv

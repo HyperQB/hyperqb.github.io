@@ -1,19 +1,11 @@
 -- CO-TERMINATION
 -- (adopted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)
 MODULE main
-
--- 0	while (x>0){
--- 1		x = x - (2 x y)
--- 2	}
-
 	VAR
 		x: 10..100;
 		t: 0..1;
 		location: 0..2;
 		y: 0..5;
-
-	-- FROZENVAR
-		-- y: 0..5;
 
 	ASSIGN
 		init(location) := 1;

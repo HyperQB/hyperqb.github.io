@@ -34,7 +34,7 @@ The role of the SPI secondary is to receive data from the SPI controller and res
 
 SPISlave runs off a local system clock clk and takes the master's SPI signals: sclk_in (serial clock), mosi_in (master-out, secondary-in), and ss_in (chip-select, active low). It also has a stutter_in gate that, when high, freezes the interface logic. The module drives miso (secondary-out) back to the master, and exposes a few synchronized/diagnostic copies of the incoming lines: sclk, mosi, and ss are the debounced, clock-domain-crossed versions of sclk_in, mosi_in, and ss_in respectively. Edge detectors raise one-cycle strobes rising_sclk_edge and falling_sclk_edge around sclk_in. start pulses for one cycle when ss_in asserts (transaction start). byte_transfered is a sticky flag that goes high after 8 bits have been shifted out on MISO and is cleared when ss_in deasserts. The st output mirrors the synchronized stutter_in. Finally, send_item[7:0] is a parallel preload value that seeds the transmit shift register once, on the first active cycle after reset.
 
-.. code-block:: text
+.. code-block:: verilog
 
     if (!ss_v) begin
                 // receiving

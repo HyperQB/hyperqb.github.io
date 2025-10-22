@@ -311,6 +311,8 @@ scheduling control.</p>
 <span class="c">--(adopted from: Michael W Whalen, David A Greve, and Lucas G Wagner. Model checking information flow. In Design and verification of microprocessor systems for high-assurance applications)</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
+<span class="w">  </span><span class="c">-- P1_Mode: 0..1; -- 0: secure, 1: unclassified</span>
+<span class="w">  </span><span class="c">-- P2_Mode: 0..1; -- 0: secure, 1: unclassified</span>
 <span class="w">  </span><span class="nv">P1_sec_in</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 <span class="w">  </span><span class="nv">P2_unclass_in</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 <span class="w">  </span><span class="nv">P1_sec_out</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>

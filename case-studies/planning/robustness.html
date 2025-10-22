@@ -435,6 +435,10 @@ showing that a uniform, robust controller exists even as the environment scales.
 <span class="w">            </span><span class="p">((</span><span class="nv">y_axis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">act</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">8</span><span class="p">};</span>
 <span class="w">            </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">y_axis</span><span class="p">;</span>
 <span class="w">        </span><span class="k">esac</span><span class="p">;</span>
+
+<span class="kd">DEFINE</span>
+<span class="w">    </span><span class="c">-- BEGIN := (((x_axis = 0) &amp; (y_axis = 0)) | ((x_axis = 1) &amp; (y_axis = 0)) | ((x_axis = 2) &amp; (y_axis = 0)));</span>
+<span class="w">    </span><span class="c">-- gOAL := (((x_axis = 6) &amp; (y_axis = 9)) | ((x_axis = 7) &amp; (y_axis = 9)) | ((x_axis = 8) &amp; (y_axis = 9)));</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--ROBOTIC PLANNING</span>
@@ -659,6 +663,10 @@ showing that a uniform, robust controller exists even as the environment scales.
 <span class="w">            </span><span class="p">((</span><span class="nv">y_axis</span><span class="o">=</span><span class="mi">19</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">act</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
 <span class="w">            </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">y_axis</span><span class="p">;</span>
 <span class="w">        </span><span class="k">esac</span><span class="p">;</span>
+
+<span class="kd">DEFINE</span>
+<span class="w">    </span><span class="c">-- BEGIN := (((x_axis=0) &amp; (y_axis=0)) | ((x_axis=1) &amp; (y_axis=0)) | ((x_axis=2) &amp; (y_axis=0)));</span>
+<span class="w">    </span><span class="c">-- gOAL := (((x_axis=6) &amp; (y_axis=9)) | ((x_axis=7) &amp; (y_axis=9)) | ((x_axis=8) &amp; (y_axis=9)));</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--ROBOTIC PLANNING</span>
@@ -1039,6 +1047,11 @@ showing that a uniform, robust controller exists even as the environment scales.
 <span class="w">            </span><span class="p">((</span><span class="nv">y_axis</span><span class="o">=</span><span class="mi">39</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">act</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="mi">38</span><span class="w"> </span><span class="p">;</span>
 <span class="w">            </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">y_axis</span><span class="p">;</span>
 <span class="w">        </span><span class="k">esac</span><span class="p">;</span>
+
+
+<span class="kd">DEFINE</span>
+<span class="w">    </span><span class="c">-- BEGIN := ((x_axis=0 &amp; y_axis=0) | (x_axis=1 &amp; y_axis=0) | (x_axis=2 &amp; y_axis=0));</span>
+<span class="w">    </span><span class="c">-- gOAL :=  ((x_axis=6 &amp; y_axis=9) | (x_axis=7 &amp; y_axis=9) | (x_axis=8 &amp; y_axis=9));</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--ROBOTIC PLANNING</span>
@@ -1572,6 +1585,10 @@ showing that a uniform, robust controller exists even as the environment scales.
 
 <span class="w">            </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">y_axis</span><span class="p">;</span>
 <span class="w">        </span><span class="k">esac</span><span class="p">;</span>
+
+<span class="kd">DEFINE</span>
+<span class="w">    </span><span class="c">-- BEGIN := ((x_axis=0 &amp; y_axis=0) | (x_axis=1 &amp; y_axis=0) | (x_axis=2 &amp; y_axis=0));</span>
+<span class="w">    </span><span class="c">-- GOAL :=  ((x_axis=6 &amp; y_axis=9) | (x_axis=7 &amp; y_axis=9) | (x_axis=8 &amp; y_axis=9));</span>
 </pre></div>
 </div>
 </div></div>
@@ -1587,12 +1604,7 @@ trace. Once both executions are at the goal, the requirement is satisfied; until
 </div>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Path Robustness</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-hq notranslate"><div class="highlight"><pre><span></span><span class="kr">Exists</span> <span class="kt">A</span> <span class="p">.</span> <span class="kr">Forall</span> <span class="nv">B</span> <span class="p">.</span>
-<span class="ow">F</span><span class="p">(</span><span class="nv">gOAL</span><span class="p">[</span><span class="kt">A</span><span class="p">])</span>
-<span class="o">&amp;</span> <span class="p">(</span><span class="ow">G</span><span class="p">(((</span><span class="nv">act</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span>  <span class="p">(</span><span class="nv">act</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="o">&amp;</span><span class="p">((</span><span class="nv">act</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="nv">act</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="o">&amp;</span><span class="p">((</span><span class="nv">act</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="nv">act</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
-<span class="o">&amp;</span><span class="p">((</span><span class="nv">act</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="nv">act</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="mi">4</span><span class="p">)))</span>
-<span class="o">-&gt;</span> <span class="p">(</span><span class="ow">F</span><span class="p">(</span><span class="nv">gOAL</span><span class="p">[</span><span class="nv">B</span><span class="p">])))</span>
+<span class="ow">F</span><span class="p">((</span><span class="nv">act</span><span class="p">[</span><span class="kt">A</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="nv">act</span><span class="p">[</span><span class="nv">B</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div></div>

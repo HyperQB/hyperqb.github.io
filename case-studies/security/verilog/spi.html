@@ -294,30 +294,31 @@
         <article role="main" id="furo-main-content">
           <section id="observational-determinism-spi-bus-secondary-verilog">
 <h1>Observational Determinism: SPI Bus Secondary (Verilog)<a class="headerlink" href="#observational-determinism-spi-bus-secondary-verilog" title="Permalink to this heading">¶</a></h1>
+<p>This design is sourced from the MCHyper repository[1].</p>
+<p>The adapted Verilog code we used for our analysis can be found <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/SPI">here</a>.</p>
 <section id="description-of-the-case-study">
 <h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
 <p>In this case study, we examine a Verilog implementation of an SPI (Serial Peripheral Interface) bus secondary module. The SPI protocol is widely used for communication between microcontrollers and peripheral devices. The controller manages data transmission and reception over the SPI bus, handling various modes of operation and clock configurations.</p>
-<p>This design is sourced from the MCHyper repository: <a class="reference external" href="https://github.com/reactive-systems/MCHyper">https://github.com/reactive-systems/MCHyper</a>. The adapted Verilog code we used for our analysis can be found here: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/SPI">https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/SPI</a>.</p>
 <p>The role of the SPI secondary is to receive data from the SPI controller and respond accordingly. The module includes various signals for data input/output, clock management, and control flags.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>module SPISlave(
-input clk,
-input stutter_in,
-// SPI
-input sclk_in,
-input mosi_in,
-input ss_in,
-output reg miso,
-output reg byte_transfered,
-output reg sclk,
-output reg mosi,
-output ss,
-output reg st,
-output reg rising_sclk_edge,
-output reg falling_sclk_edge,
-output reg start,
-// Additional Input and Outputs
-input[7:0] send_item
-);
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">SPISlave</span><span class="p">(</span>
+<span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+<span class="k">input</span><span class="w"> </span><span class="n">stutter_in</span><span class="p">,</span>
+<span class="c1">// SPI</span>
+<span class="k">input</span><span class="w"> </span><span class="n">sclk_in</span><span class="p">,</span>
+<span class="k">input</span><span class="w"> </span><span class="n">mosi_in</span><span class="p">,</span>
+<span class="k">input</span><span class="w"> </span><span class="n">ss_in</span><span class="p">,</span>
+<span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">miso</span><span class="p">,</span>
+<span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">byte_transfered</span><span class="p">,</span>
+<span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">sclk</span><span class="p">,</span>
+<span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">mosi</span><span class="p">,</span>
+<span class="k">output</span><span class="w"> </span><span class="n">ss</span><span class="p">,</span>
+<span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">st</span><span class="p">,</span>
+<span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">rising_sclk_edge</span><span class="p">,</span>
+<span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">falling_sclk_edge</span><span class="p">,</span>
+<span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+<span class="c1">// Additional Input and Outputs</span>
+<span class="k">input</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">send_item</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 <p>SPISlave runs off a local system clock clk and takes the master’s SPI signals: sclk_in (serial clock), mosi_in (master-out, secondary-in), and ss_in (chip-select, active low). It also has a stutter_in gate that, when high, freezes the interface logic. The module drives miso (secondary-out) back to the master, and exposes a few synchronized/diagnostic copies of the incoming lines: sclk, mosi, and ss are the debounced, clock-domain-crossed versions of sclk_in, mosi_in, and ss_in respectively. Edge detectors raise one-cycle strobes rising_sclk_edge and falling_sclk_edge around sclk_in. start pulses for one cycle when ss_in asserts (transaction start). byte_transfered is a sticky flag that goes high after 8 bits have been shifted out on MISO and is cleared when ss_in deasserts. The st output mirrors the synchronized stutter_in. Finally, send_item[7:0] is a parallel preload value that seeds the transmit shift register once, on the first active cycle after reset.</p>
@@ -360,26 +361,27 @@ input[7:0] send_item
 <p>The property we want to verify is observational determinism, which ensures that for any two executions of the SPI secondary module with the same observable inputs, the observable outputs remain indistinguishable to an external observer.</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
-\[\begin{split}\forall p.\,\forall q.\;
+\[\begin{split}\begin{aligned}
+&amp;\forall p.\,\forall q.\;
 \left(
 \begin{aligned}
-&amp;\text{SPI Input Assumptions}(p,q)\\[2pt]
+&amp;\text{SPI Input Assumptions}(p,q)\\
 &amp;{}\land\ \bigwedge_{i=0}^{7}\ \mathit{tx\_buffer}\_{i}[p] \leftrightarrow \mathit{tx\_buffer}\_{i}[q]
 \end{aligned}
 \right)
 \ \rightarrow\
 \left(
-\begin{aligned}
-&amp;\bigcirc\,\Box\Big(
-    (\mathit{miso}[p]\land \lnot \mathit{sclk\_in}[p]\land \lnot \mathit{ss\_in}[p])\\
-&amp;\qquad\qquad\ \leftrightarrow\
-    (\mathit{miso}[q]\land \lnot \mathit{sclk\_in}[q]\land \lnot \mathit{ss\_in}[q])
-\Big)
-\end{aligned}
-\right).\end{split}\]</div>
+\bigcirc\,\Box\big( O_p \leftrightarrow O_q \big)
+\right)
+\\[4pt]
+&amp;\text{where}\quad
+O_x \equiv
+\big(\mathit{miso}[x]\land \lnot \mathit{sclk\_in}[x]\land \lnot \mathit{ss\_in}[x]\big).
+\end{aligned}\end{split}\]</div>
 </div>
 <p>In this formula, we quantify over two traces, <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, representing two different executions of the SPI secondary module. The left-hand side of the implication includes the SPI input assumptions (synchronization of sclk_in, mosi_in, ss_in, and stutter_in) for both traces and ensures that the transmit buffers are identical in both executions. The right-hand side states that whenever both traces are in an active SPI transaction (ss_in is low and sclk_in is low), the miso outputs must be equivalent on both traces. This ensures that an external observer cannot distinguish between the two executions based on the observable outputs, thus satisfying the property of observational determinism.</p>
 <p>The .hq file containing the HyperLTL formula can be found here: <a class="reference external" href="https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/SPI/formula.hq">https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/SPI/formula.hq</a>.</p>
+<p>[1] MCHyper Repository: <a class="reference external" href="https://github.com/reactive-systems/MCHyper">https://github.com/reactive-systems/MCHyper</a></p>
 </section>
 </section>
 

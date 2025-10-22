@@ -1,8 +1,10 @@
 LED Blinker Modules (Verilog)
 ======================
 
-.. LED Blinker Modules
-.. -----------------------------
+The Verilog code for the LED blinker modules can be found in the HyperQB repository `here <https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/LED>`_.
+
+The case study was sourced from the MCHyper repository[1]. 
+
 
 Description of the Case Study
 -----------------------------
@@ -10,15 +12,11 @@ Description of the Case Study
 
 In this case study, we analyze a few Verilog implementations of LED blinker modules. These modules are designed to control the blinking behavior of LEDs based on input signals and timing parameters.
 
-The Verilog code for the LED blinker modules can be found in the repository here: `https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/LED <https://github.com/HyperQB/HyperRUSTY/tree/verilog_integration/benchmarks/verilog/LED>`_.
-
-The case study was sourced from the MCHyper repository: `https://github.com/reactive-systems/MCHyper/tree/master/case-studies/asynchronous-hyperltl_2021/spi <https://github.com/reactive-systems/MCHyper/tree/master/case-studies/asynchronous-hyperltl_2021/spi>`_.
-
 The LED blinker modules typically include inputs for clock signals and reset signals.
 
 The first module is a simple blinker with one LED that toggles its LED state each clock cycle.  Despite this, there is an extra internal state based on the status of the up signal, which is not observable from the LED output alone.
 
-.. code-block:: text
+.. code-block:: verilog
 
     module light(input clock, input up, output light_out);
         parameter [1:0] STATE_0 = 2'b00, STATE_1 = 2'b01, STATE_2 = 2'b10;
@@ -61,7 +59,7 @@ The first module is a simple blinker with one LED that toggles its LED state eac
 The second module is slightly more complex, with five LEDs which light up from the least-significant LED upward and then shrinks back down, with a blanking tick between every visible frame. On each rising clock edge, a synchronous reset loads a starting pattern (LEDs=10101, led_state=010, up=0, on=1), but the very next active cycle the on flag forces LEDs to 00000 and clears on to 0, creating a one-cycle all-off “strobe.” Thereafter the logic alternates: when on==0 it outputs the next bar pattern and advances the state, then sets on<=1; when on==1 it blanks (LEDs<=00000) and sets on<=0. The patterns produced on the non-blank cycles are contiguous 1s starting at bit 0 (rightmost LED): 00001 → 00011 → 00111 → 01111 → 11111 → 01111 → 00111 → 00011 → back to 00001, i.e., grow from 1 to 5 LEDs, then shrink to 1, and repeat. The led_state values 010,011,100,101 represent the mid/upper “bar lengths,” while the “default” branch handles the edge cases (000/001/...) to insert the 1-LED and housekeeping steps; the up flag is the direction bit that flips to 0 at the top (after reaching 11111) and back to 1 at the bottom (when returning to a single lit LED).
 
 
-The HyperLTL formula(s)
+The HyperLTL Specifications
 -----------------------
 
 There are four properties we want to verify about these two LED blinker modules.
@@ -117,3 +115,6 @@ This formula states that there exist two traces :math:`\pi_A` and :math:`\pi_B` 
 This is unsatisfiable, as the LED behavior is deterministic, and there are no two traces that will diverge.
 
 The formula can be found here: `https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ee_t.hq <https://github.com/HyperQB/HyperRUSTY/blob/verilog_integration/benchmarks/verilog/LED/formula_ee_t.hq>`_.
+
+
+[1] MCHyper Repository: `https://github.com/reactive-systems/MCHyper/tree/master/case-studies/asynchronous-hyperltl_2021/spi <https://github.com/reactive-systems/MCHyper/tree/master/case-studies/asynchronous-hyperltl_2021/spi>`_.

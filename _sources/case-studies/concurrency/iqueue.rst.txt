@@ -1,5 +1,5 @@
 Linearizability: IQueue (NuSMV)
-==============================
+================================
 
 Description of the Case Study
 -----------------------------

@@ -1,5 +1,5 @@
 Linearizability: Simple Queue (NuSMV)
-====================================
+======================================
 
 Description of the Case Study
 -----------------------------

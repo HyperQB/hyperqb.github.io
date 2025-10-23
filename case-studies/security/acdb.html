@@ -362,38 +362,12 @@ reachable state space within the configured bound while preserving the observabl
 <span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">proc1</span><span class="p">.</span><span class="nv">line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
 <span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">proc1</span><span class="p">.</span><span class="nv">line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="c">-- case</span>
-<span class="w">        </span><span class="c">--     (SCHEDULE = 0) : proc1.line;</span>
-<span class="w">        </span><span class="c">--     -- (LOCKED) : proc1.line;</span>
-<span class="w">        </span><span class="c">--     -- program1, diameter = 4</span>
-<span class="w">        </span><span class="c">--     (proc1.line = 1 &amp; LOCKED)    : {1};   -- wait if LOCKED</span>
-<span class="w">        </span><span class="c">--     (proc1.line = 1 &amp; !LOCKED)   : {2};   -- else go to 2</span>
-<span class="w">        </span><span class="c">--     (proc1.line = 2)             : {3};   -- LOCK it</span>
-<span class="w">        </span><span class="c">--     (proc1.line = 3)             : {4};   -- print A</span>
-<span class="w">        </span><span class="c">--     (proc1.line = 4)             : {5};   -- print B</span>
-<span class="w">        </span><span class="c">--     (proc1.line = 5)             : {5};   -- UNLOCK, END</span>
-<span class="w">        </span><span class="c">--     TRUE : proc1.line;</span>
-<span class="w">        </span><span class="c">-- esac;</span>
 <span class="w">    </span><span class="c">----------------------------------------------------------------</span>
 <span class="w">    </span><span class="c">-- proc2 instance (ID_two, initline = 6)</span>
 <span class="w">    </span><span class="c">----------------------------------------------------------------</span>
 <span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">proc2</span><span class="p">.</span><span class="nv">line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
 
 <span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">proc2</span><span class="p">.</span><span class="nv">line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
-<span class="w">        </span><span class="c">-- case</span>
-<span class="w">        </span><span class="c">--     (!(SCHEDULE = 1)) : proc2.line;</span>
-<span class="w">        </span><span class="c">--     -- (LOCKED) : proc2.line;</span>
-<span class="w">        </span><span class="c">--     -- program2, diameter = 5</span>
-<span class="w">        </span><span class="c">--     (proc2.line = 6)             : {7};   -- print C</span>
-<span class="w">        </span><span class="c">--     (proc2.line = 7 &amp; in_HIGH)   : {8};   -- if in_HIGH, proceed</span>
-<span class="w">        </span><span class="c">--     (proc2.line = 7 &amp; !in_HIGH)  : {11};  -- skip to end</span>
-<span class="w">        </span><span class="c">--     (proc2.line = 8 &amp; LOCKED)    : {8};   -- wait if LOCKED</span>
-<span class="w">        </span><span class="c">--     (proc2.line = 8 &amp; !LOCKED)   : {9};   -- else proceed</span>
-<span class="w">        </span><span class="c">--     (proc2.line = 9)             : {10};  -- LOCK</span>
-<span class="w">        </span><span class="c">--     (proc2.line = 10)            : {11};  -- UNLOCK</span>
-<span class="w">        </span><span class="c">--     (proc2.line = 11)            : {11};  -- print D, END</span>
-<span class="w">        </span><span class="c">--     TRUE : proc2.line;</span>
-<span class="w">        </span><span class="c">-- esac;</span>
 
 <span class="w">	</span><span class="kd">DEFINE</span>
 <span class="w">        </span><span class="nv">obs_printA</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">proc1</span><span class="p">.</span><span class="nv">line</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>

@@ -317,67 +317,17 @@ demonstrates asymmetric access to the critical section.</p>
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">3 processes</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">7 processes</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">9 processes</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">11 processes</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--BAKERY ALGORITHM</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="w">	</span><span class="kd">VAR</span>
-<span class="w">		</span><span class="c">-- p1_status: 0..2; -- 0: non-critical, 1: waiting, 2: critical</span>
-<span class="w">		</span><span class="c">-- p2_status: 0..2; -- 0: non-critical, 1: waiting, 2: critical</span>
-<span class="w">		</span><span class="c">-- p3_status: 0..2; -- 0: non-critical, 1: waiting, 2: critical</span>
-
 <span class="w">		</span><span class="nv">p1_ticket</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- the ticket number of p1</span>
 <span class="w">		</span><span class="nv">p2_ticket</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- the ticket number of p2</span>
 <span class="w">		</span><span class="nv">p3_ticket</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- the ticket number of p2</span>
 
 <span class="w">		</span><span class="nv">MAX_ticket</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- let&#39;s say max ticket number is 3</span>
 
-<span class="w">		</span><span class="c">-- TOKEN: 1..3;</span>
-
 <span class="w">		</span><span class="nv">p1_line</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">4</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">p2_line</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">4</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">p3_line</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">4</span><span class="p">;</span>
 
-<span class="w">		</span><span class="c">-- STARTED : boolean;</span>
-<span class="w">		</span><span class="c">-- p1_TOKEN : boolean;</span>
-<span class="w">		</span><span class="c">-- p2_TOKEN : boolean;</span>
-<span class="w">		</span><span class="c">-- p3_TOKEN : boolean;</span>
-
-
 <span class="w">	</span><span class="kd">ASSIGN</span>
-
-<span class="w">		</span><span class="c">-- init(STARTED) := FALSE;</span>
-<span class="w">		</span><span class="c">-- next(STARTED) :=</span>
-<span class="w">		</span><span class="c">-- 	case</span>
-<span class="w">		</span><span class="c">-- 		((p1_line != 0) | (p2_line != 0) | (p3_line != 0)) : TRUE;</span>
-<span class="w">		</span><span class="c">-- 		TRUE : FALSE;</span>
-<span class="w">		</span><span class="c">-- 	esac;</span>
-
-<span class="w">		</span><span class="c">-- init(p1_TOKEN) := FALSE;</span>
-<span class="w">		</span><span class="c">-- next(p1_TOKEN) :=</span>
-<span class="w">		</span><span class="c">-- 	case</span>
-<span class="w">		</span><span class="c">-- 		STARTED &amp; (p1_line = 2) &amp; ((p1_ticket &lt; p2_ticket) &amp; (p1_ticket &lt; p3_ticket)) : TRUE;</span>
-<span class="w">		</span><span class="c">-- 		TRUE : FALSE;</span>
-<span class="w">		</span><span class="c">-- 	esac;</span>
-
-<span class="w">		</span><span class="c">-- init(p2_TOKEN) := FALSE;</span>
-<span class="w">		</span><span class="c">-- next(p2_TOKEN) :=</span>
-<span class="w">		</span><span class="c">-- 	case</span>
-<span class="w">		</span><span class="c">-- 		STARTED &amp; (p2_line = 2) &amp; (((p2_ticket &lt; p1_ticket) &amp; (p2_ticket &lt; p3_ticket)) | !p1_TOKEN) : TRUE;</span>
-<span class="w">		</span><span class="c">-- 		TRUE : FALSE;</span>
-<span class="w">		</span><span class="c">-- 	esac;</span>
-
-<span class="w">		</span><span class="c">-- init(p3_TOKEN) := FALSE;</span>
-<span class="w">		</span><span class="c">-- next(p3_TOKEN) :=</span>
-<span class="w">		</span><span class="c">-- 	case</span>
-<span class="w">		</span><span class="c">-- 		STARTED &amp; (p3_line = 2) &amp; (((p3_ticket &lt; p1_ticket) &amp; (p3_ticket &lt; p2_ticket)) | ((!p1_TOKEN) &amp; (!p2_TOKEN))) : TRUE;</span>
-<span class="w">		</span><span class="c">-- 		TRUE : FALSE;</span>
-<span class="w">		</span><span class="c">-- 	esac;</span>
-
-<span class="w">			</span><span class="c">-- case</span>
-<span class="w">			</span><span class="c">-- 	(TOKEN=1) : {2,3};</span>
-<span class="w">			</span><span class="c">-- 	(TOKEN=2) : {1,3};</span>
-<span class="w">			</span><span class="c">-- 	(TOKEN=3) : {1,2};</span>
-<span class="w">			</span><span class="c">-- esac;</span>
-<span class="w">		</span><span class="c">-- init(p1_status) := 0;</span>
-<span class="w">		</span><span class="c">-- init(p2_status) := 0;</span>
-<span class="w">		</span><span class="c">-- init(p3_status) := 0;</span>
-
 <span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">p1_ticket</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- set to MAX</span>
 <span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">p2_ticket</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- set to MAX</span>
 <span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">p3_ticket</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- set to MAX</span>
@@ -387,19 +337,6 @@ demonstrates asymmetric access to the critical section.</p>
 <span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">p2_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">p3_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">		</span><span class="c">-- init(p3_line) := 1;</span>
-
-
-
-<span class="w">		</span><span class="c">-- init(TOKEN) := 1;</span>
-<span class="w">		</span><span class="c">-- next(TOKEN) :=</span>
-<span class="w">		</span><span class="c">-- 	case</span>
-<span class="w">		</span><span class="c">-- 		-- (p1_ticket &gt; p2)</span>
-<span class="w">		</span><span class="c">-- 		(p1_line=3) : {1}; -- p1 has priority</span>
-<span class="w">		</span><span class="c">-- 		(p2_line=3) : {2};</span>
-<span class="w">		</span><span class="c">-- 		(p3_line=3) : {3};</span>
-<span class="w">		</span><span class="c">-- 		TRUE: {1,2,3};</span>
-<span class="w">		</span><span class="c">-- 	esac;</span>
 <span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">MAX_ticket</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">MAX_ticket</span><span class="p">)</span><span class="o">:=</span>
 <span class="w">			</span><span class="k">case</span>
@@ -408,12 +345,10 @@ demonstrates asymmetric access to the critical section.</p>
 <span class="w">				</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">MAX_ticket</span><span class="p">;</span>
 <span class="w">			</span><span class="k">esac</span><span class="p">;</span>
 
-<span class="w">		</span><span class="c">-- This assignment tells me which line I execute next</span>
+<span class="w">		</span>
 <span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">p1_line</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
 <span class="w">			</span><span class="k">case</span>
-<span class="w">				</span><span class="c">-- (TOKEN!=1) : p1_line;</span>
 <span class="w">				</span><span class="p">(</span><span class="nv">p1_line</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span><span class="w">  </span><span class="c">-- stay, or proceed</span>
-<span class="w">				</span><span class="c">-- (p1_line=2 &amp; !(TOKEN=1)) : {2}; -- draw ticket</span>
 <span class="w">				</span><span class="p">(</span><span class="nv">p1_line</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"> </span><span class="c">-- draw ticket</span>
 <span class="w">				</span><span class="p">((</span><span class="nv">p1_line</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nv">p1_TOKEN</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"> </span><span class="c">-- check TOKEN</span>
 <span class="w">				</span><span class="p">((</span><span class="nv">p1_line</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">p1_TOKEN</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c">-- check TOKEN</span>
@@ -477,74 +412,6 @@ demonstrates asymmetric access to the critical section.</p>
 <span class="w">		</span><span class="nv">p2_TOKEN</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">STARTED</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">p2_line</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(((</span><span class="nv">p2_ticket</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nv">p1_ticket</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">p2_ticket</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nv">p3_ticket</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nv">p1_TOKEN</span><span class="p">));</span>
 
 <span class="w">		</span><span class="nv">p3_TOKEN</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">STARTED</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">p3_line</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(((</span><span class="nv">p3_ticket</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nv">p1_ticket</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">p3_ticket</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nv">p2_ticket</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="o">!</span><span class="nv">p1_TOKEN</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nv">p2_TOKEN</span><span class="p">)));</span>
-
-
-
-<span class="w">	</span><span class="c">-- DEFINE</span>
-<span class="w">	</span><span class="c">-- 	CRITICAL := (proc1.line=3);</span>
-<span class="w">	</span><span class="c">-- 	SYM_SELECTED :=</span>
-
-<span class="c">--</span>
-<span class="c">-- MODULE a_process(my_ticket, others_ticket, my_status, others_status, MAX_ticket, ProcID, TOKEN)</span>
-<span class="c">-- 	VAR</span>
-<span class="c">-- 		line: 1..5;</span>
-<span class="c">--</span>
-<span class="c">--</span>
-
-<span class="w">	</span><span class="c">-- ASSIGN</span>
-<span class="w">	</span><span class="c">-- 	init(line) := 1;</span>
-<span class="w">	</span><span class="c">-- 	-- This assignment tells me which line I execute next</span>
-<span class="w">	</span><span class="c">-- 	next(line) :=</span>
-<span class="w">	</span><span class="c">-- 		case</span>
-<span class="w">	</span><span class="c">-- 			(ProcID!=TOKEN) : line;</span>
-<span class="w">	</span><span class="c">-- 			(line=1) : {1,2};  -- stay, or proceed</span>
-<span class="w">	</span><span class="c">-- 			(line=2) : 3;</span>
-<span class="w">	</span><span class="c">-- 			(line=3) &amp; (others_status=2 | (others_status=1 &amp; ProcID=2))  : 3 ; -- if some smaller IDs are trying</span>
-<span class="w">	</span><span class="c">-- 																																				-- keep waiting</span>
-<span class="w">	</span><span class="c">-- 			(line=3) &amp; !(others_status=2 | (others_status=1 &amp; ProcID=2))  : 4 ; -- go to critical section</span>
-<span class="w">	</span><span class="c">-- 			(line=4) : {5}; -- stay in critical section, or leave</span>
-<span class="w">	</span><span class="c">-- 			(line=5) : 1; -- back to starting point</span>
-<span class="w">	</span><span class="c">-- 		esac;</span>
-<span class="w">	</span><span class="c">--</span>
-<span class="w">	</span><span class="c">-- 	next(my_status) :=</span>
-<span class="w">	</span><span class="c">-- 		case</span>
-<span class="w">	</span><span class="c">-- 			(line=1) : 0;</span>
-<span class="w">	</span><span class="c">-- 			(line=2) : 0;</span>
-<span class="w">	</span><span class="c">-- 			(line=3) : 1;</span>
-<span class="w">	</span><span class="c">-- 			(line=4) : 2;</span>
-<span class="w">	</span><span class="c">-- 			(line=5) : 0;</span>
-<span class="w">	</span><span class="c">-- 			TRUE : my_status;	-- default case</span>
-<span class="w">	</span><span class="c">-- 		esac;</span>
-<span class="w">	</span><span class="c">--</span>
-<span class="w">	</span><span class="c">-- 	next(MAX_ticket):=</span>
-<span class="w">	</span><span class="c">-- 	  case</span>
-<span class="w">	</span><span class="c">-- 			(MAX_ticket=3): 0; --reset</span>
-<span class="w">	</span><span class="c">-- 			(line=2): MAX_ticket+1;</span>
-<span class="w">	</span><span class="c">-- 			!(line=2): MAX_ticket;</span>
-<span class="w">	</span><span class="c">-- 		esac;</span>
-<span class="w">	</span><span class="c">--</span>
-<span class="w">	</span><span class="c">-- 	next(my_ticket):=</span>
-<span class="w">	</span><span class="c">-- 		case</span>
-<span class="w">	</span><span class="c">-- 			(MAX_ticket=3): 0; --reset</span>
-<span class="w">	</span><span class="c">-- 			(line=2): MAX_ticket+1;</span>
-<span class="w">	</span><span class="c">-- 			!(line=2): my_ticket;</span>
-<span class="w">	</span><span class="c">-- 		esac;</span>
-<span class="w">	</span><span class="c">--</span>
-<span class="w">	</span><span class="c">--</span>
-<span class="w">	</span><span class="c">-- 	next(others_ticket) := others_ticket;	-- don&#39;t change it.</span>
-<span class="w">	</span><span class="c">-- 	next(others_status) := others_status;	-- don&#39;t change it.</span>
-<span class="w">	</span><span class="c">--</span>
-<span class="w">	</span><span class="c">-- 	DEFINE</span>
-<span class="w">	</span><span class="c">-- 		-- CHOSED:= (TOKEN=ProcID);</span>
-<span class="w">	</span><span class="c">-- 		STAND_BY := line=1;</span>
-<span class="w">	</span><span class="c">-- 		DRAW_TICKET := line=2;</span>
-<span class="w">	</span><span class="c">-- 		ATTEMPT := line=3;</span>
-<span class="w">	</span><span class="c">-- 		CRITICAL_SECTION := line=4;</span>
-<span class="w">	</span><span class="c">-- 		FINISHED := line=5;</span>
-
-
-<span class="c">-- For TESTING only</span>
-<span class="c">-- LTLSPEC F(proc1.my_status=1)</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--BAKERY ALGORITHM</span>
@@ -794,25 +661,6 @@ demonstrates asymmetric access to the critical section.</p>
 <span class="w">				</span><span class="p">(</span><span class="nv">p7_line</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="w"> </span><span class="p">(</span><span class="nv">MAX_ticket</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
 <span class="w">				</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">p7_ticket</span><span class="p">;</span>
 <span class="w">			</span><span class="k">esac</span><span class="p">;</span>
-
-
-<span class="w">	</span><span class="kd">DEFINE</span>
-
-<span class="w">		</span><span class="c">-- STARTED  := ( (p1_line!=0) | (p2_line!=0) | (p3_line!=0) | (p4_line!=0) | (p5_line!=0) | (p6_line!=0) | (p7_line!=0) );</span>
-
-<span class="w">		</span><span class="c">-- p1_TOKEN := (STARTED) &amp; (p1_line = 2) &amp; (p1_ticket &lt;= p2_ticket) &amp; (p1_ticket &lt;= p3_ticket) &amp; (p1_ticket &lt;= p4_ticket) &amp; (p1_ticket &lt;= p5_ticket) &amp; (p1_ticket &lt;= p6_ticket) &amp; (p1_ticket &lt;= p7_ticket);</span>
-
-<span class="w">		</span><span class="c">-- p2_TOKEN := (STARTED) &amp; (p2_line = 2) &amp; (((p2_ticket &lt;= p1_ticket) &amp; (p2_ticket &lt;= p3_ticket) &amp; (p2_ticket &lt;= p4_ticket) &amp; (p2_ticket &lt;= p5_ticket) &amp; (p2_ticket &lt;= p6_ticket) &amp; (p2_ticket &lt;= p7_ticket)) | (!p1_TOKEN));</span>
-
-<span class="w">		</span><span class="c">-- p3_TOKEN := (STARTED) &amp; (p3_line = 2) &amp; (((p3_ticket &lt;= p1_ticket) &amp; (p3_ticket &lt;= p2_ticket) &amp; (p3_ticket &lt;= p4_ticket) &amp; (p3_ticket &lt;= p5_ticket) &amp; (p3_ticket &lt;= p6_ticket) &amp; (p3_ticket &lt;= p7_ticket)) | ((!p1_TOKEN) &amp; (!p2_TOKEN)));</span>
-
-<span class="w">		</span><span class="c">-- p4_TOKEN := (STARTED) &amp; (p4_line = 2) &amp; (((p4_ticket &lt;= p1_ticket) &amp; (p4_ticket &lt;= p2_ticket) &amp; (p4_ticket &lt;= p3_ticket) &amp; (p4_ticket &lt;= p5_ticket) &amp; (p4_ticket &lt;= p6_ticket) &amp; (p4_ticket &lt;= p7_ticket)) | ((!p1_TOKEN) &amp; (!p2_TOKEN) &amp; (!p3_TOKEN)));</span>
-
-<span class="w">		</span><span class="c">-- p5_TOKEN := (STARTED) &amp; (p5_line = 2) &amp; (((p5_ticket &lt;= p1_ticket) &amp; (p5_ticket &lt;= p2_ticket) &amp; (p5_ticket &lt;= p3_ticket) &amp; (p5_ticket &lt;= p4_ticket) &amp; (p5_ticket &lt;= p6_ticket) &amp; (p5_ticket &lt;= p7_ticket)) | ((!p1_TOKEN) &amp; (!p2_TOKEN) &amp; (!p3_TOKEN) &amp; (!p4_TOKEN)));</span>
-
-<span class="w">		</span><span class="c">-- p6_TOKEN := (STARTED) &amp; (p6_line = 2) &amp; (((p6_ticket &lt;= p1_ticket) &amp; (p6_ticket &lt;= p2_ticket) &amp; (p6_ticket &lt;= p3_ticket) &amp; (p6_ticket &lt;= p4_ticket) &amp; (p6_ticket &lt;= p5_ticket) &amp; (p6_ticket &lt;= p7_ticket)) | ((!p1_TOKEN) &amp; (!p2_TOKEN) &amp; (!p3_TOKEN) &amp; (!p4_TOKEN) &amp; (!p5_TOKEN)));</span>
-
-<span class="w">		</span><span class="c">-- p7_TOKEN := (STARTED) &amp; (p7_line = 2) &amp; (((p7_ticket &lt;= p1_ticket) &amp; (p7_ticket &lt;= p2_ticket) &amp; (p7_ticket &lt;= p3_ticket) &amp; (p7_ticket &lt;= p4_ticket) &amp; (p7_ticket &lt;= p5_ticket) &amp; (p7_ticket &lt;= p6_ticket)) | ((!p1_TOKEN) &amp; (!p2_TOKEN) &amp; (!p3_TOKEN) &amp; (!p4_TOKEN) &amp; (!p5_TOKEN) &amp; (!p6_TOKEN)));</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--BAKERY ALGORITHM</span>

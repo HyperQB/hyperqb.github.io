@@ -316,8 +316,7 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 <h2>The NuSMV model(s)<a class="headerlink" href="#the-nusmv-model-s" title="Permalink to this heading">¶</a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #2.1</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Case #2.2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Snark 1 M1 concurrent</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Snark 1 M2 sequential</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--</span>
-<span class="c">-- // SNARK structure (with some accelerations):</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Snark 1 M1 concurrent</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Snark 1 M2 sequential</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- // SNARK structure (with some accelerations):</span>
 <span class="c">-- // 0   ------- STAND BY: could go to line:1/ line:10/ line:19</span>
 <span class="c">-- // 	  popRight() starts:</span>
 <span class="c">-- // 1   - getRightHat as rh</span>
@@ -965,42 +964,9 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 
 
 <span class="w">	</span><span class="c">-- ##############################################################################</span>
-
-
-<span class="kd">DEFINE</span>
-<span class="w">	</span><span class="c">-- ##############################################################################</span>
-<span class="w">	</span><span class="c">-- Proc1 DEFINE</span>
-<span class="w">	</span><span class="c">-- proc1.modifying := (proc1.line=5 | proc1.line=8 | proc1.line=14 | proc1.line=17 | proc1.line=16 | proc1.line=11 | proc1.line=22 | proc1.line=25);</span>
-<span class="w">	</span><span class="c">-- proc1.popRightSTART 	:= proc1.line=1 | proc1.line=2 | proc1.line=3 | proc1.line=4 | proc1.line=5 | proc1.line=6 | proc1.line=7 | proc1.line=8 | proc1.line=9;</span>
-<span class="w">	</span><span class="c">-- proc1.popRightEND 		:= proc1.line=0;</span>
-<span class="w">	</span><span class="c">-- proc1.pushRightSTART	:= proc1.line=10 | proc1.line=11| proc1.line=12 | proc1.line=13 | proc1.line=14 | proc1.line=15 | proc1.line=16 | proc1.line=17 | proc1.line=18;</span>
-<span class="w">	</span><span class="c">-- proc1.pushRightEND		:= proc1.line=0;</span>
-<span class="w">	</span><span class="c">-- proc1.popLeftSTART		:= proc1.line=19 | proc1.line=20 | proc1.line=21 | proc1.line=22 | proc1.line=23 | proc1.line=24 | proc1.line=25 | proc1.line=26;</span>
-<span class="w">	</span><span class="c">-- proc1.popLeftEND			:= proc1.line=0;</span>
-<span class="w">	</span><span class="c">-- ##############################################################################</span>
-
-<span class="w">	</span><span class="c">-- ##############################################################################</span>
-<span class="w">	</span><span class="c">-- Proc2 DEFINE</span>
-<span class="w">	</span><span class="c">-- proc2.modifying := (proc2.line=5 | proc2.line=8 | proc2.line=14 | proc2.line=17 | proc2.line=16 | proc2.line=11 | proc2.line=22 | proc2.line=25);</span>
-<span class="w">	</span><span class="c">-- proc2.popRightSTART 	:= proc2.line=1 | proc2.line=2 | proc2.line=3 | proc2.line=4 | proc2.line=5 | proc2.line=6 | proc2.line=7 | proc2.line=8 | proc2.line=9;</span>
-<span class="w">	</span><span class="c">-- proc2.popRightEND 		:= proc2.line=0;</span>
-<span class="w">	</span><span class="c">-- proc2.pushRightSTART	:= proc2.line=10 | proc2.line=11| proc2.line=12 | proc2.line=13 | proc2.line=14 | proc2.line=15 | proc2.line=16 | proc2.line=17 | proc2.line=18;</span>
-<span class="w">	</span><span class="c">-- proc2.pushRightEND		:= proc2.line=0;</span>
-<span class="w">	</span><span class="c">-- proc2.popLeftSTART		:= proc2.line=19 | proc2.line=20 | proc2.line=21 | proc2.line=22 | proc2.line=23 | proc2.line=24 | proc2.line=25 | proc2.line=26;</span>
-<span class="w">	</span><span class="c">-- proc2.popLeftEND			:= proc2.line=0;</span>
-<span class="w">	</span><span class="c">-- ##############################################################################</span>
-
-
-<span class="w">	</span><span class="c">-- ##############################################################################</span>
-<span class="w">	</span><span class="c">-- Queue DEFINE</span>
-<span class="w">	</span><span class="c">-- BOTH_MODIFYING := (proc1.modifying &amp; proc2.modifying);</span>
-
-<span class="w">	</span><span class="c">-- fAIL :=	 ((proc1.line=5) &amp; (!(RightHat=proc1.local_popR_RH)| !(LeftHat=proc1.local_popR_LH))) |((proc1.line=8) &amp; (  !(RightHat=proc1.local_popR_RH)| !(proc1.local_popR_RH=1 -&gt; (AllNodes[1][0]=proc1.local_popR_RHL)) | !(proc1.local_popR_RH=2 -&gt; (AllNodes[2][0]=proc1.local_popR_RHL))))|((proc1.line=22) &amp; (	!(RightHat=proc1.local_popL_RH) | !(LeftHat=proc1.local_popL_LH)))|((proc1.line=25) &amp; (  !(LeftHat=proc1.local_popL_LH) | !(proc1.local_popL_LH=1 -&gt; (AllNodes[1][1]=proc1.local_popL_LHR)) | !(proc1.local_popL_LH=2 -&gt; (AllNodes[2][1]=proc1.local_popL_LHR)))) |((proc1.line=13) &amp; RightHat=2) |((proc2.line=13) &amp; RightHat=2) |((proc2.line=20) &amp; RightHat=0 &amp; RightHat=0) | BOTH_MODIFYING;</span>
-<span class="w">	</span><span class="c">-- ##############################################################################</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--</span>
-<span class="c">-- // SNARK structure (with some accelerations):</span>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- // SNARK structure (with some accelerations):</span>
 <span class="c">-- // 0   ------- STAND BY: could go to line:1/ line:10/ line:19</span>
 <span class="c">-- // 	  popRight() starts:</span>
 <span class="c">-- // 1   - getRightHat as rh</span>
@@ -1370,43 +1336,12 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 <span class="w">					</span><span class="p">((</span><span class="nv">proc2</span><span class="p">.</span><span class="nv">line</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">RightHat</span><span class="o">=</span><span class="mi">1</span><span class="p">)):</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">					</span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="nv">AllNodes</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
 <span class="w">				</span><span class="k">esac</span><span class="p">;</span>
-
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-
-
-<span class="w">	</span><span class="kd">DEFINE</span><span class="w"> </span>
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-<span class="w">		</span><span class="c">-- Proc 1 DEFINE</span>
-<span class="w">		</span><span class="c">-- proc1.popRightSTART 	:= proc1.line=1 | proc1.line=2 | proc1.line=3;</span>
-<span class="w">		</span><span class="c">-- proc1.popRightEND 		:= proc1.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc1.pushRightSTART	:= proc1.line=4 | proc1.line=5;</span>
-<span class="w">		</span><span class="c">-- proc1.pushRightEND		:= proc1.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc1.popLeftSTART		:= proc1.line=7 | proc1.line=8;</span>
-<span class="w">		</span><span class="c">-- proc1.popLeftEND		:= proc1.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc1.modifying			:= proc1.line=1 | proc1.line=4| proc1.line=7;</span>
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-<span class="w">		</span><span class="c">-- Proc 2 DEFINE</span>
-<span class="w">		</span><span class="c">-- proc2.popRightSTART 	:= proc2.line=1 | proc2.line=2 | proc2.line=3;</span>
-<span class="w">		</span><span class="c">-- proc2.popRightEND 		:= proc2.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc2.pushRightSTART	:= proc2.line=4 | proc2.line=5;</span>
-<span class="w">		</span><span class="c">-- proc2.pushRightEND		:= proc2.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc2.popLeftSTART		:= proc2.line=7 | proc2.line=8;</span>
-<span class="w">		</span><span class="c">-- proc2.popLeftEND		:= proc2.line=0 ;</span>
-<span class="w">		</span><span class="c">-- proc2.modifying			:= proc2.line=1 | proc2.line=4| proc2.line=7;</span>
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
-<span class="w">		</span><span class="c">-- Queue DEFINE</span>
-<span class="w">		</span><span class="c">-- BOTH_MODIFYING := (proc1.modifying &amp; proc2.modifying);</span>
-<span class="w">		</span><span class="c">-- ##############################################################################</span>
 </pre></div>
 </div>
 </div></div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Snark 2 M1 concurrent</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Snark 2 M2 sequential</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--SNARK 2</span>
-<span class="c">--(adopted from: Simon Doherty, David Detlefs, Lindsay Groves, Christine H. Flood, Victor Luchangco, Paul Alan Martin, Mark Moir, Nir Shavit, and Guy L. Steele Jr. DCAS is not a silver bullet for nonblocking algorithm design. In Proc. of the 16th Annual ACM Symposium on Parallelism in Algorithms and Architectures (SPAA’04),pages 216–224. ACM, 2004.)</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Snark 2 M1 concurrent</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Snark 2 M2 sequential</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">--(adopted from: Simon Doherty, David Detlefs, Lindsay Groves, Christine H. Flood, Victor Luchangco, Paul Alan Martin, Mark Moir, Nir Shavit, and Guy L. Steele Jr. DCAS is not a silver bullet for nonblocking algorithm design. In Proc. of the 16th Annual ACM Symposium on Parallelism in Algorithms and Architectures (SPAA’04),pages 216–224. ACM, 2004.)</span>
+
 <span class="c">-- // SNARK structure (with some accelerations):</span>
 <span class="c">-- // 0   ------- STAND BY: could go to line:1/ line:10/ line:19</span>
 <span class="c">-- // 	  popRight() starts:</span>
@@ -1438,15 +1373,11 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 <span class="c">-- // 24		- else  assign lhR as lh-&gt;R</span>
 <span class="c">-- // 25				DCAS (LeftHat, lh-&gt;R, lh, lhR, lfR, lh)</span>
 <span class="c">-- // 26				assign popLeft_result as lh-&gt;V, assign lh_L as DDUMMY</span>
-
-
 <span class="c">--  NODE ID: DUMMY=0 x=1, y=2, z=3</span>
 <span class="c">--  Each node has three data:[leftpointer, value, rightpointer]</span>
 
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
-<span class="w">	</span><span class="c">-- RightHat: array 0..1 of 0..2;</span>
-<span class="w">	</span><span class="c">-- LeftHat:  array 0..1 of 0..2;</span>
 <span class="w">	</span><span class="nv">RightHat</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- could be DUNNY, x, y, or z</span>
 <span class="w">	</span><span class="nv">LeftHat</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- could be DUMMY, x, y, or z</span>
 <span class="w">	</span><span class="nv">AllNodes</span><span class="p">:</span><span class="w"> </span><span class="kt">array</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="w"> </span><span class="kt">of</span><span class="w"> </span><span class="kt">array</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="w"> </span><span class="kt">of</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c">-- store X,Y,Z and their pointers, ignore DUMMY</span>
@@ -1454,13 +1385,6 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 <span class="w">	</span><span class="nv">First_ProcID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 <span class="w">	</span><span class="nv">Second_ProcID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 <span class="w">	</span><span class="nv">Third_ProcID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
-
-<span class="w">	</span><span class="c">--- (&#39;process&#39; is problmatic)</span>
-<span class="w">	</span><span class="c">-- proc1: process SNARK(RightHat, LeftHat, AllNodes);</span>
-<span class="w">	</span><span class="c">-- proc2: process SNARK(RightHat, LeftHat, AllNodes);</span>
-
-<span class="w">	</span><span class="c">-- TOKEN: 1..3;</span>
-<span class="w">	</span><span class="c">---  next(TOKEN) := {1,2,3};</span>
 
 <span class="w">	</span><span class="c">-- with</span>
 <span class="w">	</span><span class="nv">proc1</span><span class="p">:</span><span class="w"> </span><span class="nv">SNARK</span><span class="p">(</span><span class="nv">LeftHat</span><span class="p">,</span><span class="w"> </span><span class="nv">RightHat</span><span class="p">,</span><span class="w"> </span><span class="nv">AllNodes</span><span class="p">,</span><span class="w"> </span><span class="nv">First_ProcID</span><span class="p">);</span>
@@ -1477,29 +1401,6 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 <span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">First_ProcID</span><span class="p">)</span><span class="w">	</span><span class="o">:=</span><span class="w"> </span><span class="nv">First_ProcID</span><span class="p">;</span>
 <span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">Second_ProcID</span><span class="p">)</span><span class="w">	</span><span class="o">:=</span><span class="w"> </span><span class="nv">Second_ProcID</span><span class="p">;</span>
 <span class="w">		</span><span class="ow">next</span><span class="p">(</span><span class="nv">Third_ProcID</span><span class="p">)</span><span class="w">	</span><span class="o">:=</span><span class="w"> </span><span class="nv">Third_ProcID</span><span class="p">;</span>
-
-<span class="w">	</span><span class="c">--  NODE ID: DUMMY=0 x=1, y=2, z=3</span>
-
-<span class="w">		</span><span class="c">-- EMPTY QUEUE --</span>
-<span class="w">		</span><span class="c">-- init(RightHat) := 0;</span>
-<span class="w">		</span><span class="c">-- init(LeftHat) := 0;</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[0][0]) := 0;</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[0][1]) := 0; -- X</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[1][0]) := 1;</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[1][1]) := 1; -- Y</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[2][0]) := 2;</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[2][1]) := 2; -- Z</span>
-
-<span class="w">		</span><span class="c">-- -- if [DUMMY ---  X --- DUMMY]</span>
-<span class="w">		</span><span class="c">-- init(RightHat) := 1;</span>
-<span class="w">		</span><span class="c">-- init(LeftHat) := 1;</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[0][0]) := 0;</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[0][1]) := 0; -- DUMMY</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[1][0]) := 0;</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[1][1]) := 0; -- X</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[2][0]) := 2;</span>
-<span class="w">		</span><span class="c">-- init(AllNodes[2][1]) := 2; -- Y</span>
-
 
 <span class="w">		</span><span class="c">-- -- if [DUMMY ---  X -- Y --- DUMMY] (BUG2)</span>
 <span class="w">		</span><span class="nb">init</span><span class="p">(</span><span class="nv">RightHat</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
@@ -1924,8 +1825,8 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 <span class="w">			</span><span class="nv">R_popped_X</span><span class="w">			</span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">line</span><span class="o">=</span><span class="mi">9</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">local_popR_RH</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- SNARK 2</span>
-<span class="c">-- (adopted from: Simon Doherty, David Detlefs, Lindsay Groves, Christine H. Flood, Victor Luchangco, Paul Alan Martin, Mark Moir, Nir Shavit, and Guy L. Steele Jr. DCAS is not a silver bullet for nonblocking algorithm design. In Proc. of the 16th Annual ACM Symposium on Parallelism in Algorithms and Architectures (SPAA’04),pages 216–224. ACM, 2004.)</span>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- (adopted from: Simon Doherty, David Detlefs, Lindsay Groves, Christine H. Flood, Victor Luchangco, Paul Alan Martin, Mark Moir, Nir Shavit, and Guy L. Steele Jr. DCAS is not a silver bullet for nonblocking algorithm design. In Proc. of the 16th Annual ACM Symposium on Parallelism in Algorithms and Architectures (SPAA’04),pages 216–224. ACM, 2004.)</span>
+
 <span class="c">-- // SNARK structure (with some accelerations):</span>
 <span class="c">-- // 0   ------- STAND BY: could go to line:1/ line:10/ line:19</span>
 <span class="c">-- // 	  popRight() starts:</span>
@@ -1957,8 +1858,6 @@ ones reported in <a class="reference internal" href="#ddg-04"><span class="std s
 <span class="c">-- // 24		- else  assign lhR as lh-&gt;R</span>
 <span class="c">-- // 25				DCAS (LeftHat, lh-&gt;R, lh, lhR, lfR, lh)</span>
 <span class="c">-- // 26				assign popLeft_result as lh-&gt;V, assign lh_L as DDUMMY</span>
-
-
 <span class="c">--  NODE ID: DUMMY=0 x=1, y=2, z=3</span>
 <span class="c">--  Each node has three data:[leftpointer, value, rightpointer]</span>
 

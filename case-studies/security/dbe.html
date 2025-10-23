@@ -312,7 +312,12 @@ declassification policy is satisfied.</p>
 <section id="the-nusmv-model-s">
 <h2>The NuSMV model(s)<a class="headerlink" href="#the-nusmv-model-s" title="Permalink to this heading">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Source program</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Target program</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Source program</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Target program</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- L0: x := in_secretput()</span>
+<span class="c">-- L1: if (0):</span>
+<span class="c">-- L2: out_publicput(x)</span>
+<span class="c">-- L3: else: out_secretput(x)</span>
+<span class="c">-- L4: END</span>
+<span class="w"> </span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="w"> </span><span class="kd">VAR</span>
 <span class="w">    </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">4</span><span class="p">;</span>
 <span class="w">    </span><span class="nv">in_secret</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
@@ -320,12 +325,6 @@ declassification policy is satisfied.</p>
 <span class="w">    </span><span class="nv">out_public</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kd">ASSIGN</span>
-
-<span class="w">    </span><span class="c">-- L0: x := in_secretput()</span>
-<span class="w">    </span><span class="c">-- L1: if (0):</span>
-<span class="w">    </span><span class="c">-- L2: out_publicput(x)</span>
-<span class="w">    </span><span class="c">-- L3: else: out_secretput(x)</span>
-<span class="w">    </span><span class="c">-- L4: END</span>
 <span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="o">:=</span>
 <span class="w">    </span><span class="k">case</span>
@@ -359,7 +358,10 @@ declassification policy is satisfied.</p>
 <span class="w">  </span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">PC</span><span class="o">=</span><span class="mi">4</span><span class="p">);</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- L0: x := in_secretput()</span>
+<span class="c">-- L1: out_secretput(x)</span>
+<span class="c">-- L2: END</span>
+<span class="w"> </span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="w"> </span><span class="kd">VAR</span>
 <span class="w">    </span><span class="nv">PC</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
 <span class="w">    </span><span class="nv">in_secret</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
@@ -367,10 +369,6 @@ declassification policy is satisfied.</p>
 <span class="w">    </span><span class="nv">out_public</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kd">ASSIGN</span>
-
-<span class="w">    </span><span class="c">-- L0: x := in_secretput()</span>
-<span class="w">    </span><span class="c">-- L1: out_secretput(x)</span>
-<span class="w">    </span><span class="c">-- L2: END</span>
 <span class="w">  </span><span class="nb">init</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">  </span><span class="ow">next</span><span class="p">(</span><span class="nv">PC</span><span class="p">)</span><span class="o">:=</span>
 <span class="w">    </span><span class="k">case</span>

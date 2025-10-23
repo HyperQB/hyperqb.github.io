@@ -313,14 +313,11 @@ confirm agreement (UNSAT) or expose a mismatch (SAT) in bounded traces.</p>
 <h2>The NuSMV model(s)<a class="headerlink" href="#the-nusmv-model-s" title="Permalink to this heading">¶</a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Case #7.1</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Program 1</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Program 2</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- CO-TERMINATION</span>
-<span class="c">-- (adopted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
-
-<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
-
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Program 1</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Program 2</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- (adopted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
 <span class="c">-- 0	while (x&gt;0){</span>
 <span class="c">-- 1		x = x - y</span>
 <span class="c">-- 2	}</span>
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="w">	</span><span class="kd">VAR</span>
 <span class="w">		</span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">100</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">t</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
@@ -359,14 +356,11 @@ confirm agreement (UNSAT) or expose a mismatch (SAT) in bounded traces.</p>
 <span class="w">			</span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- CO-TERMINATION</span>
-<span class="c">-- (adopted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
-<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
-
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- (adopted from: Hiroshi Unno, Tachio Terauchi, and Eric Koskinen. Constraint-based relational verification. In Computer Aided Verification: 33rd International Conference, CAV 2021)</span>
 <span class="c">-- 0	while (x&gt;0){</span>
 <span class="c">-- 1		x = x - (2 x y)</span>
 <span class="c">-- 2	}</span>
-
+<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="w">	</span><span class="kd">VAR</span>
 <span class="w">		</span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">..</span><span class="mi">100</span><span class="p">;</span>
 <span class="w">		</span><span class="nv">t</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>

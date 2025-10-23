@@ -325,7 +325,6 @@ exists within the chosen bound.</p>
 <span class="w">    </span><span class="nv">Head</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
 <span class="w">    </span><span class="nv">Tail</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c">-- items: array 0..2 of 0..1; -- 0: null, 1: filled</span>
 <span class="w">    </span><span class="c">-- 3 items representing the size of the queue is 3</span>
 <span class="w">	</span><span class="nv">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">-- If value is 0 then it is null</span>
 <span class="w">    </span><span class="nv">items</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">1</span><span class="p">;</span>
@@ -507,27 +506,7 @@ exists within the chosen bound.</p>
 <span class="w">    </span><span class="nv">fAIL</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">((</span><span class="nv">proc1</span><span class="p">.</span><span class="nv">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">proc1</span><span class="p">.</span><span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="nv">proc2</span><span class="p">.</span><span class="nv">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">proc2</span><span class="p">.</span><span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="nv">proc1</span><span class="p">.</span><span class="nv">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">QUEUE_FULL</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="nv">proc2</span><span class="p">.</span><span class="nv">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">QUEUE_FULL</span><span class="p">);</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- public void enq(T X) {</span>
-<span class="w">    </span><span class="c">-- int slot;</span>
-<span class="w">    </span><span class="c">-- do {</span>
-<span class="w">        </span><span class="c">-- slot = tail.get() &lt;= proc.line = 2</span>
-<span class="w">    </span><span class="c">-- while (! tail.compareAndSet(slot,slot+1)); &lt;= proc.line = 3</span>
-<span class="w">    </span><span class="c">--  items[slot] = x; &lt;= proc.line = 4</span>
-<span class="w">    </span><span class="c">-- }</span>
-<span class="c">-- } </span>
-<span class="c">-- public void deq() throws EmptyException {</span>
-<span class="w">    </span><span class="c">-- T value;</span>
-<span class="w">    </span><span class="c">-- int slot;</span>
-<span class="w">    </span><span class="c">-- do {</span>
-<span class="w">        </span><span class="c">-- slot = head.get(); &lt;= proc.line = 6</span>
-<span class="w">        </span><span class="c">-- value = items[slot]; &lt;= proc.line = 7</span>
-<span class="w">        </span><span class="c">-- if (value == null) &lt;= proc.line = 8 &amp; proc.value=0</span>
-<span class="w">            </span><span class="c">-- throw new EmptyException(); &lt;= proc.line = 8 </span>
-<span class="w">        </span><span class="c">-- while (! head.compareAndSet(slot, slot+1)); &lt;= proc.line = 9</span>
-<span class="w">        </span><span class="c">-- return value;</span>
-<span class="w">    </span><span class="c">-- }</span>
-<span class="c">-- }</span>
-<span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
 <span class="w">    </span><span class="c">-- Head 0 means it&#39;s pointing at items[0]</span>
 <span class="w">    </span><span class="nv">Head</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span>

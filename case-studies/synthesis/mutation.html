@@ -311,8 +311,7 @@ test mutant together with the model, expressed as:</p>
 <section id="the-nusmv-model-s">
 <h2>The NuSMV model(s)<a class="headerlink" href="#the-nusmv-model-s" title="Permalink to this heading">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Mutation Testing</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- MUTATION TESTING</span>
-<span class="c">-- (adopted from: . Andreas Fellner, Mitra Tabaei Befrouei, and Georg Weissenbacher. Mutation testing with hyperproperties. In Proc. of the 17th Int’l Conf. on Software Engineering and Formal Methods (SEFM’19))</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Mutation Testing</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="c">-- (adopted from: . Andreas Fellner, Mitra Tabaei Befrouei, and Georg Weissenbacher. Mutation testing with hyperproperties. In Proc. of the 17th Int’l Conf. on Software Engineering and Formal Methods (SEFM’19))</span>
 <span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
 <span class="kd">VAR</span>
 <span class="w">    </span><span class="nv">mutation</span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
@@ -368,10 +367,7 @@ test mutant together with the model, expressed as:</p>
 <span class="w">            </span><span class="p">(</span><span class="o">!</span><span class="nv">mutation</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">water</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="w">            </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">water</span><span class="p">;</span>
 <span class="w">        </span><span class="k">esac</span><span class="p">;</span>
-
-<span class="c">-- DEFINE</span>
-<span class="w">    </span><span class="c">-- NO_water := ((action = 1) &amp; (water = 0));</span>
-<span class="w">    </span><span class="c">-- NO_output := ((action != 1) | ((action = 1) &amp; (beverage = 0)));</span>
+<span class="w">        </span>
 </pre></div>
 </div>
 </div></div>

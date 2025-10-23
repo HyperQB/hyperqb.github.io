@@ -21,6 +21,11 @@ benchmarks using the cards below.
       - :doc:`Termination-sensitive/-insensitive Non-interference (NuSMV) <security/termination-non-interference>`
       - :doc:`Nondeterministic Inputs and Transitions (NuSMV) <security/nondeterministic>`
       - :doc:`Generalized Non-interference: Banking Audit Logs (NuSMV) <security/gmni>`
+      - :doc:`Concurrent Leakage Variants (NuSMV) <security/concleak>`
+      - :doc:`Access-Controlled Database: Observational Equivalence (NuSMV) <security/acdb>`
+      - :doc:`Declassification by Enforcement: Refinement Check (NuSMV) <security/dbe>`
+      - :doc:`Compiler Optimisations: Security-Preserving Refinement (NuSMV) <security/compiler_opt>`
+      - :doc:`Cache Timing Attack: Observational Determinism (NuSMV) <security/cache_attack>`
       - :doc:`LED Blinker Modules (Verilog) <security/verilog/led>`
       - :doc:`Observational Determinism: SPI Bus Secondary (Verilog) <security/verilog/spi>`
       - :doc:`Constant-Time Execution: Floating Point Unit (Verilog) <security/verilog/fpu2>`
@@ -34,6 +39,7 @@ benchmarks using the cards below.
       - :doc:`Linearizability: Lazy List Set (NuSMV) <concurrency/lazy_list>`
       - :doc:`Linearizability: IQueue (NuSMV) <concurrency/iqueue>`
       - :doc:`Linearizability: Simple Queue (NuSMV) <concurrency/simple_queue>`
+      - :doc:`Speculative Execution Defenses (NuSMV) <concurrency/specexec>`
 
    .. grid-item-card:: Planning
       :class-card: sd-shadow-sm

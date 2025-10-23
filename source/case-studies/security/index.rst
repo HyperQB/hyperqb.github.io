@@ -13,6 +13,11 @@ Security
     termination-non-interference
     nondeterministic
     gmni
+    concleak
+    acdb
+    dbe
+    compiler_opt
+    cache_attack
 
 .. toctree::
    :caption: Verilog

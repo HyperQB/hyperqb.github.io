@@ -2,7 +2,7 @@ Download
 ========
 
 
-**Source Code:** `Get the HyperQB source code on GitHub <https://github.com/HyperQB/HyperRUSTY>`_
+.. **Source Code:** `Get the HyperQB source code on GitHub <https://github.com/HyperQB/HyperRUSTY>`_
 
 **Executable Binary (macOS):** `Download the pre‑compiled command‑line binary <https://github.com/HyperQB/HyperRUSTY/tree/main/download>`_
 

@@ -1,5 +1,5 @@
 Linearizability: SNARK (NuSMV)
-=======================
+===============================
 
 Description of the Case Study
 -----------------------------

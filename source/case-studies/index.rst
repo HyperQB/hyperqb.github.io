@@ -29,6 +29,9 @@ benchmarks using the cards below.
       - :doc:`LED Blinker Modules (Verilog) <security/verilog/led>`
       - :doc:`Observational Determinism: SPI Bus Secondary (Verilog) <security/verilog/spi>`
       - :doc:`Constant-Time Execution: Floating Point Unit (Verilog) <security/verilog/fpu2>`
+      - :doc:`Alternating Bit Protocol (NuSMV) <security/abp>`
+      - :doc:`Translation Validation: Matrix Multiplication (NuSMV) <security/mm>`
+      - :doc:`Compiler Optimization: Common Branch Factorization  (NuSMV) <security/cbf>`
 
    .. grid-item-card:: Concurrency
       :class-card: sd-shadow-sm

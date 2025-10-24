@@ -1,5 +1,5 @@
 Synthesis for Mutation Testing (NuSMV)
-========================
+======================================
 
 Description of the Case Study
 -----------------------------

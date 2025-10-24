@@ -1,7 +1,7 @@
 Playground
 ==========
 
-(Announcement 10/24/2025): Michigan State University Engineering Department server, where we deployed this background, is current under maintainence, which might affect the version updates and functionality of this playground. If you have any question, please contact <mailto:tzuhan@msu.edu>.  
+(Announcement 10/24/2025): Michigan State University Engineering Department server, where we deployed this playground, is current under maintainence, which might affect the version updates and functionality of this playground. If you have any question, please contact <mailto:tzuhan@msu.edu>.  
 
 .. raw:: html
 

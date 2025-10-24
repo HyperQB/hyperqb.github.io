@@ -1,5 +1,5 @@
 LTL with Team Semantics (NuSMV)
-=======================
+================================
 
 Description of the Case Study
 -----------------------------

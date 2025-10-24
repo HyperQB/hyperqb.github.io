@@ -46,3 +46,8 @@ body[data-theme="dark"] .sphinx-tabs-tab[aria-selected="true"]{
 }
 
 .highlight .o { color: #27AE60; }  /* Operators */
+
+/* Keep the Case Studies branch collapsed in the sidebar */
+.sidebar-tree .toctree-l1 > a.reference.internal[href$="case-studies/index.html"] + input + label + ul {
+    display: none;
+}

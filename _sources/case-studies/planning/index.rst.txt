@@ -6,3 +6,5 @@ Planning
 
     shortest_path
     robustness
+    rp
+    gcw

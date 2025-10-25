@@ -18,6 +18,9 @@ Security
     dbe
     compiler_opt
     cache_attack
+    abp
+    mm
+    cbf
 
 .. toctree::
    :caption: Verilog

@@ -1,5 +1,5 @@
 Robust Path Planning (NuSMV)
-===========================
+============================
 
 Description of the Case Study
 -----------------------------
@@ -15,17 +15,17 @@ The NuSMV model(s)
 
    .. tab:: Agent / arena
 
-      ..  literalinclude::   ../../benchmarks_ui/nusmv/loop_conditions/mm/mm2.smv
+      ..  literalinclude::   ../benchmarks_ui/nusmv/loop_conditions/robust_path_planning/rp_2.smv
           :language: smv
 
    .. tab:: Adversaries — variant A
 
-      ..  literalinclude::                        # set path
+      ..  literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/robust_path_planning/rp_1.smv
           :language: smv
 
    .. tab:: Adversaries — variant B
 
-      ..  literalinclude::                        # set path
+      ..  literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/robust_path_planning/rp_1_no_sol.smv
           :language: smv
 
 The HyperLTL formula(s)
@@ -49,7 +49,7 @@ We require that the agent **never occupies the same cell** as the adversaries, f
 
    .. tab:: Formula (HQ)
 
-      ..  literalinclude::                        # set path
+      ..  literalinclude::  ../benchmarks_ui/nusmv/loop_conditions/robust_path_planning/rp.hq
           :language: hq
 
 

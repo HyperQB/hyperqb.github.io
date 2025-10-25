@@ -19,17 +19,19 @@ The NuSMV model(s)
 
    .. tab:: ABP 1
 
-      .. literalinclude:: ../../benchmarks_ui/nusmv/security/loop_conditions/abp/abp_1.smv
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/abp/abp_1.smv
          :language: smv
 
    .. tab:: ABP 2
 
-      .. literalinclude:: ../../benchmarks_ui/nusmv/security/loop_conditions/abp/abp_2.smv
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/abp/abp_2.smv
          :language: smv
 
-    .. tab:: ABP 2 buggy
-        .. literalinclude:: ../../benchmarks_ui/nusmv/security/loop_conditions/abp/abp_2_buggy.smv
+   .. tab:: ABP 2 buggy
+      
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/abp/abp_2_buggy.smv
          :language: smv
+
 The HyperLTL formula(s)
 -----------------------
 
@@ -53,7 +55,7 @@ The conformance constraint binds every scenario trace :math:`\pi_A` to *some* pr
 
    .. tab:: Formula
 
-      .. literalinclude:: ../../benchmarks_ui/nusmv/loop_conditions/abp/abp.hq
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/abp/abp.hq
          :language: hq
 
 References

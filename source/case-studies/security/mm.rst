@@ -18,12 +18,12 @@ The NuSMV model(s)
 
    .. tab:: C / RTL — correct
 
-      .. literalinclude:: ../../benchmarks_ui/nusmv/security/loop_conditions/mm/mm1.smv
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/mm/mm1.smv
          :language: smv
 
    .. tab:: C / RTL — incorrect
 
-      .. literalinclude:: ../../benchmarks_ui/nusmv/security/loop_conditions/abp/mm2_buggy.smv
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/mm/mm2_buggy.smv
          :language: smv
 
 The HyperLTL formula(s)
@@ -43,7 +43,7 @@ The conformance constraint ties every source trace :math:`\pi_A` to *some* targe
 
    .. tab:: Formula
 
-      .. literalinclude:: ../../benchmarks_ui/nusmv/security/loop_conditions/mm/mm.hq
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/mm/mm.hq
          :language: hq
 
 References

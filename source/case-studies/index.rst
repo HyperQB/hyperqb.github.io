@@ -50,6 +50,8 @@ benchmarks using the cards below.
       - :doc:`Overview <planning/index>`
       - :doc:`Shortest Paths: Grid-World Planning (NuSMV) <planning/shortest_path>`
       - :doc:`Path Robustness: Grid-World Planning (NuSMV) <planning/robustness>`
+      - :doc:`Robust Path Planning (NuSMV) <planning/rp>``
+      - :doc:`Plan Synthesis: Wolf–Goat–Cabbage (NuSMV) <planning/gcw>`
 
    .. grid-item-card:: Synthesis
       :class-card: sd-shadow-sm

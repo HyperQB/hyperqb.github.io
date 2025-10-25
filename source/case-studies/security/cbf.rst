@@ -20,17 +20,17 @@ The NuSMV model(s)
 
    .. tab:: Source (big)
 
-      .. literalinclude:: ../../benchmarks_ui/nusmv/security/loop_conditions/cbf/cbf1.smv           
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/cbf/cbf1.smv           
          :language: smv
 
    .. tab:: Target (small) — correct
 
-      .. literalinclude:: ../../benchmarks_ui/nusmv/security/loop_conditions/cbf/cbf2.smv
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/cbf/cbf2.smv
          :language: smv
 
    .. tab:: Target (small) — buggy
 
-      .. literalinclude:: ../../benchmarks_ui/nusmv/security/loop_conditions/cbf/cbf2_buggy.smv
+      .. literalinclude:: ../benchmarks_ui/nusmv/loop_conditions/cbf/cbf2_buggy.smv
          :language: smv
 
 The HyperLTL formula(s)
@@ -53,7 +53,7 @@ We require that whenever the source and target agree on inputs, their observable
 
    .. tab:: Formula
 
-      .. literalinclude::  ../../benchmarks_ui/nusmv/security/loop_conditions/cbf/cbf.hq
+      .. literalinclude::  ../benchmarks_ui/nusmv/loop_conditions/cbf/cbf.hq
          :language: hq
 
 

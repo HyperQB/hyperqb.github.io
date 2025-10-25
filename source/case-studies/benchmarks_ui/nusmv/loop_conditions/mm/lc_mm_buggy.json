@@ -1,9 +1,9 @@
 {
-  "name": "Robust Path Planning (Valid)",
+  "name": "Matrix Multiplication (Buggy)",
   "inputLanguage": "nusmv",
   "files": {
-    "nusmvFiles": ["rp_1.smv", "rp_2.smv"],
-    "formula": "rp.hq"
+    "nusmvFiles": ["mm1_buggy.smv", "mm2_buggy.smv"],
+    "formula": "mm.hq"
   },
   "options": {
     "useLoopConditions": true,

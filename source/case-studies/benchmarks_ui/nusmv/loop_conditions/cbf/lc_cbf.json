@@ -1,9 +1,9 @@
 {
-  "name": "Test-Loop Request Response",
+  "name": "Common Branch Factorization",
   "inputLanguage": "nusmv",
   "files": {
-    "nusmvFiles": ["rs1.smv", "rs2.smv"],
-    "formula": "rs.hq"
+    "nusmvFiles": ["cbf1.smv", "cbf2.smv"],
+    "formula": "cbf.hq"
   },
   "options": {
     "useLoopConditions": true,

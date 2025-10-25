@@ -1,9 +1,9 @@
 {
-  "name": "Simple Loop Interaction",
+  "name": "Common Branch Factorization (Buggy)",
   "inputLanguage": "nusmv",
   "files": {
-    "nusmvFiles": ["simple_loop1.smv", "simple_loop2.smv"],
-    "formula": "simple_loop.hq"
+    "nusmvFiles": ["cbf1_buggy.smv", "cbf2_buggy.smv"],
+    "formula": "cbf.hq"
   },
   "options": {
     "useLoopConditions": true,

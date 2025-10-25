@@ -1,9 +1,9 @@
 {
-  "name": "Robust Path Planning (No Solution)",
+  "name": "Wolf–Goat–Cabbage",
   "inputLanguage": "nusmv",
   "files": {
-    "nusmvFiles": ["rp_1_no_sol.smv", "rp_2.smv"],
-    "formula": "rp.hq"
+    "nusmvFiles": ["gcw1.smv", "gcw2.smv"],
+    "formula": "gcw.hq"
   },
   "options": {
     "useLoopConditions": true,

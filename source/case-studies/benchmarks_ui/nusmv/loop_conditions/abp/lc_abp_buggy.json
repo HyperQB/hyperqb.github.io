@@ -1,8 +1,8 @@
 {
-  "name": "Alternating Bit Protocol",
+  "name": "Alternating Bit Protocol (Buggy)",
   "inputLanguage": "nusmv",
   "files": {
-    "nusmvFiles": ["abp_1.smv", "abp_2.smv"],
+    "nusmvFiles": ["abp_1_buggy.smv", "abp_2_buggy.smv"],
     "formula": "abp.hq"
   },
   "options": {

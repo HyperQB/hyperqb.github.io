@@ -29,9 +29,9 @@ benchmarks using the cards below.
       - :doc:`LED Blinker Modules (Verilog) <security/verilog/led>`
       - :doc:`Observational Determinism: SPI Bus Secondary (Verilog) <security/verilog/spi>`
       - :doc:`Constant-Time Execution: Floating Point Unit (Verilog) <security/verilog/fpu2>`
-      - :doc:`Alternating Bit Protocol (NuSMV) <security/abp>`
-      - :doc:`Translation Validation: Matrix Multiplication (NuSMV) <security/mm>`
-      - :doc:`Compiler Optimization: Common Branch Factorization  (NuSMV) <security/cbf>`
+      - :doc:`Alternating Bit Protocol (NuSMV, w/loops) <security/abp>`
+      - :doc:`Translation Validation: Matrix Multiplication (NuSMV, w/loops) <security/mm>`
+      - :doc:`Compiler Optimization: Common Branch Factorization  (NuSMV, w/loops) <security/cbf>`
 
    .. grid-item-card:: Concurrency
       :class-card: sd-shadow-sm
@@ -50,8 +50,8 @@ benchmarks using the cards below.
       - :doc:`Overview <planning/index>`
       - :doc:`Shortest Paths: Grid-World Planning (NuSMV) <planning/shortest_path>`
       - :doc:`Path Robustness: Grid-World Planning (NuSMV) <planning/robustness>`
-      - :doc:`Robust Path Planning (NuSMV) <planning/rp>``
-      - :doc:`Plan Synthesis: Wolf–Goat–Cabbage (NuSMV) <planning/gcw>`
+      - :doc:`Robust Path Planning (NuSMV, w/loops) <planning/rp>`
+      - :doc:`Plan Synthesis: Wolf–Goat–Cabbage (NuSMV, w/loops) <planning/gcw>`
 
    .. grid-item-card:: Synthesis
       :class-card: sd-shadow-sm

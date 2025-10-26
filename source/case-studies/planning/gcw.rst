@@ -1,5 +1,5 @@
-Plan Synthesis: Wolf–Goat–Cabbage (NuSMV)
-=========================================
+Plan Synthesis: Wolf–Goat–Cabbage (NuSMV, w/loops)
+==================================================
 
 Description of the Case Study
 -----------------------------

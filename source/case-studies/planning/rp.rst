@@ -1,5 +1,5 @@
-Robust Path Planning (NuSMV)
-============================
+Robust Path Planning (NuSMV, w/loops)
+=====================================
 
 Description of the Case Study
 -----------------------------

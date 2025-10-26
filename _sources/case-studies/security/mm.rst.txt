@@ -1,5 +1,5 @@
-Translation Validation: Matrix Multiplication (NuSMV)
-===========================================================
+Translation Validation: Matrix Multiplication (NuSMV, w/loops)
+==============================================================
 
 Description of the Case Study
 -----------------------------

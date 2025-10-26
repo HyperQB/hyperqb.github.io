@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Synthesis" href="../synthesis/index.html" /><link rel="prev" title="Robust Path Planning (NuSMV)" href="rp.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Synthesis" href="../synthesis/index.html" /><link rel="prev" title="Robust Path Planning (NuSMV, w/loops)" href="rp.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Plan Synthesis: Wolf–Goat–Cabbage (NuSMV) - HyperQB</title>
+        <title>Plan Synthesis: Wolf–Goat–Cabbage (NuSMV, w/loops) - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
@@ -228,9 +228,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../security/dbe.html">Declassification by Enforcement: Refinement Check (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/compiler_opt.html">Compiler Optimisations: Security-Preserving Refinement (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/cache_attack.html">Cache Timing Attack: Observational Determinism (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../security/abp.html">Alternating Bit Protocol (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../security/mm.html">Translation Validation: Matrix Multiplication (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../security/cbf.html">Compiler Optimization: Common Branch Factorization (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/abp.html">Alternating Bit Protocol (NuSMV, w/loops)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/mm.html">Translation Validation: Matrix Multiplication (NuSMV, w/loops)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../security/cbf.html">Compiler Optimization: Common Branch Factorization (NuSMV, w/loops)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/verilog/led.html">LED Blinker Modules (Verilog)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/verilog/spi.html">Observational Determinism: SPI Bus Secondary (Verilog)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../security/verilog/fpu2.html">Constant-Time Execution: Floating Point Unit (Verilog)</a></li>
@@ -248,8 +248,8 @@
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Planning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Planning</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="shortest_path.html">Shortest Paths: Grid-World Planning (NuSMV)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="robustness.html">Path Robustness: Grid-World Planning (NuSMV)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rp.html">Robust Path Planning (NuSMV)</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Plan Synthesis: Wolf–Goat–Cabbage (NuSMV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rp.html">Robust Path Planning (NuSMV, w/loops)</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Plan Synthesis: Wolf–Goat–Cabbage (NuSMV, w/loops)</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../synthesis/index.html">Synthesis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Synthesis</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -304,8 +304,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="plan-synthesis-wolfgoatcabbage-nusmv">
-<h1>Plan Synthesis: Wolf–Goat–Cabbage (NuSMV)<a class="headerlink" href="#plan-synthesis-wolfgoatcabbage-nusmv" title="Permalink to this heading">¶</a></h1>
+          <section id="plan-synthesis-wolfgoatcabbage-nusmv-w-loops">
+<h1>Plan Synthesis: Wolf–Goat–Cabbage (NuSMV, w/loops)<a class="headerlink" href="#plan-synthesis-wolfgoatcabbage-nusmv-w-loops" title="Permalink to this heading">¶</a></h1>
 <section id="description-of-the-case-study">
 <h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
 <p>We consider <strong>plan synthesis (PS)</strong> in the classic <em>wolf–goat–cabbage</em> puzzle, following . A farmer must ferry three items across a river, carrying only one at a time. Certain configurations are <strong>unsafe</strong> (wolf with goat, goat with cabbage) if left unattended. The goal is to synthesize a <strong>single plan</strong> that always avoids all local requirement violations.</p>
@@ -473,7 +473,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Robust Path Planning (NuSMV)</div>
+                <div class="title">Robust Path Planning (NuSMV, w/loops)</div>
                 
               </div>
             </a>
@@ -507,7 +507,7 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Plan Synthesis: Wolf–Goat–Cabbage (NuSMV)</a><ul>
+<li><a class="reference internal" href="#">Plan Synthesis: Wolf–Goat–Cabbage (NuSMV, w/loops)</a><ul>
 <li><a class="reference internal" href="#description-of-the-case-study">Description of the Case Study</a></li>
 <li><a class="reference internal" href="#the-nusmv-model-s">The NuSMV model(s)</a></li>
 <li><a class="reference internal" href="#the-hyperltl-formula-s">The HyperLTL formula(s)</a></li>

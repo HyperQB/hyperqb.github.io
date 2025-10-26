@@ -1,5 +1,5 @@
-Alternating Bit Protocol (NuSMV)
-================================
+Alternating Bit Protocol (NuSMV, w/loops)
+=========================================
 
 Description of the Case Study
 -----------------------------

@@ -1,5 +1,5 @@
-Compiler Optimization: Common Branch Factorization (NuSMV)
-==========================================================
+Compiler Optimization: Common Branch Factorization (NuSMV, w/loops)
+===================================================================
 
 Description of the Case Study
 -----------------------------

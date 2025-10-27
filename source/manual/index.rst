@@ -14,6 +14,7 @@ HyperQB is a push-button, bounded model checker for verifying hyperproperties. H
       :class-card: sd-shadow-sm
 
       - :doc:`Overview <concurrency/index>`
+      .. include:: introduction.rst
 
    .. grid-item-card:: Specification Languages
       :class-card: sd-shadow-sm

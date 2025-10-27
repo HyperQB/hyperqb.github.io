@@ -13,7 +13,7 @@ HyperQB is a push-button, bounded model checker for verifying hyperproperties. H
    .. grid-item-card:: Modeling Languages
       :class-card: sd-shadow-sm
 
-      - :doc:HyperQB currently accepts input models in two languages:
+      - HyperQB currently accepts input models in two languages:
 
          -- **NuSMV** is a symbolic BBD-based model checker originated in CMU. The full documentation of the input language is available `here <https://nusmv.fbk.eu/user-manual.html>`_.
 

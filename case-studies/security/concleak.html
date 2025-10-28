@@ -330,7 +330,7 @@ flattened NuSMV models that explicitly capture the scheduler and loop counters.<
 <span class="w">    </span><span class="nv">ID_two</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
 <span class="w">    </span><span class="nv">ID_three</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">2</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nv">halt</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="c">-- halt : boolean;</span>
 
 <span class="w">    </span><span class="c">-- flattened state for proc1: programs(ID_one, SCHEDULE, LOW, in_HIGH, var_X, var_Y, 0)</span>
 <span class="w">    </span><span class="nv">proc1_line</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">8</span><span class="p">;</span>
@@ -389,12 +389,12 @@ flattened NuSMV models that explicitly capture the scheduler and loop counters.<
 <span class="w">            </span><span class="kc">TRUE</span><span class="w">                   </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
 <span class="w">        </span><span class="k">esac</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nb">init</span><span class="p">(</span><span class="nv">halt</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
-<span class="w">    </span><span class="ow">next</span><span class="p">(</span><span class="nv">halt</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span>
-<span class="w">        </span><span class="k">case</span>
-<span class="w">            </span><span class="p">((</span><span class="nv">proc1_loop_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">proc2_loop_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
-<span class="w">            </span><span class="kc">TRUE</span><span class="w">                                              </span><span class="p">:</span><span class="w"> </span><span class="nv">halt</span><span class="p">;</span>
-<span class="w">        </span><span class="k">esac</span><span class="p">;</span>
+<span class="w">    </span><span class="c">-- init(halt) := FALSE;</span>
+<span class="w">    </span><span class="c">-- next(halt) :=</span>
+<span class="w">    </span><span class="c">--     case</span>
+<span class="w">    </span><span class="c">--         ((proc1_loop_count = 2) &amp; (proc2_loop_count = 2)) : TRUE;</span>
+<span class="w">    </span><span class="c">--         TRUE                                              : halt;</span>
+<span class="w">    </span><span class="c">--     esac;</span>
 
 <span class="w">    </span><span class="c">----------------------------------------------------------------</span>
 <span class="w">    </span><span class="c">-- proc1: programs(ID_one, SCHEDULE, LOW, in_HIGH, var_X, var_Y, 0) — flattened</span>
@@ -470,6 +470,7 @@ flattened NuSMV models that explicitly capture the scheduler and loop counters.<
 <span class="w">    </span><span class="nv">obs_X_is_one</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">proc2_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">in_HIGH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">);</span>
 <span class="w">    </span><span class="nv">obs_Y_is_zero</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">proc2_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">in_HIGH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">);</span>
 <span class="w">    </span><span class="nv">obs_Y_is_one</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">proc2_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">in_HIGH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">);</span>
+<span class="w">    </span><span class="nv">halt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">((</span><span class="nv">proc1_loop_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="nv">proc2_loop_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>

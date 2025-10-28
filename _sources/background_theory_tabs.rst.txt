@@ -153,3 +153,7 @@ Background Theory
          \circ_j=\begin{cases}\wedge & Q_j=\exists,\\ \rightarrow & Q_j=\forall.\end{cases}
 
       The QBF’s satisfiability is equivalent to the bounded satisfaction of :math:`\varphi` (and is exact on terminating systems under halting variants) [1, 2].
+
+   .. tab-item:: IR
+
+      .. rubric:: Intermediate Representation

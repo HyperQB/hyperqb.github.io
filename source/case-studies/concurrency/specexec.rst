@@ -21,12 +21,12 @@ The NuSMV model(s)
 
             .. tab:: Non-speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v1_nse.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v1/v1_nse.smv
                     :language: smv
 
             .. tab:: Speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v1_se.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v1/v1_se.smv
                     :language: smv
 
     .. tab:: Version 2
@@ -35,12 +35,12 @@ The NuSMV model(s)
 
             .. tab:: Non-speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v2_nse.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v2/v2_nse.smv
                     :language: smv
 
             .. tab:: Speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v2_se.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v2/v2_se.smv
                     :language: smv
 
     .. tab:: Version 3
@@ -49,12 +49,12 @@ The NuSMV model(s)
 
             .. tab:: Non-speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v3_nse.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v3/v3_nse.smv
                     :language: smv
 
             .. tab:: Speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v3_se.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v3/v3_se.smv
                     :language: smv
 
     .. tab:: Version 4
@@ -63,12 +63,12 @@ The NuSMV model(s)
 
             .. tab:: Non-speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v4_nse.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v4/v4_nse.smv
                     :language: smv
 
             .. tab:: Speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v4_se.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v4/v4_se.smv
                     :language: smv
 
     .. tab:: Version 5
@@ -77,12 +77,12 @@ The NuSMV model(s)
 
             .. tab:: Non-speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v5_nse.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v5/v5_nse.smv
                     :language: smv
 
             .. tab:: Speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v5_se.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v5/v5_se.smv
                     :language: smv
 
     .. tab:: Version 6
@@ -91,12 +91,12 @@ The NuSMV model(s)
 
             .. tab:: Non-speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v6_nse.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v6/v6_nse.smv
                     :language: smv
 
             .. tab:: Speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v6_se.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v6/v6_se.smv
                     :language: smv
 
     .. tab:: Version 7
@@ -105,12 +105,12 @@ The NuSMV model(s)
 
             .. tab:: Non-speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v7_nse.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v7/v7_nse.smv
                     :language: smv
 
             .. tab:: Speculative
 
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/v7_se.smv
+                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v7/v7_se.smv
                     :language: smv
 
 The HyperLTL formula
@@ -130,5 +130,5 @@ secure non-speculative variants satisfy the property, while speculative versions
 
     .. tab:: Speculative Safety
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec/se_prop.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/specexec_v1/se_prop.hq
             :language: hq

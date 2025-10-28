@@ -8,7 +8,8 @@ HyperQB is a push-button, bounded model checker for verifying hyperproperties. H
    .. grid-item-card:: Installation
       :class-card: sd-shadow-sm
 
-      - :doc:`Overview <security/index>`
+      - **MacOS Binary installation:**
+      - **Source code installation:**
 
    .. grid-item-card:: Modeling Languages
       :class-card: sd-shadow-sm
@@ -22,12 +23,14 @@ HyperQB is a push-button, bounded model checker for verifying hyperproperties. H
    .. grid-item-card:: Specification Languages
       :class-card: sd-shadow-sm
 
-      - :doc:`Overview <planning/index>`
+      - **HyperLTL grammar:**
+      - **A-HLTL grammar:**
 
    .. grid-item-card:: Running HyperQB
       :class-card: sd-shadow-sm
 
-      - :doc:`Overview <synthesis/index>`
+      - **GUI-based (standalone and we-based):**
+      - **Command-line usage**
 
 .. toctree::
    :hidden:

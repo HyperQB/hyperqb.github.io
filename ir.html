@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Case Studies" href="case-studies/index.html" /><link rel="prev" title="Background Theory" href="background_theory_tabs.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Intermediate Representation - HyperQB</title>
+        <title>Defining States and Transitions - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
@@ -186,7 +186,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -210,7 +210,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background_theory_tabs.html">Background Theory</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Intermediate Representation</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Defining States and Transitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#using-predicates">Using Predicates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#translation-to-ir">Translation to IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#references">References</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="case-studies/index.html">Case Studies</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/security/index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="case-studies/security/symmetry.html">Symmetry: Bakery Algorithm (NuSMV)</a></li>
@@ -298,15 +302,13 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="intermediate-representation">
-<h1>Intermediate Representation<a class="headerlink" href="#intermediate-representation" title="Permalink to this heading">¶</a></h1>
-<p>A key component of any <cite>Bounded Model Checking`</cite> (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. It is designed to be <strong>solver-agnostic</strong> and captures the two essential components of a state machine: the state variables and the transition logic.</p>
+          <p>A key component of any <cite>Bounded Model Checking`</cite> (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. It is designed to be <strong>solver-agnostic</strong> and captures the two essential components of a state machine: the state variables and the transition logic.</p>
 <p>Suppose the set of transitions for a variable <code class="docutils literal notranslate"><span class="pre">var</span></code> is as follows:</p>
 <div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="ow">next</span><span class="p">(</span><span class="nv">var</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
 <span class="w">    </span><span class="nv">g1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">u1</span><span class="p">;</span>
@@ -327,25 +329,25 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">BV</span></code>: A bit-vector type, which requires a bit-width. It can also have optional initial, lower-bound, and upper-bound values.</p></li>
 </ol>
 <section id="defining-states-and-transitions">
-<h2>Defining States and Transitions<a class="headerlink" href="#defining-states-and-transitions" title="Permalink to this heading">¶</a></h2>
+<h1>Defining States and Transitions<a class="headerlink" href="#defining-states-and-transitions" title="Permalink to this heading">¶</a></h1>
 <p>Once an <code class="docutils literal notranslate"><span class="pre">SMVEnv</span></code> is created, new variables are added using the <code class="docutils literal notranslate"><span class="pre">register_variable(name,</span> <span class="pre">type)</span></code> method. All metadata (such as bounds or initial values) is specified within the <code class="docutils literal notranslate"><span class="pre">type</span></code> argument.</p>
 <p>Transitions for a variable are defined using the <code class="docutils literal notranslate"><span class="pre">register_transition(name,</span> <span class="pre">cond,</span> <span class="pre">upd)</span></code> method. This method is called once for each guarded transition (like <code class="docutils literal notranslate"><span class="pre">g:</span> <span class="pre">u;</span></code>) in the specific order they should be evaluated. The environment preserves this registration order, ensuring the priority logic of the NuSMV-style <code class="docutils literal notranslate"><span class="pre">case</span></code> statement is correctly modeled.</p>
 <p>A key feature of our IR is that both the condition <code class="docutils literal notranslate"><span class="pre">cond</span></code> and the update expression <code class="docutils literal notranslate"><span class="pre">upd</span></code> are provided as native Rust functions. This allows for highly flexible and complex transition logic that can leverage the full power of the Rust language.</p>
 <p>If no transitions are registered for a variable, the environment automatically assumes a self-loop (i.e., <code class="docutils literal notranslate"><span class="pre">next(variable)</span> <span class="pre">:=</span> <span class="pre">variable</span></code>).</p>
 </section>
 <section id="using-predicates">
-<h2>Using Predicates<a class="headerlink" href="#using-predicates" title="Permalink to this heading">¶</a></h2>
+<h1>Using Predicates<a class="headerlink" href="#using-predicates" title="Permalink to this heading">¶</a></h1>
 <p>It is often necessary to check if a specific Boolean condition holds in a given state. Instead of rewriting this logic repeatedly, the IR allows you to define <cite>predicates</cite>.</p>
 <p>A predicate is a named, reusable Rust boolean function that is evaluated against the current state. They are defined using the <code class="docutils literal notranslate"><span class="pre">register_predicate(name,</span> <span class="pre">pred)</span></code> method, where <code class="docutils literal notranslate"><span class="pre">name</span></code> is a string for future reference and pred is the boolean function. Predicates are useful for defining properties or checking for specific conditions, such as identifying a halting state in the system.</p>
 </section>
 <section id="translation-to-ir">
-<h2>Translation to IR<a class="headerlink" href="#translation-to-ir" title="Permalink to this heading">¶</a></h2>
+<h1>Translation to IR<a class="headerlink" href="#translation-to-ir" title="Permalink to this heading">¶</a></h1>
 <p>Our tool accepts two types of input files: <strong>NuSMV</strong> and <strong>Verilog</strong>.
 We implement dedicated parsers for each language to translate the input into our intermediate representation (IR).
 Once the IR is constructed, the remainder of the pipeline operates uniformly on it to generate either the QBF or SMT encoding.</p>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h1>
 <p>As an example, consider a simple system with a counter that iterates repeatedly from 0 to 15, and an LED that blinks every third cycle (i.e., when the counter is 0, 3, 6, 9, 12, or 15).</p>
 <p>This system can be modeled in <strong>NuSMV</strong> as shown below:</p>
 <div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
@@ -448,14 +450,13 @@ Once the IR is constructed, the remainder of the pipeline operates uniformly on 
 </div>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h1>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>NuSMV paper: <a class="reference external" href="https://nusmv.fbk.eu/papers/sttt_j/pdf/sttt_j.pdf">https://nusmv.fbk.eu/papers/sttt_j/pdf/sttt_j.pdf</a></p>
 </aside>
 </aside>
-</section>
 </section>
 
         </article>
@@ -501,31 +502,8 @@ Once the IR is constructed, the remainder of the pipeline operates uniformly on 
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Intermediate Representation</a><ul>
-<li><a class="reference internal" href="#defining-states-and-transitions">Defining States and Transitions</a></li>
-<li><a class="reference internal" href="#using-predicates">Using Predicates</a></li>
-<li><a class="reference internal" href="#translation-to-ir">Translation to IR</a></li>
-<li><a class="reference internal" href="#usage">Usage</a></li>
-<li><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

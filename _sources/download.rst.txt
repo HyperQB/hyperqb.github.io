@@ -4,7 +4,7 @@ Download
 
 .. **Source Code:** `Get the HyperQB source code on GitHub <https://github.com/HyperQB/HyperRUSTY>`_
 
-`Executable binary <https://github.com/HyperQB/hyperqb-release/releases/download/v0.2.2/HyperQB-macos.zip>`_  -- Command line and GUI (MacOS) 
+`Executable binary <https://github.com/HyperQB/hyperqb-release/releases/download/v0.2.2/HyperQB-macos.zip>`_  -- Standalone GUI for MacOS (Apple Silicon)
 
 `Source code <https://github.com/HyperQB/hyperqb-release/archive/refs/tags/v0.2.2.zip>`_
 

@@ -14,7 +14,6 @@ Welcome to HyperQB!
 
    introduction
    background_theory_tabs
-   ir
    case-studies/index
    playground
    download

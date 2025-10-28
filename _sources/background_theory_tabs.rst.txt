@@ -157,4 +157,4 @@ Background Theory
    .. tab-item:: IR
 
       .. rubric:: Intermediate Representation
-         .. include:: introduction.rst 
+         .. include:: ir.rst 

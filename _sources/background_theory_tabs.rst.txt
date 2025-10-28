@@ -154,7 +154,7 @@ Background Theory
 
       The QBF’s satisfiability is equivalent to the bounded satisfaction of :math:`\varphi` (and is exact on terminating systems under halting variants) [1, 2].
 
-   .. tab-item:: IR
+   .. tab-item:: Intermediate Representation
 
       .. rubric:: Intermediate Representation
          .. include:: ir.rst 

@@ -1,5 +1,3 @@
-Intermediate Representation
-===========================
 
 A key component of any `Bounded Model Checking`` (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language [1]_. It is designed to be **solver-agnostic** and captures the two essential components of a state machine: the state variables and the transition logic.
 

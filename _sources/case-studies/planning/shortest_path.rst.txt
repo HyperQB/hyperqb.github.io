@@ -17,22 +17,22 @@ The NuSMV model(s)
 
     .. tab:: Grid 10x10 (100 cells)
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_sp_100.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/planning/shortest_path/robotic_sp_100.smv
             :language: smv
 
     .. tab:: Grid 20x20 (400 cells)
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_sp_400.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/planning/shortest_path/robotic_sp_400.smv
             :language: smv
 
     .. tab:: Grid 40x40 (1,600 cells)
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_sp_1600.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/planning/shortest_path/robotic_sp_1600.smv
             :language: smv
 
     .. tab:: Grid 60x60 (3,600 cells)
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_sp_3600.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/planning/shortest_path/robotic_sp_3600.smv
             :language: smv
 
 The HyperLTL formula(s)
@@ -51,7 +51,7 @@ arrives at the goal in the minimal number of steps.
 
     .. tab:: Shortest Path
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/planning/robotic_robustness/robotic_sp_formula.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/planning/shortest_path/robotic_sp_formula.hq
             :language: hq
 
 References

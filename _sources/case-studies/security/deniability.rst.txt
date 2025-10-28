@@ -14,17 +14,9 @@ that the system successfully hides the initial balance by presenting indistingui
 The NuSMV model(s)
 ------------------
 
-.. tabs::
+.. literalinclude:: ../benchmarks_ui/nusmv/security/deniability/electronic_wallet.smv
+   :language: smv
 
-    .. tab:: Case #8.1
-
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/deniability/den_small.smv
-            :language: smv
-
-    .. tab:: Case #8.2
-
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/deniability/den.smv
-            :language: smv
 
 The HyperLTL formula(s)
 -----------------------
@@ -46,7 +38,7 @@ demonstrate indistinguishability or produce a counterexample if the system leaks
 
 .. tabs::
 
-    .. tab:: Case #8.1 & #8.2
+    .. tab:: Deniability
 
         .. literalinclude :: ../benchmarks_ui/nusmv/security/deniability/den.hq
             :language: hq

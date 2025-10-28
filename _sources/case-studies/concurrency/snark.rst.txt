@@ -11,7 +11,7 @@ hyperproperty that requires that any *history* of execution of a concurrent data
 
 SNARK is known to have two linearizability bugs. With the use of *pessimistic semantics*, a witness of linearizability
 violation of length :math:`k` is enough to infer that the given system does not satisfy the linearizability property.
-*HyperQB* returns SAT identifying both bugs and producing two counterexamples. The bugs returned are consistent with the
+*HyperQB* returns UNSAT identifying both bugs and counterexamples. The bugs returned are consistent with the
 ones reported in :ref:`[DDG+04] <DDG+04>`.
 
 The NuSMV model(s)
@@ -19,7 +19,7 @@ The NuSMV model(s)
 
 .. tabs::
 
-    .. tab:: Case #2.1
+    .. tab:: Case: SNARK 1
 
         .. tabs::
 
@@ -33,19 +33,6 @@ The NuSMV model(s)
                 .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark1_seq.smv
                     :language: smv
 
-    .. tab:: Case #2.2
-
-        .. tabs::
-
-            .. tab:: Snark 2 M1 concurrent
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2_M1_concurrent.smv
-                    :language: smv
-
-            .. tab:: Snark 2 M2 sequential
-
-                .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2_M2_sequential.smv
-                    :language: smv
 
 The HyperLTL formula(s)
 -----------------------
@@ -59,15 +46,11 @@ same HyperLTL template; HyperQB produces counterexamples demonstrating the two k
 
 .. tabs::
 
-    .. tab:: Case #2.1
+    .. tab:: Case SNARK 1
 
         .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/lin.hq
             :language: hq
 
-    .. tab:: Case #2.2
-
-        .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/snark/snark2.hq
-            :language: hq
 
 References
 ----------

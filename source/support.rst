@@ -4,6 +4,7 @@ HyperQB Support
 Need help?
 -----------
 
+
 For issues regarding the use of HyperQB, please first search the `manual <manual>`_.
 
 For other questions, comments or feedback, please post a message in our `forum <https://groups.google.com/a/msu.edu/g/hyperqb/members>`_.

@@ -441,6 +441,17 @@ Intermediate Representation</label><div class="sd-tab-content docutils">
 .. include:: ir.rst</p>
 </div>
 </div>
+<p>A key component of any <cite>Bounded Model Checking`</cite> (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language <a href="#id2"><span class="problematic" id="id1">[1]_</span></a>. It is designed to be <strong>solver-agnostic</strong> and captures the two essential components of a state machine: the state variables and the transition logic.</p>
+<p>Suppose the set of transitions for a variable <code class="docutils literal notranslate"><span class="pre">var</span></code> is as follows:</p>
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="ow">next</span><span class="p">(</span><span class="nv">var</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<span class="w">    </span><span class="nv">g1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">u1</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">g2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">u2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="nv">gk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">uk</span><span class="p">;</span>
+<span class="w">    </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">u</span>
+<span class="k">esac</span><span class="p">;</span>
+</pre></div>
+</div>
 </section>
 
         </article>

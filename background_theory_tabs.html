@@ -186,7 +186,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -297,7 +297,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -437,11 +437,10 @@ BMC Algorithm</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
 Intermediate Representation</label><div class="sd-tab-content docutils">
-<p class="rubric">Intermediate Representation
-.. include:: ir.rst</p>
+<p class="rubric">Intermediate Representation</p>
 </div>
 </div>
-<p>A key component of any <cite>Bounded Model Checking`</cite> (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language <a href="#id2"><span class="problematic" id="id1">[1]_</span></a>. It is designed to be <strong>solver-agnostic</strong> and captures the two essential components of a state machine: the state variables and the transition logic.</p>
+<p id="common-section">A key component of any <cite>Bounded Model Checking`</cite> (BMC) framework is the intermediate representation (IR) used to model the system under analysis. For this project, we developed an IR inspired by the NuSMV modeling language <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. It is designed to be <strong>solver-agnostic</strong> and captures the two essential components of a state machine: the state variables and the transition logic.</p>
 <p>Suppose the set of transitions for a variable <code class="docutils literal notranslate"><span class="pre">var</span></code> is as follows:</p>
 <div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="ow">next</span><span class="p">(</span><span class="nv">var</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
 <span class="w">    </span><span class="nv">g1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">u1</span><span class="p">;</span>
@@ -452,6 +451,145 @@ Intermediate Representation</label><div class="sd-tab-content docutils">
 <span class="k">esac</span><span class="p">;</span>
 </pre></div>
 </div>
+<p>where <code class="docutils literal notranslate"><span class="pre">next(var)</span></code> specifies the value of <code class="docutils literal notranslate"><span class="pre">var</span></code> in the next state. In this format, each line <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">:</span> <span class="pre">u;</span></code> is a guarded transition, consisting of a boolean condition <code class="docutils literal notranslate"><span class="pre">g</span></code> and an update expression <code class="docutils literal notranslate"><span class="pre">u</span></code> (which must match the variable’s type).</p>
+<p>We chose this model for its natural ability to clearly and independently define the transition logic for each state variable. This separation simplifies the analysis pipeline, as we can reason about transitions without concern for the concrete representation of a full state. In this model, a state is simply a valuation of all system variables. The core data structure implementing this IR in our code is <code class="docutils literal notranslate"><span class="pre">SMVEnv</span></code>, which we refer to as the environment.</p>
+<p>During a state change, the conditions are evaluated in order from top to bottom. The first condition <code class="docutils literal notranslate"><span class="pre">g</span></code> that holds determines the variable’s next value via its corresponding update expression <code class="docutils literal notranslate"><span class="pre">u</span></code>. If no condition holds, the <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> branch is taken, which typically assigns the variable’s current value (e.g., <code class="docutils literal notranslate"><span class="pre">TRUE</span> <span class="pre">:</span> <span class="pre">variable;</span></code>), indicating a self-loop where no value change occurs.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SMVEnv</span></code> currently supports three variable types:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Boolean</span></code>: A boolean type, with an optional initial value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Int</span></code>: A boundless mathematical integer, with optional initial, lower-bound, and upper-bound values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BV</span></code>: A bit-vector type, which requires a bit-width. It can also have optional initial, lower-bound, and upper-bound values.</p></li>
+</ol>
+<section id="defining-states-and-transitions">
+<h2>Defining States and Transitions<a class="headerlink" href="#defining-states-and-transitions" title="Permalink to this heading">¶</a></h2>
+<p>Once an <code class="docutils literal notranslate"><span class="pre">SMVEnv</span></code> is created, new variables are added using the <code class="docutils literal notranslate"><span class="pre">register_variable(name,</span> <span class="pre">type)</span></code> method. All metadata (such as bounds or initial values) is specified within the <code class="docutils literal notranslate"><span class="pre">type</span></code> argument.</p>
+<p>Transitions for a variable are defined using the <code class="docutils literal notranslate"><span class="pre">register_transition(name,</span> <span class="pre">cond,</span> <span class="pre">upd)</span></code> method. This method is called once for each guarded transition (like <code class="docutils literal notranslate"><span class="pre">g:</span> <span class="pre">u;</span></code>) in the specific order they should be evaluated. The environment preserves this registration order, ensuring the priority logic of the NuSMV-style <code class="docutils literal notranslate"><span class="pre">case</span></code> statement is correctly modeled.</p>
+<p>A key feature of our IR is that both the condition <code class="docutils literal notranslate"><span class="pre">cond</span></code> and the update expression <code class="docutils literal notranslate"><span class="pre">upd</span></code> are provided as native Rust functions. This allows for highly flexible and complex transition logic that can leverage the full power of the Rust language.</p>
+<p>If no transitions are registered for a variable, the environment automatically assumes a self-loop (i.e., <code class="docutils literal notranslate"><span class="pre">next(variable)</span> <span class="pre">:=</span> <span class="pre">variable</span></code>).</p>
+</section>
+<section id="using-predicates">
+<h2>Using Predicates<a class="headerlink" href="#using-predicates" title="Permalink to this heading">¶</a></h2>
+<p>It is often necessary to check if a specific Boolean condition holds in a given state. Instead of rewriting this logic repeatedly, the IR allows you to define <cite>predicates</cite>.</p>
+<p>A predicate is a named, reusable Rust boolean function that is evaluated against the current state. They are defined using the <code class="docutils literal notranslate"><span class="pre">register_predicate(name,</span> <span class="pre">pred)</span></code> method, where <code class="docutils literal notranslate"><span class="pre">name</span></code> is a string for future reference and pred is the boolean function. Predicates are useful for defining properties or checking for specific conditions, such as identifying a halting state in the system.</p>
+</section>
+<section id="translation-to-ir">
+<h2>Translation to IR<a class="headerlink" href="#translation-to-ir" title="Permalink to this heading">¶</a></h2>
+<p>Our tool accepts two types of input files: <strong>NuSMV</strong> and <strong>Verilog</strong>.
+We implement dedicated parsers for each language to translate the input into our intermediate representation (IR).
+Once the IR is constructed, the remainder of the pipeline operates uniformly on it to generate either the QBF or SMT encoding.</p>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<p>As an example, consider a simple system with a counter that iterates repeatedly from 0 to 15, and an LED that blinks every third cycle (i.e., when the counter is 0, 3, 6, 9, 12, or 15).</p>
+<p>This system can be modeled in <strong>NuSMV</strong> as shown below:</p>
+<div class="highlight-smv notranslate"><div class="highlight"><pre><span></span><span class="kd">MODULE</span><span class="w"> </span><span class="nv">main</span>
+<span class="kd">VAR</span>
+<span class="nv">counter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">15</span><span class="p">;</span><span class="w">     </span><span class="c">-- 4-bit counter</span>
+<span class="nv">LED</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span><span class="w">   </span><span class="c">-- Denotes whether the LED is on</span>
+
+<span class="kd">DEFINE</span>
+<span class="nv">reset</span><span class="w">   </span><span class="o">:=</span><span class="w"> </span><span class="nv">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span><span class="w">       </span><span class="c">-- predicate: counter about to reset</span>
+<span class="nv">led_blink</span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nv">counter</span><span class="w"> </span><span class="ow">mod</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">reset</span><span class="p">;</span><span class="w"> </span><span class="c">-- true at counter = 2, 5, 8, 11, 14, 15</span>
+
+<span class="kd">ASSIGN</span>
+<span class="nb">init</span><span class="p">(</span><span class="nv">counter</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="nb">init</span><span class="p">(</span><span class="nv">LED</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span><span class="w"> </span><span class="c">-- Should blink counter = 0</span>
+
+<span class="c">-- counter: 0..15 then reset to 0</span>
+<span class="ow">next</span><span class="p">(</span><span class="nv">counter</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<span class="w">    </span><span class="nv">reset</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="k">esac</span><span class="p">;</span>
+
+<span class="c">-- Only blink if the led_blink is true</span>
+<span class="ow">next</span><span class="p">(</span><span class="nv">LED</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">case</span>
+<span class="w">    </span><span class="nv">led_blink</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">;</span>
+<span class="w">    </span><span class="kc">TRUE</span><span class="p">:</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">;</span>
+<span class="k">esac</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The corresponding <strong>Verilog</strong> implementation is presented below:</p>
+<div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">counter_led</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="kt">wire</span><span class="w">       </span><span class="n">clk</span><span class="p">,</span>
+<span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="kt">wire</span><span class="w">       </span><span class="n">rst_n</span><span class="p">,</span><span class="w">     </span><span class="c1">// active-low reset</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">  </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">counter</span><span class="p">,</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">        </span><span class="n">LED</span>
+<span class="p">);</span>
+
+<span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">reset_pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d15</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">led_blink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d11</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d14</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                    </span><span class="n">reset_pred</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+
+<span class="w">            </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d0</span><span class="p">;</span>
+<span class="w">            </span><span class="n">LED</span><span class="w">     </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span>
+
+<span class="w">            </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">reset_pred</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="mi">&#39;d1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">LED</span><span class="w">     </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">led_blink</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="k">endmodule</span>
+</pre></div>
+</div>
+<p>Both models are parsed to construct the following intermediate representation (imports omitted):</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SMVEnv</span>::<span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ctx</span><span class="p">);</span>
+
+<span class="n">env</span><span class="p">.</span><span class="n">register_variable</span><span class="p">(</span><span class="s">&quot;counter&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">VarType</span>::<span class="n">Int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">init</span>: <span class="nb">Some</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+<span class="w">    </span><span class="n">lower</span>: <span class="nb">Some</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+<span class="w">    </span><span class="n">upper</span>: <span class="nb">Some</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+<span class="p">});</span>
+
+<span class="n">env</span><span class="p">.</span><span class="n">reigster_variable</span><span class="p">(</span><span class="s">&quot;LED&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">VarType</span>::<span class="n">Bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">init</span>: <span class="nb">Some</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="kc">true</span><span class="p">]),</span>
+<span class="p">});</span>
+
+<span class="n">env</span><span class="p">.</span><span class="n">register_predicate</span><span class="p">(</span><span class="s">&quot;reset&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="n">int_var</span><span class="o">!</span><span class="p">(</span><span class="n">_state</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;counter&quot;</span><span class="p">).</span><span class="n">_eq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Int</span>::<span class="n">from_i64</span><span class="p">(</span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">))</span>
+<span class="p">);</span>
+<span class="n">env</span><span class="p">.</span><span class="n">register_predicate</span><span class="p">(</span><span class="s">&quot;led_blink&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">int_var</span><span class="o">!</span><span class="p">(</span><span class="n">_state</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;counter&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Int</span>::<span class="n">from_i64</span><span class="p">(</span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)).</span><span class="n">_eq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Int</span>::<span class="n">from_i64</span><span class="p">(</span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">predicate</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;reset&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Defining Transitions</span>
+<span class="n">env</span><span class="p">.</span><span class="n">register_transition</span><span class="p">(</span><span class="s">&quot;counter&quot;</span><span class="p">,</span>
+<span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="n">exact</span><span class="o">!</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">predicate</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;reset&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="p">)),</span>
+<span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="n">exact</span><span class="o">!</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="n">env</span><span class="p">.</span><span class="n">register_transition</span><span class="p">(</span><span class="s">&quot;counter&quot;</span><span class="p">,</span>
+<span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="n">exact</span><span class="o">!</span><span class="p">(</span><span class="n">Bool</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+<span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="n">exact</span><span class="o">!</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">int_var</span><span class="o">!</span><span class="p">(</span><span class="n">_state</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;counter&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Int</span>::<span class="n">from_i64</span><span class="p">(</span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="p">);</span>
+
+<span class="n">env</span><span class="p">.</span><span class="n">register_transition</span><span class="p">(</span><span class="s">&quot;LED&quot;</span><span class="p">,</span>
+<span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="n">exact</span><span class="o">!</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="n">predicate</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;led_blink&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="p">)),</span>
+<span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="n">exact</span><span class="o">!</span><span class="p">(</span><span class="n">Bool</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="n">env</span><span class="p">.</span><span class="n">register_transition</span><span class="p">(</span><span class="s">&quot;LED&quot;</span><span class="p">,</span>
+<span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="n">exact</span><span class="o">!</span><span class="p">(</span><span class="n">Bool</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+<span class="o">|</span><span class="n">_env</span><span class="p">,</span><span class="w"> </span><span class="n">_ctx</span><span class="p">,</span><span class="w"> </span><span class="n">_state</span><span class="o">|</span><span class="w"> </span><span class="n">exact</span><span class="o">!</span><span class="p">(</span><span class="n">Bool</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>NuSMV paper: <a class="reference external" href="https://nusmv.fbk.eu/papers/sttt_j/pdf/sttt_j.pdf">https://nusmv.fbk.eu/papers/sttt_j/pdf/sttt_j.pdf</a></p>
+</aside>
+</aside>
+</section>
 </section>
 
         </article>
@@ -497,8 +635,31 @@ Intermediate Representation</label><div class="sd-tab-content docutils">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Background Theory</a><ul>
+<li><a class="reference internal" href="#defining-states-and-transitions">Defining States and Transitions</a></li>
+<li><a class="reference internal" href="#using-predicates">Using Predicates</a></li>
+<li><a class="reference internal" href="#translation-to-ir">Translation to IR</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

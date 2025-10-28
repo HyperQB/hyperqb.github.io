@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Intermediate Representation" href="ir.html" /><link rel="prev" title="Introduction" href="introduction.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Publications" href="publications.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Background Theory - HyperQB</title>
+        <title>HyperQB Support - HyperQB</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=72bcf2f2" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
@@ -186,7 +186,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -209,7 +209,7 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Background Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background_theory_tabs.html">Background Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ir.html">Intermediate Representation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="case-studies/index.html">Case Studies</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Case Studies</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="case-studies/security/index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Security</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -263,7 +263,7 @@
 <li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="support.html">HyperQB Support</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">HyperQB Support</a></li>
 </ul>
 
 </div>
@@ -284,7 +284,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/background_theory_tabs.rst.txt" title="View this page">
+  <a class="muted-link" href="_sources/support.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -298,144 +298,20 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="background-theory">
-<h1>Background Theory<a class="headerlink" href="#background-theory" title="Permalink to this heading">¶</a></h1>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-0">
-Theory (HLTL &amp; A-HLTL)</label><div class="sd-tab-content docutils">
-<p class="rubric">HyperLTL (syntax and standard multi-trace semantics)</p>
-<p>We consider hyperproperties as formulas in <strong>HyperLTL</strong>, which extends LTL with explicit quantification over traces. The abstract syntax is</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{rcl}
-\varphi &amp; ::= &amp; \exists \pi \,.\, \varphi \mid \forall \pi \,.\, \varphi \mid \psi \\
-\psi    &amp; ::= &amp; \mathit{true} \mid a_\pi \mid \neg \psi \mid \psi \lor \psi \mid \psi \land \psi \mid \psi \,\mathcal{U}\, \psi \mid \psi \,\mathcal{R}\, \psi \mid \bigcirc \psi
-\end{array}\end{split}\]</div>
-</div>
-<p>Let a family of Kripke structures be <span class="math notranslate nohighlight">\(\mathcal{K}=\langle K_\pi \rangle_{\pi\in \mathrm{Vars}(\varphi)}\)</span> and write <span class="math notranslate nohighlight">\(T_\pi=\mathrm{Traces}(K_\pi)\)</span>. A (partial) <strong>trace assignment</strong> is a map <span class="math notranslate nohighlight">\(\Pi:\mathrm{Vars}(\varphi)\rightharpoonup (2^{AP})^\omega\)</span>. Satisfaction (Boolean cases standard) is defined on pointed models <span class="math notranslate nohighlight">\((T,\Pi,i)\)</span> with <span class="math notranslate nohighlight">\(i\in\mathbb{N}\)</span>:</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-&amp;(T,\Pi,0)\vDash \exists \pi.\,\phi &amp;&amp;\Leftrightarrow&amp;&amp; \exists t\in T_\pi:\ (T,\Pi[\pi\mapsto t],0)\vDash \phi,\\
-&amp;(T,\Pi,0)\vDash \forall \pi.\,\phi &amp;&amp;\Leftrightarrow&amp;&amp; \forall t\in T_\pi:\ (T,\Pi[\pi\mapsto t],0)\vDash \phi,\\
-&amp;(T,\Pi,i)\vDash a_\pi &amp;&amp;\Leftrightarrow&amp;&amp; a\in \Pi(\pi)(i),\\
-&amp;(T,\Pi,i)\vDash \bigcirc \psi &amp;&amp;\Leftrightarrow&amp;&amp; (T,\Pi,i{+}1)\vDash \psi,\\
-&amp;(T,\Pi,i)\vDash \psi_1\,\mathcal{U}\,\psi_2 &amp;&amp;\Leftrightarrow&amp;&amp; \exists j\ge i:\ (T,\Pi,j)\vDash \psi_2\ \land\ \forall k\in[i,j):\ (T,\Pi,k)\vDash \psi_1,\\
-&amp;(T,\Pi,i)\vDash \psi_1\,\mathcal{R}\,\psi_2 &amp;&amp;\Leftrightarrow&amp;&amp; \Big(\forall j\ge i:\ (T,\Pi,j)\vDash \psi_2\Big)\ \text{or}\ \Big(\exists j\ge i:\ (T,\Pi,j)\vDash \psi_1 \land \forall k\in[i,j]:\ (T,\Pi,k)\vDash \psi_2\Big).
-\end{aligned}\end{split}\]</div>
-</div>
-<p class="rubric">Higher-order LTL (HLTL: syntax and semantics)</p>
-<p><strong>HLTL</strong> generalizes HyperLTL by permitting variables that range over <em>tuples of traces</em> (arity <span class="math notranslate nohighlight">\(d\ge 1\)</span>). This enables compact specifications of n-ary relations (e.g., 3-safety).</p>
-<p>Syntax extends atoms to point into a component of a tuple:</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{rcl}
-\varphi &amp;::=&amp; \exists \Pi.\,\varphi \mid \forall \Pi.\,\varphi \mid \psi,\\
-\psi &amp;::=&amp; \mathit{true} \mid a_{\Pi[j]} \mid \neg \psi \mid \psi \lor \psi \mid \psi \land \psi \mid \psi \,\mathcal{U}\, \psi \mid \psi \,\mathcal{R}\, \psi \mid \bigcirc \psi,
-\end{array}\end{split}\]</div>
-</div>
-<p>where <span class="math notranslate nohighlight">\(\Pi\)</span> ranges over tuples <span class="math notranslate nohighlight">\(((2^{AP})^\omega)^d\)</span> and <span class="math notranslate nohighlight">\(j\in\{0,\dots,d-1\}\)</span>.</p>
-<p>A <strong>tuple assignment</strong> <span class="math notranslate nohighlight">\(\Theta:\mathrm{Vars}(\varphi)\rightharpoonup ((2^{AP})^\omega)^d\)</span> maps each variable to a fixed-arity tuple of traces. Satisfaction extends the HyperLTL clauses; the atomic case becomes:</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[(T,\Theta,i)\vDash a_{\Pi[j]} \ \Leftrightarrow\ a\in \Theta(\Pi)[j](i).\]</div>
-</div>
-<p>(All Boolean/temporal operators and quantifiers behave as in HyperLTL, lifted through <span class="math notranslate nohighlight">\(\Theta\)</span>.)</p>
-<p class="rubric">Asynchronous HyperLTL (A-HLTL: syntax and asynchronous semantics)</p>
-<p><strong>A-HLTL</strong> augments HyperLTL with <em>trajectory quantifiers</em> that govern how traces progress relative to each other [2, 3]. In the BMC-oriented fragment (without next <span class="math notranslate nohighlight">\(\bigcirc\)</span>):</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{rcl}
-\varphi &amp;::=&amp; \exists \pi.\,\varphi \mid \forall \pi.\,\varphi \mid E_\tau.\,\varphi \mid A_\tau.\,\varphi \mid \psi,\\
-\psi &amp;::=&amp; \mathit{true} \mid a_{\pi,\tau} \mid \neg \psi \mid \psi \lor \psi \mid \psi \land \psi \mid \psi \,\mathcal{U}\, \psi \mid \psi \,\mathcal{R}\, \psi.
-\end{array}\end{split}\]</div>
-</div>
-<p>A <strong>trajectory</strong> <span class="math notranslate nohighlight">\(t\)</span> for the set of trace variables <span class="math notranslate nohighlight">\(\mathrm{Paths}(\varphi)\)</span> is an <span class="math notranslate nohighlight">\(\omega\)</span>-sequence <span class="math notranslate nohighlight">\(t(0),t(1),\ldots\)</span> with <span class="math notranslate nohighlight">\(t(i)\subseteq \mathrm{Paths}(\varphi)\)</span> indicating which traces advance at global step <span class="math notranslate nohighlight">\(i\)</span> (others <em>stutter</em>). A trajectory is <strong>fair</strong> if every trace is selected infinitely often.</p>
-<p>We use a trajectory assignment <span class="math notranslate nohighlight">\(\Gamma:\mathrm{Trajs}(\varphi)\rightharpoonup \mathrm{TRJ}\)</span> and an <strong>asynchronous trace assignment</strong> <span class="math notranslate nohighlight">\(\Pi:\mathrm{Paths}(\varphi)\times \mathrm{Trajs}(\varphi)\to (2^{AP})^\omega\times \mathbb{N}\)</span> mapping <span class="math notranslate nohighlight">\((\pi,\tau)\)</span> to a pointed trace <span class="math notranslate nohighlight">\((\sigma,n)\)</span>. Define the successor <span class="math notranslate nohighlight">\(\!(\Pi,\Gamma){+}1=(\Pi',\Gamma')\!\)</span> by incrementing <span class="math notranslate nohighlight">\(n\)</span> exactly for those pairs with <span class="math notranslate nohighlight">\(\pi\in \Gamma(\tau)(0)\)</span> and rotating the trajectories; write <span class="math notranslate nohighlight">\((\Pi,\Gamma){+}k\)</span> for the <span class="math notranslate nohighlight">\(k\)</span>-fold iterate. Characteristic clauses (Boolean/quantifier cases as expected) are:</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-&amp;(\Pi,\Gamma)\vDash a_{\pi,\tau} &amp;&amp;\Leftrightarrow&amp;&amp; a\in \sigma(n)\ \text{ for }(\sigma,n)=\Pi(\pi,\tau),\\
-&amp;(\Pi,\Gamma)\vDash \psi_1\,\mathcal{U}\,\psi_2 &amp;&amp;\Leftrightarrow&amp;&amp; \exists i\ge 0:\ (\Pi,\Gamma){+}i \vDash \psi_2\ \land\ \forall j&lt;i:\ (\Pi,\Gamma){+}j \vDash \psi_1,\\
-&amp;(\Pi,\Gamma)\vDash \psi_1\,\mathcal{R}\,\psi_2 &amp;&amp;\Leftrightarrow&amp;&amp; \forall i\ge 0:\ (\Pi,\Gamma){+}i \vDash \psi_2\ \text{or}\ \exists i\ge 0:\ (\Pi,\Gamma){+}i \vDash \psi_1 \land \forall j\le i:\ (\Pi,\Gamma){+}j \vDash \psi_2.
-\end{aligned}\end{split}\]</div>
-</div>
-<p><strong>Stutter-invariant fragment.</strong> For bounded checking we restrict to formulas without <span class="math notranslate nohighlight">\(\bigcirc\)</span>, so that inserted stuttering does not affect satisfaction; trajectories are assumed fair [2].</p>
-<p class="rubric">Worked example (HLTL vs A-HLTL)</p>
-<p>Property: <em>“Any two runs eventually produce the same output value, allowing different speeds.”</em></p>
-<ul class="simple">
-<li><p><strong>HLTL (synchronous)</strong> (requires lockstep convergence):</p></li>
-</ul>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\forall \Pi.\ \Box\Diamond\big(out_{\Pi[0]} = out_{\Pi[1]}\big)
-\qquad\text{with arity } d{=}2.\]</div>
-</div>
-<ul class="simple">
-<li><p><strong>A-HLTL (asynchronous)</strong> (allows stuttering/interleavings):</p></li>
-</ul>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\forall \pi_1.\forall \pi_2.\ A_\tau.\ \Box\Diamond\big(out_{\pi_1,\tau} = out_{\pi_2,\tau}\big).\]</div>
-</div>
-<p>If one trace pauses while the other advances, A-HLTL still measures “eventually equal” along the fair trajectory, whereas HLTL demands equality along the <em>global</em> time axis.</p>
-</div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-1">
-BMC Algorithm</label><div class="sd-tab-content docutils">
-<p class="rubric">Formal preliminaries</p>
-<p>A Kripke structure is <span class="math notranslate nohighlight">\(K=\langle S,S_0,\delta,AP,L\rangle\)</span> with total transition relation <span class="math notranslate nohighlight">\(\delta\subseteq S\times S\)</span> and labeling <span class="math notranslate nohighlight">\(L:S\to 2^{AP}\)</span>. A path <span class="math notranslate nohighlight">\(s(0)s(1)\ldots\)</span> induces a trace <span class="math notranslate nohighlight">\(\sigma(i)=L(s(i))\)</span>. Write <span class="math notranslate nohighlight">\(\mathrm{Traces}(K)\)</span> for all traces from <span class="math notranslate nohighlight">\(S_0\)</span>.</p>
-<p class="rubric">1) Unrolling models (bound <span class="math notranslate nohighlight">\(k\)</span>)</p>
-<p>For each <span class="math notranslate nohighlight">\(K_A\)</span>, introduce time-stamped copies <span class="math notranslate nohighlight">\(x_A^0,\ldots,x_A^k\)</span>. With initial constraint <span class="math notranslate nohighlight">\(I_A(x_A^0)\)</span> and step relation <span class="math notranslate nohighlight">\(R_A(x_A^i,x_A^{i+1})\)</span>, define</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\text{⟦}K_A\text{⟧}_k \;=\; I_A(x_A^0)\ \land\ \bigwedge_{i=0}^{k-1} R_A(x_A^i,x_A^{i+1}).\]</div>
-</div>
-<p class="rubric">2) Encoding the temporal core (pess/opt/halting variants)</p>
-<p>Inductively encode subformulas <span class="math notranslate nohighlight">\(\text{⟦}\psi\text{⟧}^{*}_{i,k}\)</span> with <span class="math notranslate nohighlight">\(*\in\{\text{pes},\text{opt},\text{hpes},\text{hopt}\}\)</span>:</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-&amp;\text{⟦}p_\pi\text{⟧}^{*}_{i,k}=p_\pi^i,\quad &amp;&amp;\text{⟦}\neg p_\pi\text{⟧}^{*}_{i,k}=\neg p_\pi^i,\\
-&amp;\text{⟦}\psi_1\lor \psi_2\text{⟧}^{*}_{i,k}=\text{⟦}\psi_1\text{⟧}^{*}_{i,k}\lor \text{⟦}\psi_2\text{⟧}^{*}_{i,k},\quad
-&amp;&amp;\text{⟦}\psi_1\land \psi_2\text{⟧}^{*}_{i,k}=\text{⟦}\psi_1\text{⟧}^{*}_{i,k}\land \text{⟦}\psi_2\text{⟧}^{*}_{i,k},\\
-&amp;\text{⟦}\psi_1\,\mathcal{U}\,\psi_2\text{⟧}^{*}_{i,k}=\text{⟦}\psi_2\text{⟧}^{*}_{i,k}\lor\big(\text{⟦}\psi_1\text{⟧}^{*}_{i,k}\land \text{⟦}\psi_1\,\mathcal{U}\,\psi_2\text{⟧}^{*}_{i+1,k}\big),\\
-&amp;\text{⟦}\psi_1\,\mathcal{R}\,\psi_2\text{⟧}^{*}_{i,k}=\text{⟦}\psi_2\text{⟧}^{*}_{i,k}\land\big(\text{⟦}\psi_1\text{⟧}^{*}_{i,k}\lor \text{⟦}\psi_1\,\mathcal{R}\,\psi_2\text{⟧}^{*}_{i+1,k}\big).
-\end{aligned}\end{split}\]</div>
-</div>
-<p>Base cases at <span class="math notranslate nohighlight">\(k{+}1\)</span> select the bounded semantics [1, 2]:</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-&amp;\text{⟦}\psi\text{⟧}^{\text{pes}}_{k+1,k}=\mathit{false},\quad
-&amp;&amp;\text{⟦}\psi\text{⟧}^{\text{opt}}_{k+1,k}=\mathit{true},\\
-&amp;\text{⟦}\psi\text{⟧}^{\text{hpes}}_{k+1,k}=\text{⟦}\mathsf{halted}\text{⟧}^{\text{hpes}}_{k,k}\land \text{⟦}\psi\text{⟧}^{\text{hpes}}_{k,k},\quad
-&amp;&amp;\text{⟦}\psi\text{⟧}^{\text{hopt}}_{k+1,k}=\text{⟦}\mathsf{halted}\text{⟧}^{\text{hopt}}_{k,k}\rightarrow \text{⟦}\psi\text{⟧}^{\text{hopt}}_{k,k}.
-\end{aligned}\end{split}\]</div>
-</div>
-<p class="rubric">3) Bounded A-HLTL semantics (two bounds <span class="math notranslate nohighlight">\(k\le m\)</span>)</p>
-<p>We bound <strong>paths</strong> by <span class="math notranslate nohighlight">\(k\)</span> and <strong>trajectories</strong> by <span class="math notranslate nohighlight">\(m\)</span> [2]. Let <span class="math notranslate nohighlight">\(\mathrm{pos}_{\pi,\tau}(i)\)</span> count how many times <span class="math notranslate nohighlight">\(\pi\)</span> has been selected in <span class="math notranslate nohighlight">\(\tau(0),\ldots,\tau(i)\)</span>. Predicate <span class="math notranslate nohighlight">\(\mathsf{off}\)</span> holds at <span class="math notranslate nohighlight">\((\Pi,\Gamma,i)\)</span> iff some selected pair <span class="math notranslate nohighlight">\((\pi,\tau)\)</span> has <span class="math notranslate nohighlight">\(\mathrm{pos}_{\pi,\tau}(i)&gt;k\)</span> before visiting a halting state. Temporal clauses follow the inductive rules above for <span class="math notranslate nohighlight">\(i&lt;m\)</span>; boundary behavior at <span class="math notranslate nohighlight">\(i=m\)</span> is given by the halting pessimistic/optimistic variants (require vs. allow reading satisfaction at the boundary if <span class="math notranslate nohighlight">\(\mathsf{halted}\)</span> holds).</p>
-<p class="rubric">3′) Bounded HLTL semantics (synchronous tuples)</p>
-<p>For <strong>HLTL</strong>, tuple components advance <strong>in lockstep</strong>. On bound <span class="math notranslate nohighlight">\(k\)</span>, satisfaction of <span class="math notranslate nohighlight">\(\psi\)</span> at index 0 is exactly <span class="math notranslate nohighlight">\(\text{⟦}\psi\text{⟧}^{*}_{0,k}\)</span> with atoms interpreted as <span class="math notranslate nohighlight">\(a_{\Pi[j]}^i\)</span>. No trajectory bound is needed since there is no interleaving; halting variants (hpes/hopt) apply verbatim at <span class="math notranslate nohighlight">\(k{+}1\)</span>.</p>
-<p class="rubric">4) QBF compilation</p>
-<p>For <span class="math notranslate nohighlight">\(\varphi=Q_A\,\pi_A.\cdots Q_Z\,\pi_Z.\,\psi\)</span> (stutter-invariant), associate each <span class="math notranslate nohighlight">\(\pi_j\)</span> with <span class="math notranslate nohighlight">\(K_j\)</span> and build</p>
-<div class="math-wrapper docutils container">
-<div class="math notranslate nohighlight">
-\[\begin{split}\text{⟦}\mathcal{K},\varphi\text{⟧}^{*}_k \;=\; Q_A\,\overline{x_A}\cdot Q_B\,\overline{x_B}\cdots Q_Z\,\overline{x_Z}\;
-\Big(\text{⟦}K_A\text{⟧}_k\ \circ_A\ \cdots\ \circ_Z\ \text{⟦}\psi\text{⟧}^{*}_{0,k}\Big),
-\qquad
-\circ_j=\begin{cases}\wedge &amp; Q_j=\exists,\\ \rightarrow &amp; Q_j=\forall.\end{cases}\end{split}\]</div>
-</div>
-<p>The QBF’s satisfiability is equivalent to the bounded satisfaction of <span class="math notranslate nohighlight">\(\varphi\)</span> (and is exact on terminating systems under halting variants) [1, 2].</p>
-</div>
-</div>
+          <section id="hyperqb-support">
+<h1>HyperQB Support<a class="headerlink" href="#hyperqb-support" title="Permalink to this heading">¶</a></h1>
+<section id="need-help">
+<h2>Need help?<a class="headerlink" href="#need-help" title="Permalink to this heading">¶</a></h2>
+<p>For issues regarding the use of HyperQB, please first search the <a class="reference external" href="manual">manual</a>.</p>
+<p>For other questions, comments or feedback, please post a message in our <a class="reference external" href="https://groups.google.com/a/msu.edu/g/hyperqb/members">forum</a>.</p>
+<p>Bug reports and feature requests are always welcome. File an issue on <a class="reference external" href="https://github.com/HyperQB/hyperqb.github.io/issues">GitHub</a> or post a message in the <a class="reference external" href="https://groups.google.com/a/msu.edu/g/hyperqb/members">forum</a>.</p>
+</section>
 </section>
 
         </article>
@@ -443,23 +319,15 @@ BMC Algorithm</label><div class="sd-tab-content docutils">
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="ir.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Intermediate Representation</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="introduction.html">
+          
+          <a class="prev-page" href="publications.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Introduction</div>
+                <div class="title">Publications</div>
                 
               </div>
             </a>
@@ -481,8 +349,27 @@ BMC Algorithm</label><div class="sd-tab-content docutils">
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">HyperQB Support</a><ul>
+<li><a class="reference internal" href="#need-help">Need help?</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -492,7 +379,5 @@ BMC Algorithm</label><div class="sd-tab-content docutils">
     <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>window.MathJax = {"tex": {"macros": {"llbracket": "{\\lbrack\\!\\lbrack}", "rrbracket": "{\\rbrack\\!\\rbrack}"}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

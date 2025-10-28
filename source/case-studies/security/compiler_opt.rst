@@ -4,46 +4,97 @@ Compiler Optimisations: Security-Preserving Refinement (NuSMV)
 Description of the Case Study
 -----------------------------
 
-We study three compiler optimisation patterns and analyse whether they preserve the security guarantees of the original
-program. Each optimisation transforms a loop-based routine into a more efficient variant: **Loop Peeling (LP)** moves one
-iteration outside the loop, **Expression Folding Loop Peeling (EFLP)** normalises arithmetic expressions, and **Dead Branch
-Elimination (DBE)** removes infeasible public branches. For every pair, the source model captures the original program and the
-target model implements the optimised version. The HyperLTL specification requires that public outputs remain indistinguishable
-across both programs, ensuring that the transformation does not introduce information leaks.
+We study three compiler optimisation patterns and analyse whether they preserve the security guarantees of the original program. Each optimisation transforms a loop-based routine into a more efficient variant: **Loop Peeling (LP)** moves one iteration outside the loop, **Expression Folding Loop Peeling (EFLP)** normalises arithmetic expressions, and **Dead Branch
+Elimination (DBE)** removes infeasible public branches. For every pair, the source model captures the original program and the target model implements the optimised version. The HyperLTL specification requires that public outputs remain indistinguishable across both programs, ensuring that the transformation does not introduce information leaks.
 
 The NuSMV model(s)
 ------------------
 
 .. tabs::
 
-    .. tab:: Loop Peeling — Source
+    .. tab:: LP Original — Source
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/LP_source.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/original/lp/LP_source.smv
             :language: smv
 
-    .. tab:: Loop Peeling — Target
+    .. tab:: LP Original — Target
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/LP_target.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/original/lp/LP_target.smv
             :language: smv
 
-    .. tab:: Expression Folding LP — Source
+    .. tab:: LP Nondet — Source
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/EFLP_source.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/lp/LP_source_ndet.smv
             :language: smv
 
-    .. tab:: Expression Folding LP — Target
+    .. tab:: LP Nondet — Target
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/EFLP_target.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/lp/LP_target_ndet.smv
             :language: smv
 
-    .. tab:: Dead Branch Elimination — Source
+    .. tab:: LP Nondet — Incorrect Target
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/DBE_source.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/lp/LP_target_wrong_ndet.smv
             :language: smv
 
-    .. tab:: Dead Branch Elimination — Target
+    .. tab:: LP Loop — Source
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/DBE_target.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_loops/lp/LP_source_ndet.smv
+            :language: smv
+
+    .. tab:: LP Loop — Target
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_loops/lp/LP_target_ndet.smv
+            :language: smv
+    
+    .. tab:: LP Loop — Incorrect Target
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_loops/lp/LP_target_wrong_ndet.smv
+            :language: smv
+
+    .. tab:: EFLP — Source
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/original/eflp/EFLP_source.smv
+            :language: smv
+
+    .. tab:: EFLP — Target
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/original/eflp/EFLP_target.smv
+            :language: smv
+
+    .. tab:: EFLP Nondet — Source
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/eflp/EFLP_source_ndet.smv
+            :language: smv
+
+    .. tab:: EFLP Nondet — Target
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/eflp/EFLP_target_ndet.smv
+            :language: smv
+
+    .. tab:: DBE — Source
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/original/dbe/DBE_source.smv
+            :language: smv
+
+    .. tab:: DBE — Target
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/original/dbe/DBE_target.smv
+            :language: smv
+
+    .. tab:: DBE Nondet — Source
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/dbe/DBE_source_ndet.smv
+            :language: smv
+
+    .. tab:: DBE Nondet — Target
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/dbe/DBE_target_ndet.smv
+            :language: smv
+    
+    .. tab:: DBE Nondet — Incorrect Target
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/dbe/DBE_wrong_ndet.smv
             :language: smv
 
 The HyperLTL formula
@@ -65,17 +116,47 @@ outputs of a witness trace, reflecting that the optimised program does not expos
 
 .. tabs::
 
-    .. tab:: Loop Peeling
+    .. tab:: LP
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/LP.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/original/lp/LP.hq
             :language: hq
 
-    .. tab:: Expression Folding LP
+    .. tab:: LP Nondet
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/EFLP.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/lp/LP.hq
             :language: hq
 
-    .. tab:: Dead Branch Elimination
+    .. tab:: LP Loops
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/DBE.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_loops/lp/LP.hq
+            :language: hq
+
+    .. tab:: LP Loops w/ Bug
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_loops/lp/LP.hq
+            :language: hq
+
+    .. tab:: EFLP
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/original/eflp/EFLP.hq
+            :language: hq
+
+    .. tab:: EFLP Nondet
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/eflp/EFLP.hq
+            :language: hq
+
+    .. tab:: DBE
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/original/dbe/DBE.hq
+            :language: hq
+
+    .. tab:: DBE Nondet
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/dbe/DBE.hq
+            :language: hq
+
+    .. tab:: DBE Nondet w/ Bug
+
+        .. literalinclude :: ../benchmarks_ui/nusmv/security/compiler_opt/with_ndet/dbe/DBE.hq
             :language: hq

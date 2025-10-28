@@ -20,3 +20,4 @@ Welcome to HyperQB!
    download
    people
    publications
+   support

@@ -26,18 +26,18 @@ HyperQB is a push-button, bounded model checker for verifying hyperproperties. H
       - **HyperLTL grammar:**
       - **A-HLTL grammar:**
 
-   .. grid-item-card:: Running HyperQB
-      :class-card: sd-shadow-sm
+   Running HyperQB
+   ---------------
 
-      - **GUI-based (standalone and we-based):**
+      GUI-based (standalone and web-based)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
       Command-line usage
-      ------------------
+      ^^^^^^^^^^^^^^^
 
       This section provides a comprehensive overview of the command-line interface for HyperQB, detailing the various options and modes available for users to effectively utilize the tool. For details on input model languages and specification languages, please refer to the respective sections in this manual.
 
-      Synopsis
-      ^^^^^^^^
+      **Synopsis**
 
       .. code-block:: text
 
@@ -45,16 +45,14 @@ HyperQB is a push-button, bounded model checker for verifying hyperproperties. H
          hyperqb -f <FORMULA> -n <FILE>... -l
          hyperqb -f <FORMULA> -v <FILE>... -t <TOP_MODULE> -o <SMT2_FILE> -k <K> -s <SEM> [-m <B>] [-c] [-q]
 
-      Modes
-      ^^^^^
+      **Modes**
 
       Exactly **one** mode must be selected:
 
       - ``-l, --loop_conditions``: Use loop conditions instead of unrolling.
       - ``-k, --unrolling_bound <K>`` **with** ``-s, --semantics <SEM>``: Use bounded unrolling.
 
-      Inputs
-      ^^^^^^
+      **Inputs**
 
       Exactly **one** input model lanuage must be selected:
 
@@ -64,8 +62,7 @@ HyperQB is a push-button, bounded model checker for verifying hyperproperties. H
       - ``-f, --formula <FILE>``  
       **Required.** Hyperproperty formula file. (Path)
 
-      Option Details
-      ^^^^^^^^^^^^^^
+      **Option Details**
 
       - ``-v, --verilog <FILE>...``  
       Yosys build file(s). One or more paths. **Requires** ``--top`` and ``--yosys_output``. (Path)
@@ -97,8 +94,7 @@ HyperQB is a push-button, bounded model checker for verifying hyperproperties. H
       - ``-q, --qbf_solver``  
       Use QBF solver (default is Z3).
 
-      Examples
-      --------
+      **Examples**
 
       **Verilog + loop-conditions mode**
 

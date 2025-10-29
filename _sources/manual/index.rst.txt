@@ -37,11 +37,25 @@ In order to create a Yosys build script for HyperQB, users should follow these g
    3. **Write SMT Output**: use the `write_smt2` command to generate the SMT formula. Specify the output file path where the SMT formula will be saved. The option `-stdt` must be included to ensure compatibility with HyperQB.
 
 Here is an example of a simple Yosys build script for HyperQB from the FPU2 benchmark:
-.. code-block:: text
 
-   read_verilog -pwires benchmarks/verilog/divider/divider.v
-   prep -top divider -flatten
-   write_smt2 -stdt -wires model.smt2
+.. only:: html
+
+   .. raw:: html
+
+      <pre style="white-space: pre; overflow-x: auto; margin: 0 0 1em 0;">
+      read_verilog -pwires benchmarks/verilog/divider/divider.v
+      prep -top divider -flatten
+      write_smt2 -stdt -wires model.smt2
+      </pre>
+
+.. only:: not html
+
+   .. code-block:: text
+
+      read_verilog -pwires benchmarks/verilog/divider/divider.v
+      prep -top divider -flatten
+      write_smt2 -stdt -wires model.smt2
+
 
 Specification Languages
 ------------------------

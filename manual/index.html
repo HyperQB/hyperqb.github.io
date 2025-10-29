@@ -339,14 +339,12 @@
 </ol>
 </dd>
 </dl>
-<p>Here is an example of a simple Yosys build script for HyperQB from the FPU2 benchmark:
-.. code-block:: text</p>
-<blockquote>
-<div><p>read_verilog -pwires benchmarks/verilog/divider/divider.v
+<p>Here is an example of a simple Yosys build script for HyperQB from the FPU2 benchmark:</p>
+<pre style="white-space: pre; overflow-x: auto; margin: 0 0 1em 0;">
+read_verilog -pwires benchmarks/verilog/divider/divider.v
 prep -top divider -flatten
-write_smt2 -stdt -wires model.smt2</p>
-</div></blockquote>
-</section>
+write_smt2 -stdt -wires model.smt2
+</pre></section>
 </section>
 <section id="specification-languages">
 <h2>Specification Languages<a class="headerlink" href="#specification-languages" title="Permalink to this heading">¶</a></h2>

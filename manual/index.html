@@ -340,11 +340,12 @@
 </dd>
 </dl>
 <p>Here is an example of a simple Yosys build script for HyperQB from the FPU2 benchmark:</p>
-<pre style="white-space: pre; overflow-x: auto; margin: 0 0 1em 0;">
-read_verilog -pwires benchmarks/verilog/divider/divider.v
-prep -top divider -flatten
-write_smt2 -stdt -wires model.smt2
-</pre></section>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>read_verilog<span class="w"> </span>-pwires<span class="w"> </span>benchmarks/verilog/divider/divider.v
+prep<span class="w"> </span>-top<span class="w"> </span>divider<span class="w"> </span>-flatten
+write_smt2<span class="w"> </span>-stdt<span class="w"> </span>-wires<span class="w"> </span>model.smt2
+</pre></div>
+</div>
+</section>
 </section>
 <section id="specification-languages">
 <h2>Specification Languages<a class="headerlink" href="#specification-languages" title="Permalink to this heading">¶</a></h2>

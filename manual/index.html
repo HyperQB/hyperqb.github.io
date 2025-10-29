@@ -324,6 +324,29 @@
 <li><p><strong>Verilog</strong> is a hardware description language. The IEEE standard documentation of Verilog 2005 is available <a class="reference external" href="https://standards.ieee.org/ieee/1364/3641/">here</a>.</p></li>
 </ul>
 </div></blockquote>
+<section id="working-with-yosys">
+<h3>Working with Yosys<a class="headerlink" href="#working-with-yosys" title="Permalink to this heading">¶</a></h3>
+<p><strong>Yosys</strong> is an open-source framework for Verilog synthesis available <a class="reference external" href="https://yosyshq.net/yosys/">here</a>. HyperQB leverages Yosys to translate Verilog designs into SMT formulas suitable for model checking. To use Verilog models with HyperQB, users need to create Yosys build scripts that specify how to synthesize the Verilog code into SMT format.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Below is a general guide for creating Yosys build scripts for HyperQB. Specific commands and options may vary based on the Verilog design and the desired verification properties.</p>
+</div>
+<dl class="simple">
+<dt>In order to create a Yosys build script for HyperQB, users should follow these general steps:</dt><dd><ol class="arabic simple">
+<li><p><strong>Read the Verilog Design</strong>: use the <cite>read_verilog</cite> command to load the Verilog files into Yosys.</p></li>
+<li><p><strong>Prepare the Design for Verification</strong>: use the <cite>prep</cite> command to prepare the design for verification. This may include optimizations and transformations to simplify the design. The options <cite>-top &lt;TOP_MODULE&gt;</cite> and <cite>-flatten</cite> are often used to specify the top-level module and flatten the hierarchy when working with multiple modules.</p></li>
+<li><p><strong>Write SMT Output</strong>: use the <cite>write_smt2</cite> command to generate the SMT formula. Specify the output file path where the SMT formula will be saved. The option <cite>-stdt</cite> must be included to ensure compatibility with HyperQB.</p></li>
+</ol>
+</dd>
+</dl>
+<p>Here is an example of a simple Yosys build script for HyperQB from the FPU2 benchmark:
+.. code-block:: text</p>
+<blockquote>
+<div><p>read_verilog -pwires benchmarks/verilog/divider/divider.v
+prep -top divider -flatten
+write_smt2 -stdt -wires model.smt2</p>
+</div></blockquote>
+</section>
 </section>
 <section id="specification-languages">
 <h2>Specification Languages<a class="headerlink" href="#specification-languages" title="Permalink to this heading">¶</a></h2>
@@ -535,7 +558,10 @@ hyperqb -f &lt;FORMULA&gt; -v &lt;FILE&gt;... -t &lt;TOP_MODULE&gt; -o &lt;SMT2_
 <li><a class="reference internal" href="#source-code-installation">Source code installation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#modeling-languages">Modeling Languages</a></li>
+<li><a class="reference internal" href="#modeling-languages">Modeling Languages</a><ul>
+<li><a class="reference internal" href="#working-with-yosys">Working with Yosys</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#specification-languages">Specification Languages</a><ul>
 <li><a class="reference internal" href="#hyperltl-grammar">HyperLTL grammar</a></li>
 <li><a class="reference internal" href="#a-hltl-grammar">A-HLTL grammar</a></li>

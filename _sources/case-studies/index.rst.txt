@@ -23,7 +23,6 @@ benchmarks using the cards below.
       - :doc:`Generalized Non-interference: Banking Audit Logs (NuSMV) <security/gmni>`
       - :doc:`Concurrent Leakage Variants (NuSMV) <security/concleak>`
       - :doc:`Access-Controlled Database: Observational Equivalence (NuSMV) <security/acdb>`
-      - :doc:`Declassification by Enforcement: Refinement Check (NuSMV) <security/dbe>`
       - :doc:`Compiler Optimisations: Security-Preserving Refinement (NuSMV) <security/compiler_opt>`
       - :doc:`Cache Timing Attack: Observational Determinism (NuSMV) <security/cache_attack>`
       - :doc:`LED Blinker Modules (Verilog) <security/verilog/led>`

@@ -7,10 +7,11 @@ Installation
 
 MacOS Binary installation
 ^^^^^^^^^^^^^^^^^^^^^^
+.. TODO
 
 Source code installation
 ^^^^^^^^^^^^^^^^^^^^^^
-
+.. TODO
 
 Modeling Languages
 --------------------
@@ -20,6 +21,27 @@ HyperQB currently accepts input models in two languages:
    - **NuSMV** is a symbolic BBD-based model checker originated in CMU. The full documentation of the input language is available `here <https://nusmv.fbk.eu/user-manual.html>`_.
 
    - **Verilog** is a hardware description language. The IEEE standard documentation of Verilog 2005 is available `here <https://standards.ieee.org/ieee/1364/3641/>`_.
+
+Working with Yosys
+^^^^^^^^^^^^^^^^^^^^^^
+
+**Yosys** is an open-source framework for Verilog synthesis available `here <https://yosyshq.net/yosys/>`_. HyperQB leverages Yosys to translate Verilog designs into SMT formulas suitable for model checking. To use Verilog models with HyperQB, users need to create Yosys build scripts that specify how to synthesize the Verilog code into SMT format.
+
+.. note::
+
+   Below is a general guide for creating Yosys build scripts for HyperQB. Specific commands and options may vary based on the Verilog design and the desired verification properties.
+
+In order to create a Yosys build script for HyperQB, users should follow these general steps:
+   1. **Read the Verilog Design**: use the `read_verilog` command to load the Verilog files into Yosys.
+   2. **Prepare the Design for Verification**: use the `prep` command to prepare the design for verification. This may include optimizations and transformations to simplify the design. The options `-top <TOP_MODULE>` and `-flatten` are often used to specify the top-level module and flatten the hierarchy when working with multiple modules.
+   3. **Write SMT Output**: use the `write_smt2` command to generate the SMT formula. Specify the output file path where the SMT formula will be saved. The option `-stdt` must be included to ensure compatibility with HyperQB.
+
+Here is an example of a simple Yosys build script for HyperQB from the FPU2 benchmark:
+.. code-block:: text
+
+   read_verilog -pwires benchmarks/verilog/divider/divider.v
+   prep -top divider -flatten
+   write_smt2 -stdt -wires model.smt2
 
 Specification Languages
 ------------------------

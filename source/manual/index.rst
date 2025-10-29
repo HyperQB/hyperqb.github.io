@@ -38,24 +38,11 @@ In order to create a Yosys build script for HyperQB, users should follow these g
 
 Here is an example of a simple Yosys build script for HyperQB from the FPU2 benchmark:
 
-.. only:: html
+.. code-block:: bash
 
-   .. raw:: html
-
-      <pre style="white-space: pre; overflow-x: auto; margin: 0 0 1em 0;">
-      read_verilog -pwires benchmarks/verilog/divider/divider.v
-      prep -top divider -flatten
-      write_smt2 -stdt -wires model.smt2
-      </pre>
-
-.. only:: not html
-
-   .. code-block:: text
-
-      read_verilog -pwires benchmarks/verilog/divider/divider.v
-      prep -top divider -flatten
-      write_smt2 -stdt -wires model.smt2
-
+   read_verilog -pwires benchmarks/verilog/divider/divider.v
+   prep -top divider -flatten
+   write_smt2 -stdt -wires model.smt2
 
 Specification Languages
 ------------------------

@@ -342,19 +342,24 @@
 <section id="command-line-usage">
 <h3>Command-line usage<a class="headerlink" href="#command-line-usage" title="Permalink to this heading">¶</a></h3>
 <p>This section provides a comprehensive overview of the command-line interface for HyperQB, detailing the various options and modes available for users to effectively utilize the tool. For details on input model languages and specification languages, please refer to the respective sections in this manual.</p>
-<p><strong>Synopsis</strong></p>
+<section id="synopsis">
+<h4>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>hyperqb -f &lt;FORMULA&gt; -n &lt;FILE&gt;... -k &lt;K&gt; -s &lt;SEM&gt; [-m &lt;B&gt;] [-c] [-q]
 hyperqb -f &lt;FORMULA&gt; -n &lt;FILE&gt;... -l
 hyperqb -f &lt;FORMULA&gt; -v &lt;FILE&gt;... -t &lt;TOP_MODULE&gt; -o &lt;SMT2_FILE&gt; -k &lt;K&gt; -s &lt;SEM&gt; [-m &lt;B&gt;] [-c] [-q]
 </pre></div>
 </div>
-<p><strong>Modes</strong></p>
+</section>
+<section id="modes">
+<h4>Modes<a class="headerlink" href="#modes" title="Permalink to this heading">¶</a></h4>
 <p>Exactly <strong>one</strong> mode must be selected:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-l,</span> <span class="pre">--loop_conditions</span></code>: Use loop conditions instead of unrolling.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-k,</span> <span class="pre">--unrolling_bound</span> <span class="pre">&lt;K&gt;</span></code> <strong>with</strong> <code class="docutils literal notranslate"><span class="pre">-s,</span> <span class="pre">--semantics</span> <span class="pre">&lt;SEM&gt;</span></code>: Use bounded unrolling.</p></li>
 </ul>
-<p><strong>Inputs</strong></p>
+</section>
+<section id="inputs">
+<h4>Inputs<a class="headerlink" href="#inputs" title="Permalink to this heading">¶</a></h4>
 <p>Exactly <strong>one</strong> input model lanuage must be selected:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-v,</span> <span class="pre">--verilog</span> <span class="pre">&lt;FILE&gt;...</span></code>: Yosys build file(s). Requires <code class="docutils literal notranslate"><span class="pre">-t</span></code> and <code class="docutils literal notranslate"><span class="pre">-o</span></code>.</p></li>
@@ -362,52 +367,115 @@ hyperqb -f &lt;FORMULA&gt; -v &lt;FILE&gt;... -t &lt;TOP_MODULE&gt; -o &lt;SMT2_
 <li><p><code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--formula</span> <span class="pre">&lt;FILE&gt;</span></code></p></li>
 </ul>
 <p><strong>Required.</strong> Hyperproperty formula file. (Path)</p>
-<p><strong>Option Details</strong></p>
-<div class="important admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--formula</span> <span class="pre">&lt;FILE&gt;</span></code></p>
-<p><strong>Required.</strong> Hyperproperty formula file. <em>(Path)</em></p>
+</section>
+<section id="option-details">
+<h4>Option Details<a class="headerlink" href="#option-details" title="Permalink to this heading">¶</a></h4>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-1 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--formula</span> <span class="pre">&lt;FILE&gt;</span></code></div>
+<p class="sd-card-text"><strong>Required.</strong> Hyperproperty formula file. <em>(Path)</em></p>
 </div>
-<div class="note admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-v,</span> <span class="pre">--verilog</span> <span class="pre">&lt;FILE&gt;...</span></code></p>
-<p>Yosys build file(s). One or more paths. <strong>Requires</strong> <code class="docutils literal notranslate"><span class="pre">--top</span></code> and <code class="docutils literal notranslate"><span class="pre">--yosys_output</span></code>. <em>(Path)</em></p>
 </div>
-<div class="note admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--nusmv</span> <span class="pre">&lt;FILE&gt;...</span></code></p>
-<p>NuSMV file(s). One or more paths. <em>(Path)</em></p>
 </div>
-<div class="tip admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-t,</span> <span class="pre">--top</span> <span class="pre">&lt;TOP_MODULE&gt;</span></code></p>
-<p>Top module name. Default: <code class="docutils literal notranslate"><span class="pre">main</span></code>. <em>(String)</em></p>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-v,</span> <span class="pre">--verilog</span> <span class="pre">&lt;FILE&gt;...</span></code></div>
+<p class="sd-card-text">Yosys script(s). One or more paths, the number of paths provided should match the number of quantifiers in the provided formula file. <strong>Requires</strong> <code class="docutils literal notranslate"><span class="pre">--top</span></code> and <code class="docutils literal notranslate"><span class="pre">--yosys_output</span></code>. <em>(Path)</em></p>
 </div>
-<div class="tip admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--yosys_output</span> <span class="pre">&lt;SMT2_FILE&gt;</span></code></p>
-<p>Location of SMT2 file if using a build file. <em>(Path)</em></p>
 </div>
-<div class="tip admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-l,</span> <span class="pre">--loop_conditions</span></code></p>
-<p>Use loop conditions instead of unrolling. <em>(Flag)</em></p>
 </div>
-<div class="tip admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-k,</span> <span class="pre">--unrolling_bound</span> <span class="pre">&lt;K&gt;</span></code></p>
-<p>Unrolling bound. <em>(Unsigned integer)</em></p>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--nusmv</span> <span class="pre">&lt;FILE&gt;...</span></code></div>
+<p class="sd-card-text">NuSMV file(s). One or more paths, the number of paths provided should match the number of quantifiers in the provided formula file. <em>(Path)</em></p>
 </div>
-<div class="tip admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-s,</span> <span class="pre">--semantics</span> <span class="pre">&lt;SEM&gt;</span></code></p>
-<p>Choice of semantics: one of <code class="docutils literal notranslate"><span class="pre">pes</span></code>, <code class="docutils literal notranslate"><span class="pre">opt</span></code>, <code class="docutils literal notranslate"><span class="pre">hpes</span></code>, <code class="docutils literal notranslate"><span class="pre">hopt</span></code>. <em>(String)</em></p>
 </div>
-<div class="tip admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-m,</span> <span class="pre">--trajectory_bound</span> <span class="pre">&lt;B&gt;</span></code></p>
-<p>Trajectory bound. <em>(Unsigned integer)</em></p>
 </div>
-<div class="tip admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-c,</span> <span class="pre">--counterexample</span></code></p>
-<p>Generate counterexample if the formula is unsat. <em>(Flag)</em></p>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-t,</span> <span class="pre">--top</span> <span class="pre">&lt;TOP_MODULE&gt;</span></code></div>
+<p class="sd-card-text">Top module name, this should match the module specified in the yosys script files. <em>(String)</em></p>
 </div>
-<div class="tip admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-q,</span> <span class="pre">--qbf_solver</span></code></p>
-<p>Use QBF solver (default is Z3). <em>(Flag)</em></p>
 </div>
-<p><strong>Examples</strong></p>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--yosys_output</span> <span class="pre">&lt;SMT2_FILE&gt;</span></code></div>
+<p class="sd-card-text">Location of SMT2 file if using a build file, this should match the path specified in the yosys scripts. <em>(Path)</em></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-l,</span> <span class="pre">--loop_conditions</span></code></div>
+<p class="sd-card-text">Use loop conditions instead of unrolling. <em>(Flag)</em></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-k,</span> <span class="pre">--unrolling_bound</span> <span class="pre">&lt;K&gt;</span></code></div>
+<p class="sd-card-text">Unrolling bound. <em>(Unsigned integer)</em></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-s,</span> <span class="pre">--semantics</span> <span class="pre">&lt;SEM&gt;</span></code></div>
+<p class="sd-card-text">Choice of semantics: one of <code class="docutils literal notranslate"><span class="pre">pes</span></code>, <code class="docutils literal notranslate"><span class="pre">opt</span></code>, <code class="docutils literal notranslate"><span class="pre">hpes</span></code>, <code class="docutils literal notranslate"><span class="pre">hopt</span></code>. <em>(String)</em></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-m,</span> <span class="pre">--trajectory_bound</span> <span class="pre">&lt;B&gt;</span></code></div>
+<p class="sd-card-text">Trajectory bound. <em>(Unsigned integer)</em></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-c,</span> <span class="pre">--counterexample</span></code></div>
+<p class="sd-card-text">Generate counterexample if available. <em>(Flag)</em></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">-q,</span> <span class="pre">--qbf_solver</span></code></div>
+<p class="sd-card-text">Use QBF solver (default is Z3). <em>(Flag)</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h4>
 <p><strong>Verilog + loop-conditions mode</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hyperqb<span class="w"> </span>-f<span class="w"> </span>formula.hq<span class="w"> </span>-v<span class="w"> </span>build.ys<span class="w"> </span>build.ys<span class="w"> </span>-t<span class="w"> </span>main<span class="w"> </span>-o<span class="w"> </span>model.smt2<span class="w"> </span>-k<span class="w"> </span><span class="m">15</span><span class="w"> </span>-s<span class="w"> </span>pes<span class="w"> </span>-c
 </pre></div>
@@ -419,6 +487,7 @@ hyperqb -f &lt;FORMULA&gt; -v &lt;FILE&gt;... -t &lt;TOP_MODULE&gt; -o &lt;SMT2_
 <p><strong>NuSMV + loop-conditions mode</strong></p>
 <div class="toctree-wrapper compound">
 </div>
+</section>
 </section>
 </section>
 </section>
@@ -474,7 +543,14 @@ hyperqb -f &lt;FORMULA&gt; -v &lt;FILE&gt;... -t &lt;TOP_MODULE&gt; -o &lt;SMT2_
 </li>
 <li><a class="reference internal" href="#running-hyperqb">Running HyperQB</a><ul>
 <li><a class="reference internal" href="#gui-based-standalone-and-web-based">GUI-based (standalone and web-based)</a></li>
-<li><a class="reference internal" href="#command-line-usage">Command-line usage</a></li>
+<li><a class="reference internal" href="#command-line-usage">Command-line usage</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#modes">Modes</a></li>
+<li><a class="reference internal" href="#inputs">Inputs</a></li>
+<li><a class="reference internal" href="#option-details">Option Details</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

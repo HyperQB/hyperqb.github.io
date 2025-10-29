@@ -41,7 +41,8 @@ Command-line usage
 
 This section provides a comprehensive overview of the command-line interface for HyperQB, detailing the various options and modes available for users to effectively utilize the tool. For details on input model languages and specification languages, please refer to the respective sections in this manual.
 
-**Synopsis**
+Synopsis
+~~~~~~~~~
 
 .. code-block:: text
 
@@ -49,14 +50,16 @@ This section provides a comprehensive overview of the command-line interface for
    hyperqb -f <FORMULA> -n <FILE>... -l
    hyperqb -f <FORMULA> -v <FILE>... -t <TOP_MODULE> -o <SMT2_FILE> -k <K> -s <SEM> [-m <B>] [-c] [-q]
 
-**Modes**
+Modes
+~~~~~~~
 
 Exactly **one** mode must be selected:
 
 - ``-l, --loop_conditions``: Use loop conditions instead of unrolling.
 - ``-k, --unrolling_bound <K>`` **with** ``-s, --semantics <SEM>``: Use bounded unrolling.
 
-**Inputs**
+Inputs
+~~~~~~~
 
 Exactly **one** input model lanuage must be selected:
 
@@ -66,65 +69,69 @@ Exactly **one** input model lanuage must be selected:
 - ``-f, --formula <FILE>``  
 **Required.** Hyperproperty formula file. (Path)
 
-**Option Details**
+Option Details
+~~~~~~~~
 
-.. admonition:: ``-f, --formula <FILE>``
-   :class: important
+.. grid:: 2 2 2 1
+   :gutter: 2
 
-   **Required.** Hyperproperty formula file. *(Path)*
+   .. grid-item-card:: ``-f, --formula <FILE>``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-v, --verilog <FILE>...``
-   :class: note
+      **Required.** Hyperproperty formula file. *(Path)*
 
-   Yosys build file(s). One or more paths. **Requires** ``--top`` and ``--yosys_output``. *(Path)*
+   .. grid-item-card:: ``-v, --verilog <FILE>...``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-n, --nusmv <FILE>...``
-   :class: note
+      Yosys script(s). One or more paths, the number of paths provided should match the number of quantifiers in the provided formula file. **Requires** ``--top`` and ``--yosys_output``. *(Path)*
 
-   NuSMV file(s). One or more paths. *(Path)*
+   .. grid-item-card:: ``-n, --nusmv <FILE>...``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-t, --top <TOP_MODULE>``
-   :class: tip
+      NuSMV file(s). One or more paths, the number of paths provided should match the number of quantifiers in the provided formula file. *(Path)*
 
-   Top module name. Default: ``main``. *(String)*
+   .. grid-item-card:: ``-t, --top <TOP_MODULE>``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-o, --yosys_output <SMT2_FILE>``
-   :class: tip
+      Top module name, this should match the module specified in the yosys script files. *(String)*
 
-   Location of SMT2 file if using a build file. *(Path)*
+   .. grid-item-card:: ``-o, --yosys_output <SMT2_FILE>``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-l, --loop_conditions``
-   :class: tip
+      Location of SMT2 file if using a build file, this should match the path specified in the yosys scripts. *(Path)*
 
-   Use loop conditions instead of unrolling. *(Flag)*
+   .. grid-item-card:: ``-l, --loop_conditions``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-k, --unrolling_bound <K>``
-   :class: tip
+      Use loop conditions instead of unrolling. *(Flag)*
 
-   Unrolling bound. *(Unsigned integer)*
+   .. grid-item-card:: ``-k, --unrolling_bound <K>``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-s, --semantics <SEM>``
-   :class: tip
+      Unrolling bound. *(Unsigned integer)*
 
-   Choice of semantics: one of ``pes``, ``opt``, ``hpes``, ``hopt``. *(String)*
+   .. grid-item-card:: ``-s, --semantics <SEM>``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-m, --trajectory_bound <B>``
-   :class: tip
+      Choice of semantics: one of ``pes``, ``opt``, ``hpes``, ``hopt``. *(String)*
 
-   Trajectory bound. *(Unsigned integer)*
+   .. grid-item-card:: ``-m, --trajectory_bound <B>``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-c, --counterexample``
-   :class: tip
+      Trajectory bound. *(Unsigned integer)*
 
-   Generate counterexample if the formula is unsat. *(Flag)*
+   .. grid-item-card:: ``-c, --counterexample``
+      :class-card: sd-shadow-sm
 
-.. admonition:: ``-q, --qbf_solver``
-   :class: tip
+      Generate counterexample if available. *(Flag)*
 
-   Use QBF solver (default is Z3). *(Flag)*
+   .. grid-item-card:: ``-q, --qbf_solver``
+      :class-card: sd-shadow-sm
 
-   
-**Examples**
+      Use QBF solver (default is Z3). *(Flag)*
+
+Examples
+~~~~~~~
 
 **Verilog + loop-conditions mode**
 

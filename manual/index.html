@@ -363,46 +363,50 @@ hyperqb -f &lt;FORMULA&gt; -v &lt;FILE&gt;... -t &lt;TOP_MODULE&gt; -o &lt;SMT2_
 </ul>
 <p><strong>Required.</strong> Hyperproperty formula file. (Path)</p>
 <p><strong>Option Details</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-v,</span> <span class="pre">--verilog</span> <span class="pre">&lt;FILE&gt;...</span></code></p></li>
-</ul>
-<p>Yosys build file(s). One or more paths. <strong>Requires</strong> <code class="docutils literal notranslate"><span class="pre">--top</span></code> and <code class="docutils literal notranslate"><span class="pre">--yosys_output</span></code>. (Path)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--nusmv</span> <span class="pre">&lt;FILE&gt;...</span></code></p></li>
-</ul>
-<p>NuSMV file(s). One or more paths. (Path)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-t,</span> <span class="pre">--top</span> <span class="pre">&lt;TOP_MODULE&gt;</span></code></p></li>
-</ul>
-<p>Top module name. Default: <code class="docutils literal notranslate"><span class="pre">main</span></code>. (String)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--yosys_output</span> <span class="pre">&lt;SMT2_FILE&gt;</span></code></p></li>
-</ul>
-<p>Location of SMT2 file if using a build file. (Path)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-l,</span> <span class="pre">--loop_conditions</span></code></p></li>
-</ul>
-<p>Use loop conditions instead of unrolling.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-k,</span> <span class="pre">--unrolling_bound</span> <span class="pre">&lt;K&gt;</span></code></p></li>
-</ul>
-<p>Unrolling bound. (Unsigned integer)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-s,</span> <span class="pre">--semantics</span> <span class="pre">&lt;SEM&gt;</span></code></p></li>
-</ul>
-<p>Choice of semantics: one of <code class="docutils literal notranslate"><span class="pre">pes</span></code>, <code class="docutils literal notranslate"><span class="pre">opt</span></code>, <code class="docutils literal notranslate"><span class="pre">hpes</span></code>, <code class="docutils literal notranslate"><span class="pre">hopt</span></code>. (String)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-m,</span> <span class="pre">--trajectory_bound</span> <span class="pre">&lt;B&gt;</span></code></p></li>
-</ul>
-<p>Trajectory bound. (Unsigned integer)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-c,</span> <span class="pre">--counterexample</span></code></p></li>
-</ul>
-<p>Generate counterexample if the formula is unsat.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-q,</span> <span class="pre">--qbf_solver</span></code></p></li>
-</ul>
-<p>Use QBF solver (default is Z3).</p>
+<div class="important admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">--formula</span> <span class="pre">&lt;FILE&gt;</span></code></p>
+<p><strong>Required.</strong> Hyperproperty formula file. <em>(Path)</em></p>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-v,</span> <span class="pre">--verilog</span> <span class="pre">&lt;FILE&gt;...</span></code></p>
+<p>Yosys build file(s). One or more paths. <strong>Requires</strong> <code class="docutils literal notranslate"><span class="pre">--top</span></code> and <code class="docutils literal notranslate"><span class="pre">--yosys_output</span></code>. <em>(Path)</em></p>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--nusmv</span> <span class="pre">&lt;FILE&gt;...</span></code></p>
+<p>NuSMV file(s). One or more paths. <em>(Path)</em></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-t,</span> <span class="pre">--top</span> <span class="pre">&lt;TOP_MODULE&gt;</span></code></p>
+<p>Top module name. Default: <code class="docutils literal notranslate"><span class="pre">main</span></code>. <em>(String)</em></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-o,</span> <span class="pre">--yosys_output</span> <span class="pre">&lt;SMT2_FILE&gt;</span></code></p>
+<p>Location of SMT2 file if using a build file. <em>(Path)</em></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-l,</span> <span class="pre">--loop_conditions</span></code></p>
+<p>Use loop conditions instead of unrolling. <em>(Flag)</em></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-k,</span> <span class="pre">--unrolling_bound</span> <span class="pre">&lt;K&gt;</span></code></p>
+<p>Unrolling bound. <em>(Unsigned integer)</em></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-s,</span> <span class="pre">--semantics</span> <span class="pre">&lt;SEM&gt;</span></code></p>
+<p>Choice of semantics: one of <code class="docutils literal notranslate"><span class="pre">pes</span></code>, <code class="docutils literal notranslate"><span class="pre">opt</span></code>, <code class="docutils literal notranslate"><span class="pre">hpes</span></code>, <code class="docutils literal notranslate"><span class="pre">hopt</span></code>. <em>(String)</em></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-m,</span> <span class="pre">--trajectory_bound</span> <span class="pre">&lt;B&gt;</span></code></p>
+<p>Trajectory bound. <em>(Unsigned integer)</em></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-c,</span> <span class="pre">--counterexample</span></code></p>
+<p>Generate counterexample if the formula is unsat. <em>(Flag)</em></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">-q,</span> <span class="pre">--qbf_solver</span></code></p>
+<p>Use QBF solver (default is Z3). <em>(Flag)</em></p>
+</div>
 <p><strong>Examples</strong></p>
 <p><strong>Verilog + loop-conditions mode</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hyperqb<span class="w"> </span>-f<span class="w"> </span>formula.hq<span class="w"> </span>-v<span class="w"> </span>build.ys<span class="w"> </span>build.ys<span class="w"> </span>-t<span class="w"> </span>main<span class="w"> </span>-o<span class="w"> </span>model.smt2<span class="w"> </span>-k<span class="w"> </span><span class="m">15</span><span class="w"> </span>-s<span class="w"> </span>pes<span class="w"> </span>-c

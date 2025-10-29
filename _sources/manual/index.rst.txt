@@ -68,36 +68,62 @@ Exactly **one** input model lanuage must be selected:
 
 **Option Details**
 
-- ``-v, --verilog <FILE>...``  
-Yosys build file(s). One or more paths. **Requires** ``--top`` and ``--yosys_output``. (Path)
+.. admonition:: ``-f, --formula <FILE>``
+   :class: important
 
-- ``-n, --nusmv <FILE>...``  
-NuSMV file(s). One or more paths. (Path)
+   **Required.** Hyperproperty formula file. *(Path)*
 
-- ``-t, --top <TOP_MODULE>``  
-Top module name. Default: ``main``. (String)
+.. admonition:: ``-v, --verilog <FILE>...``
+   :class: note
 
-- ``-o, --yosys_output <SMT2_FILE>``  
-Location of SMT2 file if using a build file. (Path)
+   Yosys build file(s). One or more paths. **Requires** ``--top`` and ``--yosys_output``. *(Path)*
 
-- ``-l, --loop_conditions``  
-Use loop conditions instead of unrolling.
+.. admonition:: ``-n, --nusmv <FILE>...``
+   :class: note
 
-- ``-k, --unrolling_bound <K>``  
-Unrolling bound. (Unsigned integer)
+   NuSMV file(s). One or more paths. *(Path)*
 
-- ``-s, --semantics <SEM>``  
-Choice of semantics: one of ``pes``, ``opt``, ``hpes``, ``hopt``. (String)
+.. admonition:: ``-t, --top <TOP_MODULE>``
+   :class: tip
 
-- ``-m, --trajectory_bound <B>``  
-Trajectory bound. (Unsigned integer)
+   Top module name. Default: ``main``. *(String)*
 
-- ``-c, --counterexample``  
-Generate counterexample if the formula is unsat.
+.. admonition:: ``-o, --yosys_output <SMT2_FILE>``
+   :class: tip
 
-- ``-q, --qbf_solver``  
-Use QBF solver (default is Z3).
+   Location of SMT2 file if using a build file. *(Path)*
 
+.. admonition:: ``-l, --loop_conditions``
+   :class: tip
+
+   Use loop conditions instead of unrolling. *(Flag)*
+
+.. admonition:: ``-k, --unrolling_bound <K>``
+   :class: tip
+
+   Unrolling bound. *(Unsigned integer)*
+
+.. admonition:: ``-s, --semantics <SEM>``
+   :class: tip
+
+   Choice of semantics: one of ``pes``, ``opt``, ``hpes``, ``hopt``. *(String)*
+
+.. admonition:: ``-m, --trajectory_bound <B>``
+   :class: tip
+
+   Trajectory bound. *(Unsigned integer)*
+
+.. admonition:: ``-c, --counterexample``
+   :class: tip
+
+   Generate counterexample if the formula is unsat. *(Flag)*
+
+.. admonition:: ``-q, --qbf_solver``
+   :class: tip
+
+   Use QBF solver (default is Z3). *(Flag)*
+
+   
 **Examples**
 
 **Verilog + loop-conditions mode**

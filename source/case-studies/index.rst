@@ -24,6 +24,7 @@ benchmarks using the cards below.
       - :doc:`Concurrent Leakage Variants (NuSMV) <security/concleak>`
       - :doc:`Access-Controlled Database: Observational Equivalence (NuSMV) <security/acdb>`
       - :doc:`Compiler Optimisations: Security-Preserving Refinement (NuSMV) <security/compiler_opt>`
+      - :doc:`Linearizability of Construction-Then-Read: Eliminating Partial Initialization (NuSMV) <security/constructor>`
       - :doc:`Cache Timing Attack: Observational Determinism (NuSMV) <security/cache_attack>`
       - :doc:`LED Blinker Modules (Verilog) <security/verilog/led>`
       - :doc:`Observational Determinism: SPI Bus Secondary (Verilog) <security/verilog/spi>`

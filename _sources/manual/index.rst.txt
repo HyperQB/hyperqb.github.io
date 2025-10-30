@@ -68,12 +68,12 @@ HyperQB provides a user-friendly graphical interface for users who prefer not to
 This section provides instructions on how to use the GUI version of HyperQB, including how to load models, specify properties, and view results.
 
 .. figure:: ../_static/Basic-GUI.png
-   :scale: 70 %
+   :width: 70 %
    :alt: GUI of HyperQB
    :align: center
 
 .. figure:: ../_static/Verilog-GUI.png
-   :scale: 70 %
+   :width: 70 %
    :alt: Verilog GUI of HyperQB
    :align: center
 

@@ -55,4 +55,7 @@ This requirement can be specified as simplified non-interference with declassifi
 
 References
 ----------
-.. [Arden12] `O. Arden, M. D. George, J. Liu, K. Vikram, A. Askarov, and A. C. Myers. Sharing Mobile Code Securely with Information Flow Control. Proceedings of the 2012 IEEE Symposium on Security and Privacy (SP '12), 191–205. IEEE Computer Society, 2012. <https://doi.org/10.1109/SP.2012.22>`_
+
+.. _Arden12:
+
+- [Arden12] `O. Arden, M. D. George, J. Liu, K. Vikram, A. Askarov, and A. C. Myers. Sharing Mobile Code Securely with Information Flow Control. Proceedings of the 2012 IEEE Symposium on Security and Privacy (SP '12), 191-205. IEEE Computer Society, 2012. <https://doi.org/10.1109/SP.2012.22>`_

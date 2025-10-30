@@ -308,7 +308,7 @@
 <h1>Non-Interference Until Close: Secure Winner Disclosure in Fixed-Bid Auctions (NuSMV)<a class="headerlink" href="#non-interference-until-close-secure-winner-disclosure-in-fixed-bid-auctions-nusmv" title="Permalink to this heading">¶</a></h1>
 <section id="description-of-the-case-study">
 <h2>Description of the Case Study<a class="headerlink" href="#description-of-the-case-study" title="Permalink to this heading">¶</a></h2>
-<p>In this case study, we model a real-world bidding system adopted from <a class="reference internal" href="#arden12" id="id1"><span>[Arden12]</span></a>. The bidding service accepts a fixed, predetermined number of bids during an active bidding phase. All bids are processed and compared internally, and no user-visible indication of the winner, or any information that could allow users to infer the winner, is released before the bidding phase ends and all bids have been received.</p>
+<p>In this case study, we model a real-world bidding system adopted from <span id="id1">[Arden12]</span>. The bidding service accepts a fixed, predetermined number of bids during an active bidding phase. All bids are processed and compared internally, and no user-visible indication of the winner, or any information that could allow users to infer the winner, is released before the bidding phase ends and all bids have been received.</p>
 <p>The intended security requirement is a simplified non-interference property with declassification at the moment the auction closes. Concretely, throughout the bidding phase the observable outputs must be independent of the bid values (no premature leakage); only when the auction ends is a single piece of information, the final winner, declassified and made observable. This ensures that intermediate outputs cannot influence participant behavior or reveal partial outcomes, while still allowing the correct winner to be announced once the process is complete.</p>
 <p>This case study evaluates four versions: three are satisfiable and one is unsatisfiable.</p>
 </section>
@@ -666,12 +666,9 @@
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
-<div role="list" class="citation-list">
-<div class="citation" id="arden12" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Arden12</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://doi.org/10.1109/SP.2012.22">O. Arden, M. D. George, J. Liu, K. Vikram, A. Askarov, and A. C. Myers. Sharing Mobile Code Securely with Information Flow Control. Proceedings of the 2012 IEEE Symposium on Security and Privacy (SP ‘12), 191–205. IEEE Computer Society, 2012.</a></p>
-</div>
-</div>
+<ul class="simple" id="arden12">
+<li><p>[Arden12] <a class="reference external" href="https://doi.org/10.1109/SP.2012.22">O. Arden, M. D. George, J. Liu, K. Vikram, A. Askarov, and A. C. Myers. Sharing Mobile Code Securely with Information Flow Control. Proceedings of the 2012 IEEE Symposium on Security and Privacy (SP ‘12), 191-205. IEEE Computer Society, 2012.</a></p></li>
+</ul>
 </section>
 </section>
 

@@ -351,42 +351,25 @@ write_smt2<span class="w"> </span>-stdt<span class="w"> </span>-wires<span class
 <h2>Specification Languages<a class="headerlink" href="#specification-languages" title="Permalink to this heading">¶</a></h2>
 <section id="hyperltl-a-hltl-grammar">
 <h3>HyperLTL &amp; A-HLTL grammar<a class="headerlink" href="#hyperltl-a-hltl-grammar" title="Permalink to this heading">¶</a></h3>
-<p>HyperQB supports the specification of hyperproperties using HyperLTL and A-HLTL. The following is the formal grammar for both specification languages supported by HyperQB as implemented using the <cite>pest</cite> parser generator, allowing for modular and extensible parsing of hyperproperty formulas:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>WHITESPACE = _{ &quot; &quot; | &quot;\t&quot; | &quot;\r\n&quot; | &quot;\n&quot; }
+<p>HyperQB supports the specification of hyperproperties using HyperLTL and A-HLTL. The following is the formal grammar for both specification languages supported by HyperQB, implemented using the <cite>pest</cite> parser generator allowing for modular and extensible parsing of hyperproperty formulas:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>path_formula ::=  (&quot;forall&quot; | &quot;exists&quot;) pid . form_rec
+traj_formula ::= (&quot;A&quot; | &quot;E&quot; ) tid . AHLTL_rec
 
-path_formula = { (&quot;Forall&quot; | &quot;Exists&quot;) ~ ident ~ &quot;.&quot; ~ form_rec }
-form_rec = { path_formula | traj_formula | inner_hltl }
-traj_formula = { (&quot;A&quot; | &quot;E&quot;) ~ ident ~ &quot;.&quot; ~ ahltl_form_rec }
-ahltl_form_rec = { traj_formula | inner_altl }
+form_rec     ::= path_formula | traj_formula | inner_HLTL
+AHLTL_rec    ::= traj_formula | inner_AHLTL
 
-inner_hltl = { hequal }
-inner_altl = { aequal }
+inner_HLTL   ::= hform          inner_AHLTL  ::= aform
 
-hequal = { himpl ~ (&quot;=&quot; ~ hequal)? }
-himpl = { hdisj ~ (&quot;-&gt;&quot; ~ himpl)? }
-hdisj = { hconj ~ (&quot;|&quot; ~ hdisj)? }
-hconj = { huntl ~ (&quot;&amp;&quot; ~ hconj)? }
-huntl = { hrels ~ (&quot;U&quot; ~ huntl)? }
-hrels = { hfactor ~ (&quot;R&quot; ~ hrels)? }
-hfactor = { unop ~ hfactor | &quot;(&quot; ~ inner_hltl ~ &quot;)&quot; | hltl_atom }
-hltl_atom = { ident ~ &quot;[&quot; ~ ident ~ &quot;]&quot; | constant | number }
+hform ::= hform binary_op hform | unary_op hform | h_atom
+aform ::= aform binary_op aform | unary_op aform | a_atom
 
-aequal = { aimpl ~ (&quot;=&quot; ~ aequal)? }
-aimpl = { adisj ~ (&quot;-&gt;&quot; ~ aimpl)? }
-adisj = { aconj ~ (&quot;|&quot; ~ adisj)? }
-aconj = { auntl ~ (&quot;&amp;&quot; ~ aconj)? }
-auntl = { arels ~ (&quot;U&quot; ~ auntl)? }
-arels = { afactor ~ (&quot;R&quot; ~ arels)? }
-afactor = { aunop ~ afactor | &quot;(&quot; ~ inner_altl ~ &quot;)&quot; | altl_atom }
-altl_atom = { ident ~ &quot;[&quot; ~ident~ &quot;]&quot; ~ &quot;[&quot; ~ ident ~ &quot;]&quot; | constant | number}
+h_atom ::= id[pid] | constant | number | &quot;(&quot; hform &quot;)&quot;
+a_atom ::= id[pid][tid] | constant | number | &quot;(&quot; aform &quot;)&quot;
 
-aunop = { &quot;G&quot; | &quot;F&quot; | &quot;~&quot; }
-unop = { &quot;G&quot; | &quot;F&quot; | &quot;X&quot; | &quot;~&quot; }
-ident = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | &quot;_&quot; | &quot;.&quot;)* }
-constant = {&quot;TRUE&quot; | &quot;FALSE&quot;}
-number = @{ ASCII_DIGIT+ | &quot;#b&quot; ~ (&quot;0&quot; | &quot;1&quot;)+ }
+binary_op ::= &quot;U&quot; | &quot;R&quot; | &quot;=&quot; | &quot;-&gt;&quot; | &quot;&amp;&quot; | &quot;|&quot;
+unary_op  ::= &quot;G&quot; | &quot;F&quot; | &quot;X&quot; | &quot;~&quot;
 
-formula = _{ SOI ~ path_formula ~ EOI }
+constant ::= &quot;TRUE&quot; | &quot;FALSE&quot;    number ::= [0-9]+ | &quot;#b&quot; (0|1)+
 </pre></div>
 </div>
 </section>

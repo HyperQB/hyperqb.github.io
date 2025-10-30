@@ -44,7 +44,7 @@ This requirement can be specified as simplified non-interference with declassifi
 
 .. math::
 
-   \varphi_{bid}^{\text{NI-D}} = \forall \pi_1.\forall \pi_2.\ \Box\left( \mathit{winner}_{\pi_1} = \mathit{winner}_{\pi_2} \right) \mathbin{\mathbf{W}} #_{\pi_1}
+   \varphi_{bid}^{\text{NI-D}} = \forall \pi_1.\forall \pi_2.\ \Box\left( \mathit{winner}_{\pi_1} = \mathit{winner}_{\pi_2} \right) \mathbin{\mathbf{W}} \#_{\pi_1}
 
 .. tabs::
 

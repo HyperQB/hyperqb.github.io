@@ -72,11 +72,6 @@ This section provides instructions on how to use the GUI version of HyperQB, inc
    :alt: GUI of HyperQB
    :align: center
 
-.. figure:: ../_static/Verilog-GUI.png
-   :width: 80 %
-   :alt: Verilog GUI of HyperQB
-   :align: center
-
 1. **File Management**: Contains the files neeeded for verification. Users can load NuSMV files or Yosys build scripts and verilog designs depending on the model language selected. The formula file must also be loaded here.
 
 2. **Language Selection**: Users can select the input model language (NuSMV or Verilog) using radio buttons. The selection will determine the type of files that can be loaded.
@@ -96,6 +91,13 @@ This section provides instructions on how to use the GUI version of HyperQB, inc
 9. **Counter Example Visualization**: If counterexample generation is enabled and a counterexample is found, this section will display the counterexample trace for analysis graphically.
 
 10. **Run Button**: Initiates the verification process with the specified settings and loaded files.
+
+If Verilog is selected as the input model language, the GUI will adjust to accommodate Verilog-specific inputs:
+
+.. figure:: ../_static/Verilog-GUI.png
+   :width: 80 %
+   :alt: Verilog GUI of HyperQB
+   :align: center
 
 11. **Top Module Input**: When using Verilog models, users must specify the top module name (equivalent to ``-t``) using a text input field. This field only appears when the Verilog language option is selected.
 

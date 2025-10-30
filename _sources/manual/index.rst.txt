@@ -47,15 +47,48 @@ Here is an example of a simple Yosys build script for HyperQB from the FPU2 benc
 Specification Languages
 ------------------------
 
-HyperLTL grammar
+HyperLTL & A-HLTL grammar
 ^^^^^^^^^^^^^^^^
 
-.. TODO
+HyperQB supports the specification of hyperproperties using HyperLTL and A-HLTL. The following is the formal grammar for both specification languages supported by HyperQB as implemented using the `pest` parser generator, allowing for modular and extensible parsing of hyperproperty formulas:
 
-A-HLTL grammar
-^^^^^^^^^^^^^^^
+.. code-block:: text
 
-.. TODO
+   WHITESPACE = _{ " " | "\t" | "\r\n" | "\n" }
+    
+   path_formula = { ("Forall" | "Exists") ~ ident ~ "." ~ form_rec }
+   form_rec = { path_formula | traj_formula | inner_hltl }
+   traj_formula = { ("A" | "E") ~ ident ~ "." ~ ahltl_form_rec }
+   ahltl_form_rec = { traj_formula | inner_altl }
+   
+   inner_hltl = { hequal } 
+   inner_altl = { aequal }
+   
+   hequal = { himpl ~ ("=" ~ hequal)? }
+   himpl = { hdisj ~ ("->" ~ himpl)? }
+   hdisj = { hconj ~ ("|" ~ hdisj)? }
+   hconj = { huntl ~ ("&" ~ hconj)? }
+   huntl = { hrels ~ ("U" ~ huntl)? }
+   hrels = { hfactor ~ ("R" ~ hrels)? }
+   hfactor = { unop ~ hfactor | "(" ~ inner_hltl ~ ")" | hltl_atom }
+   hltl_atom = { ident ~ "[" ~ ident ~ "]" | constant | number }
+   
+   aequal = { aimpl ~ ("=" ~ aequal)? }
+   aimpl = { adisj ~ ("->" ~ aimpl)? }
+   adisj = { aconj ~ ("|" ~ adisj)? }
+   aconj = { auntl ~ ("&" ~ aconj)? }
+   auntl = { arels ~ ("U" ~ auntl)? }
+   arels = { afactor ~ ("R" ~ arels)? }
+   afactor = { aunop ~ afactor | "(" ~ inner_altl ~ ")" | altl_atom }
+   altl_atom = { ident ~ "[" ~ident~ "]" ~ "[" ~ ident ~ "]" | constant | number}
+   
+   aunop = { "G" | "F" | "~" }
+   unop = { "G" | "F" | "X" | "~" }
+   ident = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_" | ".")* }
+   constant = {"TRUE" | "FALSE"}
+   number = @{ ASCII_DIGIT+ | "#b" ~ ("0" | "1")+ }
+   
+   formula = _{ SOI ~ path_formula ~ EOI }
 
 Running HyperQB
 ---------------

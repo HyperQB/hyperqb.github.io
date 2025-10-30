@@ -360,6 +360,27 @@ write_smt2<span class="w"> </span>-stdt<span class="w"> </span>-wires<span class
 <h2>Running HyperQB<a class="headerlink" href="#running-hyperqb" title="Permalink to this heading">¶</a></h2>
 <section id="gui-based-standalone-and-web-based">
 <h3>GUI-based (standalone and web-based)<a class="headerlink" href="#gui-based-standalone-and-web-based" title="Permalink to this heading">¶</a></h3>
+<p>HyperQB provides a user-friendly graphical interface for users who prefer not to use the command line. The GUI version of HyperQB can be run as a standalone application or accessed via a web-based interface.</p>
+<p>This section provides instructions on how to use the GUI version of HyperQB, including how to load models, specify properties, and view results.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="manual/_static/Basic-GUI.png"><img alt="GUI of HyperQB" src="manual/_static/Basic-GUI.png" /></a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="manual/_static/Verilog-GUI.png"><img alt="Verilog GUI of HyperQB" src="manual/_static/Verilog-GUI.png" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p><strong>File Management</strong>: Contains the files neeeded for verification. Users can load NuSMV files or Yosys build scripts and verilog designs depending on the model language selected. The formula file must also be loaded here.</p></li>
+<li><p><strong>Language Selection</strong>: Users can select the input model language (NuSMV or Verilog) using radio buttons. The selection will determine the type of files that can be loaded.</p></li>
+<li><p><strong>Options Panel</strong>: Users can specify use of loop conditions (equivalent to <code class="docutils literal notranslate"><span class="pre">-l</span></code>), counterexample generation (equivalent to <code class="docutils literal notranslate"><span class="pre">-c</span></code>), and QBF solver usage (equivalent to <code class="docutils literal notranslate"><span class="pre">-q</span></code>) using checkboxes.</p></li>
+<li><p><strong>Unrolling Bound</strong>: Users can specify the unrolling bound (equivalent to <code class="docutils literal notranslate"><span class="pre">-k</span></code>) using a text input field.</p></li>
+<li><p><strong>Semantics Selection</strong>: Users can select the semantics (<code class="docutils literal notranslate"><span class="pre">pes</span></code>, <code class="docutils literal notranslate"><span class="pre">opt</span></code>, <code class="docutils literal notranslate"><span class="pre">hpes</span></code>, <code class="docutils literal notranslate"><span class="pre">hopt</span></code>) using a dropdown menu (equivalent to <code class="docutils literal notranslate"><span class="pre">-s</span></code>).</p></li>
+<li><p><strong>Trajectory Bound</strong>: Users can specify the trajectory bound (equivalent to <code class="docutils literal notranslate"><span class="pre">-m</span></code>) using a text input field.</p></li>
+<li><p><strong>File Upload and Benchmark Selection</strong>: Users can upload files directly or select from predefined benchmarks for quick testing. Note that selecting the input language will filter the available benchmarks accordingly.</p></li>
+<li><p><strong>Console Output</strong>: Displays the output of the verification process, including results and any error messages. Displays the same information as the command-line output.</p></li>
+<li><p><strong>Counter Example Visualization</strong>: If counterexample generation is enabled and a counterexample is found, this section will display the counterexample trace for analysis graphically.</p></li>
+<li><p><strong>Run Button</strong>: Initiates the verification process with the specified settings and loaded files.</p></li>
+<li><p><strong>Top Module Input</strong>: When using Verilog models, users must specify the top module name (equivalent to <code class="docutils literal notranslate"><span class="pre">-t</span></code>) using a text input field. This field only appears when the Verilog language option is selected.</p></li>
+</ol>
 </section>
 <section id="command-line-usage">
 <h3>Command-line usage<a class="headerlink" href="#command-line-usage" title="Permalink to this heading">¶</a></h3>
@@ -498,15 +519,28 @@ hyperqb -f &lt;FORMULA&gt; -v &lt;FILE&gt;... -t &lt;TOP_MODULE&gt; -o &lt;SMT2_
 </section>
 <section id="examples">
 <h4>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h4>
-<p><strong>Verilog + loop-conditions mode</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hyperqb<span class="w"> </span>-f<span class="w"> </span>formula.hq<span class="w"> </span>-v<span class="w"> </span>build.ys<span class="w"> </span>build.ys<span class="w"> </span>-t<span class="w"> </span>main<span class="w"> </span>-o<span class="w"> </span>model.smt2<span class="w"> </span>-k<span class="w"> </span><span class="m">15</span><span class="w"> </span>-s<span class="w"> </span>pes<span class="w"> </span>-c
-</pre></div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-1 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">hyperqb</span> <span class="pre">-f</span> <span class="pre">formula.hq</span> <span class="pre">-v</span> <span class="pre">build.ys</span> <span class="pre">build.ys</span> <span class="pre">-t</span> <span class="pre">main</span> <span class="pre">-o</span> <span class="pre">model.smt2</span> <span class="pre">-k</span> <span class="pre">15</span> <span class="pre">-s</span> <span class="pre">pes</span> <span class="pre">-c</span></code></div>
+<p class="sd-card-text">Verilog with model with 2 models and counterexample generation</p>
 </div>
-<p><strong>Verilog with model with 2 models and counterexample generation</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hyperqb<span class="w"> </span>-n<span class="w"> </span>benchmarks/loop_conditions/mm/mm1.smv<span class="w"> </span>benchmarks/loop_conditions/mm/mm2.smv<span class="w"> </span>-f<span class="w"> </span>benchmarks/loop_conditions/mm/mm.hq<span class="w"> </span>-l
-</pre></div>
 </div>
-<p><strong>NuSMV + loop-conditions mode</strong></p>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<code class="docutils literal notranslate"><span class="pre">hyperqb</span> <span class="pre">-n</span> <span class="pre">benchmarks/loop_conditions/mm/mm1.smv</span> <span class="pre">benchmarks/loop_conditions/mm/mm2.smv</span> <span class="pre">-f</span> <span class="pre">benchmarks/loop_conditions/mm/mm.hq</span> <span class="pre">-l</span></code></div>
+<p class="sd-card-text">NuSMV model with 2 models using loop-conditions mode</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </section>

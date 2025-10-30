@@ -1,4 +1,4 @@
-Constructor (NuSMV)
+Linearizability of Construction-Then-Read: Eliminating Partial Initialization (NuSMV)
 ===================================
 
 Description of the Case Study
@@ -13,12 +13,12 @@ The NuSMV model(s)
 
     .. tab:: Concurrent
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/constructor/constructor_conc.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/constructor/constructor_conc.smv
             :language: smv
 
     .. tab:: Sequential
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/constructor/constructor_seq.smv
+        .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/constructor/constructor_seq.smv
             :language: smv
 
 The HyperLTL formula
@@ -34,7 +34,7 @@ Linearizability here requires that every concurrent execution of the constructio
 
     .. tab:: Case Constructor
 
-        .. literalinclude :: ../benchmarks_ui/nusmv/security/constructor/linearizability.hq
+        .. literalinclude :: ../benchmarks_ui/nusmv/concurrency/constructor/linearizability.hq
             :language: hq
 
 References

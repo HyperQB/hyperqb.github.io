@@ -92,14 +92,18 @@ This section provides instructions on how to use the GUI version of HyperQB, inc
 
 10. **Run Button**: Initiates the verification process with the specified settings and loaded files.
 
-If Verilog is selected as the input model language, the GUI will adjust to accommodate Verilog-specific inputs:
+
+.. note::
+   If Verilog is selected as the input model language, the GUI will adjust to accommodate Verilog-specific inputs:
 
 .. figure:: ../_static/Verilog-GUI.png
    :width: 80 %
    :alt: Verilog GUI of HyperQB
    :align: center
 
+
 11. **Top Module Input**: When using Verilog models, users must specify the top module name (equivalent to ``-t``) using a text input field. This field only appears when the Verilog language option is selected.
+
 
 Command-line usage
 ^^^^^^^^^^^^^^^

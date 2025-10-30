@@ -50,14 +50,54 @@ Specification Languages
 HyperLTL grammar
 ^^^^^^^^^^^^^^^^
 
+.. TODO
+
 A-HLTL grammar
 ^^^^^^^^^^^^^^^
+
+.. TODO
 
 Running HyperQB
 ---------------
 
 GUI-based (standalone and web-based)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+HyperQB provides a user-friendly graphical interface for users who prefer not to use the command line. The GUI version of HyperQB can be run as a standalone application or accessed via a web-based interface.
+
+This section provides instructions on how to use the GUI version of HyperQB, including how to load models, specify properties, and view results.
+
+.. figure:: _static/Basic-GUI.png
+   :scale: 70 %
+   :alt: GUI of HyperQB
+   :align: center
+
+.. figure:: _static/Verilog-GUI.png
+   :scale: 70 %
+   :alt: Verilog GUI of HyperQB
+   :align: center
+
+1. **File Management**: Contains the files neeeded for verification. Users can load NuSMV files or Yosys build scripts and verilog designs depending on the model language selected. The formula file must also be loaded here.
+
+2. **Language Selection**: Users can select the input model language (NuSMV or Verilog) using radio buttons. The selection will determine the type of files that can be loaded.
+
+3. **Options Panel**: Users can specify use of loop conditions (equivalent to ``-l``), counterexample generation (equivalent to ``-c``), and QBF solver usage (equivalent to ``-q``) using checkboxes.
+
+4. **Unrolling Bound**: Users can specify the unrolling bound (equivalent to ``-k``) using a text input field.
+
+5. **Semantics Selection**: Users can select the semantics (``pes``, ``opt``, ``hpes``, ``hopt``) using a dropdown menu (equivalent to ``-s``).
+
+6. **Trajectory Bound**: Users can specify the trajectory bound (equivalent to ``-m``) using a text input field.
+
+7. **File Upload and Benchmark Selection**: Users can upload files directly or select from predefined benchmarks for quick testing. Note that selecting the input language will filter the available benchmarks accordingly.
+
+8. **Console Output**: Displays the output of the verification process, including results and any error messages. Displays the same information as the command-line output.
+
+9. **Counter Example Visualization**: If counterexample generation is enabled and a counterexample is found, this section will display the counterexample trace for analysis graphically.
+
+10. **Run Button**: Initiates the verification process with the specified settings and loaded files.
+
+11. **Top Module Input**: When using Verilog models, users must specify the top module name (equivalent to ``-t``) using a text input field. This field only appears when the Verilog language option is selected.
 
 Command-line usage
 ^^^^^^^^^^^^^^^
@@ -156,19 +196,18 @@ Option Details
 Examples
 ~~~~~~~
 
-**Verilog + loop-conditions mode**
+.. grid:: 2 2 2 1
+   :gutter: 2
 
-.. code-block:: bash
+   .. grid-item-card:: ``hyperqb -f formula.hq -v build.ys build.ys -t main -o model.smt2 -k 15 -s pes -c``
+      :class-card: sd-shadow-sm
+   
+      Verilog with model with 2 models and counterexample generation
 
-   hyperqb -f formula.hq -v build.ys build.ys -t main -o model.smt2 -k 15 -s pes -c
-
-**Verilog with model with 2 models and counterexample generation**
-
-.. code-block:: bash
-
-   hyperqb -n benchmarks/loop_conditions/mm/mm1.smv benchmarks/loop_conditions/mm/mm2.smv -f benchmarks/loop_conditions/mm/mm.hq -l
-
-**NuSMV + loop-conditions mode**
+   .. grid-item-card:: ``hyperqb -n benchmarks/loop_conditions/mm/mm1.smv benchmarks/loop_conditions/mm/mm2.smv -f benchmarks/loop_conditions/mm/mm.hq -l``
+      :class-card: sd-shadow-sm
+   
+      NuSMV model with 2 models using loop-conditions mode
 
 
 .. toctree::

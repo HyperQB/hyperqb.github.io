@@ -365,9 +365,6 @@ write_smt2<span class="w"> </span>-stdt<span class="w"> </span>-wires<span class
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/Basic-GUI.png"><img alt="GUI of HyperQB" src="../_images/Basic-GUI.png" style="width: 100%;" /></a>
 </figure>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/Verilog-GUI.png"><img alt="Verilog GUI of HyperQB" src="../_images/Verilog-GUI.png" style="width: 80%;" /></a>
-</figure>
 <ol class="arabic simple">
 <li><p><strong>File Management</strong>: Contains the files neeeded for verification. Users can load NuSMV files or Yosys build scripts and verilog designs depending on the model language selected. The formula file must also be loaded here.</p></li>
 <li><p><strong>Language Selection</strong>: Users can select the input model language (NuSMV or Verilog) using radio buttons. The selection will determine the type of files that can be loaded.</p></li>
@@ -379,6 +376,12 @@ write_smt2<span class="w"> </span>-stdt<span class="w"> </span>-wires<span class
 <li><p><strong>Console Output</strong>: Displays the output of the verification process, including results and any error messages. Displays the same information as the command-line output.</p></li>
 <li><p><strong>Counter Example Visualization</strong>: If counterexample generation is enabled and a counterexample is found, this section will display the counterexample trace for analysis graphically.</p></li>
 <li><p><strong>Run Button</strong>: Initiates the verification process with the specified settings and loaded files.</p></li>
+</ol>
+<p>If Verilog is selected as the input model language, the GUI will adjust to accommodate Verilog-specific inputs:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/Verilog-GUI.png"><img alt="Verilog GUI of HyperQB" src="../_images/Verilog-GUI.png" style="width: 80%;" /></a>
+</figure>
+<ol class="arabic simple" start="11">
 <li><p><strong>Top Module Input</strong>: When using Verilog models, users must specify the top module name (equivalent to <code class="docutils literal notranslate"><span class="pre">-t</span></code>) using a text input field. This field only appears when the Verilog language option is selected.</p></li>
 </ol>
 </section>

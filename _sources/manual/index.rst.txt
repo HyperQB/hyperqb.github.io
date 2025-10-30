@@ -18,7 +18,7 @@ Modeling Languages
 
 HyperQB currently accepts input models in two languages:
 
-   - **NuSMV** is a symbolic BBD-based model checker originated in CMU. The full documentation of the input language is available `here <https://nusmv.fbk.eu/user-manual.html>`_.
+   - **NuSMV** is a symbolic BDD-based model checker originated in CMU. The full documentation of the input language is available `here <https://nusmv.fbk.eu/user-manual.html>`_.
 
    - **Verilog** is a hardware description language. The IEEE standard documentation of Verilog 2005 is available `here <https://standards.ieee.org/ieee/1364/3641/>`_.
 
@@ -50,7 +50,7 @@ Specification Languages
 HyperLTL & A-HLTL grammar
 ^^^^^^^^^^^^^^^^
 
-HyperQB supports the specification of hyperproperties using HyperLTL and A-HLTL. The following is the formal grammar for both specification languages supported by HyperQB, implemented using the `pest` parser generator allowing for modular and extensible parsing of hyperproperty formulas:
+HyperQB supports hyperproperty specifications expressed in two logical systems: HyperLTL and A-HLTL. The following is the formal grammar for both specification languages supported by HyperQB, implemented using the `pest` parser generator allowing for modular and extensible parsing of formulas:
 
 .. code-block:: text
 

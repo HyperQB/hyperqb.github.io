@@ -14,6 +14,7 @@ benchmarks using the cards below.
       - :doc:`Overview <security/index>`
       - :doc:`Symmetry: Bakery Algorithm (NuSMV) <security/symmetry>`
       - :doc:`Non-interference: Multi-threaded Programs (NuSMV) <security/non-interference>`
+      - :doc:`Non-Interference Until Close: Secure Winner Disclosure in Fixed-Bid Auctions (NuSMV) <security/bidding>`
       - :doc:`Fairness: Non-Repudiation Protocols (NuSMV) <security/fairness>`
       - :doc:`Co-termination (NuSMV) <security/co-termination>`
       - :doc:`Deniability (NuSMV) <security/deniability>`
@@ -24,7 +25,6 @@ benchmarks using the cards below.
       - :doc:`Concurrent Leakage Variants (NuSMV) <security/concleak>`
       - :doc:`Access-Controlled Database: Observational Equivalence (NuSMV) <security/acdb>`
       - :doc:`Compiler Optimisations: Security-Preserving Refinement (NuSMV) <security/compiler_opt>`
-      - :doc:`Linearizability of Construction-Then-Read: Eliminating Partial Initialization (NuSMV) <security/constructor>`
       - :doc:`Cache Timing Attack: Observational Determinism (NuSMV) <security/cache_attack>`
       - :doc:`LED Blinker Modules (Verilog) <security/verilog/led>`
       - :doc:`Observational Determinism: SPI Bus Secondary (Verilog) <security/verilog/spi>`
@@ -38,6 +38,7 @@ benchmarks using the cards below.
 
       - :doc:`Overview <concurrency/index>`
       - :doc:`Linearizability: SNARK (NuSMV) <concurrency/snark>`
+      - :doc:`Linearizability of Construction-Then-Read: Eliminating Partial Initialization (NuSMV) <concurrency/constructor>`
       - :doc:`Linearizability: Explicit Memory Management ABA (NuSMV) <concurrency/emmaba>`
       - :doc:`Linearizability: Lazy List Set (NuSMV) <concurrency/lazy_list>`
       - :doc:`Linearizability: IQueue (NuSMV) <concurrency/iqueue>`

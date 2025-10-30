@@ -54,24 +54,43 @@ HyperQB supports the specification of hyperproperties using HyperLTL and A-HLTL.
 
 .. code-block:: text
 
-   path_formula ::=  ("forall" | "exists") pid . form_rec
-   traj_formula ::= ("A" | "E" ) tid . AHLTL_rec
-      
-   form_rec     ::= path_formula | traj_formula | inner_HLTL
-   AHLTL_rec    ::= traj_formula | inner_AHLTL
-      
-   inner_HLTL   ::= hform          inner_AHLTL  ::= aform
-      
-   hform ::= hform binary_op hform | unary_op hform | h_atom 
-   aform ::= aform binary_op aform | unary_op aform | a_atom 
-      
-   h_atom ::= id[pid] | constant | number | "(" hform ")"
-   a_atom ::= id[pid][tid] | constant | number | "(" aform ")"
-      
-   binary_op ::= "U" | "R" | "=" | "->" | "&" | "|"
-   unary_op  ::= "G" | "F" | "X" | "~"
-      
-   constant ::= "TRUE" | "FALSE"    number ::= [0-9]+ | "#b" (0|1)+
+   WHITESPACE = _{ " " | "\t" | "\r\n" | "\n" }
+
+   path_formula = { ("Forall" | "Exists") ~ ident ~ "." ~ form_rec }
+   form_rec = { path_formula | traj_formula | inner_hltl }
+   traj_formula = { ("A" | "E") ~ ident ~ "." ~ ahltl_form_rec }
+   ahltl_form_rec = { traj_formula | inner_altl }
+
+   inner_hltl = { hequal } 
+   inner_altl = { aequal }
+
+   hequal = { himpl ~ ("=" ~ hequal)? }
+   himpl = { hdisj ~ ("->" ~ himpl)? }
+   hdisj = { hconj ~ ("|" ~ hdisj)? }
+   hconj = { huntl ~ ("&" ~ hconj)? }
+   huntl = { hrels ~ ("U" ~ huntl)? }
+   hrels = { hfactor ~ ("R" ~ hrels)? }
+   hfactor = { unop ~ hfactor | "(" ~ inner_hltl ~ ")" | hltl_atom }
+   hltl_atom = { ident ~ "[" ~ ident ~ "]" | constant | number }
+
+
+   aequal = { aimpl ~ ("=" ~ aequal)? }
+   aimpl = { adisj ~ ("->" ~ aimpl)? }
+   adisj = { aconj ~ ("|" ~ adisj)? }
+   aconj = { auntl ~ ("&" ~ aconj)? }
+   auntl = { arels ~ ("U" ~ auntl)? }
+   arels = { afactor ~ ("R" ~ arels)? }
+   afactor = { aunop ~ afactor | "(" ~ inner_altl ~ ")" | altl_atom }
+   altl_atom = { ident ~ "[" ~ ident ~ "]" ~ "[" ~ ident ~ "]" | constant | number}
+
+   aunop = { "G" | "F" | "~" }
+   unop = { "G" | "F" | "X" | "~" }
+   ident = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_" | ".")* }
+   constant = {"TRUE" | "FALSE"}
+   number = @{ ASCII_DIGIT+ | "#b" ~ ("0" | "1")+ }
+
+   // Entry point for the parser
+   formula = _{ SOI ~ path_formula ~ EOI }
 
 Running HyperQB
 ---------------
